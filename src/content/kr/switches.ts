@@ -15,7 +15,7 @@ export const SWITCH_DATABASE: SwitchContent[] = [
     bestFor: ["beginner", "gaming", "office"],
     status: "published",
     updatedAt: "2024-05-13",
-    aiBeginnerSummaryKo: "가장 대중적이고 호불호가 적은 방식입니다. 누를 때 걸리는 느낌 없이 끝까지 매끄럽게 내려갑니다.",
+    aiBeginnerSummaryKo: "부드럽게 내려가는 기본적인 스위치 타입입니다. 일정한 느낌으로 압력이 끝까지 동일하게 누릅니다. 대표스위치 적축, 흑축",
     aiBuyingCheckKo: ["키압이 너무 무겁지 않은지 확인", "윤활 여부에 따라 서걱임 차이가 큼"],
     aiCautionKo: "입력 지점이 명확하지 않아 처음에는 오타가 날 수 있습니다.",
   },
