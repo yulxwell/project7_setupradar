@@ -101,6 +101,57 @@ function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: Key
   return { keyboard, score, reasons, cautions };
 }
 
+const LAYOUT_LABELS = {
+  full: "풀배열",
+  tkl: "텐키리스",
+  "75%": "75%",
+  "65%": "65%",
+  compact: "컴팩트",
+} as const;
+
+const SWITCH_LABELS = {
+  linear: "리니어",
+  tactile: "택타일",
+  clicky: "클릭",
+  magnetic: "자석축",
+  optical: "광축",
+  capacitive: "무접점",
+  unknown: "확인 필요",
+} as const;
+
+const MATERIAL_LABELS = {
+  plastic: "플라스틱",
+  aluminum: "알루미늄",
+  polycarbonate: "폴리카보네이트",
+} as const;
+
+function getKeyboardSpecRows(keyboard: (typeof KEYBOARD_DATABASE)[number]) {
+  const specs = keyboard.detailSpecs;
+  const dimensions = specs?.dimensionsMm;
+  const connection = keyboard.basicFilters?.connection === "multi_mode"
+    ? "유선+무선"
+    : keyboard.basicFilters?.connection === "wireless"
+      ? "무선"
+      : keyboard.basicFilters?.connection === "wired"
+        ? "유선"
+        : null;
+  const dimensionText = dimensions && (dimensions.width || dimensions.depth || dimensions.height)
+    ? [dimensions.width, dimensions.depth, dimensions.height].filter(Boolean).join(" x ") + "mm"
+    : null;
+
+  return [
+    { label: "배열", value: LAYOUT_LABELS[keyboard.layout] },
+    connection ? { label: "연결", value: connection } : null,
+    { label: "스위치", value: keyboard.switchType.map((type) => SWITCH_LABELS[type]).join(", ") },
+    { label: "소재", value: MATERIAL_LABELS[keyboard.material] },
+    { label: "핫스왑", value: keyboard.isHotSwap ? "지원" : "미지원" },
+    specs?.actuationForceG ? { label: "키압", value: `${specs.actuationForceG}g` } : null,
+    specs?.bluetoothVersion ? { label: "블루투스", value: specs.bluetoothVersion } : null,
+    specs?.battery ? { label: "배터리", value: specs.battery } : null,
+    dimensionText ? { label: "크기", value: dimensionText } : null,
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
 function CompactOptionGroup({
   group,
   value,
@@ -241,11 +292,11 @@ export default function KeyboardFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화합니다.</p>
           </div>
 
-          {scoredKeyboards.map(({ keyboard, reasons, cautions }) => {
+          {scoredKeyboards.map(({ keyboard }) => {
             const display = getContentDisplay(keyboard);
             const layoutMeta = KEYBOARD_LAYOUT_META[keyboard.layout === "compact" ? "60%" : keyboard.layout];
-            const buyingChecks = display.buyingCheck.length > 0 ? display.buyingCheck : ["배열, 연결 방식, OS 키 매핑 지원 여부를 확인해보세요."];
             const communityNote = display.communityNote || "키보드 체감은 스위치, 보강판, 흡음재에 따라 다르게 느껴질 수 있습니다.";
+            const specRows = getKeyboardSpecRows(keyboard);
 
             return (
               <article key={keyboard.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
@@ -254,7 +305,6 @@ export default function KeyboardFitPage() {
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">{keyboard.brand || "Unknown"}</p>
                     <h3 className="text-base font-bold text-[var(--primary)]">{keyboard.name}</h3>
                   </div>
-                  <span className="shrink-0 rounded-full bg-[var(--background)] px-2.5 py-1 text-[11px] font-bold text-[var(--muted)]">{keyboard.priceRange}</span>
                 </div>
                 <div className="mb-2 flex flex-wrap gap-1.5">
                   <span className="rounded-md bg-[var(--accent)]/10 px-2 py-0.5 text-[10px] font-bold text-[var(--accent)]">
@@ -267,10 +317,15 @@ export default function KeyboardFitPage() {
                   ))}
                 </div>
                 <p className="mb-3 line-clamp-2 text-[11px] leading-relaxed text-[var(--muted)]">{display.summary}</p>
+                <div className="mb-3 grid grid-cols-2 gap-2">
+                  {specRows.map((spec) => (
+                    <div key={spec.label} className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2">
+                      <p className="text-[10px] font-bold text-[var(--muted)]">{spec.label}</p>
+                      <p className="mt-0.5 text-[11px] font-bold text-[var(--primary)]">{spec.value}</p>
+                    </div>
+                  ))}
+                </div>
                 <div className="grid gap-2 text-[11px] leading-relaxed">
-                  <p><span className="font-bold text-[var(--primary)]">왜 맞을 수 있는지: </span><span className="text-[var(--muted)]">{reasons[0]}</span></p>
-                  <p><span className="font-bold text-[var(--primary)]">주의할 점: </span><span className="text-[var(--muted)]">{cautions[0] || display.cautions[0] || "재고, 키캡 호환, A/S 조건은 확인이 필요합니다."}</span></p>
-                  <p><span className="font-bold text-[var(--primary)]">구매 전 체크: </span><span className="text-[var(--muted)]">{buyingChecks[0]}</span></p>
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
               </article>

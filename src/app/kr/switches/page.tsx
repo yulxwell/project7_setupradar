@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, Info, Search, Zap, Volume2, MessageSquare, Target, AlertTriangle } from "lucide-react";
+import { ChevronLeft, Info, Search, MessageSquare, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import { SWITCH_DATABASE } from "@/content/kr/switches";
 import { SwitchType } from "@/content/types";
@@ -62,7 +62,7 @@ export default function SwitchGuidePage() {
           <div className="space-y-2">
             <p className="text-sm font-bold text-[var(--primary)]">2. 손가락 피로도</p>
             <p className="text-xs leading-relaxed text-[var(--muted)]">
-              장시간 타이핑이 많다면 키압(Force)이 낮은(45g 이하) 축이 손목과 손가락 건강에 유리할 수 있습니다.
+              빠른 입력이 필요한 게임이나 장시간 타이핑이 많다면 키압이 낮은(45g 이하) 축이 손목과 손가락 건강에 유리할 수 있습니다. 키압이 높을 수록 입력할 때 묵직한 느낌이 납니다.
             </p>
           </div>
           <div className="space-y-2">
@@ -135,38 +135,6 @@ export default function SwitchGuidePage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <Target className="mt-1 h-4 w-4 shrink-0 text-[var(--muted)]" />
-                  <div>
-                    <p className="text-sm font-bold text-[var(--primary)]">추천 대상</p>
-                    <div className="mt-1 flex flex-wrap gap-1">
-                      {sw.bestFor.map(b => (
-                        <span key={b} className="rounded bg-[var(--secondary)] px-1.5 py-0.5 text-[9px] font-bold text-[var(--muted)] border border-[var(--border)]">
-                          #{b}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 rounded-2xl bg-[var(--background)]/50 p-4 border border-[var(--border)]/50">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--muted)]">
-                      <Zap className="h-3 w-3" /> 키압 (입력/바닥)
-                    </div>
-                    <p className="text-xs font-bold text-[var(--primary)]">
-                      {sw.actuationForceG || "?"}g / {sw.bottomOutForceG || "?"}g
-                    </p>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--muted)]">
-                      <Volume2 className="h-3 w-3" /> 소음 수준
-                    </div>
-                    <p className="text-xs font-bold text-[var(--primary)] uppercase">
-                      {sw.soundLevel}
-                    </p>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-auto space-y-3">

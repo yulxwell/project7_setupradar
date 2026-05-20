@@ -82,6 +82,31 @@ function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderV
   return { mouse, score, reasons, cautions };
 }
 
+function getMouseSpecRows(mouse: (typeof MOUSE_DATABASE)[number]) {
+  const specs = mouse.detailSpecs;
+  const dimensions = specs?.dimensionsMm ?? mouse.dimensions;
+  const shapeLabel = mouse.basicFilters?.shape === "right_ergonomic" || mouse.shapeType === "ergonomic"
+    ? "오른손용 비대칭형"
+    : "대칭형";
+  const connectionLabel = mouse.basicFilters?.connection === "wireless"
+    ? "무선"
+    : mouse.basicFilters?.connection === "multi_mode"
+      ? "유선+무선"
+      : mouse.basicFilters?.connection === "wired"
+        ? "유선"
+        : null;
+
+  return [
+    { label: "무게", value: `${mouse.weight}g` },
+    { label: "형태", value: shapeLabel },
+    connectionLabel ? { label: "연결", value: connectionLabel } : null,
+    { label: "센서", value: specs?.sensorModel ?? mouse.sensor },
+    specs?.pollingRateHz ? { label: "폴링레이트", value: `${specs.pollingRateHz.toLocaleString()}Hz` } : null,
+    specs?.maxDpi ? { label: "최대 DPI", value: specs.maxDpi.toLocaleString() } : null,
+    dimensions ? { label: "크기", value: `${dimensions.length} x ${dimensions.width} x ${dimensions.height}mm` } : null,
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
 function CompactOptionGroup({
   group,
   value,
@@ -211,10 +236,10 @@ export default function MouseFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">가능한 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
-          {scoredMice.map(({ mouse, reasons, cautions }) => {
+          {scoredMice.map(({ mouse }) => {
             const display = getContentDisplay(mouse);
-            const buyingChecks = display.buyingCheck.length > 0 ? display.buyingCheck : ["손 크기와 쉘 형태가 맞는지 실사용 후기를 확인해보세요."];
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
+            const specRows = getMouseSpecRows(mouse);
 
             return (
               <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
@@ -223,13 +248,17 @@ export default function MouseFitPage() {
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">{mouse.brand || "Unknown"}</p>
                     <h3 className="text-base font-bold text-[var(--primary)]">{mouse.name}</h3>
                   </div>
-                  <span className="shrink-0 rounded-full bg-[var(--background)] px-2.5 py-1 text-[11px] font-bold text-[var(--muted)]">{mouse.priceRange}</span>
                 </div>
                 <p className="mb-3 line-clamp-2 text-[11px] leading-relaxed text-[var(--muted)]">{display.summary}</p>
+                <div className="mb-3 grid grid-cols-2 gap-2">
+                  {specRows.map((spec) => (
+                    <div key={spec.label} className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2">
+                      <p className="text-[10px] font-bold text-[var(--muted)]">{spec.label}</p>
+                      <p className="mt-0.5 text-[11px] font-bold text-[var(--primary)]">{spec.value}</p>
+                    </div>
+                  ))}
+                </div>
                 <div className="grid gap-2 text-[11px] leading-relaxed">
-                  <p><span className="font-bold text-[var(--primary)]">왜 맞을 수 있는지: </span><span className="text-[var(--muted)]">{reasons[0]}</span></p>
-                  <p><span className="font-bold text-[var(--primary)]">주의할 점: </span><span className="text-[var(--muted)]">{cautions[0] || display.cautions[0] || "가격과 A/S 조건은 확인이 필요합니다."}</span></p>
-                  <p><span className="font-bold text-[var(--primary)]">구매 전 체크: </span><span className="text-[var(--muted)]">{buyingChecks[0]}</span></p>
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
               </article>
