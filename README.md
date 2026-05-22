@@ -1,4 +1,4 @@
-# SetupRadar (v0.5A - DB Schema Planning)
+# SetupRadar (v0.5B - Product Card UX Review)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.5A - DB Schema Planning (Current)
+### v0.5B - Product Card UX Review (Current)
+- **Finder 결과 카드 품질 점검**: Mouse Finder와 Keyboard Finder 결과 카드의 정보 위계와 문구 톤을 점검하고, 과하게 마케팅처럼 읽히는 키보드 제품 문구를 최소 보정했습니다.
+- **쉘 레퍼런스 노출 안전성 유지**: Mouse Finder의 쉘 체감 레퍼런스는 `editorNoteKo`가 있는 검수 항목만 작고 조용하게 표시하도록 유지했습니다.
+- **미노출 정책 유지**: 내부 `status`, `productImages`, `productLinks`는 사용자 화면에 표시하지 않으며, 제품 상세/비교/가격 링크는 후속 작업으로 보류합니다.
+
+### v0.5A - DB Schema Planning
 - **DB화 전 설계 문서 추가**: 향후 Supabase 등 DB로 제품 데이터를 옮길 때 필요한 테이블 초안을 [docs/db-schema-plan.md](file:///Users/jilee/antigravity/src/project7/docs/db-schema-plan.md)에 정리했습니다.
 - **정적 TS 구조와 DB 매핑 정리**: `products`, `product_locales`, `product_basic_filters`, `product_advanced_filters`, `product_detail_specs`, `product_raw_specs`, `product_shell_references`, `product_images`, `product_links`, `switch_entries`, `content_pages` 후보를 현재 `src/content` 구조와 연결했습니다.
 - **구현 금지선 유지**: 이번 버전은 실제 Supabase 연결, API route, SQL migration, 제품 데이터 수정, Finder/UI 변경 없이 설계 문서만 추가한 단계입니다.

@@ -14,7 +14,7 @@ export const KEYBOARD_DATABASE: KeyboardContent[] = [
     status: "published",
     updatedAt: "2024-05-14",
     priceRange: "10만원대",
-    features: ["가성비 종결", "풀 알루미늄", "무선 3모드"],
+    features: ["가격 대비 구성", "풀 알루미늄", "무선 3모드"],
     basicFilters: {
       layout: "compact",
       connection: "multi_mode",
@@ -47,7 +47,7 @@ export const KEYBOARD_DATABASE: KeyboardContent[] = [
       note: "세부 스펙은 판매처별 옵션과 생산 시기에 따라 확인이 필요합니다.",
     },
     specTags: ["75%", "Aluminum", "Wireless"],
-    aiSummaryKo: "가성비 알루미늄 키보드 시장을 뒤흔든 베스트셀러 모델입니다. 뛰어난 타건음과 빌드 퀄리티를 자랑합니다.",
+    aiSummaryKo: "가격 대비 구성이 좋은 알루미늄 키보드 후보로 자주 언급되는 모델입니다. 타건음과 빌드 체감은 구성에 따라 확인이 필요합니다.",
     aiStrengthsKo: ["가격 대비 구성이 좋은 편", "순정 상태에서도 타건음 평가가 좋은 편", "세련된 디자인"],
     aiCautionsKo: ["품절이 잦아 구매가 어려울 수 있음", "전용 소프트웨어의 편의성이 다소 부족함"],
   },
@@ -64,7 +64,7 @@ export const KEYBOARD_DATABASE: KeyboardContent[] = [
     status: "published",
     updatedAt: "2024-05-14",
     priceRange: "30만원대",
-    features: ["무접점 방식", "독보적인 타건감", "APC 기능"],
+    features: ["무접점 방식", "부드러운 타건감", "APC 기능"],
     basicFilters: {
       layout: "full",
       connection: "wireless",
@@ -100,7 +100,7 @@ export const KEYBOARD_DATABASE: KeyboardContent[] = [
     },
     specTags: ["Full Layout", "Topre", "Silent"],
     aiSummaryKo: "정전용량 무접점 키보드 계열에서 자주 비교되는 리얼포스 모델입니다. 특유의 부드러운 타건감이 특징으로 언급됩니다.",
-    aiStrengthsKo: ["독보적인 무접점 타건감", "긴 내구성", "뛰어난 안정성"],
+    aiStrengthsKo: ["무접점 특유의 부드러운 타건감", "긴 내구성 기대", "안정적인 사용감"],
     aiCautionsKo: ["매우 높은 가격", "플라스틱 하우징에 대한 아쉬움"],
   },
   {

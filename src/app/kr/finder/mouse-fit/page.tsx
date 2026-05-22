@@ -158,38 +158,11 @@ function getShellRefText(ref: MouseShellReference) {
   const modelName = ref.referenceModelKo || ref.referenceModelEn;
   if (!modelName) return "";
 
-  // editorNoteKo가 있으면 editorNoteKo를 우선 사용하고, 없으면 aiNoteKo를 사용한다.
-  if (ref.editorNoteKo || ref.aiNoteKo) {
-    return `${modelName} 계열: ${ref.editorNoteKo || ref.aiNoteKo}`;
+  if (ref.editorNoteKo) {
+    return `${modelName} 계열: ${ref.editorNoteKo}`;
   }
 
-  // fallback 조립
-  let relationText = "";
-  switch (ref.relationType) {
-    case "similar_shape":
-      relationText = "비슷한 쉘 계열로 비교됩니다.";
-      break;
-    case "community_compared":
-      relationText = "사용자 사이에서 비교 기준으로 자주 언급됩니다.";
-      break;
-    case "inspired_by":
-      relationText = "형태 체감이 비슷하다는 반응이 있습니다.";
-      break;
-    case "unknown":
-    default:
-      relationText = "비교 기준으로 언급되는 경우가 있습니다.";
-      break;
-  }
-
-  if (ref.confidence === "low") {
-    return `${modelName} 계열은 일부 사용자 사이에서 참고용으로만 ${relationText}`;
-  } else if (ref.confidence === "medium") {
-    return `${modelName} 계열과 비슷한 쉘 계열로 자주 비교됩니다.`;
-  } else if (ref.confidence === "high") {
-    return `${modelName} 계열과 비교 기준으로 자주 언급됩니다.`;
-  }
-
-  return `${modelName} 계열과 ${relationText}`;
+  return "";
 }
 
 function CompactOptionGroup({
@@ -360,15 +333,15 @@ export default function MouseFitPage() {
                 </div>
 
                 {shellRefs && shellRefs.length > 0 && (
-                  <div className="mt-3.5 border-t border-[var(--border)]/60 pt-3 text-[11px] leading-relaxed">
-                    <p className="font-bold text-[var(--muted)] mb-1.5">쉘 체감 레퍼런스</p>
+                  <div className="mt-3 border-t border-[var(--border)]/50 pt-2.5 text-[10.5px] leading-relaxed">
+                    <p className="mb-1.5 font-bold text-[var(--muted)]">쉘 체감 레퍼런스</p>
                     <div className="space-y-1.5">
                       {shellRefs.map((ref, idx) => {
                         const refText = getShellRefText(ref);
                         if (!refText) return null;
                         return (
-                          <div key={idx} className="rounded-lg bg-[var(--secondary)]/15 p-2 border border-[var(--border)]/30">
-                            <p className="text-[var(--primary)] font-medium text-[10.5px]">{refText}</p>
+                          <div key={idx} className="rounded-lg border border-[var(--border)]/30 bg-[var(--secondary)]/10 p-2">
+                            <p className="text-[10px] font-medium text-[var(--muted)]">{refText}</p>
                             {ref.cautionKo && (
                               <p className="mt-1 text-[9.5px] text-[var(--muted)] leading-snug">
                                 ※ {ref.cautionKo}

@@ -1,11 +1,11 @@
 # PROJECT7_WORK_LOG.md
 
-SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.5A까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
+SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.5B까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
 
 ## 현재 상태
 
-- 현재 버전: `v0.5A - DB Schema Planning`
-- 다음 후보 버전: `v0.5B - DB Snapshot / Control Tower Product CRUD Mock 검토`
+- 현재 버전: `v0.5B - Product Card UX Review`
+- 다음 후보 버전: `v0.5C - DB Snapshot / Control Tower Product CRUD Mock 검토`
 - 프로젝트 성격: PC 하드웨어 진단 및 구매 가이드용 정적 웹사이트
 - 주요 경로:
   - `/kr`
@@ -452,3 +452,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 제품 이미지와 링크는 approved 전 공개 노출을 막고, 이미지 hotlink와 실시간 가격 트래커를 피하는 정책을 기록했다.
 - 정적 사이트와 DB 연결 전략은 단기 static TS 유지, 중기 DB JSON snapshot 후 정적 빌드, 장기 일부 Workers/API 검토 순서로 정리했다.
 - 이번 작업은 설계 문서화이며 실제 Supabase 연결, SQL migration, API route, 제품 데이터 수정, Finder 로직 수정, UI 수정, Control Tower 수정은 하지 않았다.
+
+## v0.5B - 2026-05-23 Product Card UX Review 기록
+
+- Mouse Finder와 Keyboard Finder 결과 카드의 정보 위계, 표시 문구, 내부 데이터 노출 여부를 코드 기준으로 점검했다.
+- Mouse Finder 결과 카드는 브랜드/제품명, 요약, 핵심 스펙, 체감 한줄평 순서를 유지하고, 가격/링크/이미지/내부 status는 표시하지 않는 상태를 확인했다.
+- Mouse Finder의 쉘 체감 레퍼런스는 `editorNoteKo`가 있는 검수 항목만 표시하도록 유지하고, 표시 영역의 글자 크기와 색 위계를 더 조용하게 낮췄다.
+- Keyboard Finder 결과 카드는 브랜드/제품명, 작은 배지, 요약, 핵심 스펙, 체감 한줄평 순서를 유지했다.
+- Keyboard 제품 문구 중 카드에 직접 노출될 수 있는 "가성비 종결", "독보적인" 같은 마케팅성 표현을 참고용 톤으로 최소 보정했다.
+- `productImages`와 `productLinks`는 타입만 유지하고 Finder 결과 카드에는 표시하지 않았다.
+- Finder 추천 점수 계산, `basicFilters` 매칭 로직, 제품 수, 제품 상세 페이지, 제품 비교, 가격 링크, Supabase/API/DB/n8n 연동은 변경하지 않았다.
