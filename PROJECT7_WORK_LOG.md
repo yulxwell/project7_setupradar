@@ -1,11 +1,11 @@
 # PROJECT7_WORK_LOG.md
 
-SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.4E까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
+SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.5A까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
 
 ## 현재 상태
 
-- 현재 버전: `v0.4E - Product Trust Guard`
-- 다음 후보 버전: `v0.5A - Product Comparison and Search Expansion`
+- 현재 버전: `v0.5A - DB Schema Planning`
+- 다음 후보 버전: `v0.5B - DB Snapshot / Control Tower Product CRUD Mock 검토`
 - 프로젝트 성격: PC 하드웨어 진단 및 구매 가이드용 정적 웹사이트
 - 주요 경로:
   - `/kr`
@@ -442,3 +442,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - **정책 문서화 및 규칙 명문화**: 이미지 저작권 및 최저가 아웃링크에 대한 엄격한 sourceType/status 제어 프로세스와 쉘 검수 원칙을 `README.md` 및 `PROJECT7_WORK_LOG.md`에 철저하게 기록하여 AI/Human 공동 개발 시의 비즈니스적 신뢰도를 극대화했습니다.
 - **정밀 QA 검수 통과**: 금지어("카피쉘", "짭", "배꼈", "표절")에 대해 소스코드 전수 검수를 완료하였고, `npm run lint` 및 `npm run build`를 이상 없이 성공시켰습니다.
 
+## v0.5A - 2026-05-23 DB Schema Planning 기록
+
+- `docs/db-schema-plan.md`를 생성해 Project7 제품 데이터를 향후 DB로 옮길 때 필요한 테이블 초안을 문서화했다.
+- 현재 정적 TS 데이터 구조(`MOUSE_DATABASE`, `KEYBOARD_DATABASE`, `SWITCH_DATABASE`)와 DB 후보 테이블 간 매핑을 정리했다.
+- `products`, `product_locales`, `product_basic_filters`, `product_advanced_filters`, `product_detail_specs`, `product_raw_specs`, `product_shell_references`, `product_images`, `product_links`, `switch_entries`, `guide_entries`/`content_pages` 테이블 후보를 정리했다.
+- `product_locales`에는 AI 초안과 editor 교정본을 분리하고, 화면에서는 editor 우선/fallback 구조를 유지하는 방향을 기록했다.
+- 마우스 쉘 레퍼런스는 `editor_note_ko` 존재, confidence medium/high, source_hint unknown 제외, approved 상태 등 엄격한 노출 기준을 유지하도록 설계했다.
+- 제품 이미지와 링크는 approved 전 공개 노출을 막고, 이미지 hotlink와 실시간 가격 트래커를 피하는 정책을 기록했다.
+- 정적 사이트와 DB 연결 전략은 단기 static TS 유지, 중기 DB JSON snapshot 후 정적 빌드, 장기 일부 Workers/API 검토 순서로 정리했다.
+- 이번 작업은 설계 문서화이며 실제 Supabase 연결, SQL migration, API route, 제품 데이터 수정, Finder 로직 수정, UI 수정, Control Tower 수정은 하지 않았다.

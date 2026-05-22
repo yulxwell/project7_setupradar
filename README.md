@@ -1,4 +1,4 @@
-# SetupRadar (v0.4E - Product Trust Guard)
+# SetupRadar (v0.5A - DB Schema Planning)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.4E - Product Trust Guard (Current)
+### v0.5A - DB Schema Planning (Current)
+- **DB화 전 설계 문서 추가**: 향후 Supabase 등 DB로 제품 데이터를 옮길 때 필요한 테이블 초안을 [docs/db-schema-plan.md](file:///Users/jilee/antigravity/src/project7/docs/db-schema-plan.md)에 정리했습니다.
+- **정적 TS 구조와 DB 매핑 정리**: `products`, `product_locales`, `product_basic_filters`, `product_advanced_filters`, `product_detail_specs`, `product_raw_specs`, `product_shell_references`, `product_images`, `product_links`, `switch_entries`, `content_pages` 후보를 현재 `src/content` 구조와 연결했습니다.
+- **구현 금지선 유지**: 이번 버전은 실제 Supabase 연결, API route, SQL migration, 제품 데이터 수정, Finder/UI 변경 없이 설계 문서만 추가한 단계입니다.
+
+### v0.4E - Product Trust Guard
 - **쉘 레퍼런스 노출 조건 극대화**: `editorNoteKo`가 존재하고, `confidence`가 `medium` 또는 `high`이며, `sourceHint`가 `unknown`이 아닌 신뢰할 수 있는 레퍼런스만 선별 렌더링하도록 노출 조건을 대폭 강화했습니다. 조건에 맞는 항목이 없으면 "쉘 체감 레퍼런스" 영역 전체를 완전히 숨겨 깔끔한 카드 가독성을 유지합니다.
 - **이미지 및 가격 링크 타입 설계**: 향후 이미지 및 가격 아웃링크 추가에 대비하여 `BaseContent` 등에 `productImages` 및 `productLinks` optional 스키마를 준비했습니다. 이번 버전에서는 실제 데이터 주입 및 화면 노출을 제한하여 비즈니스/법적 리스크를 미연에 방지합니다.
 - **제품 신뢰성 관리 정책 수립**: 이미지 저작권 및 가격 수집, 쉘 레퍼런스 검수 과정에 대한 신뢰성 제어 정책을 `README.md` 및 `PROJECT7_WORK_LOG.md`에 명문화하였습니다.
