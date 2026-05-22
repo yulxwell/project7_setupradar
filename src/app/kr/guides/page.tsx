@@ -1,6 +1,6 @@
 import { Mouse, Keyboard, Zap, ShieldCheck, Moon } from "lucide-react";
 import { GuideCard } from "@/components/cards/Cards";
-import { GUIDES_DATABASE } from "@/content/kr/guides";
+import { GUIDE_CATEGORIES, GUIDES_DATABASE } from "@/content/kr/guides";
 import { getContentDisplay } from "@/content/utils";
 
 const ICON_MAP = {
@@ -21,17 +21,32 @@ export default function GuidesPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {GUIDES_DATABASE.map((guide) => {
-          const display = getContentDisplay(guide);
+      <div className="space-y-12">
+        {GUIDE_CATEGORIES.map((category) => {
+          const categoryGuides = GUIDES_DATABASE.filter((guide) => guide.category === category.id);
+          if (categoryGuides.length === 0) return null;
+
           return (
-            <GuideCard 
-              key={guide.id}
-              title={guide.name}
-              description={display.summary}
-              href={guide.href}
-              icon={ICON_MAP[guide.iconName as keyof typeof ICON_MAP] || Zap}
-            />
+            <section key={category.id}>
+              <div className="mb-4 flex flex-col gap-1 border-l-4 border-[var(--accent)] pl-4">
+                <h2 className="text-xl font-bold text-[var(--primary)]">{category.label}</h2>
+                <p className="max-w-2xl text-sm text-[var(--muted)]">{category.description}</p>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {categoryGuides.map((guide) => {
+                  const display = getContentDisplay(guide);
+                  return (
+                    <GuideCard
+                      key={guide.id}
+                      title={guide.name}
+                      description={display.summary}
+                      href={guide.href}
+                      icon={ICON_MAP[guide.iconName as keyof typeof ICON_MAP] || Zap}
+                    />
+                  );
+                })}
+              </div>
+            </section>
           );
         })}
       </div>

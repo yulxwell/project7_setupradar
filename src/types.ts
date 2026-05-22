@@ -138,6 +138,21 @@ export interface Keyboard {
   advancedFilters?: KeyboardAdvancedFilters;
   detailSpecs?: KeyboardDetailSpecs;
   rawSpecs?: KeyboardRawSpecs;
+  productImages?: {
+    src: string;
+    altKo: string;
+    sourceType: "manual" | "official" | "affiliate" | "placeholder";
+    status: "pending" | "review" | "approved";
+    noteKo?: string;
+  }[];
+  productLinks?: {
+    labelKo: string;
+    url: string;
+    linkType: "official" | "price_check" | "affiliate" | "review" | "manual";
+    status: "pending" | "review" | "approved";
+    lastCheckedAt?: string;
+    noteKo?: string;
+  }[];
 }
 
 export interface Mouse {
@@ -161,6 +176,21 @@ export interface Mouse {
   detailSpecs?: MouseDetailSpecs;
   rawSpecs?: MouseRawSpecs;
   shellReferences?: MouseShellReference[];
+  productImages?: {
+    src: string;
+    altKo: string;
+    sourceType: "manual" | "official" | "affiliate" | "placeholder";
+    status: "pending" | "review" | "approved";
+    noteKo?: string;
+  }[];
+  productLinks?: {
+    labelKo: string;
+    url: string;
+    linkType: "official" | "price_check" | "affiliate" | "review" | "manual";
+    status: "pending" | "review" | "approved";
+    lastCheckedAt?: string;
+    noteKo?: string;
+  }[];
 }
 
 export interface KeyboardSwitch {

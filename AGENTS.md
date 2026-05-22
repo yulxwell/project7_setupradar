@@ -1,5 +1,76 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# AGENTS.md — Project7 (SetupRadar) Agent Rules
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+이 파일은 SetupRadar 프로젝트를 수행하는 모든 AI 작업자(Gemini, Codex 등)가 준수해야 할 핵심 개발 환경 가이드 및 인수인계 규칙입니다. 작업 시작 전 반드시 일독하십시오.
+
+---
+
+## 1. Role & Project Context
+- **Role**: You are assisting Project7 (SetupRadar). The user is **yulxwell**, a non-developer PM. Do not assume missing context, and read project docs before editing.
+- **Project Type**: SetupRadar는 초보자를 위한 PC 주변기기 가이드 및 진단 도구를 제공하는 **한국어 기반 정적 사이트**입니다 (`/kr` 경로 기준).
+- **Architecture Limits**:
+  - Supabase, 서버 API, 외부 DB, 로그인, 회원가입이 없는 **완전한 정적 배포(Cloudflare Pages)**를 전제로 합니다.
+  - 데이터는 오직 `src/content/` 디렉터리 내 정적 파일(`*.ts`)을 통해서만 로컬 아키텍처로 운영됩니다.
+
+---
+
+## 2. Gemini vs Codex 역할 분리 규칙
+
+| 에이전트 | 특화 작업 범위 | 권장 행동 |
+| :--- | :--- | :--- |
+| **Gemini** | - 문구 다듬기 및 어조 완화<br>- 제품 샘플 데이터 추가<br>- 문서 갱신 및 마크다운 정리<br>- 단순 QA 및 기능 테스트<br>- 단순 카드/목록 레이아웃 추가 | - 반복적이고 정교한 문구 교정<br>- 스위치 사전이나 가이드 텍스트의 초보자 친화적 보강 |
+| **Codex** | - 타입(TypeScript) 정의 및 충돌 해결<br>- Finder 매칭 및 추천 점수 계산 로직 변경<br>- 외부 빌드 오류 디버깅<br>- 복잡한 리팩터링 및 폴더/Git 구조 정리 | - 빌드 파이프라인에서 발생하는 의존성 분석<br>- 정밀한 데이터 스키마 분해 및 병합 |
+
+---
+
+## 3. 공통 작업 절차 (Default Workflow)
+모든 작업자는 작업을 인수받았을 때와 인계할 때 반드시 아래 **10단계 절차**를 따릅니다.
+
+1. **`git status` 확인**: 진행 중인 staged / unstaged 변경사항이 있는지 리포지토리 상태를 살핍니다.
+2. **필수 문서 읽기**: `README.md`, `AGENTS.md`, `PROJECT7_WORK_LOG.md`, `docs/content-editing-guide.md`를 먼저 정독하여 맥락을 파악합니다.
+3. **현재 상태 요약**: 이전 작업자가 진행해놓은 빌드 버전 및 완료 상태를 파악해 1~2줄로 머릿속에 요약합니다.
+4. **작업 범위 확정**: 구현할 핵심 범위와 연관 파일 목록을 체크합니다.
+5. **금지 사항 체크**: 아래의 Hard Limits를 위반하는 기능이 기획에 포함되어 있는지 교차 확인합니다.
+6. **최소 수정 원칙**: 관련 없는 코드나 다른 프로젝트 파일은 건드리지 않고, 수정 대상 파일만 안전하고 콤팩트하게 수정합니다.
+7. **`npm run lint` 실행**: 코드 품질 및 타입 무결성을 로컬에서 검증합니다.
+8. **`npm run build` 실행**: 정적 사이트 빌드가 에러 없이 완수되는지 점검합니다.
+9. **`PROJECT7_WORK_LOG.md` 갱신**: 오늘 날짜, 제목, 구현 내용, 빌드 결과를 꼼꼼히 기록하여 다음 작업자에게 인계합니다.
+10. **완료 보고**: 수정 파일 목록, 변경 영역, 검수 결과를 정직하게 유저에게 전달합니다 (커밋/푸시 여부는 유저 지시에 따라 결정).
+
+---
+
+## 4. 엄격한 금지 및 규제 사항 (Hard Limits)
+- **Supabase/n8n/API/DB 무단 추가 금지**: PM의 명시적 연동 요구가 없는 한 절대 외부 데이터베이스 연결 기능을 심지 않습니다.
+- **추가 기능 억제**: 명시적 승인 없이 가격 트래커, 제품 비교, CPU/메인보드/벤치마크 기능을 새로 설계하거나 구현하지 않습니다.
+- **디자인 조화 유지**: 기존 Tailwind CSS 톤앤매너 및 라이트/다크 테마 설정을 파괴하지 않으며, 임의로 대규모 UI 리디자인을 시도하지 않습니다.
+- **보안 엄수**: `.env.local` 또는 API 키, 개인 토큰이 포함된 설정 파일을 커밋하거나 원격 저장소에 올리지 않습니다.
+- **강제 푸시 금지**: `git push --force` 명령을 임의로 수행하여 브랜치 이력을 오염시키지 않습니다.
+
+---
+
+## 5. 사용자 노출 문구 톤앤매너 규칙 (Tone Rules)
+- **절대적/단정적 표현 금지**: “최고”, “완벽”, “무조건”, “확정”, “정밀 진단”, “100% 동일” 같은 어휘는 정보 전달 리스크를 키우므로 절대 사용하지 않습니다.
+- **완화/초보자용 표현 권장**: “참고용”, “체감 기준”, “구매 전 확인”, “초보자 기준”, “비교 기준으로 언급되는 편” 같은 은은하고 객관적인 톤을 유지합니다.
+- ** disclaimer(면책 문구) 배치**: 브라우저 기반의 하드웨어 간이 테스트(더블클릭, 롤오버, 주사율 등) 하단에는 반드시 "전문가 장비 수준의 판정이 아니며 설치 없이 간편하게 확인하는 참고용 도구"임을 밝히는 안내 문구를 넣어야 합니다.
+
+---
+
+## 6. 마우스 쉘 체감 레퍼런스 표현 제약 (Mouse Shell Reference Rules)
+SetupRadar의 주요 차별화 포인트인 `shellReferences` 데이터를 노출하거나 다룰 때, 지적재산권 및 법적 리스크를 피하기 위해 다음 표현 규칙을 강제합니다.
+
+- **절대 금지 단어**: **“카피쉘”, “배꼈다”, “짭”, “표절”, “원본 쉘”, “동일 쉘”, “완전히 같다”, “확실히 같다”**
+- **권장 대체 단어**: **“유사 쉘 계열”, “쉘 체감 레퍼런스”, “자주 비교되는 쉘”, “비교 기준”, “형태 체감이 비슷하다는 반응”, “참고용”**
+- **데이터 구조**: `basicFilters`(형태, 무게감, 연결, 크기감, 가격) / `advancedFilters`(게이밍 성능, 버튼 수, 코팅, 스위치, 배터리) / `detailSpecs` / `rawSpecs` 구조를 항상 엄수하며 임의로 필드를 파괴하지 않습니다.
+
+---
+
+## 7. 완료 보고 형식 (Reporting Format)
+모든 작업이 완료된 후 유저에게 보고할 때는 반드시 아래 항목을 누락 없이 순서대로 보고해야 합니다.
+
+1. **Files changed**: 수정되거나 새로 생성된 파일 목록
+2. **What changed**: 구체적인 변경 사항 상세 설명
+3. **What was not changed**: 의도적으로 수정하지 않은 부분 (기능 유지 여부 등)
+4. **lint result**: `npm run lint` 수행 결과
+5. **build result**: `npm run build` 수행 결과
+6. **work log update**: 작업 로그 갱신 여부 및 기록 내용 요약
+7. **commit/push status**: commit/push 완료 여부 (혹은 하지 않음 여부)
+8. **remaining issues**: 추가 조치나 후속 검토가 필요한 남은 문제점

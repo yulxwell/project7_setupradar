@@ -1,4 +1,25 @@
-# SetupRadar (v0.3F - Visual Editing Workbench Ready)
+# SetupRadar (v0.4E - Product Trust Guard)
+
+## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
+
+> [!IMPORTANT]
+> 본 프로젝트는 **Gemini와 Codex**를 번갈아 가며 작업하는 환경입니다. 컨텍스트가 단절되거나 작업이 꼬이지 않도록 모든 AI 작업자는 반드시 아래 운영 규칙을 엄격히 준수해야 합니다.
+
+1. **작업 전 필수 절차**:
+   - `git status`를 확인하여 이전 작업 상태를 점검합니다.
+   - [README.md](file:///Users/jilee/antigravity/src/project7/README.md), [AGENTS.md](file:///Users/jilee/antigravity/src/project7/AGENTS.md), [PROJECT7_WORK_LOG.md](file:///Users/jilee/antigravity/src/project7/PROJECT7_WORK_LOG.md)를 먼저 일독하여 진행 맥락을 확실히 파악합니다.
+2. **작업 중 제한 사항**:
+   - **기능 추가는 명시적인 요청이 있을 때만** 수행합니다. 임의로 기능을 추가하거나 대규모 UI 리디자인을 하지 않습니다.
+   - Supabase/API/DB/n8n 연동 등 외부 아키텍처는 명시적 지시 없이 추가하지 않습니다.
+   - 제품 설명, 마우스 쉘 체감 레퍼런스 노출 시 절대적인/단정적 표현이나 법적 위험이 있는 단어(예: 카피쉘, 짭)를 배제합니다.
+3. **작업 후 필수 절차**:
+   - 로컬에서 반드시 `npm run lint`와 `npm run build`를 실행하여 정적 빌드에 이상이 없는지 확인합니다.
+   - [PROJECT7_WORK_LOG.md](file:///Users/jilee/antigravity/src/project7/PROJECT7_WORK_LOG.md)에 오늘 날짜와 함께 변경 사항을 소상히 기록합니다.
+   - 변경된 파일 목록 및 검수 결과를 포함한 인수인계 양식에 맞춰 유저에게 최종 완료 보고를 수행합니다.
+4. **제품 신뢰성 제어 정책 (Product Trust Guard)**:
+   - **쉘 레퍼런스 화면 노출**: 마우스 쉘 체감 레퍼런스(`shellReferences`)는 엄격한 검수 조건(`editorNoteKo` 존재, confidence medium/high 등)을 충족하는 검증 완료 데이터만 화면에 노출합니다. AI 초안 단계의 데이터는 노출하지 않고 안전히 차단합니다.
+   - **제품 이미지 권장 스키마**: 제품 이미지의 저작권 및 핫링크 리스크에 철저히 대비하기 위해 `sourceType`과 `status`를 기반으로 한 검증 체계를 운영합니다. 실사용 이미지는 임의 노출하지 않습니다.
+   - **가격 링크 및 최저가 제어**: 복잡도가 높은 실시간 가격 트래커나 크롤링을 피하고, 단순 안전 구조의 “가격 확인 링크” 스키마를 통해 외부 변동 리스크를 차단합니다.
 
 ## 📍 주요 경로 (Routes)
 - 한국어 기본 경로: `/kr`
@@ -25,6 +46,29 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### v0.4E - Product Trust Guard (Current)
+- **쉘 레퍼런스 노출 조건 극대화**: `editorNoteKo`가 존재하고, `confidence`가 `medium` 또는 `high`이며, `sourceHint`가 `unknown`이 아닌 신뢰할 수 있는 레퍼런스만 선별 렌더링하도록 노출 조건을 대폭 강화했습니다. 조건에 맞는 항목이 없으면 "쉘 체감 레퍼런스" 영역 전체를 완전히 숨겨 깔끔한 카드 가독성을 유지합니다.
+- **이미지 및 가격 링크 타입 설계**: 향후 이미지 및 가격 아웃링크 추가에 대비하여 `BaseContent` 등에 `productImages` 및 `productLinks` optional 스키마를 준비했습니다. 이번 버전에서는 실제 데이터 주입 및 화면 노출을 제한하여 비즈니스/법적 리스크를 미연에 방지합니다.
+- **제품 신뢰성 관리 정책 수립**: 이미지 저작권 및 가격 수집, 쉘 레퍼런스 검수 과정에 대한 신뢰성 제어 정책을 `README.md` 및 `PROJECT7_WORK_LOG.md`에 명문화하였습니다.
+
+### v0.4D - Mouse Shell Reference Display
+- **쉘 체감 레퍼런스 노출**: Mouse Finder 결과 카드 하단에 마우스의 `shellReferences` 데이터를 노출하는 "쉘 체감 레퍼런스" 영역을 적용했습니다.
+- **체계적인 fallback 텍스트 처리**: `editorNoteKo || aiNoteKo` 문장을 우선 노출하고, 없을 경우 `relationType`과 `confidence` 조합 규칙에 맞게 매끄러운 추천 설명글을 자동 실시간 조립하는 견고한 데이터 fallbacks를 갖추었습니다.
+- **작고 조용한 톤앤매너**: 기존 다크/라이트 테마의 디자인 흐름을 지키며, 옅은 백그라운드와 얇은 테두리 및 작은 크기의 서브 설명용 회색 텍스트(small/muted style)를 채택하여 결과 카드의 원래 가독성과 위계를 전혀 헤치지 않도록 깔끔하게 설계했습니다.
+- **금지 표현 절대 배제 원칙**: 법적/비즈니스적 리스크가 있는 “카피쉘”, “배꼈다”, “짭”, “표절”, “원본 쉘” 등의 부정적/직관적 단어 사용을 완벽하게 방지하였습니다.
+
+### v0.4C - Sample Data QA
+- **Finder QA**: 마우스/키보드 샘플 10개 데이터가 Finder에서 기존 published 제품과 신규 review 샘플을 함께 후보로 보여주는지 점검했습니다.
+- **review 노출 기준**: 현재 샘플 데이터 QA 단계에서는 `status: "review"` 제품도 Finder 결과에 노출될 수 있습니다. 내부 상태값은 사용자 화면에 표시하지 않습니다.
+- **shellReferences 보존**: 쉘 레퍼런스는 아직 화면에 표시하지 않고, 추후 제품 카드/상세/비교 확장을 위한 데이터로만 보존합니다.
+- **문구 완화**: Finder 결과에 직접 보일 수 있는 과장 표현을 참고용 톤으로 일부 완화했습니다.
+
+### v0.4B - Sample Product Data Pack
+- **DB화 전 리허설**: 마우스, 키보드, 스위치/축 샘플 데이터를 각각 총 10개 수준으로 보강해 `basicFilters`, `advancedFilters`, `detailSpecs`, `rawSpecs` 구조를 검증합니다.
+- **review 상태 유지**: 신규 샘플은 모두 `status: "review"`로 두고, 운영자 교정 전 참고용 초안으로 관리합니다.
+- **Finder 검증용 basicFilters**: 신규 마우스/키보드 샘플에는 Finder가 읽을 수 있는 `basicFilters`를 필수로 입력했습니다.
+- **정적 운영 유지**: 구매 링크, 가격 추적, 제품 이미지, Supabase/API/DB/n8n 연동은 추가하지 않았습니다.
+
 ### Keyboard Product Filter Simplification
 - **기본 필터 5개 원칙**: 키보드 제품 필터는 배열, 연결 방식, 키감/축 느낌, 소음, 가격대까지만 기본 노출하는 구조로 정리했습니다.
 - **더보기 필터 분리**: 게이밍 기능, 멀티기기, 키캡, 하우징, 백라이트, 무게감은 선택형 더보기 필터로 분리합니다.

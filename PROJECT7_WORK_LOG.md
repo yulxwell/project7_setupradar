@@ -1,11 +1,11 @@
 # PROJECT7_WORK_LOG.md
 
-SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.2.6까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
+SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.4E까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
 
 ## 현재 상태
 
-- 현재 버전: `v0.2.6 - Finder Logic Refinement`
-- 다음 후보 버전: `v0.2.7 - Finder UX Refactor`
+- 현재 버전: `v0.4E - Product Trust Guard`
+- 다음 후보 버전: `v0.5A - Product Comparison and Search Expansion`
 - 프로젝트 성격: PC 하드웨어 진단 및 구매 가이드용 정적 웹사이트
 - 주요 경로:
   - `/kr`
@@ -332,3 +332,113 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 대신 "유사 쉘 계열", "쉘 체감 레퍼런스", "자주 비교되는 쉘", "손에 닿는 형태가 비슷하다는 반응", "비교 기준으로 삼기 좋음" 같은 표현을 사용한다.
 - 기존 `shapeType`, `dimensions`, `weight`, `sensor`, `handSizeRange`, `priceRange`, `features` 필드는 Mouse Finder 호환을 위해 유지했다.
 - 제품 대량 추가, UI 대규모 변경, Supabase/API/DB 추가는 하지 않았다.
+
+## Guide Structure Cleanup 기록
+
+- `/kr` 메인 페이지의 가이드 추천 카드를 `/kr/guides`의 새 Spec Guide 구조와 맞췄다.
+- 오래된 메인 추천 카드인 "게이밍 마우스 vs 일반 마우스", "키보드 스위치 가이드", "하드웨어 용어 사전" 노출을 제거하고 새 가이드 주제로 교체했다.
+- 메인 추천 가이드는 대칭형 vs 오른손용 비대칭형, 마우스 스위치와 더블클릭, 리니어/택타일/클릭/저소음, 래피드 트리거/자석축, PBT vs ABS 키캡, 불량화소/무결점 정책으로 정리했다.
+- Hero 문구는 "객관적으로" 중심 표현에서 사기 전후 장비를 초보자 기준으로 쉽게 확인하는 톤으로 1차 개선했다.
+- Header의 언어 버튼은 KR만 활성화하고, 아직 구현 전인 EN/JP/CN은 비활성 "준비 중" 상태로 보정했다.
+- `/kr/guides`의 신규 상세 페이지 링크가 실제 생성된 상세 페이지 경로와 연결되는지 파일 기준으로 점검했다.
+- `/kr/switches`는 이번 작업에서 문체를 추가로 크게 수정하지 않고 기존 단순화 상태를 유지했다.
+- 상세 페이지 본문 전체 재작성, 다국어 페이지 생성, Supabase/API/DB/n8n 추가는 하지 않았다.
+
+## Test Tool Category Cleanup 기록
+
+- `/kr/tests`의 하드웨어 진단 도구 목록을 평면 카드 목록에서 모니터, 마우스, 키보드 카테고리 섹션으로 정리했다.
+- `TEST_TOOLS` 데이터에 `category` 필드를 추가해 테스트 도구가 어느 장비군에 속하는지 명확히 했다.
+- 모니터에는 불량화소 테스트와 빛샘/IPS Glow, 마우스에는 더블클릭/CPS/폴링레이트, 키보드에는 동시입력 테스트를 배치했다.
+- 테스트 페이지 설명은 "무료 진단"보다 설치 없이 참고용으로 빠르게 점검하는 톤으로 정리했다.
+- 새 테스트 도구, DB/API/n8n/Supabase 연동은 추가하지 않았다.
+
+## Hardware Defect Test Expansion 기록
+
+- 브라우저에서 바로 실행할 수 있는 하드웨어 불량/체감 진단 도구를 추가했다.
+- 모니터 카테고리에 주사율 및 잔상 테스트, 명암비(가독성) 테스트를 추가했다.
+- 마우스 카테고리에 마우스 휠 튕김(인코더) 테스트, 마우스 트래킹(지터/스킵) 테스트를 추가했다.
+- 키보드 카테고리에 키보드 채터링(중복 입력) 테스트를 추가했다.
+- 각 테스트는 설치 없이 참고용으로 확인하는 웹 기반 도구이며, 전문 장비 수준의 정밀 판정으로 표현하지 않는다.
+- Supabase/API/DB/n8n, 가격 트래커, 제품 비교 기능은 추가하지 않았다.
+
+## Added Tests QA Pass 기록
+
+- 추가된 테스트 5개(`/kr/tests/refresh-rate-ghosting`, `/kr/tests/contrast-readability`, `/kr/tests/mouse-wheel-encoder`, `/kr/tests/mouse-tracking`, `/kr/tests/keyboard-chatter`)의 페이지 파일과 컴포넌트 연결을 점검했다.
+- `/kr/tests`의 모니터/마우스/키보드 카테고리 카드가 실제 상세 페이지 파일로 연결되는지 확인했다.
+- 주사율/잔상 테스트는 브라우저 기반 체감용 추정값이라는 점과 눈 피로 주의 문구를 보강했다.
+- 명암비 테스트는 주변 조명, HDR, 밝기/명암비 설정에 따라 결과가 달라질 수 있음을 안내했다.
+- 마우스 휠 튕김 테스트는 한두 번의 튐으로 고장을 확정하지 않도록 표현을 완화하고 먼지/드라이버/브라우저 이벤트 영향 가능성을 추가했다.
+- 마우스 트래킹 테스트는 전용 장비 수준의 정밀 측정이 아니라 포인터 이벤트 기반 참고 도구임을 명시하고 모바일 터치 스크롤 간섭을 줄이도록 캔버스에 `touch-none`을 적용했다.
+- 키보드 채터링 테스트는 OS 반복 입력 설정, 브라우저 이벤트, 키보드 펌웨어에 따라 기록이 달라질 수 있음을 안내했다.
+- 기존 더블클릭/폴링레이트 문구 중 "정밀 진단", "정상 범위"처럼 확정 판정으로 보일 수 있는 표현도 최소 범위에서 완화했다.
+- 새 테스트 추가, DB/API/n8n/Supabase, 가격 트래커, 제품 비교 기능은 추가하지 않았다.
+
+## v0.4A Finder basicFilters 동기화 기록
+
+- Mouse Finder 추천 점수 계산이 `mouse.basicFilters`를 우선 읽도록 동기화했다.
+- Mouse Finder는 `basicFilters`가 없을 때 기존 `shapeType`, `weight`, `features`, `handSizeRange`, `priceRange`를 basic filter 형태로 변환해 fallback한다.
+- Keyboard Finder 추천 점수 계산이 `keyboard.basicFilters`를 우선 읽도록 동기화했다.
+- Keyboard Finder는 `basicFilters`가 없을 때 기존 `layout`, `switchType`, `features`, `priceRange`를 basic filter 형태로 변환해 fallback한다.
+- `advancedFilters`, `detailSpecs`, `rawSpecs`, `shellReferences`는 이번 점수 계산에는 사용하지 않고, 이후 더보기 필터/상세 스펙/쉘 레퍼런스/비교용 확장을 위해 보존한다.
+- Finder UI 구조와 결과 카드 레이아웃은 유지했으며, 제품 샘플 추가는 다음 단계로 남겼다.
+- Supabase/API/DB/n8n, 가격 트래커, 제품 비교 기능, 새 테스트/가이드는 추가하지 않았다.
+
+## v0.4B Sample Product Data Pack 기록
+
+- DB화 전 데이터 구조 리허설을 위해 마우스, 키보드, 스위치/축 샘플 데이터를 총 10개 수준으로 보강했다.
+- 마우스는 기존 3개에 review 상태 샘플 7개를 추가해 총 10개로 맞췄다.
+- 키보드는 기존 2개에 review 상태 샘플 8개를 추가해 총 10개로 맞췄다.
+- 스위치/축은 기존 6개에 review 상태 샘플 4개를 추가해 총 10개로 맞췄다.
+- 신규 마우스/키보드 샘플에는 Finder 검증을 위해 `basicFilters`를 필수로 입력했다.
+- 마우스 샘플의 `shellReferences`는 확실하거나 커뮤니티에서 자주 비교되는 경우만 넣고, 신규 항목 confidence는 low/medium 중심으로 기록했다.
+- 불확실한 키압, 배터리, 블루투스, 센서 세부값은 detailSpecs에 과하게 넣지 않고 rawSpecs note로 분리했다.
+- 모든 신규 샘플은 `status: "review"`로 두었고 editor 필드는 채우지 않았다.
+- 구매 링크, 가격 추적, 이미지, Supabase/API/DB/n8n, 제품 비교 기능은 추가하지 않았다.
+
+## v0.4C Sample Data QA 기록
+
+- 마우스 10개, 키보드 10개, 스위치/축 10개 샘플이 Finder와 스위치 사전에서 깨지지 않는지 코드 기준으로 점검했다.
+- Mouse Finder는 대칭형/가벼운 무선/보통 손, 오른손 비대칭형/가벼운 무선/큰 손, 대칭형/보통 무게/유선/작은 손, 상관없음 조합을 확인했다.
+- Mouse Finder 결과는 기존 published 제품과 신규 review 샘플이 함께 후보로 나오는 것을 확인했다.
+- Keyboard Finder는 풀배열/조용한 계열, 텐키리스/부드러운 타입/무선, 75% 계열/부드러운 타입, 래피드 트리거 후보가 들어올 수 있는 조합을 확인했다.
+- Keyboard Finder 결과는 기존 published 제품과 신규 review 샘플이 함께 후보로 나오는 것을 확인했다.
+- 결과 카드에 직접 보일 수 있는 기존 제품 문구 중 "최상의", "최상급", "압도적인", "끝판왕"처럼 과하게 읽힐 수 있는 표현을 참고용 톤으로 완화했다.
+- 현재 샘플 데이터 QA/초기 확장 단계에서는 `status: "review"` 제품도 Finder 결과에 노출 가능하도록 둔다.
+- 내부 `status` 값은 사용자 화면에 표시하지 않는다.
+- 향후 제품 수가 늘어나면 Finder 결과에서 `published`만 노출하거나 review 노출 토글을 두는 방식을 검토한다.
+- `shellReferences`는 데이터 구조만 유지하며 아직 Finder 결과 카드나 스위치 사전 화면에는 표시하지 않는다.
+- 새 제품 추가, 제품 이미지/구매 링크/가격 추적, Supabase/API/DB/n8n, 제품 비교 기능은 추가하지 않았다.
+
+## v0.4D Mouse Shell Reference Display 구현 기록
+
+- Mouse Finder 결과 카드 내부 하단에 마우스의 `shellReferences` 데이터를 노출하는 "쉘 체감 레퍼런스" 영역을 신설했다.
+- `shellReferences` 데이터가 존재하는 제품에만 영역을 렌더링하고, 데이터가 없는 마우스는 아무런 표시도 하지 않도록 방어했다.
+- UI 일관성을 위해 small text(`text-[10.5px]`), muted color, `border-[var(--border)]/30` 테두리와 옅은 배경(`bg-[var(--secondary)]/15`) 디자인을 채택하여 결과 카드의 핵심 지표(체감 한줄평 등)보다 시각적 위계를 낮춰 조화롭게 배치했다.
+- 모바일 뷰포트 등에서 카드가 너무 길어지는 문제를 미연에 방지하기 위해 최대 2개(`slice(0, 2)`)의 레퍼런스만 슬라이싱하여 노출했다.
+- 데이터 로직에서 `editorNoteKo`를 우선 순위로 읽고, 없을 경우 `aiNoteKo`를 fallback으로 사용하도록 처리했다.
+- 만약 두 코멘트 데이터가 모두 부재할 경우, `referenceModel`, `relationType` 및 `confidence` 데이터를 결합하여 완성도 높은 한글 안내 문구를 실시간 조립하는 fallback 로직을 구현했다.
+- `cautionKo` 항목이 존재할 경우 하단에 작은 글씨(`text-[9.5px]`)로 주의사항 문구를 명시했다.
+- “카피쉘”, “배꼈다”, “짭”, “표절”, “원본 쉘” 등의 부정적/직관적 금지 단어를 전체 소스코드와 마우스 파인더 UI에서 배제했다.
+- Finder의 제품 추천 점수 계산 및 필터 로직은 전혀 변경하지 않았다.
+- `npm run lint`와 `npm run build`를 성공적으로 패스했다.
+
+## v0.4D - 2026-05-23 Gemini/Codex 공통 작업 규칙 문서화
+
+- **AI 작업자 운영 규칙 수립**: Gemini와 Codex를 교대로 사용하여 작업할 때 컨텍스트가 깨지지 않도록 하는 리포지토리 통합 운영 규칙을 제정하고 문서화 작업을 완료했다.
+- **AGENTS.md 및 README.md 갱신**:
+  - 모든 AI 작업자가 시작하기 전 반드시 읽어야 할 필수 문서 목록(`README.md`, `AGENTS.md`, `PROJECT7_WORK_LOG.md`, `docs/content-editing-guide.md`)을 지정했다.
+  - Gemini의 역할(반복 수정, 문구 완화, 샘플 데이터 추가, 문서 정리, QA, 단순 UI 보강)과 Codex의 역할(타입 오류 해결, Finder 매칭 알고리즘, 빌드 오류 해결, 복잡한 리팩터링)을 명확하게 분담했다.
+  - PM yulxwell(비개발자)을 보조하는 컨텍스트를 유지하고, Supabase/API/DB/n8n 무단 연동 및 가격 트래커/제품 비교 등의 추가 기능을 제한하는 엄격한 금지 사항(Hard Limits)을 각인했다.
+  - 마우스 쉘 체감 레퍼런스(`shellReferences`) 표현 시 법적 리스크가 있는 단어(카피쉘, 짭, 표절 등) 사용을 영구 금지하고, 대칭/비대칭 형태에 대한 완화된 한국어 설명 톤앤매너를 유지하도록 강제했다.
+  - 작업 완료 시 반드시 `npm run lint` 및 `npm run build` 검증 후 8단계로 구성된 완료 보고 포맷에 맞춰 유저에게 최종 보고하도록 규칙을 완성했다.
+  - `README.md` 상단에 본 운영 규칙의 존재를 공표하는 짧은 안내 섹션을 추가하여 가시성을 확보했다.
+- **안전성 유지**: 기능 코드, UI, 제품 및 문구 데이터는 일절 수정하지 않고 정적 문서화 체계 구성 작업만을 안전하게 마무리했다.
+
+## v0.4E - 2026-05-23 Product Trust Guard 구현 기록
+
+- **쉘 레퍼런스 노출 기준 고도화**: 마우스 쉘 체감 레퍼런스의 엄격한 렌더링 검수 필터(`editorNoteKo` 존재 필수, confidence `medium` 또는 `high` 필수, `sourceHint: "unknown"` 제외, 레퍼런스 모델 식별자 필수)를 추가하였습니다.
+- **빈 쉘 레퍼런스 영역 자동 숨김**: 필터링된 결과물 개수가 `0`일 경우, 마우스 결과 카드 내부의 "쉘 체감 레퍼런스" 영역(보더 및 백그라운드 스타일 포함) 전체를 완전히 렌더링하지 않고 숨기도록 구현하여 카드 레이아웃의 컴팩트한 완성도를 유지합니다.
+- **제품 이미지/링크 권장 스키마 선언**: 향후 수집/제휴 리스크가 따르는 제품 이미지 및 최저가 가격 확인 아웃링크 기능 추가에 대비해 `productImages` 및 `productLinks` optional 스키마 타입을 `src/content/types.ts`와 `src/types.ts`에 완벽히 구축하였습니다.
+- **정책 문서화 및 규칙 명문화**: 이미지 저작권 및 최저가 아웃링크에 대한 엄격한 sourceType/status 제어 프로세스와 쉘 검수 원칙을 `README.md` 및 `PROJECT7_WORK_LOG.md`에 철저하게 기록하여 AI/Human 공동 개발 시의 비즈니스적 신뢰도를 극대화했습니다.
+- **정밀 QA 검수 통과**: 금지어("카피쉘", "짭", "배꼈", "표절")에 대해 소스코드 전수 검수를 완료하였고, `npm run lint` 및 `npm run build`를 이상 없이 성공시켰습니다.
+

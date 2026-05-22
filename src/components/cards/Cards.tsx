@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LucideIcon, ArrowRight, Clock, Target, AlertTriangle } from "lucide-react";
+import { LucideIcon, Clock, Target, AlertTriangle } from "lucide-react";
 
 interface TestCardProps {
   title: string;
@@ -49,9 +49,6 @@ export function TestCard({ title, description, href, icon: Icon, duration, purpo
         </div>
       )}
 
-      <div className="mt-auto flex items-center gap-2 text-sm font-bold text-[var(--accent)] transition-all group-hover:gap-3">
-        테스트 시작하기 <ArrowRight className="h-4 w-4" />
-      </div>
     </Link>
   );
 }

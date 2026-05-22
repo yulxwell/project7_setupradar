@@ -11,6 +11,7 @@ import {
   KEYBOARD_LAYOUT_META,
   KeyboardFinderValues,
 } from "@/content/kr/finder/keyboardFinderOptions";
+import { KeyboardBasicFilters } from "@/content/types";
 import { getContentDisplay } from "@/content/utils";
 import { cn } from "@/lib/utils";
 
@@ -29,17 +30,70 @@ function hasQuietText(values: string[]) {
   return values.some((value) => /저소음|silent|무접점/i.test(value));
 }
 
+function getKeyboardBasicFilters(keyboard: (typeof KEYBOARD_DATABASE)[number]): KeyboardBasicFilters {
+  if (keyboard.basicFilters) return keyboard.basicFilters;
+
+  const tags = [...keyboard.features, ...(keyboard.specTags ?? [])];
+  const wireless = hasWirelessText(tags);
+  const quiet = hasQuietText(tags) || keyboard.switchType.includes("capacitive");
+  const layout = keyboard.layout === "full" || keyboard.layout === "tkl" ? keyboard.layout : "compact";
+  const feel = quiet
+    ? "quiet"
+    : keyboard.switchType.includes("linear")
+      ? "smooth_linear"
+      : keyboard.switchType.includes("tactile")
+        ? "tactile"
+        : keyboard.switchType.includes("clicky")
+          ? "clicky"
+          : "unknown";
+  const priceText = keyboard.priceRange.toLowerCase();
+  const price = /30|20|premium|고급/.test(priceText)
+    ? "premium"
+    : /10|mid|중급/.test(priceText)
+      ? "mid"
+      : /budget|입문/.test(priceText)
+        ? "budget"
+        : "any";
+
+  return {
+    layout,
+    connection: wireless ? "wireless" : "wired",
+    feel,
+    noise: quiet ? "quiet_preferred" : "no_preference",
+    price,
+  };
+}
+
+function matchesKeyboardLayout(selectedLayout: KeyboardFinderValues["layout"], productLayout: KeyboardBasicFilters["layout"]) {
+  if (selectedLayout === "any") return true;
+  if (selectedLayout === "75%" || selectedLayout === "65%" || selectedLayout === "60%") {
+    return productLayout === "compact";
+  }
+  return productLayout === selectedLayout;
+}
+
+function matchesKeyboardFeel(selectedFeel: KeyboardFinderValues["switchFeel"], productFeel: KeyboardBasicFilters["feel"]) {
+  if (selectedFeel === "unknown") return true;
+  if (selectedFeel === "linear") return productFeel === "smooth_linear";
+  if (selectedFeel === "silent") return productFeel === "quiet";
+  return productFeel === selectedFeel;
+}
+
+function matchesKeyboardConnection(selectedConnection: KeyboardFinderValues["connection"], productConnection: KeyboardBasicFilters["connection"]) {
+  if (selectedConnection === "any") return true;
+  if (selectedConnection === "wireless") return productConnection === "wireless" || productConnection === "multi_mode";
+  return productConnection === "wired" || productConnection === "multi_mode";
+}
+
 function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: KeyboardFinderValues): KeyboardScore {
   const reasons: string[] = [];
   const cautions: string[] = [];
   let score = 0;
-  const tags = [...keyboard.features, ...(keyboard.specTags ?? [])];
-  const wireless = hasWirelessText(tags);
-  const quiet = hasQuietText(tags) || keyboard.switchType.includes("capacitive");
-  const selectedLayout = values.layout === "any" || values.layout === "60%" ? null : values.layout;
+  const filters = getKeyboardBasicFilters(keyboard);
+  const selectedLayout = values.layout === "any" ? null : values.layout;
 
   if (selectedLayout) {
-    if (keyboard.layout === selectedLayout) {
+    if (matchesKeyboardLayout(selectedLayout, filters.layout)) {
       score += 3;
       reasons.push("선택한 배열 조건과 맞을 수 있습니다.");
     } else {
@@ -48,18 +102,18 @@ function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: Key
   }
 
   if (values.layout === "60%") {
-    cautions.push("현재 제품 데이터에는 60% 배열 후보가 적어 다른 조건 위주로 참고해주세요.");
+    cautions.push("현재 기본 필터에서는 60%를 compact 후보와 함께 넓게 봅니다.");
   }
 
   if (values.switchFeel !== "unknown") {
     if (values.switchFeel === "silent") {
-      if (quiet) {
+      if (matchesKeyboardFeel(values.switchFeel, filters.feel)) {
         score += 2;
         reasons.push("조용한 성향을 기대할 수 있는 후보입니다.");
       } else {
         cautions.push("저소음 스위치 여부는 구매 전 확인이 필요합니다.");
       }
-    } else if (keyboard.switchType.includes(values.switchFeel)) {
+    } else if (matchesKeyboardFeel(values.switchFeel, filters.feel)) {
       score += 2;
       reasons.push("선택한 스위치 느낌을 반영했습니다.");
     } else {
@@ -68,7 +122,7 @@ function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: Key
   }
 
   if (values.noise === "quiet") {
-    if (quiet) {
+    if (filters.noise === "quiet_preferred" || filters.feel === "quiet") {
       score += 2;
       reasons.push("소음이 신경 쓰이는 환경에서 참고할 만합니다.");
     } else {
@@ -77,14 +131,14 @@ function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: Key
   }
 
   if (values.connection === "wireless") {
-    if (wireless) {
+    if (matchesKeyboardConnection(values.connection, filters.connection)) {
       score += 2;
       reasons.push("무선 연결 선호를 반영했습니다.");
     } else {
       cautions.push("무선 연결이 필요한 경우 제품 상세 스펙 확인이 필요합니다.");
     }
   }
-  if (values.connection === "wired" && !wireless) {
+  if (values.connection === "wired" && matchesKeyboardConnection(values.connection, filters.connection)) {
     score += 1;
     reasons.push("유선 중심 사용 후보로 볼 수 있습니다.");
   }
@@ -128,11 +182,12 @@ const MATERIAL_LABELS = {
 function getKeyboardSpecRows(keyboard: (typeof KEYBOARD_DATABASE)[number]) {
   const specs = keyboard.detailSpecs;
   const dimensions = specs?.dimensionsMm;
-  const connection = keyboard.basicFilters?.connection === "multi_mode"
+  const filters = getKeyboardBasicFilters(keyboard);
+  const connection = filters.connection === "multi_mode"
     ? "유선+무선"
-    : keyboard.basicFilters?.connection === "wireless"
+    : filters.connection === "wireless"
       ? "무선"
-      : keyboard.basicFilters?.connection === "wired"
+      : filters.connection === "wired"
         ? "유선"
         : null;
   const dimensionText = dimensions && (dimensions.width || dimensions.depth || dimensions.height)

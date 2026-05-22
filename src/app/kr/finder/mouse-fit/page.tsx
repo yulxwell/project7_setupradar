@@ -10,6 +10,7 @@ import {
   MOUSE_FINDER_OPTIONS,
   MouseFinderValues,
 } from "@/content/kr/finder/mouseFinderOptions";
+import { MouseBasicFilters, MouseShellReference } from "@/content/types";
 import { getContentDisplay } from "@/content/utils";
 import { cn } from "@/lib/utils";
 
@@ -24,14 +25,57 @@ function isWireless(features: string[]) {
   return features.some((feature) => /무선|wireless/i.test(feature));
 }
 
+function getMouseBasicFilters(mouse: (typeof MOUSE_DATABASE)[number]): MouseBasicFilters {
+  if (mouse.basicFilters) return mouse.basicFilters;
+
+  const featureTags = [...mouse.features, ...(mouse.specTags ?? [])];
+  const connection = isWireless(featureTags) ? "wireless" : "wired";
+  const weight = mouse.weight <= 55 ? "ultralight" : mouse.weight <= 70 ? "light" : "medium";
+  const size = mouse.handSizeRange === "all" ? "unknown" : mouse.handSizeRange;
+  const priceText = mouse.priceRange.toLowerCase();
+  const price = /20|30|premium|고급/.test(priceText)
+    ? "premium"
+    : /10|mid|중급/.test(priceText)
+      ? "mid"
+      : /budget|입문/.test(priceText)
+        ? "budget"
+        : "any";
+
+  return {
+    shape: mouse.shapeType === "ergonomic" ? "right_ergonomic" : "symmetrical",
+    weight,
+    connection,
+    size,
+    price,
+  };
+}
+
+function matchesMouseShape(selectedShape: MouseFinderValues["shape"], productShape: MouseBasicFilters["shape"]) {
+  if (selectedShape === "any") return true;
+  if (selectedShape === "ergonomic") return productShape === "right_ergonomic";
+  return productShape === selectedShape;
+}
+
+function matchesMouseWeight(selectedWeight: MouseFinderValues["weight"], productWeight: MouseBasicFilters["weight"]) {
+  if (selectedWeight === "any") return true;
+  if (selectedWeight === "light") return productWeight === "ultralight" || productWeight === "light";
+  return productWeight === "medium";
+}
+
+function matchesMouseConnection(selectedConnection: MouseFinderValues["connection"], productConnection: MouseBasicFilters["connection"]) {
+  if (selectedConnection === "any") return true;
+  if (selectedConnection === "wireless") return productConnection === "wireless" || productConnection === "multi_mode";
+  return productConnection === "wired" || productConnection === "multi_mode";
+}
+
 function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderValues): MouseScore {
   const reasons: string[] = [];
   const cautions: string[] = [];
   let score = 0;
-  const wireless = isWireless([...mouse.features, ...(mouse.specTags ?? [])]);
+  const filters = getMouseBasicFilters(mouse);
 
   if (values.handSize !== "unknown") {
-    if (mouse.handSizeRange === values.handSize || mouse.handSizeRange === "all") {
+    if (filters.size === values.handSize || filters.size === "unknown") {
       score += 3;
       reasons.push("선택한 손 크기와 맞을 수 있습니다.");
     } else {
@@ -40,7 +84,7 @@ function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderV
   }
 
   if (values.shape !== "any") {
-    if (mouse.shapeType === values.shape) {
+    if (matchesMouseShape(values.shape, filters.shape)) {
       score += 2;
       reasons.push(values.shape === "ergonomic" ? "편안한 지지감을 기대할 수 있는 형태입니다." : "대칭형 선호를 반영했습니다.");
     } else {
@@ -49,27 +93,27 @@ function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderV
   }
 
   if (values.weight === "light") {
-    if (mouse.weight <= 65) {
+    if (matchesMouseWeight(values.weight, filters.weight)) {
       score += 2;
       reasons.push("가벼운 편의 무게 조건에 맞습니다.");
     } else {
       cautions.push("가벼운 마우스를 원한다면 무게를 다시 확인해보세요.");
     }
   }
-  if (values.weight === "normal" && mouse.weight > 65 && mouse.weight <= 90) {
+  if (values.weight === "normal" && matchesMouseWeight(values.weight, filters.weight)) {
     score += 1;
     reasons.push("너무 가볍지 않은 무게감을 기대할 수 있습니다.");
   }
 
   if (values.connection === "wireless") {
-    if (wireless) {
+    if (matchesMouseConnection(values.connection, filters.connection)) {
       score += 2;
       reasons.push("무선 연결 선호를 반영했습니다.");
     } else {
       cautions.push("무선 모델을 원한다면 연결 방식을 다시 확인해보세요.");
     }
   }
-  if (values.connection === "wired" && !wireless) {
+  if (values.connection === "wired" && matchesMouseConnection(values.connection, filters.connection)) {
     score += 2;
     reasons.push("유선 사용을 선호할 때 후보가 될 수 있습니다.");
   }
@@ -85,14 +129,17 @@ function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderV
 function getMouseSpecRows(mouse: (typeof MOUSE_DATABASE)[number]) {
   const specs = mouse.detailSpecs;
   const dimensions = specs?.dimensionsMm ?? mouse.dimensions;
-  const shapeLabel = mouse.basicFilters?.shape === "right_ergonomic" || mouse.shapeType === "ergonomic"
+  const filters = getMouseBasicFilters(mouse);
+  const shapeLabel = filters.shape === "right_ergonomic"
     ? "오른손용 비대칭형"
-    : "대칭형";
-  const connectionLabel = mouse.basicFilters?.connection === "wireless"
+    : filters.shape === "vertical"
+      ? "버티컬"
+      : "대칭형";
+  const connectionLabel = filters.connection === "wireless"
     ? "무선"
-    : mouse.basicFilters?.connection === "multi_mode"
+    : filters.connection === "multi_mode"
       ? "유선+무선"
-      : mouse.basicFilters?.connection === "wired"
+      : filters.connection === "wired"
         ? "유선"
         : null;
 
@@ -105,6 +152,44 @@ function getMouseSpecRows(mouse: (typeof MOUSE_DATABASE)[number]) {
     specs?.maxDpi ? { label: "최대 DPI", value: specs.maxDpi.toLocaleString() } : null,
     dimensions ? { label: "크기", value: `${dimensions.length} x ${dimensions.width} x ${dimensions.height}mm` } : null,
   ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
+function getShellRefText(ref: MouseShellReference) {
+  const modelName = ref.referenceModelKo || ref.referenceModelEn;
+  if (!modelName) return "";
+
+  // editorNoteKo가 있으면 editorNoteKo를 우선 사용하고, 없으면 aiNoteKo를 사용한다.
+  if (ref.editorNoteKo || ref.aiNoteKo) {
+    return `${modelName} 계열: ${ref.editorNoteKo || ref.aiNoteKo}`;
+  }
+
+  // fallback 조립
+  let relationText = "";
+  switch (ref.relationType) {
+    case "similar_shape":
+      relationText = "비슷한 쉘 계열로 비교됩니다.";
+      break;
+    case "community_compared":
+      relationText = "사용자 사이에서 비교 기준으로 자주 언급됩니다.";
+      break;
+    case "inspired_by":
+      relationText = "형태 체감이 비슷하다는 반응이 있습니다.";
+      break;
+    case "unknown":
+    default:
+      relationText = "비교 기준으로 언급되는 경우가 있습니다.";
+      break;
+  }
+
+  if (ref.confidence === "low") {
+    return `${modelName} 계열은 일부 사용자 사이에서 참고용으로만 ${relationText}`;
+  } else if (ref.confidence === "medium") {
+    return `${modelName} 계열과 비슷한 쉘 계열로 자주 비교됩니다.`;
+  } else if (ref.confidence === "high") {
+    return `${modelName} 계열과 비교 기준으로 자주 언급됩니다.`;
+  }
+
+  return `${modelName} 계열과 ${relationText}`;
 }
 
 function CompactOptionGroup({
@@ -240,6 +325,18 @@ export default function MouseFitPage() {
             const display = getContentDisplay(mouse);
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
             const specRows = getMouseSpecRows(mouse);
+            const filteredShellRefs = (mouse.shellReferences || []).filter((ref) => {
+              // 1. editorNoteKo가 있어야 함
+              if (!ref.editorNoteKo) return false;
+              // 2. confidence가 medium 또는 high이어야 함 (low 제외)
+              if (ref.confidence === "low") return false;
+              // 3. sourceHint가 unknown이 아니어야 함 (unknown 제외)
+              if (ref.sourceHint === "unknown") return false;
+              // 4. referenceModelKo 또는 referenceModelEn이 있어야 함
+              if (!ref.referenceModelKo && !ref.referenceModelEn) return false;
+              return true;
+            });
+            const shellRefs = filteredShellRefs.slice(0, 2);
 
             return (
               <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
@@ -261,6 +358,28 @@ export default function MouseFitPage() {
                 <div className="grid gap-2 text-[11px] leading-relaxed">
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
+
+                {shellRefs && shellRefs.length > 0 && (
+                  <div className="mt-3.5 border-t border-[var(--border)]/60 pt-3 text-[11px] leading-relaxed">
+                    <p className="font-bold text-[var(--muted)] mb-1.5">쉘 체감 레퍼런스</p>
+                    <div className="space-y-1.5">
+                      {shellRefs.map((ref, idx) => {
+                        const refText = getShellRefText(ref);
+                        if (!refText) return null;
+                        return (
+                          <div key={idx} className="rounded-lg bg-[var(--secondary)]/15 p-2 border border-[var(--border)]/30">
+                            <p className="text-[var(--primary)] font-medium text-[10.5px]">{refText}</p>
+                            {ref.cautionKo && (
+                              <p className="mt-1 text-[9.5px] text-[var(--muted)] leading-snug">
+                                ※ {ref.cautionKo}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </article>
             );
           })}

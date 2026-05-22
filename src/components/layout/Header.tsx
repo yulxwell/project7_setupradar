@@ -14,10 +14,18 @@ const navigation = [
   { name: "키보드 찾기", href: "/kr/finder/keyboard-fit", icon: Search },
 ];
 
+const languageLinks = [
+  { label: "KR", href: "/kr", enabled: true },
+  { label: "EN", href: "/kr", enabled: false },
+  { label: "JP", href: "/kr", enabled: false },
+  { label: "CN", href: "/kr", enabled: false },
+];
+
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const currentLocale = pathname.split("/")[1] || "kr";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
@@ -60,12 +68,35 @@ export function Header() {
             {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
           </button>
 
-          <Link 
-            href="/kr/tests" 
-            className="hidden sm:flex h-10 items-center justify-center rounded-lg bg-[var(--primary)] px-5 text-sm font-bold text-[var(--background)] transition-all hover:opacity-90"
-          >
-            시작하기
-          </Link>
+          <div className="hidden items-center rounded-lg border border-[var(--border)] bg-[var(--secondary)]/50 p-1 sm:flex">
+            {languageLinks.map((language) => {
+              const isActive = currentLocale === language.href.slice(1);
+              return language.enabled ? (
+                <Link
+                  key={language.label}
+                  href={language.href}
+                  aria-label={`${language.label} language`}
+                  className={cn(
+                    "flex h-8 min-w-9 items-center justify-center rounded-md px-2 text-xs font-black transition-colors",
+                    isActive ? "bg-[var(--primary)] text-[var(--background)]" : "text-[var(--muted)] hover:bg-[var(--background)] hover:text-[var(--primary)]",
+                  )}
+                >
+                  {language.label}
+                </Link>
+              ) : (
+                <button
+                  key={language.label}
+                  type="button"
+                  disabled
+                  title={`${language.label} 준비 중`}
+                  aria-label={`${language.label} language coming soon`}
+                  className="flex h-8 min-w-9 cursor-not-allowed items-center justify-center rounded-md px-2 text-xs font-black text-[var(--muted)] opacity-35"
+                >
+                  {language.label}
+                </button>
+              );
+            })}
+          </div>
           
           <button 
             className="flex md:hidden p-2 text-[var(--muted)]"
@@ -94,13 +125,35 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Link 
-              href="/kr/tests" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-4 flex h-14 items-center justify-center rounded-xl bg-[var(--primary)] text-lg font-bold text-[var(--background)]"
-            >
-              테스트 시작하기
-            </Link>
+            <div className="mt-4 grid grid-cols-4 gap-2">
+              {languageLinks.map((language) => {
+                const isActive = currentLocale === language.href.slice(1);
+                return language.enabled ? (
+                  <Link
+                    key={language.label}
+                    href={language.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "flex h-11 items-center justify-center rounded-xl border text-sm font-black",
+                      isActive ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--background)]" : "border-[var(--border)] text-[var(--muted)]",
+                    )}
+                  >
+                    {language.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={language.label}
+                    type="button"
+                    disabled
+                    title={`${language.label} 준비 중`}
+                    aria-label={`${language.label} language coming soon`}
+                    className="flex h-11 cursor-not-allowed items-center justify-center rounded-xl border border-[var(--border)] text-sm font-black text-[var(--muted)] opacity-35"
+                  >
+                    {language.label}
+                  </button>
+                );
+              })}
+            </div>
           </nav>
         </div>
       )}

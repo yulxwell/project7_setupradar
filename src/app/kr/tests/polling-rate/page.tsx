@@ -4,7 +4,7 @@ import { DisclaimerBox } from "@/components/common/Common";
 
 export const metadata: Metadata = {
   title: "마우스 폴링레이트 측정 | SetupRadar",
-  description: "마우스의 실제 전송 속도(Hz)를 실시간으로 측정하여 성능을 확인하세요.",
+  description: "마우스 전송 속도(Hz)를 브라우저에서 참고용으로 확인하세요.",
 };
 
 export default function PollingRatePage() {
@@ -13,8 +13,8 @@ export default function PollingRatePage() {
       <div className="mb-10 text-center">
         <h1 className="mb-4 text-3xl font-bold text-[var(--primary)] md:text-5xl">폴링레이트 측정</h1>
         <p className="mx-auto max-w-lg text-[var(--muted)]">
-          마우스와 PC가 데이터를 주고받는 빈도(Hz)를 측정합니다.
-          움직임이 빠를수록 더 정확한 최대치를 측정할 수 있습니다.
+          마우스와 PC가 데이터를 주고받는 빈도(Hz)를 브라우저에서 확인합니다.
+          움직임이 빠를수록 설정값에 가까운 참고값을 보기 쉽습니다.
         </p>
       </div>
 

@@ -5,7 +5,7 @@ import { DisclaimerBox } from "@/components/common/Common";
 interface SpecGuideProps {
   title: string;
   category: string;
-  lastUpdated: string;
+  lastUpdated?: string;
   icon: LucideIcon;
   oneLineMeaning: string;
   whatToCheckFirst: string;
@@ -21,7 +21,6 @@ interface SpecGuideProps {
 export function SpecGuide({
   title,
   category,
-  lastUpdated,
   icon: Icon,
   oneLineMeaning,
   whatToCheckFirst,
@@ -36,7 +35,7 @@ export function SpecGuide({
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[var(--border)] pb-8">
         <div>
           <div className="mb-2 text-[10px] font-bold uppercase tracking-widest text-[var(--muted)]">
-            {category} Guide • {lastUpdated}
+            {category} Guide
           </div>
           <h1 className="text-3xl font-bold text-[var(--primary)] md:text-4xl">{title}</h1>
         </div>

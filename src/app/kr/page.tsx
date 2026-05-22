@@ -1,7 +1,29 @@
 import { SITE_COPY } from "@/content/kr/siteCopy";
-import { Monitor, MousePointer2, Zap, Mouse, Keyboard, ArrowRight, ShieldCheck, LayoutGrid, Info } from "lucide-react";
+import { Monitor, MousePointer2, Zap, Mouse, Keyboard, ArrowRight, ShieldCheck, LayoutGrid } from "lucide-react";
 import { TestCard, GuideCard } from "@/components/cards/Cards";
 import Link from "next/link";
+
+function HighlightedSentence({ text, highlights }: { text: string; highlights: string[] }) {
+  const activeHighlights = highlights.filter(Boolean);
+  if (activeHighlights.length === 0) return <>{text}</>;
+
+  const pattern = new RegExp(`(${activeHighlights.map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "g");
+  const parts = text.split(pattern);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        activeHighlights.includes(part) ? (
+          <span key={`${part}-${index}`} className="text-[var(--accent)]">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
 
 export default function Home() {
   return (
@@ -16,18 +38,17 @@ export default function Home() {
             SetupRadar Hardware Diagnostic
           </div>
           <h1 className="mb-6 font-outfit text-4xl font-bold tracking-tight text-[var(--primary)] md:text-6xl lg:text-7xl">
-            장비의 상태를 <br className="md:hidden" />
-            <span className="text-[var(--accent)]">{SITE_COPY.hero.titleHighlight}</span> 확인하세요.
+            <HighlightedSentence text={SITE_COPY.kr.landing.heroTitle} highlights={[SITE_COPY.hero.titleHighlight]} />
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted)] md:text-lg leading-relaxed">
-            {SITE_COPY.hero.description}
+            <HighlightedSentence text={SITE_COPY.hero.description} highlights={["테스트 도구", "스펙 가이드", "Finder"]} />
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/kr/tests" className="flex h-12 items-center justify-center rounded-xl bg-[var(--primary)] px-8 text-sm font-bold text-[var(--background)] transition-all hover:opacity-90 active:scale-95">
-              테스트 시작하기
+              {SITE_COPY.kr.landing.startButton}
             </Link>
             <Link href="/kr/guides" className="flex h-12 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--card)] px-8 text-sm font-bold text-[var(--primary)] transition-all hover:bg-[var(--secondary)] active:scale-95">
-              가이드 보기
+              {SITE_COPY.kr.landing.guideButton}
             </Link>
           </div>
         </div>
@@ -75,41 +96,45 @@ export default function Home() {
       {/* Beginner Guides */}
       <section className="container mx-auto px-4 py-16 bg-[var(--secondary)]/30 rounded-[3rem] border border-[var(--border)]">
         <div className="mb-10">
-          <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">하드웨어 가이드</h2>
-          <p className="text-sm text-[var(--muted)]">복잡한 스펙 대신 구매 결정에 필요한 핵심만 정리했습니다.</p>
+          <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">구매 전 헷갈리는 스펙 정리</h2>
+          <p className="text-sm text-[var(--muted)]">광고 문구보다 실제로 확인해야 할 기준을 초보자 눈높이로 정리했습니다.</p>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <GuideCard 
-            title="게이밍 마우스 vs 일반 마우스"
-            description="센서와 무게가 왜 중요한지 알아보세요."
-            href="/kr/guides/gaming-mouse-vs-normal-mouse"
+            title="대칭형 vs 오른손용 비대칭형"
+            description="마우스 형태가 손바닥 지지감과 움직임에 어떤 차이를 만드는지 확인하세요."
+            href="/kr/guides/mouse-shape-symmetrical-vs-ergonomic"
             icon={Mouse}
           />
           <GuideCard 
-            title="8K 폴링레이트, 필요한가요?"
-            description="고주사율 유저를 위한 실질적 체감 가이드."
-            href="/kr/guides/8k-polling-rate"
+            title="마우스 스위치와 더블클릭"
+            description="기계식 스위치와 광축 차이, 더블클릭 확인 방법을 정리했습니다."
+            href="/kr/guides/mouse-switch-double-click"
+            icon={MousePointer2}
+          />
+          <GuideCard 
+            title="리니어/택타일/클릭/저소음" 
+            description="스위치 느낌을 초보자 기준으로 나누고 구매 전 체크를 정리했습니다." 
+            href="/kr/guides/keyboard-switch-types" 
             icon={Zap}
+          />
+          <GuideCard 
+            title="래피드 트리거/자석축"
+            description="게임에서 체감될 수 있는 입력 방식과 구매 전 확인점을 정리했습니다."
+            href="/kr/guides/rapid-trigger-magnetic-switch"
+            icon={Keyboard}
+          />
+          <GuideCard 
+            title="PBT vs ABS 키캡"
+            description="키캡 소재가 촉감, 번들거림, 소리에 주는 차이를 쉽게 봅니다."
+            href="/kr/guides/pbt-vs-abs-keycaps"
+            icon={Keyboard}
           />
           <GuideCard 
             title="불량화소와 무결점 정책"
-            description="브랜드별 교환 기준을 한눈에 비교합니다."
+            description="모니터 구매 후 화면 결함과 교환 기준을 확인하는 방법입니다."
             href="/kr/guides/dead-pixel-policy"
             icon={ShieldCheck}
-          />
-        </div>
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <GuideCard 
-            title="키보드 스위치 가이드" 
-            description="감성적인 축 이름 뒤에 숨겨진 실제 체감과 스펙을 확인하세요." 
-            href="/kr/switches" 
-            icon={Zap}
-          />
-          <GuideCard 
-            title="하드웨어 용어 사전" 
-            description="어려운 하드웨어 용어와 스펙을 초보자 눈높이에서 풀어서 설명합니다." 
-            href="/kr/guides" 
-            icon={Info}
           />
         </div>
         <div className="mt-8 text-center">

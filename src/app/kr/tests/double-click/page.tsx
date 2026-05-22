@@ -4,7 +4,7 @@ import { DisclaimerBox } from "@/components/common/Common";
 
 export const metadata: Metadata = {
   title: "마우스 더블클릭 테스트 | SetupRadar",
-  description: "마우스 스위치 노후화로 인한 비정상 중복 입력을 정밀 진단합니다.",
+  description: "마우스 스위치 중복 입력 의심 증상을 참고용으로 확인합니다.",
 };
 
 export default function DoubleClickPage() {
@@ -14,7 +14,7 @@ export default function DoubleClickPage() {
         <h1 className="mb-4 text-3xl font-bold text-[var(--primary)] md:text-5xl">더블클릭 테스트</h1>
         <p className="mx-auto max-w-lg text-[var(--muted)]">
           마우스 버튼을 한 번 눌렀는데 두 번 클릭되는 현상을 확인합니다.
-          클릭 간격을 분석하여 기계적 결함 여부를 진단합니다.
+          클릭 간격은 참고용이며, 반복적으로 나타나는지 함께 보세요.
         </p>
       </div>
 
@@ -27,11 +27,11 @@ export default function DoubleClickPage() {
           <h2 className="mb-4 text-xl font-bold text-[var(--primary)]">진단 기준 안내</h2>
           <p className="mb-6 text-sm text-[var(--muted)] leading-relaxed">
             일반적인 사용자가 의도적으로 더블클릭을 하는 간격은 보통 150ms 이상입니다. 
-            만약 <span className="text-[var(--primary)] font-bold">80ms(0.08초) 이하</span>의 간격으로 중복 입력이 발생한다면 하드웨어 결함(채터링)일 확률이 매우 높습니다.
+            만약 <span className="text-[var(--primary)] font-bold">80ms(0.08초) 이하</span>의 간격으로 중복 입력이 반복된다면 하드웨어 채터링 가능성을 의심해볼 수 있습니다.
           </p>
           <div className="flex items-center gap-4 border-t border-[var(--border)] pt-6">
             <div className="text-center flex-1">
-              <p className="text-xs font-bold text-[var(--muted)] mb-1 uppercase tracking-tighter">정상 범위</p>
+              <p className="text-xs font-bold text-[var(--muted)] mb-1 uppercase tracking-tighter">일반 입력 참고</p>
               <p className="text-lg font-bold text-emerald-600">100ms +</p>
             </div>
             <div className="h-8 w-[1px] bg-[var(--border)]" />

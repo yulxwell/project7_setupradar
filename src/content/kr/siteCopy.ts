@@ -1,12 +1,12 @@
 export const SITE_COPY = {
   hero: {
-    titleHighlight: "객관적으로",
-    description: "별도의 소프트웨어 설치 없이 브라우저에서 즉시 시작하는 고정밀 PC 하드웨어 진단 도구 및 스마트 구매 가이드입니다.",
+    titleHighlight: "설치없이",
+    description: "테스트 도구, 스펙 가이드, Finder로 사기 전에도 사고 난 후에도 장비를 초보자 기준으로 확인할 수 있습니다.",
   },
   kr: {
     landing: {
-      heroTitle: "장비의 상태를 객관적으로 확인하세요.",
-      heroSubtitle: "별도의 소프트웨어 설치 없이 브라우저에서 즉시 시작하는 고정밀 PC 하드웨어 진단 도구 및 스마트 구매 가이드입니다.",
+      heroTitle: "장비 상태를 설치없이 바로 확인해보세요.",
+      heroSubtitle: "테스트 도구, 스펙 가이드, Finder로 사기 전에도 사고 난 후에도 장비를 초보자 기준으로 확인할 수 있습니다.",
       startButton: "테스트 시작하기",
       guideButton: "가이드 보기",
     },

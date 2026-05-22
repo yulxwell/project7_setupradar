@@ -1,5 +1,6 @@
 export interface ToolContent {
   id: string;
+  category: "monitor" | "mouse" | "keyboard";
   title: string;
   description: string;
   iconName: string; // We'll map this to the component
@@ -12,6 +13,7 @@ export interface ToolContent {
 export const TEST_TOOLS: ToolContent[] = [
   {
     id: "dead-pixel",
+    category: "monitor",
     title: "불량화소 테스트",
     description: "색상별 전체화면을 통해 화면 속 작은 점(불량화소)이 있는지 확인합니다.",
     iconName: "Monitor",
@@ -22,6 +24,7 @@ export const TEST_TOOLS: ToolContent[] = [
   },
   {
     id: "backlight-bleed",
+    category: "monitor",
     title: "빛샘 / IPS Glow",
     description: "어두운 곳에서 화면 가장자리가 하얗게 들뜨는 현상을 점검합니다.",
     iconName: "Monitor",
@@ -31,17 +34,63 @@ export const TEST_TOOLS: ToolContent[] = [
     href: "/kr/tests/backlight-bleed",
   },
   {
+    id: "refresh-rate-ghosting",
+    category: "monitor",
+    title: "주사율 및 잔상 테스트",
+    description: "움직이는 물체를 보며 주사율 설정과 잔상 체감을 참고용으로 확인합니다.",
+    iconName: "Zap",
+    duration: "1~2분",
+    purpose: "주사율 설정과 잔상 체감 확인",
+    caution: "브라우저 하드웨어 가속이 켜져 있어야 정확할 수 있습니다",
+    href: "/kr/tests/refresh-rate-ghosting",
+  },
+  {
+    id: "contrast-readability",
+    category: "monitor",
+    title: "명암비(가독성) 테스트",
+    description: "검정과 흰색의 미세한 단계 차이를 화면이 얼마나 구분하는지 참고용으로 확인합니다.",
+    iconName: "Monitor",
+    duration: "1분",
+    purpose: "어두운 화면에서의 가독성 체감 확인",
+    caution: "모니터 명암비 설정과 패널 종류에 따라 결과가 다를 수 있습니다",
+    href: "/kr/tests/contrast-readability",
+  },
+  {
     id: "double-click",
+    category: "mouse",
     title: "더블클릭 테스트",
-    description: "한 번만 눌렀는데 두 번 클릭되는 마우스 고장 증상을 진단합니다.",
+    description: "한 번만 눌렀는데 두 번 클릭되는 증상이 반복되는지 참고용으로 확인합니다.",
     iconName: "MousePointer2",
     duration: "1분 내외",
-    purpose: "스위치 고장 가능성 확인",
+    purpose: "중복 클릭 의심 증상 확인",
     caution: "브라우저 설정에 따라 다를 수 있습니다",
     href: "/kr/tests/double-click",
   },
   {
+    id: "mouse-wheel-encoder",
+    category: "mouse",
+    title: "마우스 휠 튕김 테스트",
+    description: "휠을 굴릴 때 반대 방향으로 튀는 입력이 반복되는지 확인합니다.",
+    iconName: "Mouse",
+    duration: "30초",
+    purpose: "휠 튐 의심 증상 확인",
+    caution: "천천히 한 칸씩, 빠르게도 굴려보며 확인하세요",
+    href: "/kr/tests/mouse-wheel-encoder",
+  },
+  {
+    id: "mouse-tracking",
+    category: "mouse",
+    title: "마우스 트래킹 테스트",
+    description: "캔버스에 선을 그리며 센서 튐, 스킵, 직선 보정 느낌을 확인합니다.",
+    iconName: "MousePointer2",
+    duration: "1~2분",
+    purpose: "센서 튐과 끊김 체감 확인",
+    caution: "브라우저 이벤트와 패드 표면에 따라 결과가 달라질 수 있습니다",
+    href: "/kr/tests/mouse-tracking",
+  },
+  {
     id: "cps",
+    category: "mouse",
     title: "CPS 테스트",
     description: "1초당 몇 번의 클릭이 가능한지 자신의 속도를 측정해보세요.",
     iconName: "Mouse",
@@ -51,6 +100,7 @@ export const TEST_TOOLS: ToolContent[] = [
   },
   {
     id: "polling-rate",
+    category: "mouse",
     title: "폴링레이트 측정",
     description: "마우스가 PC와 데이터를 주고받는 실제 속도를 확인합니다.",
     iconName: "Zap",
@@ -61,11 +111,23 @@ export const TEST_TOOLS: ToolContent[] = [
   },
   {
     id: "keyboard-rollover",
+    category: "keyboard",
     title: "키보드 동시입력",
     description: "여러 키를 동시에 눌렀을 때 모두 잘 인식되는지 테스트합니다.",
     iconName: "Keyboard",
     duration: "1분",
     purpose: "동시 입력(무한입력) 확인",
     href: "/kr/tests/keyboard-rollover",
+  },
+  {
+    id: "keyboard-chatter",
+    category: "keyboard",
+    title: "키보드 채터링 테스트",
+    description: "키를 한 번 눌렀는데 두세 번 입력되는 중복 입력 증상을 확인합니다.",
+    iconName: "Keyboard",
+    duration: "1~2분",
+    purpose: "중복 입력 의심 증상 확인",
+    caution: "OS 반복 입력 설정과 브라우저 환경에 따라 달라질 수 있습니다",
+    href: "/kr/tests/keyboard-chatter",
   },
 ];

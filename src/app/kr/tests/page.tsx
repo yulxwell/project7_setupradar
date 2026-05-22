@@ -10,6 +10,24 @@ const ICON_MAP = {
   Keyboard,
 };
 
+const TEST_CATEGORIES = [
+  {
+    id: "monitor",
+    label: "모니터",
+    description: "화면 결함, 빛샘, 주사율, 명암 체감을 참고용으로 확인합니다.",
+  },
+  {
+    id: "mouse",
+    label: "마우스",
+    description: "클릭, 휠, 트래킹, 폴링레이트를 브라우저에서 가볍게 확인합니다.",
+  },
+  {
+    id: "keyboard",
+    label: "키보드",
+    description: "동시입력과 중복 입력 의심 증상을 참고용으로 확인합니다.",
+  },
+] as const;
+
 export default function TestsPage() {
   return (
     <div className="mx-auto max-w-6xl py-16 px-4 md:py-28">
@@ -20,30 +38,45 @@ export default function TestsPage() {
         </div>
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-[var(--primary)] md:text-5xl">하드웨어 진단 도구</h1>
         <p className="mx-auto max-w-xl text-[var(--muted)] md:text-lg">
-          모니터와 마우스의 상태를 브라우저에서 즉시 확인하세요. <br className="hidden md:block" />
-          모든 테스트는 소프트웨어 설치 없이 완전 무료로 제공됩니다.
+          모니터, 마우스, 키보드 상태를 브라우저에서 바로 확인하세요. <br className="hidden md:block" />
+          설치 없이 참고용으로 빠르게 점검할 수 있습니다.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {TEST_TOOLS.map((tool) => (
-          <TestCard 
-            key={tool.id}
-            title={tool.title}
-            description={tool.description}
-            href={tool.href}
-            icon={ICON_MAP[tool.iconName as keyof typeof ICON_MAP] || Monitor}
-            duration={tool.duration}
-            purpose={tool.purpose}
-            caution={tool.caution}
-          />
-        ))}
+      <div className="space-y-12">
+        {TEST_CATEGORIES.map((category) => {
+          const tools = TEST_TOOLS.filter((tool) => tool.category === category.id);
+          if (tools.length === 0) return null;
+
+          return (
+            <section key={category.id}>
+              <div className="mb-4 flex flex-col gap-1 border-l-4 border-[var(--accent)] pl-4">
+                <h2 className="text-xl font-bold text-[var(--primary)]">{category.label}</h2>
+                <p className="max-w-2xl text-sm text-[var(--muted)]">{category.description}</p>
+              </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {tools.map((tool) => (
+                  <TestCard
+                    key={tool.id}
+                    title={tool.title}
+                    description={tool.description}
+                    href={tool.href}
+                    icon={ICON_MAP[tool.iconName as keyof typeof ICON_MAP] || Monitor}
+                    duration={tool.duration}
+                    purpose={tool.purpose}
+                    caution={tool.caution}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
 
       <div className="mt-20 rounded-3xl bg-[var(--secondary)]/30 p-10 text-center border border-[var(--border)]">
-        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">준비 중인 테스트</h2>
+        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">추가 테스트 준비 중</h2>
         <p className="text-sm text-[var(--muted)]">
-          키보드 무한 동시입력, 모니터 잔상 테스트 등이 곧 추가될 예정입니다.
+          모니터 잔상, 키보드 입력 지연처럼 초보자가 바로 확인하기 좋은 항목을 검토하고 있습니다.
         </p>
       </div>
     </div>
