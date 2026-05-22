@@ -312,38 +312,38 @@ export default function MouseFitPage() {
             const shellRefs = filteredShellRefs.slice(0, 2);
 
             return (
-              <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
-                <div className="mb-2 flex items-start justify-between gap-3">
+              <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
+                <div className="mb-1 flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">{mouse.brand || "Unknown"}</p>
                     <h3 className="text-base font-bold text-[var(--primary)]">{mouse.name}</h3>
                   </div>
                 </div>
-                <p className="mb-3 line-clamp-2 text-[11px] leading-relaxed text-[var(--muted)]">{display.summary}</p>
-                <div className="mb-3 grid grid-cols-2 gap-2">
+                <p className="mb-2 line-clamp-2 text-[10.5px] leading-relaxed text-[var(--muted)]">{display.summary}</p>
+                <div className="mb-2 grid grid-cols-2 gap-1">
                   {specRows.map((spec) => (
-                    <div key={spec.label} className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2">
-                      <p className="text-[10px] font-bold text-[var(--muted)]">{spec.label}</p>
-                      <p className="mt-0.5 text-[11px] font-bold text-[var(--primary)]">{spec.value}</p>
+                    <div key={spec.label} className="rounded-md border border-[var(--border)] bg-[var(--background)] px-2 py-1">
+                      <p className="text-[9.5px] font-bold text-[var(--muted)]">{spec.label}</p>
+                      <p className="mt-0.5 text-[10.5px] font-bold text-[var(--primary)]">{spec.value}</p>
                     </div>
                   ))}
                 </div>
-                <div className="grid gap-2 text-[11px] leading-relaxed">
+                <div className="grid gap-2 text-[10.5px] leading-relaxed">
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
 
                 {shellRefs && shellRefs.length > 0 && (
-                  <div className="mt-3 border-t border-[var(--border)]/50 pt-2.5 text-[10.5px] leading-relaxed">
-                    <p className="mb-1.5 font-bold text-[var(--muted)]">쉘 체감 레퍼런스</p>
+                  <div className="mt-2 border-t border-[var(--border)]/30 pt-2 text-[10px] leading-relaxed">
+                    <p className="mb-1 font-bold text-[var(--muted)]">쉘 체감 레퍼런스</p>
                     <div className="space-y-1.5">
                       {shellRefs.map((ref, idx) => {
                         const refText = getShellRefText(ref);
                         if (!refText) return null;
                         return (
-                          <div key={idx} className="rounded-lg border border-[var(--border)]/30 bg-[var(--secondary)]/10 p-2">
-                            <p className="text-[10px] font-medium text-[var(--muted)]">{refText}</p>
+                          <div key={idx} className="rounded-md border border-[var(--border)]/20 bg-[var(--secondary)]/10 p-1.5">
+                            <p className="text-[9.5px] font-medium text-[var(--muted)]">{refText}</p>
                             {ref.cautionKo && (
-                              <p className="mt-1 text-[9.5px] text-[var(--muted)] leading-snug">
+                              <p className="mt-0.5 text-[9px] text-[var(--muted)] leading-snug">
                                 ※ {ref.cautionKo}
                               </p>
                             )}

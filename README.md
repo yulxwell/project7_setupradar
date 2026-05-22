@@ -1,4 +1,4 @@
-# SetupRadar (v0.5B - Product Card UX Review)
+# SetupRadar (v0.5C - Finder Product Card Compact UI)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,18 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.5B - Product Card UX Review (Current)
+### v0.5C - Finder Product Card Compact UI (Current)
+- **Finder 결과 카드 컴팩트화**: Mouse 및 Keyboard Finder 결과 카드의 세로 높이, 패딩, 마진을 축소하고 텍스트 밀도를 조정해 한 화면에 더 많은 결과가 노출되도록 개선했습니다.
+  - 마우스/키보드 결과 카드 패딩 축소 (`p-4` -> `p-3`), 외부 여백 축소 (`mb-2` -> `mb-1`, `mb-3` -> `mb-2`).
+  - 스펙 테이블 그리드 간격 및 패딩 축소 (`gap-2` -> `gap-1`, `px-3 py-2` -> `px-2 py-1`).
+  - 텍스트 폰트 미세 조정 (`text-[10px]` -> `text-[9.5px]` 레이블, `text-[11px]` -> `text-[10.5px]` 스펙 값 및 체감 한줄평).
+  - 키보드 배지 영역 마진 및 패딩 축소 (`mb-2` -> `mb-1.5`, `px-2 py-0.5` -> `px-1.5 py-0.5`), 폰트 크기 (`text-[10px]` -> `text-[9.5px]`).
+  - 마우스 쉘 체감 레퍼런스(`shellReferences`) 영역의 마진/패딩 및 폰트 크기 축소 (`mt-3 pt-2.5` -> `mt-2 pt-2`, `p-2` -> `p-1.5`, `text-[9.5px]`, 주의사항 `text-[9px]`).
+- **엄격한 구조 통일 및 비노출 정책 유지**:
+  - 마우스와 키보드의 스펙 레이아웃 수치들을 완전히 동기화하여 시각적 일관성을 확보했습니다.
+  - 추천/필터 로직 변경을 철저히 금지하였고, `productImages`, `productLinks`, 내부 `status` 미노출 정책을 유지하였습니다.
+
+### v0.5B - Product Card UX Review
 - **Finder 결과 카드 품질 점검**: Mouse Finder와 Keyboard Finder 결과 카드의 정보 위계와 문구 톤을 점검하고, 과하게 마케팅처럼 읽히는 키보드 제품 문구를 최소 보정했습니다.
 - **쉘 레퍼런스 노출 안전성 유지**: Mouse Finder의 쉘 체감 레퍼런스는 `editorNoteKo`가 있는 검수 항목만 작고 조용하게 표시하도록 유지했습니다.
 - **미노출 정책 유지**: 내부 `status`, `productImages`, `productLinks`는 사용자 화면에 표시하지 않으며, 제품 상세/비교/가격 링크는 후속 작업으로 보류합니다.
