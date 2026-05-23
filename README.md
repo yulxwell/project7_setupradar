@@ -1,4 +1,4 @@
-# SetupRadar (v0.6B - TS to JSON Snapshot Export)
+# SetupRadar (v0.6C - Snapshot Validation Rules)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.6B - TS to JSON Snapshot Export (Current)
+### v0.6C - Snapshot Validation Rules (Current)
+- **snapshot validation 강화**: `npm run snapshot:export` 실행 시 metadata, 제품 기본 필터, 중복 id/slug, shellReferences, productImages/productLinks, tools/guides/finder options, 금지 표현을 함께 검증합니다.
+- **실패/경고 기준 분리**: 허용값 오류, 필수 필드 누락, 금지 표현은 export를 중단하고, review 상태 제품이나 미공개 shellReferences 같은 확인 항목은 warning으로 출력합니다.
+- **요약 출력 추가**: 생성 snapshot 수, 마우스/키보드/스위치/도구/가이드 수, shellReferences 공개 가능 수, 이미지/링크 승인 수, warning 수를 console에 요약합니다.
+- **공개 사이트 import 경로 유지**: snapshot은 여전히 검증/Control Tower/DB화 준비용 산출물이며, 실제 Project7 공개 사이트는 기존 `src/content` TS 데이터를 직접 읽습니다.
+
+### v0.6B - TS to JSON Snapshot Export
 - **snapshot export 스크립트 추가**: 현재 `src/content` TypeScript 데이터를 `snapshots/kr/` 아래 JSON snapshot으로 export하는 `npm run snapshot:export` 명령을 추가했습니다.
 - **영역별 snapshot 생성**: site copy, tools, guides, mouse/keyboard products, switches, Mouse/Keyboard Finder 옵션을 분할 JSON으로 생성합니다.
 - **공개 사이트 import 경로 유지**: 생성된 snapshot은 검증/Control Tower/DB화 준비용 산출물이며, 실제 Project7 공개 사이트는 아직 기존 `src/content` TS 데이터를 직접 읽습니다.

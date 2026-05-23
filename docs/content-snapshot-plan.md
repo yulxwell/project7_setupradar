@@ -511,6 +511,45 @@ snapshot 생성 시 아래 규칙을 체크한다.
 - JSON parse 가능 여부 확인
 - snapshot `schemaVersion` 호환 확인
 
+### v0.6C validation rules
+
+v0.6C부터 `npm run snapshot:export`는 snapshot 생성 전에 validation을 함께 실행한다. 검증은 `scripts/export-content-snapshots.ts` 안에서 수행하며, 실패하면 snapshot 파일 쓰기를 진행하지 않고 `process.exit(1)`로 종료한다.
+
+에러로 처리하는 항목:
+
+- 공통 metadata 오류: `projectId`, `locale`, `schemaVersion`, `generatedAt`, `source`, `status` 누락 또는 허용값 이탈
+- JSON stringify/parse 불가
+- `items` 또는 `data` 누락
+- 제품 공통 필수값 누락: `id`, `slug`, `brand`, `name`, `category`, `status`, `basicFilters`, `copy`
+- 제품 `id` / `slug` 중복
+- Mouse `basicFilters.shape`, `weight`, `connection`, `size`, `price` 허용값 이탈
+- Keyboard `basicFilters.layout`, `connection`, `feel`, `noise`, `price` 허용값 이탈
+- `shellReferences`의 `relationType`, `confidence`, `sourceHint` 허용값 이탈
+- `productImages` / `productLinks`의 타입, 상태, 필수 label/alt 허용값 오류
+- approved 이미지의 빈 `src`, approved 링크의 빈 `url`
+- 스위치/축 `id`, `name`/`title`, `status` 오류
+- tools/guides/finder options의 중복 id/path/value 또는 필수 label 누락
+- snapshot 대상 데이터 안의 금지 표현 발견
+
+warning으로만 처리하는 항목:
+
+- `review` 상태 제품 또는 스위치가 QA snapshot에 포함된 경우
+- public-ready 조건을 만족하지 않는 `shellReferences`
+- `low` confidence shell reference
+- pending/review/rejected 상태 이미지 또는 링크
+- 빈 `src`/`url`을 가진 미승인 이미지 또는 링크
+- `rawSpecs.note`만 있고 `detailSpecs` 값이 부족한 제품
+
+성공 시 console summary:
+
+- 생성 snapshot 파일 수
+- 마우스/키보드/스위치 항목 수
+- tools/guides 항목 수
+- shellReferences 총 수와 공개 가능 후보 수
+- productImages/productLinks 총 수와 approved 수
+- warning 수
+- `Snapshot validation passed.`
+
 금지 표현 후보:
 
 - 최고
@@ -556,6 +595,5 @@ v0.6B에서는 export script 초안만 추가했다. 그래도 아래 항목은 
 
 ## 13. 다음 작업 후보
 
-- v0.6C: snapshot schema validator 설계
 - v0.6D: Control Tower snapshot patch export format 정리
 - v0.7A: 10/10/10 샘플 데이터 snapshot 생성 리허설

@@ -532,3 +532,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 제품 snapshot은 copy 필드를 별도 `copy` 객체로 묶어 AI 초안과 editor 교정본을 구분하기 쉽게 만들었다.
 - 공개 사이트 import 경로는 변경하지 않았고, Project7은 계속 `src/content` TS 데이터를 직접 읽는다.
 - Supabase/API/DB, Control Tower 연동, 제품 데이터 수정, Finder 로직 변경, UI 변경은 하지 않았다.
+
+## v0.6C - 2026-05-23 Snapshot Validation Rules 기록
+
+- `scripts/export-content-snapshots.ts`에 snapshot 생성 전 validation 단계를 추가했다.
+- 공통 metadata(`projectId`, `locale`, `schemaVersion`, `generatedAt`, `source`, `status`)와 JSON stringify/parse 가능 여부를 검증한다.
+- 마우스/키보드 제품의 `id`, `slug`, `brand`, `name`, `category`, `status`, `basicFilters`, `copy` 구조와 중복 id/slug를 검사한다.
+- Mouse `basicFilters.shape/weight/connection/size/price`, Keyboard `basicFilters.layout/connection/feel/noise/price` 허용값을 검사한다.
+- `shellReferences`는 relation/confidence/source 허용값을 검사하고, 공개 가능 조건(`editorNoteKo`, medium/high, `sourceHint !== unknown`, reference model 존재)을 통과한 수를 summary로 출력한다.
+- `productImages`와 `productLinks`는 배열 구조, 승인 상태, source/link type, approved 항목의 필수 `src`/`url`을 검사한다.
+- 스위치/축, tools, guides, finder options의 기본 필수값과 중복값을 검사한다.
+- snapshot 대상 데이터 문자열에서 금지 표현을 발견하면 export를 중단하도록 했다.
+- `review` 상태 항목, 미공개 shell reference, low confidence reference, pending 이미지/링크, detailSpecs 부족 항목은 warning으로만 출력한다.
+- validation 성공 시 snapshot 수, 제품/스위치/tools/guides 수, shellReferences 공개 가능 수, 이미지/링크 승인 수, warning 수를 console summary로 출력한다.
+- 공개 사이트 import 경로는 변경하지 않았고, Supabase/API/DB/Control Tower 연동도 추가하지 않았다.
