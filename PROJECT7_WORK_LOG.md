@@ -521,3 +521,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 필터 snapshot은 `productType`, `filterGroup`, `key`, `labelKo`, `descriptionKo`, `enabled`, `options` 구조로 정리했다.
 - 빌드 전략은 단기 TS 유지, 중기 JSON snapshot 병행 생성, 장기 DB에서 `published` snapshot export 후 정적 빌드를 추천했다.
 - 이번 작업은 설계 문서화이며 export script 구현, Project7 import 경로 변경, Supabase/API/DB, 제품 데이터 수정, Finder 로직 변경, Control Tower 수정은 하지 않았다.
+
+## v0.6B - 2026-05-23 TS to JSON Snapshot Export Script 기록
+
+- `scripts/export-content-snapshots.ts`를 추가해 현재 `src/content` 기반 TypeScript 데이터를 JSON snapshot으로 export할 수 있게 했다.
+- `package.json`에 `npm run snapshot:export` 명령을 추가하고, 실행을 위해 devDependency `tsx`를 추가했다.
+- snapshot 출력 경로는 `snapshots/kr/`로 두고, 영역별 분할 구조를 사용했다.
+- 생성된 snapshot 파일은 `site-copy.json`, `tools.json`, `guides.json`, `products/mice.json`, `products/keyboards.json`, `switches.json`, `finder/mouse-options.json`, `finder/keyboard-options.json` 총 8개다.
+- 모든 snapshot에는 `projectId`, `locale`, `schemaVersion`, `generatedAt`, `source`, `status` metadata를 포함한다.
+- 제품 snapshot은 copy 필드를 별도 `copy` 객체로 묶어 AI 초안과 editor 교정본을 구분하기 쉽게 만들었다.
+- 공개 사이트 import 경로는 변경하지 않았고, Project7은 계속 `src/content` TS 데이터를 직접 읽는다.
+- Supabase/API/DB, Control Tower 연동, 제품 데이터 수정, Finder 로직 변경, UI 변경은 하지 않았다.

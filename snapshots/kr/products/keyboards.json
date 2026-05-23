@@ -1,0 +1,671 @@
+{
+  "metadata": {
+    "projectId": "project7_setupradar",
+    "locale": "kr",
+    "schemaVersion": "0.1.0",
+    "generatedAt": "2026-05-23T08:47:36.148Z",
+    "source": "static_ts",
+    "status": "review"
+  },
+  "items": [
+    {
+      "id": "rainy75",
+      "slug": "rainy75",
+      "category": "keyboard",
+      "brand": "WOB Lab",
+      "name": "Rainy75",
+      "layout": "75%",
+      "switchType": [
+        "linear"
+      ],
+      "isHotSwap": true,
+      "material": "aluminum",
+      "status": "published",
+      "updatedAt": "2024-05-14",
+      "priceRange": "10만원대",
+      "features": [
+        "가격 대비 구성",
+        "풀 알루미늄",
+        "무선 3모드"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "multi_mode",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "multiDevice": "multi_pairing",
+        "keycap": "no_preference",
+        "housing": "aluminum_preferred",
+        "backlight": "no_preference",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "macroSupport": null,
+        "responseTimeMs": null,
+        "bluetoothVersion": null,
+        "battery": null,
+        "enterKeyShape": null,
+        "legendPosition": null,
+        "cableMaterial": null,
+        "accessories": [],
+        "ps2Support": null,
+        "stepSculpture": null,
+        "windowsKeyLock": null,
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "세부 스펙은 판매처별 옵션과 생산 시기에 따라 확인이 필요합니다."
+      },
+      "specTags": [
+        "75%",
+        "Aluminum",
+        "Wireless"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "가격 대비 구성이 좋은 알루미늄 키보드 후보로 자주 언급되는 모델입니다. 타건음과 빌드 체감은 구성에 따라 확인이 필요합니다.",
+        "aiStrengthsKo": [
+          "가격 대비 구성이 좋은 편",
+          "순정 상태에서도 타건음 평가가 좋은 편",
+          "세련된 디자인"
+        ],
+        "aiCautionsKo": [
+          "품절이 잦아 구매가 어려울 수 있음",
+          "전용 소프트웨어의 편의성이 다소 부족함"
+        ]
+      }
+    },
+    {
+      "id": "realforce-r3",
+      "slug": "realforce-r3",
+      "category": "keyboard",
+      "brand": "Topre",
+      "name": "Realforce R3",
+      "layout": "full",
+      "switchType": [
+        "capacitive"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "published",
+      "updatedAt": "2024-05-14",
+      "priceRange": "30만원대",
+      "features": [
+        "무접점 방식",
+        "부드러운 타건감",
+        "APC 기능"
+      ],
+      "basicFilters": {
+        "layout": "full",
+        "connection": "wireless",
+        "feel": "quiet",
+        "noise": "quiet_preferred",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "multi_pairing",
+        "keycap": "no_preference",
+        "housing": "no_preference",
+        "backlight": "no_preference",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "actuationForceG": null,
+        "macroSupport": null,
+        "responseTimeMs": null,
+        "bluetoothVersion": null,
+        "battery": null,
+        "enterKeyShape": null,
+        "legendPosition": null,
+        "cableMaterial": null,
+        "accessories": [],
+        "ps2Support": null,
+        "stepSculpture": null,
+        "windowsKeyLock": null,
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "APC, 키압, 연결 옵션 등은 모델 세부 옵션 확인이 필요합니다."
+      },
+      "specTags": [
+        "Full Layout",
+        "Topre",
+        "Silent"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "정전용량 무접점 키보드 계열에서 자주 비교되는 리얼포스 모델입니다. 특유의 부드러운 타건감이 특징으로 언급됩니다.",
+        "aiStrengthsKo": [
+          "무접점 특유의 부드러운 타건감",
+          "긴 내구성 기대",
+          "안정적인 사용감"
+        ],
+        "aiCautionsKo": [
+          "매우 높은 가격",
+          "플라스틱 하우징에 대한 아쉬움"
+        ]
+      }
+    },
+    {
+      "id": "keychron-q1",
+      "slug": "keychron-q1",
+      "category": "keyboard",
+      "brand": "Keychron",
+      "name": "Q1",
+      "layout": "75%",
+      "switchType": [
+        "linear",
+        "tactile"
+      ],
+      "isHotSwap": true,
+      "material": "aluminum",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "mid",
+      "features": [
+        "75% 배열",
+        "풀 알루미늄",
+        "핫스왑"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "wired",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "aluminum_preferred",
+        "backlight": "no_preference",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "macroSupport": null,
+        "responseTimeMs": null,
+        "bluetoothVersion": null,
+        "battery": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "스위치 옵션과 노브/무선 여부는 세대와 구성에 따라 확인이 필요합니다."
+      },
+      "specTags": [
+        "75%",
+        "Aluminum",
+        "Hot-swap"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "75% 배열과 알루미늄 하우징 체감을 확인하기 좋은 커스텀 입문 후보입니다.",
+        "aiStrengthsKo": [
+          "묵직한 하우징",
+          "핫스왑 지원 가능",
+          "컴팩트 배열"
+        ],
+        "aiCautionsKo": [
+          "구성별 연결 방식과 스위치 옵션 확인 필요",
+          "무게감이 부담될 수 있음"
+        ]
+      }
+    },
+    {
+      "id": "wooting-60he",
+      "slug": "wooting-60he",
+      "category": "keyboard",
+      "brand": "Wooting",
+      "name": "60HE",
+      "layout": "compact",
+      "switchType": [
+        "magnetic"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "premium",
+      "features": [
+        "60% 배열",
+        "자석축",
+        "래피드 트리거"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "wired",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingFeature": "rapid_trigger",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "lightweight_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "responseTimeMs": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "래피드 트리거, 입력 지점 설정, 소프트웨어 기능은 공식 안내 확인이 필요합니다."
+      },
+      "specTags": [
+        "60%",
+        "Magnetic",
+        "Rapid trigger"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "자석축과 래피드 트리거를 체험하려는 사용자에게 자주 언급되는 compact 후보입니다.",
+        "aiStrengthsKo": [
+          "래피드 트리거",
+          "작은 배열",
+          "게임용 기능"
+        ],
+        "aiCautionsKo": [
+          "60% 배열 적응 필요",
+          "가격대와 수급 확인 필요"
+        ]
+      }
+    },
+    {
+      "id": "drunkdeer-a75",
+      "slug": "drunkdeer-a75",
+      "category": "keyboard",
+      "brand": "DrunkDeer",
+      "name": "A75",
+      "layout": "75%",
+      "switchType": [
+        "magnetic"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "mid",
+      "features": [
+        "75% 배열",
+        "자석축",
+        "래피드 트리거"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "wired",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "rapid_trigger",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "no_preference",
+        "backlight": "rgb_preferred",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "responseTimeMs": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "입력 지점 설정 범위와 펌웨어 기능은 제품 페이지에서 확인이 필요합니다."
+      },
+      "specTags": [
+        "75%",
+        "Magnetic",
+        "Rapid trigger"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "75% 배열에서 자석축 기능을 보고 싶을 때 비교 후보가 될 수 있습니다.",
+        "aiStrengthsKo": [
+          "75% 배열",
+          "래피드 트리거 기능",
+          "게임용 기능 후보"
+        ],
+        "aiCautionsKo": [
+          "소프트웨어 편의성 확인 필요",
+          "스위치 교체 호환은 별도 확인 필요"
+        ]
+      }
+    },
+    {
+      "id": "aula-f75",
+      "slug": "aula-f75",
+      "category": "keyboard",
+      "brand": "AULA",
+      "name": "F75",
+      "layout": "75%",
+      "switchType": [
+        "linear"
+      ],
+      "isHotSwap": true,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "budget",
+      "features": [
+        "75% 배열",
+        "무선 3모드",
+        "가성비"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "multi_mode",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "budget"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "multi_pairing",
+        "keycap": "no_preference",
+        "housing": "lightweight_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "bluetoothVersion": null,
+        "battery": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "스위치명과 배터리, 연결 구성은 판매 옵션별로 확인이 필요합니다."
+      },
+      "specTags": [
+        "75%",
+        "Multi-mode",
+        "Budget"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "가벼운 예산으로 75% 무선 키보드를 찾아볼 때 참고할 수 있는 샘플입니다.",
+        "aiStrengthsKo": [
+          "75% 배열",
+          "무선 3모드 후보",
+          "가격 부담이 낮을 수 있음"
+        ],
+        "aiCautionsKo": [
+          "세부 스위치와 구성품 확인 필요",
+          "하우징 체감은 고급형과 다를 수 있음"
+        ]
+      }
+    },
+    {
+      "id": "logitech-mx-keys",
+      "slug": "logitech-mx-keys",
+      "category": "keyboard",
+      "brand": "Logitech",
+      "name": "MX Keys",
+      "layout": "full",
+      "switchType": [
+        "unknown"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "mid",
+      "features": [
+        "풀배열",
+        "무선",
+        "저소음 사무용"
+      ],
+      "basicFilters": {
+        "layout": "full",
+        "connection": "wireless",
+        "feel": "quiet",
+        "noise": "quiet_preferred",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "multi_pairing",
+        "keycap": "no_preference",
+        "housing": "no_preference",
+        "backlight": "no_preference",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "bluetoothVersion": null,
+        "battery": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "기계식 스위치가 아닌 팬터그래프 계열 사무용 키보드로 별도 구분이 필요합니다."
+      },
+      "specTags": [
+        "Full",
+        "Wireless",
+        "Office"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "조용한 사무용 풀배열 무선 키보드를 찾을 때 비교할 수 있는 모델입니다.",
+        "aiStrengthsKo": [
+          "조용한 사용감",
+          "멀티기기 후보",
+          "사무용 친화"
+        ],
+        "aiCautionsKo": [
+          "기계식 타건감과 다름",
+          "게임용 기능 중심 제품은 아님"
+        ]
+      }
+    },
+    {
+      "id": "logitech-g-pro-x-tkl",
+      "slug": "logitech-g-pro-x-tkl",
+      "category": "keyboard",
+      "brand": "Logitech",
+      "name": "G Pro X TKL",
+      "layout": "tkl",
+      "switchType": [
+        "linear",
+        "tactile",
+        "clicky"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "premium",
+      "features": [
+        "텐키리스",
+        "무선",
+        "게이밍"
+      ],
+      "basicFilters": {
+        "layout": "tkl",
+        "connection": "wireless",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingFeature": "high_polling",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "no_preference",
+        "backlight": "rgb_preferred",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "responseTimeMs": null,
+        "bluetoothVersion": null,
+        "battery": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "축 옵션, 무선 방식, 구성품은 세부 모델별 확인이 필요합니다."
+      },
+      "specTags": [
+        "TKL",
+        "Wireless",
+        "Gaming"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "무선 텐키리스 게이밍 키보드 후보를 볼 때 참고할 수 있는 모델입니다.",
+        "aiStrengthsKo": [
+          "텐키리스 배열",
+          "무선 게이밍 후보",
+          "브랜드 생태계"
+        ],
+        "aiCautionsKo": [
+          "가격대 확인 필요",
+          "축 옵션별 체감 차이 확인 필요"
+        ]
+      }
+    },
+    {
+      "id": "razer-huntsman-v3-pro-tkl",
+      "slug": "razer-huntsman-v3-pro-tkl",
+      "category": "keyboard",
+      "brand": "Razer",
+      "name": "Huntsman V3 Pro TKL",
+      "layout": "tkl",
+      "switchType": [
+        "optical"
+      ],
+      "isHotSwap": false,
+      "material": "aluminum",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "premium",
+      "features": [
+        "텐키리스",
+        "아날로그 광축",
+        "래피드 트리거"
+      ],
+      "basicFilters": {
+        "layout": "tkl",
+        "connection": "wired",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingFeature": "rapid_trigger",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "aluminum_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "responseTimeMs": null,
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "아날로그 입력, 래피드 트리거, 소프트웨어 설정 범위는 공식 안내 확인이 필요합니다."
+      },
+      "specTags": [
+        "TKL",
+        "Optical",
+        "Rapid trigger"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "빠른 입력 기능을 원하는 게이밍 사용자에게 비교 후보가 될 수 있는 텐키리스 모델입니다.",
+        "aiStrengthsKo": [
+          "래피드 트리거 계열 기능",
+          "텐키리스 배열",
+          "게이밍 기능"
+        ],
+        "aiCautionsKo": [
+          "가격대가 높을 수 있음",
+          "소프트웨어 설정 적응 필요"
+        ]
+      }
+    },
+    {
+      "id": "cox-entry-mechanical",
+      "slug": "cox-entry-mechanical",
+      "category": "keyboard",
+      "brand": "COX",
+      "name": "입문형 기계식 키보드 샘플",
+      "layout": "full",
+      "switchType": [
+        "linear",
+        "tactile",
+        "clicky"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2024-05-23",
+      "priceRange": "budget",
+      "features": [
+        "풀배열",
+        "유선",
+        "입문형"
+      ],
+      "basicFilters": {
+        "layout": "full",
+        "connection": "wired",
+        "feel": "unknown",
+        "noise": "no_preference",
+        "price": "budget"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "no_preference",
+        "backlight": "rgb_preferred",
+        "weightFeel": "no_preference"
+      },
+      "detailSpecs": {
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "입문형 샘플 데이터입니다. 실제 모델명, 축 종류, 키캡, 핫스왑 여부는 구매 전 확인이 필요합니다."
+      },
+      "specTags": [
+        "Full",
+        "Wired",
+        "Budget"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "입문형 유선 기계식 키보드 데이터 구조를 확인하기 위한 샘플입니다.",
+        "aiStrengthsKo": [
+          "풀배열",
+          "유선 사용",
+          "입문형 후보"
+        ],
+        "aiCautionsKo": [
+          "축 종류와 소음 확인 필요",
+          "세부 모델별 품질 차이 확인 필요"
+        ]
+      }
+    }
+  ]
+}

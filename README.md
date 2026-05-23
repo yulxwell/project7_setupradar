@@ -1,4 +1,4 @@
-# SetupRadar (v0.6A - Content Snapshot Structure Plan)
+# SetupRadar (v0.6B - TS to JSON Snapshot Export)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.6A - Content Snapshot Structure Plan (Current)
+### v0.6B - TS to JSON Snapshot Export (Current)
+- **snapshot export 스크립트 추가**: 현재 `src/content` TypeScript 데이터를 `snapshots/kr/` 아래 JSON snapshot으로 export하는 `npm run snapshot:export` 명령을 추가했습니다.
+- **영역별 snapshot 생성**: site copy, tools, guides, mouse/keyboard products, switches, Mouse/Keyboard Finder 옵션을 분할 JSON으로 생성합니다.
+- **공개 사이트 import 경로 유지**: 생성된 snapshot은 검증/Control Tower/DB화 준비용 산출물이며, 실제 Project7 공개 사이트는 아직 기존 `src/content` TS 데이터를 직접 읽습니다.
+- **구현 금지선 유지**: Supabase/API/DB, Control Tower 연동, 제품 데이터 수정, Finder 로직 변경은 하지 않았습니다.
+
+### v0.6A - Content Snapshot Structure Plan
 - **JSON snapshot 구조 설계 문서 추가**: 현재 `src/content` 기반 TS 데이터를 나중에 JSON snapshot으로 export할 때 사용할 기준을 [docs/content-snapshot-plan.md](file:///Users/jilee/antigravity/src/project7/docs/content-snapshot-plan.md)에 정리했습니다.
 - **정적 배포 유지 전략**: Supabase/API에 바로 연결하지 않고, TS 유지 -> JSON snapshot 병행 -> DB에서 published snapshot export 후 정적 빌드 흐름을 추천안으로 기록했습니다.
 - **Control Tower 연계 기준**: 문구, 제품, 필터 작업대가 어떤 형태로 snapshot/patch를 export해야 하는지 제품/문구/필터 구조로 나눠 정리했습니다.
@@ -175,6 +181,15 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 본 프로젝트는 완전 정적 사이트(Static Site Generation)로 구성되어 있으며, **Cloudflare Pages** 배포를 기준으로 운영됩니다.
 
 콘텐츠와 Finder 옵션은 브라우저에서 실시간으로 수정되는 구조가 아닙니다. 파일을 수정한 뒤 Git에 커밋/푸시하면 Cloudflare Pages 빌드가 실행되고 정적 산출물이 배포됩니다.
+
+## 🧾 Snapshot Export
+현재 TS content 데이터를 JSON snapshot으로 생성하려면 아래 명령을 사용합니다.
+
+```bash
+npm run snapshot:export
+```
+
+생성 위치는 `snapshots/kr/`입니다. 이 snapshot은 검증, Control Tower 연동, DB화 준비용이며, 공개 사이트의 import 경로는 아직 `src/content` 그대로 유지합니다.
 
 ### Cloudflare Pages 설정
 1. Cloudflare 대시보드에서 **Workers & Pages** -> **Create application** -> **Pages** -> **Connect to Git** 선택.

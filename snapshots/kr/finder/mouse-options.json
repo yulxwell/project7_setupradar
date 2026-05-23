@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "projectId": "project7_setupradar",
+    "locale": "kr",
+    "schemaVersion": "0.1.0",
+    "generatedAt": "2026-05-23T08:47:36.148Z",
+    "source": "static_ts",
+    "status": "review"
+  },
+  "items": {
+    "defaults": {
+      "handSize": "unknown",
+      "shape": "any",
+      "weight": "any",
+      "connection": "any"
+    },
+    "groups": {
+      "handSize": {
+        "id": "handSize",
+        "label": "손 크기",
+        "helperText": "현재 마우스가 크거나 작게 느껴질 때만 골라도 됩니다.",
+        "options": [
+          {
+            "value": "small",
+            "label": "작은 편",
+            "description": "일반 마우스가 조금 크게 느껴집니다."
+          },
+          {
+            "value": "medium",
+            "label": "보통",
+            "description": "대부분의 표준 크기가 무난할 수 있습니다."
+          },
+          {
+            "value": "large",
+            "label": "큰 편",
+            "description": "작은 마우스가 불편하게 느껴집니다."
+          },
+          {
+            "value": "unknown",
+            "label": "잘 모르겠음",
+            "description": "손 크기 조건을 넓게 봅니다."
+          }
+        ]
+      },
+      "shape": {
+        "id": "shape",
+        "label": "마우스 형태",
+        "helperText": "손바닥 지지감과 편안함이 필요하면 비대칭형도 참고하세요.",
+        "options": [
+          {
+            "value": "symmetrical",
+            "label": "대칭형",
+            "description": "다양한 잡는 방식과 빠른 움직임을 선호할 때"
+          },
+          {
+            "value": "ergonomic",
+            "label": "오른손용 비대칭형",
+            "description": "손바닥 지지감과 편안함을 원할 때"
+          },
+          {
+            "value": "any",
+            "label": "상관없음",
+            "description": "형태 조건을 적용하지 않습니다."
+          }
+        ]
+      },
+      "weight": {
+        "id": "weight",
+        "label": "무게 선호",
+        "helperText": "손목 피로가 있거나 빠른 움직임을 원하면 가벼운 편을 보세요.",
+        "options": [
+          {
+            "value": "light",
+            "label": "가벼운 편",
+            "description": "손목 피로가 있거나 빠른 움직임을 원할 때"
+          },
+          {
+            "value": "normal",
+            "label": "보통",
+            "description": "너무 가볍지 않은 안정감을 원할 때"
+          },
+          {
+            "value": "any",
+            "label": "상관없음",
+            "description": "무게 조건을 적용하지 않습니다."
+          }
+        ]
+      },
+      "connection": {
+        "id": "connection",
+        "label": "연결 방식",
+        "helperText": "선 걸림과 충전 관리 중 더 거슬리는 쪽을 기준으로 고릅니다.",
+        "options": [
+          {
+            "value": "wireless",
+            "label": "무선",
+            "description": "선 걸림이 불편한 경우"
+          },
+          {
+            "value": "wired",
+            "label": "유선",
+            "description": "충전이나 배터리 관리가 귀찮은 경우"
+          },
+          {
+            "value": "any",
+            "label": "상관없음",
+            "description": "연결 방식 조건을 적용하지 않습니다."
+          }
+        ]
+      }
+    }
+  }
+}

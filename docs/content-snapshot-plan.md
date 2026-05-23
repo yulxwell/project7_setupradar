@@ -448,7 +448,37 @@ Supabase 같은 DB에서 `published` snapshot을 export하고 Project7 빌드가
 
 지금은 A를 유지하고, B/C를 위한 문서 기준만 만든다.
 
-## 9. 마이그레이션 단계
+## 9. Snapshot export script 초안
+
+v0.6B부터 현재 TS content를 snapshot JSON으로 생성하는 명령을 제공한다.
+
+```bash
+npm run snapshot:export
+```
+
+현재 산출물:
+
+```txt
+snapshots/kr/site-copy.json
+snapshots/kr/tools.json
+snapshots/kr/guides.json
+snapshots/kr/products/mice.json
+snapshots/kr/products/keyboards.json
+snapshots/kr/switches.json
+snapshots/kr/finder/mouse-options.json
+snapshots/kr/finder/keyboard-options.json
+```
+
+운영 원칙:
+
+- Project7 공개 사이트는 여전히 `src/content` TypeScript 파일을 직접 읽는다.
+- snapshot은 검증, Control Tower 연동, DB화 준비용 산출물이다.
+- snapshot 생성은 `static_ts` source로 기록한다.
+- generatedAt은 export 실행 시점의 ISO date로 기록한다.
+- 제품 copy field는 snapshot에서 `copy` 객체로 묶어 AI 초안과 editor 교정본을 한눈에 비교할 수 있게 한다.
+- 실제 DB 연결, API route, import 경로 전환은 아직 하지 않는다.
+
+## 10. 마이그레이션 단계
 
 추천 순서:
 
@@ -463,7 +493,7 @@ Supabase 같은 DB에서 `published` snapshot을 export하고 Project7 빌드가
 
 각 단계는 별도 작업으로 나누며, 한 번에 DB 연결까지 진행하지 않는다.
 
-## 10. 검증 규칙
+## 11. 검증 규칙
 
 snapshot 생성 시 아래 규칙을 체크한다.
 
@@ -495,9 +525,9 @@ snapshot 생성 시 아래 규칙을 체크한다.
 - 동일 쉘
 - 완전히 같다
 
-## 11. 지금 당장 하지 말아야 할 것
+## 12. 지금 당장 하지 말아야 할 것
 
-- export script 구현
+- 추가 export/import pipeline 자동화
 - Project7 import 경로 변경
 - Supabase 연결
 - API 추가
@@ -510,9 +540,22 @@ snapshot 생성 시 아래 규칙을 체크한다.
 - Finder 로직 변경
 - 공개 사이트 UI 변경
 
-## 12. 다음 작업 후보
+v0.6B에서는 export script 초안만 추가했다. 그래도 아래 항목은 계속 하지 않는다.
 
-- v0.6B: TS -> JSON snapshot export script 설계 문서 또는 prototype 범위 확정
+- Project7 import 경로 변경
+- Supabase 연결
+- API 추가
+- DB migration 추가
+- 제품 대량 추가
+- 이미지/링크 표시
+- 가격 트래커
+- 제품 비교 기능
+- Control Tower 수정
+- Finder 로직 변경
+- 공개 사이트 UI 변경
+
+## 13. 다음 작업 후보
+
 - v0.6C: snapshot schema validator 설계
 - v0.6D: Control Tower snapshot patch export format 정리
 - v0.7A: 10/10/10 샘플 데이터 snapshot 생성 리허설
