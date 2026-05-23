@@ -1,4 +1,4 @@
-# SetupRadar (v0.5F - Detail Panel De-dup QA)
+# SetupRadar (v0.6A - Content Snapshot Structure Plan)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.5F - Detail Panel De-dup QA (Current)
+### v0.6A - Content Snapshot Structure Plan (Current)
+- **JSON snapshot 구조 설계 문서 추가**: 현재 `src/content` 기반 TS 데이터를 나중에 JSON snapshot으로 export할 때 사용할 기준을 [docs/content-snapshot-plan.md](file:///Users/jilee/antigravity/src/project7/docs/content-snapshot-plan.md)에 정리했습니다.
+- **정적 배포 유지 전략**: Supabase/API에 바로 연결하지 않고, TS 유지 -> JSON snapshot 병행 -> DB에서 published snapshot export 후 정적 빌드 흐름을 추천안으로 기록했습니다.
+- **Control Tower 연계 기준**: 문구, 제품, 필터 작업대가 어떤 형태로 snapshot/patch를 export해야 하는지 제품/문구/필터 구조로 나눠 정리했습니다.
+- **구현 보류선 유지**: 실제 export script, import 경로 변경, Supabase/API/DB, 제품 데이터 수정, Finder 로직 변경은 하지 않았습니다.
+
+### v0.5F - Detail Panel De-dup QA
 - **상세 패널 중복 정보 제거**: Finder 결과 카드에 이미 보이는 요약, 핵심 기준, 기본 스펙, 체감 한줄평을 펼침 패널에서 반복하지 않도록 정리했습니다.
 - **구매 전 체크 중심 재구성**: 펼침 패널은 이런 경우에 맞을 수 있음, 주의할 점, 구매 전 체크, 추가로 확인할 스펙 중심으로 표시합니다.
 - **버튼 문구 조정**: `자세히 보기` 대신 `구매 전 체크` 문구를 사용해 패널의 목적을 더 분명하게 했습니다.

@@ -510,3 +510,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 기본 카드에 이미 보이는 요약, 핵심 스펙, 체감 한줄평은 패널에서 반복하지 않는다.
 - Finder 추천 점수 계산, basicFilters 매칭 로직, 제품 데이터, 제품 이미지/링크/가격/비교 기능은 변경하지 않았다.
 - 내부 `status`, `review`, `published` 값은 사용자 화면에 노출하지 않는 정책을 유지했다.
+
+## v0.6A - 2026-05-23 Content Snapshot Structure Plan 기록
+
+- `docs/content-snapshot-plan.md`를 생성해 현재 `src/content` 기반 TS 데이터를 JSON snapshot으로 export할 때 사용할 구조 초안을 문서화했다.
+- snapshot 전략의 목적을 static TS와 DB/CMS 사이의 중간 규격, Control Tower export와 Project7 build가 공유할 표준, 정적 배포 안정성 유지로 정리했다.
+- 권장 snapshot 구조는 `snapshots/kr/site-copy.json`, `tools.json`, `guides.json`, `products/mice.json`, `products/keyboards.json`, `switches.json`, `finder/*-options.json`처럼 영역별 분할 파일을 우선 추천했다.
+- 제품 snapshot은 `id`, `slug`, `category`, `brand`, `name`, `status`, `basicFilters`, `advancedFilters`, `detailSpecs`, `rawSpecs`, `productImages`, `productLinks`, `shellReferences`, `copy` 필드 중심으로 정리했다.
+- 문구 snapshot은 Control Tower 문구 작업대와 맞물리도록 `id`, `section`, `label`, `sourcePath`, `fieldPath`, `currentValue`, `editorValue`, `memo`, `locale`, `updatedAt` 구조를 제안했다.
+- 필터 snapshot은 `productType`, `filterGroup`, `key`, `labelKo`, `descriptionKo`, `enabled`, `options` 구조로 정리했다.
+- 빌드 전략은 단기 TS 유지, 중기 JSON snapshot 병행 생성, 장기 DB에서 `published` snapshot export 후 정적 빌드를 추천했다.
+- 이번 작업은 설계 문서화이며 export script 구현, Project7 import 경로 변경, Supabase/API/DB, 제품 데이터 수정, Finder 로직 변경, Control Tower 수정은 하지 않았다.
