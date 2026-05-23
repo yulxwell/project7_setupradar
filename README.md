@@ -1,4 +1,4 @@
-# SetupRadar (v0.5C - Finder Product Card Compact UI)
+# SetupRadar (v0.5D - Product Detail UX Plan)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.5C - Finder Product Card Compact UI (Current)
+### v0.5D - Product Detail UX Plan (Current)
+- **제품 상세정보 UX 설계 문서 추가**: Finder 결과 상품을 클릭했을 때 보여줄 상세정보 구조를 [docs/product-detail-ux-plan.md](file:///Users/jilee/antigravity/src/project7/docs/product-detail-ux-plan.md)에 정리했습니다.
+- **진입 방식 비교**: 카드 펼침 패널, 상세 모달, `/kr/products/[slug]` 상세 페이지의 장단점을 비교하고, 단기는 카드 펼침 패널, 중기는 제품 상세 페이지를 추천했습니다.
+- **구현 보류선 유지**: 실제 상세 페이지, 모달, 펼침 패널, 이미지/링크/가격/비교 기능, Supabase/API/DB 연결은 추가하지 않았습니다.
+
+### v0.5C - Finder Product Card Compact UI
 - **Finder 결과 카드 컴팩트화**: Mouse 및 Keyboard Finder 결과 카드의 세로 높이, 패딩, 마진을 축소하고 텍스트 밀도를 조정해 한 화면에 더 많은 결과가 노출되도록 개선했습니다.
   - 마우스/키보드 결과 카드 패딩 축소 (`p-4` -> `p-3`), 외부 여백 축소 (`mb-2` -> `mb-1`, `mb-3` -> `mb-2`).
   - 스펙 테이블 그리드 간격 및 패딩 축소 (`gap-2` -> `gap-1`, `px-3 py-2` -> `px-2 py-1`).

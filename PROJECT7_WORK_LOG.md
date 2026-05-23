@@ -1,11 +1,11 @@
 # PROJECT7_WORK_LOG.md
 
-SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.5B까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
+SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.1부터 v0.5D까지의 작업 이력, 운영 원칙, 금지 사항, 그리고 다음 작업 후보를 한곳에 모아 이후 작업자가 같은 맥락에서 이어서 작업할 수 있도록 유지합니다.
 
 ## 현재 상태
 
-- 현재 버전: `v0.5B - Product Card UX Review`
-- 다음 후보 버전: `v0.5C - DB Snapshot / Control Tower Product CRUD Mock 검토`
+- 현재 버전: `v0.5D - Product Detail UX Plan`
+- 다음 후보 버전: `v0.5E - Product Detail Panel Mock 검토`
 - 프로젝트 성격: PC 하드웨어 진단 및 구매 가이드용 정적 웹사이트
 - 주요 경로:
   - `/kr`
@@ -481,3 +481,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - **필터 옵션 그룹 헤더 레이아웃 개선**:
   - 화면 폭이 넓어질 때 필터의 `label`(예: 마우스 형태)과 `helperText`(설명글)가 한 줄로 나열되던 `sm:flex-row` 반응형 레이아웃을 제거하여, 모든 뷰포트 크기에서 라벨 밑에 설명글이 차분하게 줄바꿈(`flex-col` 고정)되어 깔끔하게 노출되도록 디자인 밀도를 조절했습니다.
 
+## v0.5D - 2026-05-23 Product Detail UX Plan 기록
+
+- `docs/product-detail-ux-plan.md`를 생성해 Finder 결과 상품 클릭 시 보여줄 상세정보 UX 구조를 문서화했다.
+- 상세정보 진입 방식으로 카드 펼침 패널, 상세 모달, `/kr/products/[slug]` 상세 페이지를 비교했다.
+- 현재 추천 방향은 단기 카드 펼침 패널, 중기 제품 상세 페이지, 장기 DB화 후 제품 상세/비교/가격 확인 링크 연결이다.
+- 마우스 상세정보는 브랜드/제품명, 요약, 핵심 스펙, `basicFilters`, 확실한 `detailSpecs`, 장점, 주의점, 구매 전 체크, 체감 한줄평, 검수 통과 쉘 레퍼런스 순서로 설계했다.
+- 키보드 상세정보는 브랜드/제품명, 요약, 배열, 연결, 키감/축 느낌, 소음 성향, 가격대, 핵심 스펙, 장점, 주의점, 구매 전 체크, 체감 한줄평 순서로 설계했다.
+- 내부 `status`, 미승인 `productImages`, 미승인 `productLinks`, low confidence 또는 `sourceHint: "unknown"`인 `shellReferences`, 검증되지 않은 가격은 상세정보에서도 표시하지 않는 원칙을 기록했다.
+- 이번 작업은 UX 설계 문서화이며 실제 상세 페이지, 상세 모달, 카드 펼침 패널, 제품 이미지/링크/가격/비교 기능, Supabase/API/DB 연결, Finder 추천 로직 변경은 하지 않았다.
