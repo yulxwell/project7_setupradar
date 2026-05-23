@@ -178,7 +178,7 @@ function CompactOptionGroup({
 
   return (
     <section className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3">
-      <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+      <div className="mb-2 flex flex-col gap-1">
         <h2 className="text-sm font-bold text-[var(--primary)]">{group.label}</h2>
         <p className="text-[11px] leading-snug text-[var(--muted)]">{group.helperText}</p>
       </div>
