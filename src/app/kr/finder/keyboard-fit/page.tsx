@@ -207,6 +207,34 @@ function getKeyboardSpecRows(keyboard: (typeof KEYBOARD_DATABASE)[number]) {
   ].filter(Boolean) as Array<{ label: string; value: string }>;
 }
 
+function formatBoolean(value: boolean) {
+  return value ? "지원" : "미지원";
+}
+
+function getKeyboardAdditionalSpecRows(keyboard: (typeof KEYBOARD_DATABASE)[number]) {
+  const specs = keyboard.detailSpecs;
+  if (!specs) return [];
+
+  const accessoriesText = specs.accessories && specs.accessories.length > 0
+    ? specs.accessories.join(", ")
+    : null;
+
+  return [
+    specs.actuationForceG ? { label: "키압", value: `${specs.actuationForceG}g` } : null,
+    typeof specs.macroSupport === "boolean" ? { label: "매크로", value: formatBoolean(specs.macroSupport) } : null,
+    specs.responseTimeMs ? { label: "응답속도", value: `${specs.responseTimeMs}ms` } : null,
+    specs.bluetoothVersion ? { label: "블루투스", value: specs.bluetoothVersion } : null,
+    specs.battery ? { label: "배터리", value: specs.battery } : null,
+    specs.enterKeyShape ? { label: "엔터키", value: specs.enterKeyShape } : null,
+    specs.legendPosition ? { label: "각인", value: specs.legendPosition } : null,
+    specs.cableMaterial ? { label: "케이블", value: specs.cableMaterial } : null,
+    accessoriesText ? { label: "구성품", value: accessoriesText } : null,
+    typeof specs.ps2Support === "boolean" ? { label: "PS/2", value: formatBoolean(specs.ps2Support) } : null,
+    typeof specs.stepSculpture === "boolean" ? { label: "스텝스컬쳐", value: formatBoolean(specs.stepSculpture) } : null,
+    typeof specs.windowsKeyLock === "boolean" ? { label: "윈도우 키 잠금", value: formatBoolean(specs.windowsKeyLock) } : null,
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
 function CompactOptionGroup({
   group,
   value,
@@ -255,6 +283,7 @@ function CompactOptionGroup({
 
 export default function KeyboardFitPage() {
   const [values, setValues] = useState<KeyboardFinderValues>(KEYBOARD_FINDER_DEFAULTS);
+  const [expandedKeyboardId, setExpandedKeyboardId] = useState<string | null>(null);
 
   const scoredKeyboards = useMemo(
     () => KEYBOARD_DATABASE
@@ -268,6 +297,10 @@ export default function KeyboardFitPage() {
 
   const updateValue = <Key extends keyof KeyboardFinderValues>(key: Key, value: KeyboardFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+  };
+
+  const toggleKeyboardDetail = (keyboardId: string) => {
+    setExpandedKeyboardId((current) => (current === keyboardId ? null : keyboardId));
   };
 
   return (
@@ -352,6 +385,11 @@ export default function KeyboardFitPage() {
             const layoutMeta = KEYBOARD_LAYOUT_META[keyboard.layout === "compact" ? "60%" : keyboard.layout];
             const communityNote = display.communityNote || "키보드 체감은 스위치, 보강판, 흡음재에 따라 다르게 느껴질 수 있습니다.";
             const specRows = getKeyboardSpecRows(keyboard);
+            const additionalSpecRows = getKeyboardAdditionalSpecRows(keyboard);
+            const strengths = display.strengths.slice(0, 3);
+            const cautions = display.cautions.slice(0, 3);
+            const buyingCheck = display.buyingCheck.slice(0, 3);
+            const isExpanded = expandedKeyboardId === keyboard.id;
 
             return (
               <article key={keyboard.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
@@ -383,6 +421,63 @@ export default function KeyboardFitPage() {
                 <div className="grid gap-2 text-[10.5px] leading-relaxed">
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={() => toggleKeyboardDetail(keyboard.id)}
+                  aria-expanded={isExpanded}
+                  className="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-[10.5px] font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  {isExpanded ? "접기" : "구매 전 체크"}
+                </button>
+
+                {isExpanded && (
+                  <div className="mt-3 border-t border-[var(--border)]/40 pt-3">
+                    <p className="mb-2 text-xs font-black text-[var(--primary)]">구매 전 확인할 점</p>
+                    <div className="space-y-2.5 text-[10.5px] leading-relaxed">
+                      {strengths.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">이런 경우에 맞을 수 있음</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {strengths.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {cautions.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">주의할 점</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {cautions.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {buyingCheck.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">구매 전 체크</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {buyingCheck.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {additionalSpecRows.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">추가로 확인할 스펙</p>
+                          <div className="grid grid-cols-2 gap-1">
+                            {additionalSpecRows.slice(0, 6).map((spec) => (
+                              <div key={spec.label} className="rounded-md border border-[var(--border)]/50 bg-[var(--background)] px-2 py-1">
+                                <p className="text-[9.5px] font-bold text-[var(--muted)]">{spec.label}</p>
+                                <p className="text-[10.5px] font-bold text-[var(--primary)]">{spec.value}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      )}
+                    </div>
+                  </div>
+                )}
               </article>
             );
           })}

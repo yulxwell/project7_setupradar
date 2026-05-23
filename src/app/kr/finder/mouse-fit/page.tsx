@@ -154,6 +154,31 @@ function getMouseSpecRows(mouse: (typeof MOUSE_DATABASE)[number]) {
   ].filter(Boolean) as Array<{ label: string; value: string }>;
 }
 
+function formatBoolean(value: boolean) {
+  return value ? "지원" : "미지원";
+}
+
+function getMouseAdditionalSpecRows(mouse: (typeof MOUSE_DATABASE)[number]) {
+  const specs = mouse.detailSpecs;
+  if (!specs) return [];
+
+  return [
+    specs.ips ? { label: "IPS", value: specs.ips.toLocaleString() } : null,
+    specs.fpsScanRate ? { label: "스캔율", value: `${specs.fpsScanRate.toLocaleString()} FPS` } : null,
+    specs.accelerationG ? { label: "가속도", value: `${specs.accelerationG}G` } : null,
+    specs.bluetoothVersion ? { label: "블루투스", value: specs.bluetoothVersion } : null,
+    specs.usbOrPs2 ? { label: "연결 규격", value: specs.usbOrPs2 } : null,
+    specs.batteryDetail ? { label: "배터리", value: specs.batteryDetail } : null,
+    specs.warrantyPeriod ? { label: "보증", value: specs.warrantyPeriod } : null,
+    specs.buttonCountDetail ? { label: "버튼", value: specs.buttonCountDetail } : null,
+    typeof specs.dpiChangeSupport === "boolean" ? { label: "DPI 변경", value: formatBoolean(specs.dpiChangeSupport) } : null,
+    typeof specs.adjustableWeight === "boolean" ? { label: "무게추 조절", value: formatBoolean(specs.adjustableWeight) } : null,
+    typeof specs.replaceableParts === "boolean" ? { label: "파츠 교체", value: formatBoolean(specs.replaceableParts) } : null,
+    typeof specs.infiniteWheel === "boolean" ? { label: "무한휠", value: formatBoolean(specs.infiniteWheel) } : null,
+    typeof specs.rgbLighting === "boolean" ? { label: "RGB", value: formatBoolean(specs.rgbLighting) } : null,
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+}
+
 function getShellRefText(ref: MouseShellReference) {
   const modelName = ref.referenceModelKo || ref.referenceModelEn;
   if (!modelName) return "";
@@ -213,6 +238,7 @@ function CompactOptionGroup({
 
 export default function MouseFitPage() {
   const [values, setValues] = useState<MouseFinderValues>(MOUSE_FINDER_DEFAULTS);
+  const [expandedMouseId, setExpandedMouseId] = useState<string | null>(null);
 
   const scoredMice = useMemo(
     () => MOUSE_DATABASE
@@ -224,6 +250,10 @@ export default function MouseFitPage() {
 
   const updateValue = <Key extends keyof MouseFinderValues>(key: Key, value: MouseFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+  };
+
+  const toggleMouseDetail = (mouseId: string) => {
+    setExpandedMouseId((current) => (current === mouseId ? null : mouseId));
   };
 
   return (
@@ -298,6 +328,10 @@ export default function MouseFitPage() {
             const display = getContentDisplay(mouse);
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
             const specRows = getMouseSpecRows(mouse);
+            const additionalSpecRows = getMouseAdditionalSpecRows(mouse);
+            const strengths = display.strengths.slice(0, 3);
+            const cautions = display.cautions.slice(0, 3);
+            const buyingCheck = display.buyingCheck.slice(0, 3);
             const filteredShellRefs = (mouse.shellReferences || []).filter((ref) => {
               // 1. editorNoteKo가 있어야 함
               if (!ref.editorNoteKo) return false;
@@ -310,6 +344,7 @@ export default function MouseFitPage() {
               return true;
             });
             const shellRefs = filteredShellRefs.slice(0, 2);
+            const isExpanded = expandedMouseId === mouse.id;
 
             return (
               <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
@@ -332,24 +367,74 @@ export default function MouseFitPage() {
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
                 </div>
 
-                {shellRefs && shellRefs.length > 0 && (
-                  <div className="mt-2 border-t border-[var(--border)]/30 pt-2 text-[10px] leading-relaxed">
-                    <p className="mb-1 font-bold text-[var(--muted)]">쉘 체감 레퍼런스</p>
-                    <div className="space-y-1.5">
-                      {shellRefs.map((ref, idx) => {
-                        const refText = getShellRefText(ref);
-                        if (!refText) return null;
-                        return (
-                          <div key={idx} className="rounded-md border border-[var(--border)]/20 bg-[var(--secondary)]/10 p-1.5">
-                            <p className="text-[9.5px] font-medium text-[var(--muted)]">{refText}</p>
-                            {ref.cautionKo && (
-                              <p className="mt-0.5 text-[9px] text-[var(--muted)] leading-snug">
-                                ※ {ref.cautionKo}
-                              </p>
-                            )}
+                <button
+                  type="button"
+                  onClick={() => toggleMouseDetail(mouse.id)}
+                  aria-expanded={isExpanded}
+                  className="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-[10.5px] font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  {isExpanded ? "접기" : "구매 전 체크"}
+                </button>
+
+                {isExpanded && (
+                  <div className="mt-3 border-t border-[var(--border)]/40 pt-3">
+                    <p className="mb-2 text-xs font-black text-[var(--primary)]">구매 전 확인할 점</p>
+                    <div className="space-y-2.5 text-[10.5px] leading-relaxed">
+                      {strengths.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">이런 경우에 맞을 수 있음</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {strengths.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {cautions.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">주의할 점</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {cautions.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {buyingCheck.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">구매 전 체크</p>
+                          <ul className="space-y-1 text-[var(--muted)]">
+                            {buyingCheck.map((item) => <li key={item}>- {item}</li>)}
+                          </ul>
+                        </section>
+                      )}
+
+                      {additionalSpecRows.length > 0 && (
+                        <section>
+                          <p className="mb-1 font-bold text-[var(--primary)]">추가로 확인할 스펙</p>
+                          <div className="grid grid-cols-2 gap-1">
+                            {additionalSpecRows.slice(0, 6).map((spec) => (
+                              <div key={spec.label} className="rounded-md border border-[var(--border)]/50 bg-[var(--background)] px-2 py-1">
+                                <p className="text-[9.5px] font-bold text-[var(--muted)]">{spec.label}</p>
+                                <p className="text-[10.5px] font-bold text-[var(--primary)]">{spec.value}</p>
+                              </div>
+                            ))}
                           </div>
-                        );
-                      })}
+                        </section>
+                      )}
+
+                      {shellRefs.length > 0 && (
+                        <section className="rounded-lg border border-[var(--border)]/40 bg-[var(--background)] p-2">
+                          <p className="mb-1 font-bold text-[var(--primary)]">쉘 체감 레퍼런스</p>
+                          <div className="space-y-1.5 text-[var(--muted)]">
+                            {shellRefs.map((ref, idx) => {
+                              const refText = getShellRefText(ref);
+                              if (!refText) return null;
+                              return (
+                                <p key={idx}>{refText}</p>
+                              );
+                            })}
+                          </div>
+                        </section>
+                      )}
                     </div>
                   </div>
                 )}

@@ -490,3 +490,23 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 키보드 상세정보는 브랜드/제품명, 요약, 배열, 연결, 키감/축 느낌, 소음 성향, 가격대, 핵심 스펙, 장점, 주의점, 구매 전 체크, 체감 한줄평 순서로 설계했다.
 - 내부 `status`, 미승인 `productImages`, 미승인 `productLinks`, low confidence 또는 `sourceHint: "unknown"`인 `shellReferences`, 검증되지 않은 가격은 상세정보에서도 표시하지 않는 원칙을 기록했다.
 - 이번 작업은 UX 설계 문서화이며 실제 상세 페이지, 상세 모달, 카드 펼침 패널, 제품 이미지/링크/가격/비교 기능, Supabase/API/DB 연결, Finder 추천 로직 변경은 하지 않았다.
+
+## v0.5E - 2026-05-23 Product Detail Panel Mock 기록
+
+- Mouse Finder 결과 카드에 `자세히 보기` 버튼과 카드 내부 펼침 패널 mock을 추가했다.
+- Keyboard Finder 결과 카드에도 동일한 `자세히 보기` 펼침 패널 mock을 추가했다.
+- 펼침 패널은 요약, basicFilters 기반 핵심 기준, 값이 있는 확실한 스펙, 장점, 주의점, 구매 전 체크를 최대 3개 중심으로 짧게 표시한다.
+- Mouse Finder의 쉘 체감 레퍼런스는 기존 Product Trust Guard 조건(`editorNoteKo`, confidence medium/high, `sourceHint` unknown 제외, reference model 존재)을 통과한 항목만 표시한다.
+- `productImages`, `productLinks`, 내부 `status`, rawSpecs 전체 dump, 가격/최저가/구매 링크, 비교 버튼은 표시하지 않았다.
+- 제품 상세 페이지(`/kr/products/[slug]`)는 생성하지 않았고, Finder 추천 점수 계산 및 basicFilters 매칭 로직은 변경하지 않았다.
+- Supabase/API/DB, Control Tower, 제품 데이터 추가/삭제, 라우팅 변경은 하지 않았다.
+
+## v0.5F - 2026-05-23 Detail Panel De-dup QA 기록
+
+- v0.5E 펼침 패널에서 기본 카드와 중복되던 요약, basicFilters 전체, 기본 스펙 반복 표시를 제거했다.
+- 버튼 문구를 `자세히 보기`에서 `구매 전 체크`로 바꿔 패널의 목적을 더 분명하게 했다.
+- Mouse Finder 상세 패널은 `이런 경우에 맞을 수 있음`, `주의할 점`, `구매 전 체크`, 카드에 없는 추가 detailSpecs, 검수 통과 쉘 체감 레퍼런스 중심으로 재구성했다.
+- Keyboard Finder 상세 패널은 `이런 경우에 맞을 수 있음`, `주의할 점`, `구매 전 체크`, 카드에 없는 추가 detailSpecs 중심으로 재구성했다.
+- 기본 카드에 이미 보이는 요약, 핵심 스펙, 체감 한줄평은 패널에서 반복하지 않는다.
+- Finder 추천 점수 계산, basicFilters 매칭 로직, 제품 데이터, 제품 이미지/링크/가격/비교 기능은 변경하지 않았다.
+- 내부 `status`, `review`, `published` 값은 사용자 화면에 노출하지 않는 정책을 유지했다.

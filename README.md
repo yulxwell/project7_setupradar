@@ -1,4 +1,4 @@
-# SetupRadar (v0.5D - Product Detail UX Plan)
+# SetupRadar (v0.5F - Detail Panel De-dup QA)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,19 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.5D - Product Detail UX Plan (Current)
+### v0.5F - Detail Panel De-dup QA (Current)
+- **상세 패널 중복 정보 제거**: Finder 결과 카드에 이미 보이는 요약, 핵심 기준, 기본 스펙, 체감 한줄평을 펼침 패널에서 반복하지 않도록 정리했습니다.
+- **구매 전 체크 중심 재구성**: 펼침 패널은 이런 경우에 맞을 수 있음, 주의할 점, 구매 전 체크, 추가로 확인할 스펙 중심으로 표시합니다.
+- **버튼 문구 조정**: `자세히 보기` 대신 `구매 전 체크` 문구를 사용해 패널의 목적을 더 분명하게 했습니다.
+- **기존 금지선 유지**: 추천 로직, 제품 데이터, 제품 상세 페이지, 이미지/링크/가격/비교 기능은 변경하지 않았습니다.
+
+### v0.5E - Product Detail Panel Mock
+- **Finder 카드 펼침 패널 mock 추가**: Mouse Finder와 Keyboard Finder 결과 카드에 `자세히 보기` 버튼을 추가해 카드 안에서 구매 전 확인 정보를 펼쳐볼 수 있게 했습니다.
+- **현재 데이터만 표시**: 요약, basicFilters 기반 핵심 기준, 값이 있는 확실한 스펙, 장점/주의점/구매 전 체크를 짧게 표시합니다.
+- **미노출 정책 유지**: 제품 상세 페이지, 이미지, 링크, 가격/최저가, 비교 기능, 내부 `status`는 표시하지 않으며 Finder 추천 로직도 변경하지 않았습니다.
+- **쉘 레퍼런스 안전 조건 유지**: Mouse Finder의 쉘 체감 레퍼런스는 기존 Product Trust Guard 조건을 통과한 항목만 패널 안에서도 조용하게 표시합니다.
+
+### v0.5D - Product Detail UX Plan
 - **제품 상세정보 UX 설계 문서 추가**: Finder 결과 상품을 클릭했을 때 보여줄 상세정보 구조를 [docs/product-detail-ux-plan.md](file:///Users/jilee/antigravity/src/project7/docs/product-detail-ux-plan.md)에 정리했습니다.
 - **진입 방식 비교**: 카드 펼침 패널, 상세 모달, `/kr/products/[slug]` 상세 페이지의 장단점을 비교하고, 단기는 카드 펼침 패널, 중기는 제품 상세 페이지를 추천했습니다.
 - **구현 보류선 유지**: 실제 상세 페이지, 모달, 펼침 패널, 이미지/링크/가격/비교 기능, Supabase/API/DB 연결은 추가하지 않았습니다.
