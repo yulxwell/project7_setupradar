@@ -1,4 +1,4 @@
-# SetupRadar (v0.6C - Snapshot Validation Rules)
+# SetupRadar (v0.7B - Buying Checklist Copy QA)
 
 ## 🤖 AI 작업자 운영 규칙 (Gemini / Codex 공통)
 
@@ -46,7 +46,29 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
-### v0.6C - Snapshot Validation Rules (Current)
+### v0.7B - Buying Checklist Copy QA (Current)
+- **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
+  - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.
+  - [마우스 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/mouse-buying-checklist/page.tsx): 그립법 용어 대신 손바닥 지지감(비대칭/대칭형) 체감으로 쉽게 다듬고, 4K/8K 폴링레이트의 PC 사양 병목 주의점 명시 및 광학/기계식 스위치 취향 비교를 기재했습니다.
+  - [키보드 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/keyboard-buying-checklist/page.tsx): 미니배열(60%) 단축키 조합 적응 이슈 팁 추가, 화려한 스위치 과장 마케팅 네이밍을 4대 본질 축(리니어/택타일/클릭/저소음)으로 환원해 설명, 저소음축 파워 타건 시 서걱음/책상 울림 경고, 하우징/키캡 소재 기호 취향 존중 강화.
+  - [모니터 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/monitor-buying-checklist/page.tsx): 책상 세로 깊이 자로 재기 팁 추가, 패널별 장단점 균형 튜닝, OLED 번인 과도한 우려 거두기, 1ms 스펙 과신 주의 및 무리한 오버드라이브 역잔상 유발 경고 수록.
+  - [가이드 목록 메타데이터](file:///Users/jilee/antigravity/src/project7/src/content/kr/guides.ts): 가이드 목록 카드에 표시되는 요약본(`aiSummaryKo`)을 다정하고 품격 높은 정보 요약 톤으로 완전히 정돈했습니다.
+- **스냅샷 빌드 및 엄격한 금지어 전수 통과**:
+  - 10대 금지 단어(최고, 완벽, 무조건, 끝판왕, 압도적, 정밀 진단, 불량 확정, 정상 확정 및 '반드시', '후회 없음')에 대해 철저히 예외 없는 검증을 통과시켰습니다.
+  - SetupRadar의 더블클릭, 채터링, 불량화소 자가 테스트 도구 경로를 텍스트 맥락 속에 유기적으로 녹여 연동 완성도를 높였습니다.
+
+### v0.7A - Buying Checklist Pages
+- **구매 전 체크 정적 가이드 3종 신규 추가**: 초보자가 기기를 안심하고 구매할 수 있도록 마우스, 키보드, 모니터에 특화된 정밀 체크리스트 페이지 3개를 `SpecGuide` 레이아웃에 맞춰 전격 추가했습니다.
+  - [마우스 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/mouse-buying-checklist/page.tsx): 마우스 쉘/형태, 무게 선호, 2.4GHz 무선 vs 블루투스, DPI 및 고주사율 폴링(4K/8K) 실체감, 부품 보증 기준 제시.
+  - [키보드 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/keyboard-buying-checklist/page.tsx): 풀배열/텐키리스/75%/65%/60% 배열 낭비 방지, 화려한 스위치 네이밍 식별법, 실사용 소음, 하우징/키캡 소재 특징, 핫스왑 지원 여부.
+  - [모니터 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/monitor-buying-checklist/page.tsx): 해상도/주사율 감당 사양 체크, IPS/VA/OLED 패널별 차이점 및 리스크, GtG vs MPRT 응답속도 마케팅 분별법, 불량화소 무결점 보증 범위 및 교환 규정.
+- **가이드 데이터 및 스냅샷 무결성 완료**:
+  - `src/content/kr/guides.ts`에 카테고리 `purchase-check`로 연동하여 가이드 목록(`/kr/guides`)에 깨짐 없이 자연스럽게 배치되도록 연계했습니다.
+  - 콘텐츠 스냅샷 검사 스크립트(`export-content-snapshots.ts`)에 구현된 금지어 규칙(최고, 완벽, 무조건 등)을 철저히 우회 및 예외 없이 준수했습니다.
+- **정적 아키텍처 한계선 준수**:
+  - 서버 API, Supabase, 실시간 가격 트래커나 제품 이미지 로드 코드 변경 없이, 완전한 정적 HTML 컴파일 형태로 호환성을 보장했습니다.
+
+### v0.6C - Snapshot Validation Rules
 - **snapshot validation 강화**: `npm run snapshot:export` 실행 시 metadata, 제품 기본 필터, 중복 id/slug, shellReferences, productImages/productLinks, tools/guides/finder options, 금지 표현을 함께 검증합니다.
 - **실패/경고 기준 분리**: 허용값 오류, 필수 필드 누락, 금지 표현은 export를 중단하고, review 상태 제품이나 미공개 shellReferences 같은 확인 항목은 warning으로 출력합니다.
 - **요약 출력 추가**: 생성 snapshot 수, 마우스/키보드/스위치/도구/가이드 수, shellReferences 공개 가능 수, 이미지/링크 승인 수, warning 수를 console에 요약합니다.

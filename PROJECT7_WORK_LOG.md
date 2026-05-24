@@ -546,3 +546,30 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `review` 상태 항목, 미공개 shell reference, low confidence reference, pending 이미지/링크, detailSpecs 부족 항목은 warning으로만 출력한다.
 - validation 성공 시 snapshot 수, 제품/스위치/tools/guides 수, shellReferences 공개 가능 수, 이미지/링크 승인 수, warning 수를 console summary로 출력한다.
 - 공개 사이트 import 경로는 변경하지 않았고, Supabase/API/DB/Control Tower 연동도 추가하지 않았다.
+
+## v0.7A - 2026-05-24 Buying Checklist Pages 기록
+
+- **구매 전 체크 정적 가이드 3종 전격 신규 추가**:
+  - [마우스 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/mouse-buying-checklist/page.tsx)를 추가하여 대칭/비대칭 쉘 형태, 무게감 체감, 2.4GHz 무선 vs 블루투스 연결, DPI 및 8K 폴링레이트 실체 사양, 스위치 내구성과 AS 규정을 초보자 기준으로 체크하도록 했습니다. (관련 테스트로 `마우스 더블클릭 테스트` 연계)
+  - [키보드 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/keyboard-buying-checklist/page.tsx)를 추가하여 텐키리스/75%/65%/60% 배열 낭비 차단법, 스위치 축 명칭과 실제 동작 방식, 타건 소음 민감도, 하우징/키캡 소재 특징, 핫스왑 호환성 등을 체크하도록 했습니다. (관련 테스트로 `키보드 채터링 테스트` 연계)
+  - [모니터 구매 전 체크리스트](file:///Users/jilee/antigravity/src/project7/src/app/kr/guides/monitor-buying-checklist/page.tsx)를 추가하여 해상도/주사율 하드웨어 성능 타당성, IPS/VA/OLED 패널별 명암비 및 가독성 특징, GtG vs MPRT 응답속도 마케팅 구분법, 불량화소 무결점 보증 및 빛샘/IPS Glow 체크 기준을 제시했습니다. (관련 테스트로 `모니터 불량화소 테스트` 연계)
+- **가이드 데이터 및 스냅샷 검증 연계**:
+  - `src/content/kr/guides.ts`에 카테고리 `purchase-check` 하위에 3개의 가이드를 추가하여 가이드 목록 페이지(`/kr/guides`)에서 깨짐 없이 3열 그리드 형태로 완벽하게 어우러지도록 연결했습니다.
+  - 콘텐츠 스냅샷 검사 스크립트(`export-content-snapshots.ts`)의 엄격한 금지어 규칙(최고, 완벽, 무조건, 끝판왕, 압도적 등)을 일절 예외 없이 철저히 준수했습니다.
+- **정적 아키텍처 한계선 보존**:
+  - Supabase/API/DB/Control Tower 연동, 제품 데이터 수정, 가격 트래커나 제품 비교 기능, 이미지/링크 화면 노출 변경 없이, Next.js App Router 정적 배포 구조를 유지했습니다.
+
+## v0.7B - 2026-05-24 Buying Checklist Copy QA 기록
+
+- **구매 전 체크 가이드 3종 대대적인 Copy QA 및 문체 교정**:
+  - 마우스, 키보드, 모니터 가이드 페이지 본문의 번역투 및 AI 초안 성향의 문구를 초보자 친화적으로 다듬고 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.
+  - 마우스 쉘/형태를 그립법 전문 용어 대신 손바닥 지지감(비대칭/대칭형) 체감 예시로 풀어 설명하고, 4K/8K 폴링레이트의 CPU/모니터 조건부 작동 한계를 명시했습니다.
+  - 키보드 미니배열(60%) 단축키 적응 팁을 추가하고 화려한 마케팅 축 네이밍을 4대 본질 축 계열로 환원해 설명했으며 저소음축 파워 타건 울림 경고 및 소재 기호 취향 존중을 강화했습니다.
+  - 모니터 해상도/주사율 GPU 적합성 및 책상 세로 깊이 자로 재기 팁을 추가하고 패널 장단점 균형 유지 및 OLED 번인 리스크 우려를 기술적으로 균형 있게 다듬었습니다.
+- **가이드 카드 요약 메타데이터 갱신**:
+  - `src/content/kr/guides.ts` 데이터베이스에 수록된 신규 가이드 3종의 요약본(`aiSummaryKo`)을 광고 톤 배제 및 다정하고 품격 높은 요약 톤으로 완전히 교정했습니다.
+- **금지어 및 스냅샷 유효성 검사 최종 통과**:
+  - 10대 금지어(최고, 완벽, 무조건, 끝판왕, 압도적, 정밀 진단, 불량 확정, 정상 확정 및 '반드시', '후회 없음')에 대한 전수 검증 오류를 완벽하게 예외 없이 클리어했습니다.
+  - SetupRadar의 더블클릭, 채터링, 불량화소 진단 도구 경로 링크를 본문 문장 속에 매우 유기적으로 연계시켰습니다.
+- **정적 아키텍처 및 추천 로직 보존**:
+  - Finder 로직, 제품/스위치 데이터, Control Tower, Supabase/API/DB 등 기존 코어 시스템은 일절 건드리지 않고 문체 보정만 콤팩트하게 완수했습니다.
