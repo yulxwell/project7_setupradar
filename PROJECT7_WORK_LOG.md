@@ -614,3 +614,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 실패한 제품이 신규 후보 목록에 함께 표시되면 운영자가 헷갈릴 수 있어, 제품별 오류가 있는 경우 후보 분류에 넣지 않도록 validator 출력 흐름을 보정했다.
 - 콘솔 제목을 `제품 patch dry-run 요약`, `확인 필요`, `차단 오류`처럼 한국어 중심으로 정리했다.
 - 이번 QA는 임시 JSON 샘플과 validator 출력 보정, 문서 기록만 수행했으며 실제 제품 TS, snapshot JSON, Finder/UI, DB/API/Supabase, Control Tower, `merge-product-patch.ts`는 수정하지 않았다.
+
+## Real New Product Patch Trial - 2026-05-28 기록
+
+- 기존 제품 목록과 snapshot에서 추천 후보 중 `Razer Viper V3 Pro`, `Rainy75`는 이미 존재하는 것을 확인하고 trial 후보에서 제외했다.
+- 실제 신규 후보 가능성이 높은 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `tmp/product-patch-real-new-trial.json` 임시 patch를 만들었다.
+- 공식 제품 페이지 중심으로 확인 가능한 정보만 `basicFilters`, `advancedFilters`, `detailSpecs`, `rawSpecs`, `copy`에 정리하고, 불확실한 세부 정보는 `rawSpecs.note`에 확인 필요 메모로 남겼다.
+- `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개, warnings 0개로 통과했다.
+- 이번 작업 환경에는 Gemini 전용 실행 도구가 없어, 동일한 `product_config_patch` schema를 사용해 공식/제조사 자료 기반 trial patch를 작성했다.
+- 이번 trial은 임시 patch 검증만 수행했으며 실제 제품 TS, snapshot JSON, Finder/UI, DB/API/Supabase, Control Tower, `merge-product-patch.ts`는 수정하지 않았다.

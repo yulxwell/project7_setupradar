@@ -64,6 +64,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **차단 검사 확인**: 금지 표현 샘플과 허용값 외 `basicFilters` 샘플은 errors로 차단되며, 오류 위치와 필드가 콘솔에 표시됩니다.
 - **안전선 유지**: QA는 임시 JSON 파일과 validator 출력 보정만 수행했으며 실제 제품 TS, snapshot JSON, Finder, UI, DB/API/Supabase, Control Tower는 수정하지 않았습니다.
 
+### Real New Product Patch Trial - 2026-05-28
+- **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
+- **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.
+- **조사 기준**: 공식 제품 페이지 중심으로 무게, 센서, 연결, 배열, 키캡/하우징 등 확인 가능한 정보만 patch에 넣고, 불확실한 정보는 `rawSpecs.note`에 확인 필요 메모로 남겼습니다.
+- **안전선 유지**: 이번 trial은 임시 patch 검증만 수행했으며 실제 제품 TS, snapshot JSON, Finder/UI, DB/API/Supabase, Control Tower, `merge-product-patch.ts`는 변경하지 않았습니다.
+
 ### v0.7B - Buying Checklist Copy QA (Current)
 - **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
   - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.
