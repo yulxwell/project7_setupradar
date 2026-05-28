@@ -85,6 +85,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **가벼운 Finder 흐름 유지**: 조건을 바꾸거나 초기화하면 더 보기 상태와 펼침 패널을 닫아 다시 기본 3개부터 보이도록 했습니다.
 - **데이터/외부 연동 미변경**: 제품 데이터, status, shellReferences, productImages/productLinks, DB/API/Supabase/Control Tower는 변경하지 않았습니다.
 
+### Pre-Launch SEO & Meta QA - 2026-05-29
+- **기본 metadata 보강**: `metadataBase`, title template, description, Open Graph, Twitter summary card, robots 기본값을 `https://setupradar.pages.dev` 기준으로 정리했습니다.
+- **주요 페이지 title/description 보정**: `/kr`, `/kr/tests`, `/kr/guides`, `/kr/switches`, Mouse Finder, Keyboard Finder, Keyboard Rollover Test에 페이지별 metadata를 추가하거나 문구를 완화했습니다.
+- **sitemap/robots 추가**: 실제 존재하는 `/kr` 정적 route만 포함한 `sitemap.xml`과 검색 허용 `robots.txt` 생성을 추가했습니다. 아직 없는 제품 상세 URL은 sitemap에 넣지 않았습니다.
+- **보류 항목**: `og:image`는 새 이미지 생성 없이 보류했습니다. 커스텀 도메인 연결 시 `metadataBase`, canonical, sitemap URL은 새 도메인 기준으로 교체해야 합니다.
+- **미연동 유지**: Search Console, Analytics, 광고 코드, DB/API/Supabase, Control Tower는 연결하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

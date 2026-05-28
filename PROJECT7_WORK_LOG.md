@@ -701,3 +701,22 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 필터 선택이나 초기화를 할 때 더 보기 상태와 열려 있던 `구매 전 체크` 패널을 닫아 새 조건에서는 다시 기본 3개부터 확인하도록 했다.
 - 추천 점수 계산, basicFilters 매칭, 75%/65% 이하 배열 필터링, 동점 정렬 기준은 변경하지 않았다.
 - 제품 데이터, `status`, `shellReferences`, `productImages`, `productLinks`, DB/API/Supabase, Control Tower는 변경하지 않았다.
+
+## Pre-Launch SEO & Meta QA - 2026-05-29 기록
+
+- 정식 배포 전 SEO 기본 상태를 점검했다.
+- root layout metadata에 `metadataBase`, title template, description, Open Graph, Twitter summary card, robots 기본 설정을 추가했다.
+- 주요 페이지 metadata를 보강했다:
+  - `/kr`: 하드웨어 테스트와 구매 가이드
+  - `/kr/tests`: 하드웨어 테스트 도구
+  - `/kr/guides`: 하드웨어 구매 가이드
+  - `/kr/switches`: 키보드 스위치/축 가이드
+  - `/kr/finder/mouse-fit`: 마우스 찾기
+  - `/kr/finder/keyboard-fit`: 키보드 찾기
+  - `/kr/tests/keyboard-rollover`: 키보드 동시입력 테스트
+- `src/app/sitemap.ts`를 추가해 실제 존재하는 `/kr` 주요 route, 테스트 상세 route, 가이드 상세 route, 스위치 사전 route만 sitemap에 포함했다.
+- `src/app/robots.ts`를 추가해 기본 검색 허용과 sitemap URL을 제공했다.
+- 아직 존재하지 않는 제품 상세 페이지 URL은 sitemap에 넣지 않았다.
+- `og:image`는 새 이미지 생성 없이 보류했다. 향후 브랜드 이미지가 준비되면 Open Graph image를 별도 작업으로 추가한다.
+- 현재 공개 URL이 `https://setupradar.pages.dev/kr`이므로 metadataBase와 sitemap은 pages.dev 기준으로 두었다. 커스텀 도메인 연결 시 해당 URL을 교체해야 한다.
+- Search Console, Analytics, 광고 코드, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.

@@ -1,6 +1,9 @@
 export const metadata = {
-  title: "Keyboard Finder | SetupRadar",
-  description: "나의 타건 취향과 공간에 맞는 최적의 키보드를 찾아보세요",
+  title: "키보드 찾기",
+  description: "배열, 스위치 느낌, 소음, 연결 방식을 기준으로 참고용 키보드 후보를 빠르게 확인합니다.",
+  alternates: {
+    canonical: "/kr/finder/keyboard-fit",
+  },
 };
 
 export default function KeyboardFitLayout({

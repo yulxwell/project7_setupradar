@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { SITE_COPY } from "@/content/kr/siteCopy";
 import { Monitor, MousePointer2, Zap, Mouse, Keyboard, ArrowRight, ShieldCheck, LayoutGrid } from "lucide-react";
 import { TestCard, GuideCard } from "@/components/cards/Cards";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "하드웨어 테스트와 구매 가이드",
+  description: "마우스, 키보드, 모니터 상태를 설치 없이 확인하고 구매 전 헷갈리는 스펙을 초보자 기준으로 정리합니다.",
+  alternates: {
+    canonical: "/kr",
+  },
+};
 
 function HighlightedSentence({ text, highlights }: { text: string; highlights: string[] }) {
   const activeHighlights = highlights.filter(Boolean);

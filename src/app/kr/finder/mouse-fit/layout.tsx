@@ -1,6 +1,9 @@
 export const metadata = {
-  title: "Mouse Fit Finder | SetupRadar",
-  description: "나의 손 크기와 파지법에 맞는 최적의 마우스를 찾아보세요",
+  title: "마우스 찾기",
+  description: "손 크기, 형태, 무게, 연결 방식을 기준으로 참고용 마우스 후보를 빠르게 확인합니다.",
+  alternates: {
+    canonical: "/kr/finder/mouse-fit",
+  },
 };
 
 export default function MouseFitLayout({

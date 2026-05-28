@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { Mouse, Keyboard, Zap, ShieldCheck, Moon } from "lucide-react";
 import { GuideCard } from "@/components/cards/Cards";
 import { GUIDE_CATEGORIES, GUIDES_DATABASE } from "@/content/kr/guides";
 import { getContentDisplay } from "@/content/utils";
+
+export const metadata: Metadata = {
+  title: "하드웨어 구매 가이드",
+  description: "마우스, 키보드, 모니터 구매 전 확인할 스펙과 광고 문구보다 먼저 볼 기준을 초보자 눈높이로 정리합니다.",
+  alternates: {
+    canonical: "/kr/guides",
+  },
+};
 
 const ICON_MAP = {
   Mouse,

@@ -11,7 +11,7 @@ export type FinderOptionGroup<Value extends string = string> = {
   options: FinderOption<Value>[];
 };
 
-export type KeyboardLayoutPreference = "full" | "tkl" | "75%" | "65%" | "60%" | "any";
+export type KeyboardLayoutPreference = "full" | "tkl" | "75%" | "65%" | "any";
 export type KeyboardSwitchPreference = "linear" | "tactile" | "clicky" | "silent" | "unknown";
 export type KeyboardNoisePreference = "quiet" | "any";
 export type KeyboardConnectionPreference = "wired" | "wireless" | "any";
@@ -47,12 +47,8 @@ export const KEYBOARD_LAYOUT_META: Record<KeyboardLayoutPreference, { badge: str
     description: "F열은 남기고 책상 공간을 줄이는 절충형입니다.",
   },
   "65%": {
-    badge: "65%",
-    description: "방향키는 남기되 더 작은 배열을 원할 때 참고합니다.",
-  },
-  "60%": {
-    badge: "60%",
-    description: "작은 크기를 우선하지만 적응이 필요할 수 있습니다.",
+    badge: "65% 이하",
+    description: "방향키가 있는 65%부터 더 작은 배열까지 함께 봅니다.",
   },
   any: {
     badge: "ANY",
@@ -69,8 +65,7 @@ export const KEYBOARD_FINDER_OPTIONS = {
       { value: "full", label: "풀배열", description: "숫자 입력이 많다면 확인해볼 만합니다." },
       { value: "tkl", label: "텐키리스", description: "숫자패드는 줄이고 기본 키는 유지합니다." },
       { value: "75%", label: "75%", description: "F열을 유지한 컴팩트 배열입니다." },
-      { value: "65%", label: "65%", description: "방향키는 남긴 작은 배열입니다." },
-      { value: "60%", label: "60%", description: "작지만 적응이 필요한 배열입니다." },
+      { value: "65%", label: "65% 이하", description: "방향키가 있는 65%와 더 작은 배열을 함께 봅니다." },
       { value: "any", label: "상관없음 / 잘 모르겠음", description: "배열 조건을 적용하지 않습니다." },
     ],
   } satisfies FinderOptionGroup<KeyboardLayoutPreference>,

@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { Monitor, MousePointer2, Zap, Mouse, Keyboard } from "lucide-react";
 import { TestCard } from "@/components/cards/Cards";
 import { TEST_TOOLS } from "@/content/kr/tools";
+
+export const metadata: Metadata = {
+  title: "하드웨어 테스트 도구",
+  description: "모니터, 마우스, 키보드 상태를 브라우저에서 설치 없이 참고용으로 확인하는 테스트 도구 모음입니다.",
+  alternates: {
+    canonical: "/kr/tests",
+  },
+};
 
 const ICON_MAP = {
   Monitor,

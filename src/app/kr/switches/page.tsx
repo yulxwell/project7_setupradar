@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, MessageSquare } from "lucide-react";
 import { SWITCH_DATABASE } from "@/content/kr/switches";
 import { getContentDisplay } from "@/content/utils";
+
+export const metadata: Metadata = {
+  title: "키보드 스위치/축 가이드",
+  description: "리니어, 택타일, 클릭, 저소음, 자석축, 광축, 무접점 계열의 체감 차이를 구매 전 참고용으로 정리합니다.",
+  alternates: {
+    canonical: "/kr/switches",
+  },
+};
 
 export default function SwitchGuidePage() {
   return (
