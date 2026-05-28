@@ -96,7 +96,7 @@ export default function Home() {
       {/* Beginner Guides */}
       <section className="container mx-auto px-4 py-16 bg-[var(--secondary)]/30 rounded-[3rem] border border-[var(--border)]">
         <div className="mb-10">
-          <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">구매 전 헷갈리는 스펙 정리</h2>
+          <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">구매 전 확인하는 스펙 정리</h2>
           <p className="text-sm text-[var(--muted)]">광고 문구보다 실제로 확인해야 할 기준을 초보자 눈높이로 정리했습니다.</p>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
