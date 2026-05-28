@@ -653,3 +653,51 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `npm run snapshot:export`를 실행해 snapshot을 갱신했으며, 결과는 마우스 12개 / 키보드 11개를 유지했다. review 상태와 미공개 shellReferences 관련 warning은 기존 정책성 warning으로 확인했다.
 - `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json`은 반영 후 기준으로 기존 중복 후보 3개, errors 0개로 통과했다.
 - Finder 추천 로직, UI 구조, DB/API/Supabase, Control Tower, 가격/이미지/링크 기능은 변경하지 않았다.
+
+## Weekly Product Patch Intake Automation Roadmap - 2026-05-28 기록
+
+- 주간 제품 후보 3~5개를 Gemini LLM 조사 -> `product_config_patch` 생성 -> validator 실행 -> 수동 반영 -> snapshot/lint/build -> Finder QA로 이어가는 현재 루틴을 문서화했다.
+- 현재 불편한 점으로 Gemini 결과 마크다운에서 JSON 코드블록을 사람이 직접 찾아 복사해야 하는 점, tmp JSON 파일을 수동으로 만들어야 하는 점, validator 명령을 따로 실행해야 하는 점을 정리했다.
+- 향후 후보로 `tmp/gemini-weekly-result.md`에서 `product_config_patch` JSON 코드블록을 추출해 `tmp/product-patch-weekly-candidates.json`을 만들고 validator까지 이어 실행하는 로컬 반자동 intake 흐름을 기록했다.
+- 후보 스크립트 이름은 `scripts/extract-product-patch-from-markdown.ts`, package script 후보는 `product-patch:extract` 및 `product-patch:intake`로 정리했다.
+- 이번 작업에서는 intake 스크립트, package script, OpenRouter/Gemini/Hermes API 연결, 제품 데이터 반영, snapshot 수정, Finder/UI, Control Tower를 모두 만들거나 수정하지 않았다.
+
+## Weekly Product Manual Apply - 2026-05-28 기록
+
+- validator를 통과한 주간 제품 후보 3개를 실제 제품 TS 데이터에 `review` 상태로 수동 추가했다.
+- `src/content/kr/products/mice.ts`에 `Zowie U2`, `Lamzu Maya`를 추가했다.
+- `src/content/kr/products/keyboards.ts`에 `NuPhy Halo75 V2`를 추가했다.
+- 최상위 `sources` 필드는 현재 제품 타입에 넣지 않고, 공식 제품 페이지 기준 확인 필요 사항은 `rawSpecs.note`에 요약했다.
+- `shellReferences`는 자동 확정하지 않았고, `productImages`와 `productLinks`도 추가하지 않았다.
+- `Lamzu Maya`의 `정밀한 컨트롤 환경` 표현은 Project7 톤에 맞춰 `민감한 설정을 선호하는 사용자에게 참고할 만합니다`로 완화했다.
+- 반영 후 `npm run product-patch:validate -- ./tmp/product-patch-weekly-candidates.json`은 신규 후보 0개, 기존 중복 후보 3개, errors 0개로 통과했다.
+- `npm run snapshot:export`를 실행해 snapshot을 갱신했고, 마우스 14개 / 키보드 12개로 생성되었다.
+- Finder 추천 로직, UI 구조, DB/API/Supabase, Control Tower, intake 자동화 스크립트, 가격/이미지/링크 기능은 변경하지 않았다.
+
+## Keyboard Finder Layout Filter Copy - 2026-05-29 기록
+
+- Keyboard Finder 배열 선택지에서 별도 `60%` 옵션을 제거했다.
+- 기존 `65%` 옵션 문구를 `65% 이하`로 바꿔 65%와 더 작은 배열을 함께 보는 선택지로 정리했다.
+- 내부 매칭에서는 60%로 추정되는 제품도 `65% 이하` 선택에 포함되도록 보정했다.
+- Finder 추천 점수 구조, 제품 데이터, DB/API/Supabase, Control Tower는 변경하지 않았다.
+
+## Weekly Product Finder QA - 2026-05-29 기록
+
+- 주간 신규 review 제품 3개(`Zowie U2`, `Lamzu Maya`, `NuPhy Halo75 V2`)가 Finder 후보군에 자연스럽게 포함되는지 QA했다.
+- Mouse Finder 코드 기준으로 `보통 / 대칭형 / 가벼운 편 / 무선` 조합에서 `Zowie U2`와 `Lamzu Maya`는 기존 대칭형 무선 중형 제품들과 같은 점수권에 들어간다.
+- 실제 화면 기준으로는 현재 결과가 top 3만 표시되고, 동점일 때 데이터 순서를 따르기 때문에 `Zowie U2`와 `Lamzu Maya`가 기존 동점 후보 뒤로 밀려 바로 노출되지 않았다.
+- Keyboard Finder 코드 기준으로 `75% / 무선 / 잘 모르겠음 / 상관없음` 조합에서 `NuPhy Halo75 V2`는 `Rainy75`, `AULA F75`, `Keychron V1 Max`와 같은 점수권에 들어간다.
+- 실제 화면 기준으로는 top 3 제한 때문에 `NuPhy Halo75 V2`가 4번째 동점 후보로 밀려 바로 노출되지 않았다.
+- `65% 이하` 선택에서는 `NuPhy Halo75 V2`가 억지로 끼지 않고, 60% 계열로 추정되는 `Wooting 60HE`만 65% 이하 후보로 확인되었다.
+- 신규 3개 제품의 `basicFilters`는 현재 데이터 기준으로 큰 오류가 없어 보정하지 않았다.
+- 결과 카드와 `구매 전 체크` 패널 구조는 깨지지 않았고, 내부 `review` 상태값과 빈 `shellReferences`, `productImages`, `productLinks`는 화면에 노출되지 않았다.
+- 이번 QA에서는 Finder 추천 로직, UI 구조, 제품 상세 패널, DB/API/Supabase, Control Tower를 변경하지 않았다.
+
+## Finder Result More UX - 2026-05-29 기록
+
+- Mouse Finder와 Keyboard Finder 결과 영역에 `후보 더 보기` / `접기` 버튼을 추가했다.
+- 기본 표시 개수는 기존과 동일하게 3개로 유지하고, 확장 시 같은 정렬 순서의 전체 후보를 보여준다.
+- 결과가 3개 이하이면 더 보기 버튼을 숨긴다.
+- 필터 선택이나 초기화를 할 때 더 보기 상태와 열려 있던 `구매 전 체크` 패널을 닫아 새 조건에서는 다시 기본 3개부터 확인하도록 했다.
+- 추천 점수 계산, basicFilters 매칭, 75%/65% 이하 배열 필터링, 동점 정렬 기준은 변경하지 않았다.
+- 제품 데이터, `status`, `shellReferences`, `productImages`, `productLinks`, DB/API/Supabase, Control Tower는 변경하지 않았다.

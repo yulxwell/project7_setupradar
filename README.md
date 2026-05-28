@@ -64,6 +64,27 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **차단 검사 확인**: 금지 표현 샘플과 허용값 외 `basicFilters` 샘플은 errors로 차단되며, 오류 위치와 필드가 콘솔에 표시됩니다.
 - **안전선 유지**: QA는 임시 JSON 파일과 validator 출력 보정만 수행했으며 실제 제품 TS, snapshot JSON, Finder, UI, DB/API/Supabase, Control Tower는 수정하지 않았습니다.
 
+### Weekly Product Patch Intake Automation Roadmap - 2026-05-28
+- **주간 제품 추가 루틴 문서화**: Gemini LLM 조사 결과에서 `product_config_patch` JSON을 수동으로 복사해 validator를 실행하고, 통과한 제품만 `review` 상태로 수동 반영하는 현재 운영 흐름을 정리했습니다.
+- **향후 반자동 intake 후보**: Gemini 결과 전체 마크다운을 `tmp/gemini-weekly-result.md`에 저장하면 JSON 코드블록을 추출하고 `tmp/product-patch-weekly-candidates.json`을 만든 뒤 validator까지 이어 실행하는 로컬 스크립트 후보를 [docs/product-patch-merge-policy.md](file:///Users/jilee/antigravity/src/project7/docs/product-patch-merge-policy.md)에 기록했습니다.
+- **구현 보류**: `scripts/extract-product-patch-from-markdown.ts`, `product-patch:intake`, package script, API 연결은 만들지 않았습니다. 현재는 수동 복사와 `npm run product-patch:validate` 흐름을 유지합니다.
+
+### Weekly Product Manual Apply - 2026-05-28
+- **주간 신규 후보 3개 수동 반영**: validator를 통과한 `Zowie U2`, `NuPhy Halo75 V2`, `Lamzu Maya`를 제품 TS 데이터에 `review` 상태로 추가했습니다.
+- **안전 반영 원칙 유지**: 최상위 `sources`, `productImages`, `productLinks`, 자동 확정 `shellReferences`는 추가하지 않았고, 출처 및 옵션 확인 필요 사항은 `rawSpecs.note`에 보수적으로 남겼습니다.
+- **검증 완료**: 반영 후 validator는 신규 후보 0개 / 기존 중복 후보 3개로 감지했고, snapshot export 결과 마우스 14개 / 키보드 12개로 갱신되었습니다. Finder 로직, UI, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
+
+### Weekly Product Finder QA - 2026-05-29
+- **주간 신규 제품 Finder QA**: `Zowie U2`, `Lamzu Maya`, `NuPhy Halo75 V2`가 Finder 점수 계산상 후보군에 포함되는지 확인했습니다.
+- **top 3 노출 한계 확인**: 현재 Finder는 결과 3개만 보여주며 동점일 때 데이터 순서를 따르므로, 신규 제품이 기존 동점 후보 뒤로 밀려 화면에 바로 보이지 않는 조합이 있습니다.
+- **보정 보류**: 신규 제품 `basicFilters`는 현재 형태/무게/연결/크기/배열 기준에서 큰 오류가 없어 억지 보정하지 않았습니다. 향후 결과 수 확대 또는 동점 처리 정책은 별도 UX/추천 로직 작업으로 검토합니다.
+
+### Finder Result More UX - 2026-05-29
+- **기본 3개 + 더 보기 구조 추가**: Mouse Finder와 Keyboard Finder 결과는 기존처럼 기본 3개만 먼저 보여주고, 후보가 4개 이상이면 `후보 더 보기` 버튼으로 점수가 비슷한 전체 후보를 확인할 수 있게 했습니다.
+- **추천 로직 유지**: 점수 계산, basicFilters 매칭, 동점 정렬 기준은 변경하지 않고 이미 계산된 결과 배열의 표시 개수만 조정했습니다.
+- **가벼운 Finder 흐름 유지**: 조건을 바꾸거나 초기화하면 더 보기 상태와 펼침 패널을 닫아 다시 기본 3개부터 보이도록 했습니다.
+- **데이터/외부 연동 미변경**: 제품 데이터, status, shellReferences, productImages/productLinks, DB/API/Supabase/Control Tower는 변경하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

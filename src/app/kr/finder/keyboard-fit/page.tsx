@@ -64,10 +64,27 @@ function getKeyboardBasicFilters(keyboard: (typeof KEYBOARD_DATABASE)[number]): 
   };
 }
 
-function matchesKeyboardLayout(selectedLayout: KeyboardFinderValues["layout"], productLayout: KeyboardBasicFilters["layout"]) {
+function getKeyboardSpecificLayout(keyboard: (typeof KEYBOARD_DATABASE)[number]): KeyboardFinderValues["layout"] | null {
+  if (keyboard.layout === "full" || keyboard.layout === "tkl" || keyboard.layout === "75%" || keyboard.layout === "65%") {
+    return keyboard.layout;
+  }
+
+  const layoutText = [keyboard.name, keyboard.layout, ...keyboard.features, ...(keyboard.specTags ?? [])].join(" ");
+  if (/\b75%|\b75\b/i.test(layoutText)) return "75%";
+  if (/\b65%|\b65\b/i.test(layoutText)) return "65%";
+  if (/\b60%|\b60\b/i.test(layoutText)) return "65%";
+
+  return null;
+}
+
+function matchesKeyboardLayout(
+  selectedLayout: KeyboardFinderValues["layout"],
+  keyboard: (typeof KEYBOARD_DATABASE)[number],
+  productLayout: KeyboardBasicFilters["layout"],
+) {
   if (selectedLayout === "any") return true;
-  if (selectedLayout === "75%" || selectedLayout === "65%" || selectedLayout === "60%") {
-    return productLayout === "compact";
+  if (selectedLayout === "75%" || selectedLayout === "65%") {
+    return getKeyboardSpecificLayout(keyboard) === selectedLayout;
   }
   return productLayout === selectedLayout;
 }
@@ -93,16 +110,12 @@ function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: Key
   const selectedLayout = values.layout === "any" ? null : values.layout;
 
   if (selectedLayout) {
-    if (matchesKeyboardLayout(selectedLayout, filters.layout)) {
+    if (matchesKeyboardLayout(selectedLayout, keyboard, filters.layout)) {
       score += 3;
       reasons.push("선택한 배열 조건과 맞을 수 있습니다.");
     } else {
       cautions.push("선호 배열과 다를 수 있어 키 배치 적응 여부를 확인해보세요.");
     }
-  }
-
-  if (values.layout === "60%") {
-    cautions.push("현재 기본 필터에서는 60%를 compact 후보와 함께 넓게 봅니다.");
   }
 
   if (values.switchFeel !== "unknown") {
@@ -159,7 +172,7 @@ const LAYOUT_LABELS = {
   full: "풀배열",
   tkl: "텐키리스",
   "75%": "75%",
-  "65%": "65%",
+  "65%": "65% 이하",
   compact: "컴팩트",
 } as const;
 
@@ -284,19 +297,32 @@ function CompactOptionGroup({
 export default function KeyboardFitPage() {
   const [values, setValues] = useState<KeyboardFinderValues>(KEYBOARD_FINDER_DEFAULTS);
   const [expandedKeyboardId, setExpandedKeyboardId] = useState<string | null>(null);
+  const [showMoreResults, setShowMoreResults] = useState(false);
 
   const scoredKeyboards = useMemo(
-    () => KEYBOARD_DATABASE
-      .map((keyboard) => scoreKeyboard(keyboard, values))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 3),
+    () => {
+      const scored = KEYBOARD_DATABASE
+        .map((keyboard) => scoreKeyboard(keyboard, values))
+        .sort((a, b) => b.score - a.score);
+
+      if (values.layout === "75%" || values.layout === "65%") {
+        return scored
+          .filter(({ keyboard }) => getKeyboardSpecificLayout(keyboard) === values.layout);
+      }
+
+      return scored;
+    },
     [values],
   );
+  const visibleKeyboards = showMoreResults ? scoredKeyboards : scoredKeyboards.slice(0, 3);
+  const hasMoreResults = scoredKeyboards.length > 3;
 
   const selectedLayoutMeta = KEYBOARD_LAYOUT_META[values.layout];
 
   const updateValue = <Key extends keyof KeyboardFinderValues>(key: Key, value: KeyboardFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+    setShowMoreResults(false);
+    setExpandedKeyboardId(null);
   };
 
   const toggleKeyboardDetail = (keyboardId: string) => {
@@ -325,7 +351,11 @@ export default function KeyboardFitPage() {
           </p>
         </div>
         <button
-          onClick={() => setValues(KEYBOARD_FINDER_DEFAULTS)}
+          onClick={() => {
+            setValues(KEYBOARD_FINDER_DEFAULTS);
+            setShowMoreResults(false);
+            setExpandedKeyboardId(null);
+          }}
           className="inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-3 py-2 text-xs font-bold text-[var(--primary)] transition-colors hover:bg-[var(--secondary)]/80"
         >
           <RotateCcw className="h-3.5 w-3.5" />
@@ -380,9 +410,19 @@ export default function KeyboardFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화합니다.</p>
           </div>
 
-          {scoredKeyboards.map(({ keyboard }) => {
+          {scoredKeyboards.length === 0 && (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
+              <p className="text-sm font-bold text-[var(--primary)]">선택한 배열과 정확히 맞는 샘플이 아직 없습니다.</p>
+              <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">
+                75%와 65% 이하는 구분해서 보고 있습니다. 후보를 넓게 보려면 배열을 상관없음으로 바꿔보세요.
+              </p>
+            </div>
+          )}
+
+          {visibleKeyboards.map(({ keyboard }) => {
             const display = getContentDisplay(keyboard);
-            const layoutMeta = KEYBOARD_LAYOUT_META[keyboard.layout === "compact" ? "60%" : keyboard.layout];
+            const specificLayout = getKeyboardSpecificLayout(keyboard) ?? "65%";
+            const layoutMeta = KEYBOARD_LAYOUT_META[specificLayout];
             const communityNote = display.communityNote || "키보드 체감은 스위치, 보강판, 흡음재에 따라 다르게 느껴질 수 있습니다.";
             const specRows = getKeyboardSpecRows(keyboard);
             const additionalSpecRows = getKeyboardAdditionalSpecRows(keyboard);
@@ -481,6 +521,21 @@ export default function KeyboardFitPage() {
               </article>
             );
           })}
+
+          {hasMoreResults && (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 text-center">
+              <p className="mb-2 text-[11px] leading-relaxed text-[var(--muted)]">
+                조건에 맞는 다른 후보도 확인해 보세요.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowMoreResults((current) => !current)}
+                className="inline-flex w-full items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-xs font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                {showMoreResults ? "접기" : "후보 더 보기"}
+              </button>
+            </div>
+          )}
 
           <div className="rounded-xl border border-[var(--accent)]/10 bg-[var(--accent)]/5 p-3">
             <div className="flex gap-2">

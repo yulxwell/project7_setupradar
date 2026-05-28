@@ -239,17 +239,21 @@ function CompactOptionGroup({
 export default function MouseFitPage() {
   const [values, setValues] = useState<MouseFinderValues>(MOUSE_FINDER_DEFAULTS);
   const [expandedMouseId, setExpandedMouseId] = useState<string | null>(null);
+  const [showMoreResults, setShowMoreResults] = useState(false);
 
   const scoredMice = useMemo(
     () => MOUSE_DATABASE
       .map((mouse) => scoreMouse(mouse, values))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 3),
+      .sort((a, b) => b.score - a.score),
     [values],
   );
+  const visibleMice = showMoreResults ? scoredMice : scoredMice.slice(0, 3);
+  const hasMoreResults = scoredMice.length > 3;
 
   const updateValue = <Key extends keyof MouseFinderValues>(key: Key, value: MouseFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+    setShowMoreResults(false);
+    setExpandedMouseId(null);
   };
 
   const toggleMouseDetail = (mouseId: string) => {
@@ -278,7 +282,11 @@ export default function MouseFitPage() {
           </p>
         </div>
         <button
-          onClick={() => setValues(MOUSE_FINDER_DEFAULTS)}
+          onClick={() => {
+            setValues(MOUSE_FINDER_DEFAULTS);
+            setShowMoreResults(false);
+            setExpandedMouseId(null);
+          }}
           className="inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-3 py-2 text-xs font-bold text-[var(--primary)] transition-colors hover:bg-[var(--secondary)]/80"
         >
           <RotateCcw className="h-3.5 w-3.5" />
@@ -324,7 +332,7 @@ export default function MouseFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">가능한 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
-          {scoredMice.map(({ mouse }) => {
+          {visibleMice.map(({ mouse }) => {
             const display = getContentDisplay(mouse);
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
             const specRows = getMouseSpecRows(mouse);
@@ -441,6 +449,21 @@ export default function MouseFitPage() {
               </article>
             );
           })}
+
+          {hasMoreResults && (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 text-center">
+              <p className="mb-2 text-[11px] leading-relaxed text-[var(--muted)]">
+                점수가 비슷한 후보를 더 볼 수 있습니다.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowMoreResults((current) => !current)}
+                className="inline-flex w-full items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-xs font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                {showMoreResults ? "접기" : "후보 더 보기"}
+              </button>
+            </div>
+          )}
         </aside>
       </div>
     </div>
