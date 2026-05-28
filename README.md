@@ -52,6 +52,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **필드별 보수적 병합 정책**: `id`/`slug`/`status`는 기존 값을 유지하고, `basicFilters` 변경은 Finder 결과에 영향을 줄 수 있어 반드시 보고 대상으로 둡니다. `shellReferences`, `productImages`, `productLinks`는 자동 병합하지 않습니다.
 - **구현 보류선 유지**: 이번 작업은 정책 문서화이며 `merge-product-patch.ts`, 실제 제품 데이터 수정, snapshot 수동 수정, Supabase/API/DB, Control Tower 변경은 하지 않았습니다.
 
+### Product Patch Dry-run Validator - 2026-05-28
+- **제품 patch 사전 검증 스크립트 추가**: Gemini LLM 또는 Control Tower가 만든 `product_config_patch`를 실제 반영하기 전 `npm run product-patch:validate -- ./tmp/product-patch.json` 명령으로 검사할 수 있게 했습니다.
+- **dry-run 분류만 수행**: 신규 추가 후보, 기존 중복 후보, 자동 보강 후보, 수동 검토 필요 필드, 반영 보류 필드를 콘솔에 보고하며 실제 `src/content` 제품 파일은 수정하지 않습니다.
+- **안전 검사 포함**: patch 내부 `id`/`slug` 중복, category/status/basicFilters 허용값, 금지 표현, shellReferences 기본 구조를 검사합니다.
+- **자동 병합 보류**: `merge-product-patch.ts`, 제품 파일 자동 수정, DB/API/Supabase, Control Tower 연동은 여전히 추가하지 않았습니다.
+
 ### v0.7B - Buying Checklist Copy QA (Current)
 - **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
   - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.

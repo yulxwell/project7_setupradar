@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "snapshot:export": "tsx scripts/export-content-snapshots.ts"
+    "snapshot:export": "tsx scripts/export-content-snapshots.ts",
+    "product-patch:validate": "tsx scripts/validate-product-patch.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -592,3 +592,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
   - ATK A9 Ultimate: 쉘 비교 자동 병합 금지, 8K 동글 포함 여부는 `buyingCheck` 또는 `rawSpecs.note` 후보.
 - 향후 `merge-product-patch.ts`를 만들 경우 먼저 dry-run validator와 dry-run 보고 형식을 구현하고, 중복 제품 업데이트는 수동 승인 후 적용하는 순서로 진행한다.
 - 이번 작업은 정책 문서화만 수행했으며 `src/content/kr/products/*`, `src/content/types.ts`, `src/types.ts`, snapshot JSON, export script, Finder 로직, UI, DB/API/Supabase, Control Tower는 수정하지 않았다.
+
+## Product Patch Dry-run Validator - 2026-05-28 기록
+
+- `scripts/validate-product-patch.ts`를 추가해 Gemini LLM 또는 Control Tower가 만든 `product_config_patch`를 실제 반영 전에 검사할 수 있게 했다.
+- `package.json`에 `npm run product-patch:validate -- ./tmp/product-patch.json` 명령을 추가했다. 기존 `tsx` devDependency를 재사용했으며 새 의존성은 추가하지 않았다.
+- validator는 patch root의 `projectId`, `type`, `locale`, `products` 구조를 확인하고, 제품별 `id`, `slug`, `brand`, `name`, `category`, `status`, `basicFilters` 허용값을 검사한다.
+- patch 내부 `id`/`slug` 중복과 금지 표현을 발견하면 실패로 처리한다.
+- 기존 `MOUSE_DATABASE`와 `KEYBOARD_DATABASE`를 읽어 `id`, `slug`, `brand + name` 유사성 기준으로 신규 추가 후보와 기존 중복 후보를 분류한다.
+- 중복 제품은 자동 반영하지 않고 자동 보강 후보, 수동 검토 필요 필드, 반영 보류 필드로만 dry-run 보고한다.
+- `shellReferences`, `productImages`, `productLinks`, 최상위 `sources`, `status` 변경은 반영 보류 대상으로 분류한다.
+- 이번 작업은 dry-run validator만 구현했으며 `merge-product-patch.ts`, 실제 제품 파일 수정, snapshot JSON 수동 수정, Finder 로직, UI, DB/API/Supabase, Control Tower 연동은 추가하지 않았다.
