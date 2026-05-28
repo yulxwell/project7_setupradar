@@ -335,6 +335,10 @@ function classifyDuplicate(product: PatchProduct, existing: ExistingProduct) {
 
 function validateProduct(product: PatchProduct, index: number, summary: ValidationSummary, existing: ExistingProduct[]) {
   const label = `products[${index}] ${stringifyLabel(product)}`;
+  const initialErrorCount = summary.errors.length;
+
+  collectBannedTerms(product, `products[${index}]`, summary);
+
   if (!isNonEmptyString(product.id)) summary.errors.push(`${label}: id가 필요합니다.`);
   if (!isNonEmptyString(product.slug)) summary.errors.push(`${label}: slug가 필요합니다.`);
   if (!isNonEmptyString(product.brand)) summary.errors.push(`${label}: brand가 필요합니다.`);
@@ -352,6 +356,10 @@ function validateProduct(product: PatchProduct, index: number, summary: Validati
     validateShellReferences(product, label, summary);
   } else if (product.shellReferences !== undefined) {
     summary.warnings.push(`${label}: 키보드 제품의 shellReferences는 현재 사용하지 않습니다.`);
+  }
+
+  if (summary.errors.length > initialErrorCount) {
+    return;
   }
 
   const duplicate = findDuplicate(product, existing);
@@ -409,7 +417,6 @@ function validatePatchEnvelope(patch: unknown, summary: ValidationSummary): Patc
 
   validateNoDuplicates(products, "id", summary);
   validateNoDuplicates(products, "slug", summary);
-  collectBannedTerms(productPatch.products, "products", summary);
 
   return products;
 }
@@ -426,7 +433,7 @@ function printDecision(decision: ProductDecision) {
 }
 
 function printSummary(summary: ValidationSummary) {
-  console.log("\nProduct patch dry-run summary");
+  console.log("\n제품 patch dry-run 요약");
   console.log(`- 신규 추가 후보: ${summary.newCandidates.length}`);
   console.log(`- 기존 중복 후보: ${summary.duplicateCandidates.length}`);
   console.log(`- 자동 보강 후보 필드: ${summary.duplicateCandidates.reduce((count, item) => count + item.autoMergeCandidates.length, 0)}`);
@@ -444,11 +451,11 @@ function printSummary(summary: ValidationSummary) {
     summary.duplicateCandidates.forEach(printDecision);
   }
   if (summary.warnings.length > 0) {
-    console.log("\nWarnings");
+    console.log("\n확인 필요");
     summary.warnings.forEach((warning) => console.log(`- ${warning}`));
   }
   if (summary.errors.length > 0) {
-    console.error("\nErrors");
+    console.error("\n차단 오류");
     summary.errors.forEach((error) => console.error(`- ${error}`));
   }
 }

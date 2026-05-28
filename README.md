@@ -58,6 +58,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **안전 검사 포함**: patch 내부 `id`/`slug` 중복, category/status/basicFilters 허용값, 금지 표현, shellReferences 기본 구조를 검사합니다.
 - **자동 병합 보류**: `merge-product-patch.ts`, 제품 파일 자동 수정, DB/API/Supabase, Control Tower 연동은 여전히 추가하지 않았습니다.
 
+### Product Patch Validator Real Sample QA - 2026-05-28
+- **실전 샘플 QA 완료**: 중복 제품, 신규 후보, 금지 표현, 잘못된 `basicFilters` 샘플을 `tmp/` 아래 임시 patch로 만들어 validator를 실행했습니다.
+- **분류 결과 확인**: Logitech G304, AULA F75, ATK A9 Ultimate는 기존 중복 후보 3개로 잡혔고, 테스트용 신규 마우스/키보드는 신규 추가 후보 2개로 분류되었습니다.
+- **차단 검사 확인**: 금지 표현 샘플과 허용값 외 `basicFilters` 샘플은 errors로 차단되며, 오류 위치와 필드가 콘솔에 표시됩니다.
+- **안전선 유지**: QA는 임시 JSON 파일과 validator 출력 보정만 수행했으며 실제 제품 TS, snapshot JSON, Finder, UI, DB/API/Supabase, Control Tower는 수정하지 않았습니다.
+
 ### v0.7B - Buying Checklist Copy QA (Current)
 - **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
   - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.

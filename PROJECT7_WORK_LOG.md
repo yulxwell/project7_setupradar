@@ -603,3 +603,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 중복 제품은 자동 반영하지 않고 자동 보강 후보, 수동 검토 필요 필드, 반영 보류 필드로만 dry-run 보고한다.
 - `shellReferences`, `productImages`, `productLinks`, 최상위 `sources`, `status` 변경은 반영 보류 대상으로 분류한다.
 - 이번 작업은 dry-run validator만 구현했으며 `merge-product-patch.ts`, 실제 제품 파일 수정, snapshot JSON 수동 수정, Finder 로직, UI, DB/API/Supabase, Control Tower 연동은 추가하지 않았다.
+
+## Product Patch Validator Real Sample QA - 2026-05-28 기록
+
+- validator 실전 QA를 위해 `tmp/product-patch-duplicate-test.json`, `tmp/product-patch-new-candidate-test.json`, `tmp/product-patch-forbidden-terms-test.json`, `tmp/product-patch-invalid-filter-test.json` 임시 샘플을 만들었다.
+- 중복 제품 샘플에서는 Logitech G304, AULA F75, ATK A9 Ultimate가 신규 추가 후보 0개, 기존 중복 후보 3개로 분류되는 것을 확인했다.
+- 신규 제품 샘플에서는 테스트용 마우스/키보드 2개가 신규 추가 후보로 분류되는 것을 확인했다.
+- 금지 표현 샘플은 `카피쉘`, `원본 쉘`, `최고`, `완벽`, `무조건` 위치를 차단 오류로 출력했다.
+- 잘못된 필터 샘플은 `mouse.basicFilters.weight = "super_light"`, `keyboard.basicFilters.layout = "75"`를 허용값 오류로 차단했다.
+- 실패한 제품이 신규 후보 목록에 함께 표시되면 운영자가 헷갈릴 수 있어, 제품별 오류가 있는 경우 후보 분류에 넣지 않도록 validator 출력 흐름을 보정했다.
+- 콘솔 제목을 `제품 patch dry-run 요약`, `확인 필요`, `차단 오류`처럼 한국어 중심으로 정리했다.
+- 이번 QA는 임시 JSON 샘플과 validator 출력 보정, 문서 기록만 수행했으며 실제 제품 TS, snapshot JSON, Finder/UI, DB/API/Supabase, Control Tower, `merge-product-patch.ts`는 수정하지 않았다.
