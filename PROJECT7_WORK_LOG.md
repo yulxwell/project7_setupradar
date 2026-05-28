@@ -623,3 +623,20 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개, warnings 0개로 통과했다.
 - 이번 작업 환경에는 Gemini 전용 실행 도구가 없어, 동일한 `product_config_patch` schema를 사용해 공식/제조사 자료 기반 trial patch를 작성했다.
 - 이번 trial은 임시 patch 검증만 수행했으며 실제 제품 TS, snapshot JSON, Finder/UI, DB/API/Supabase, Control Tower, `merge-product-patch.ts`는 수정하지 않았다.
+
+## New Product Manual Apply Trial - 2026-05-28 기록
+
+- `tmp/product-patch-real-new-trial.json`에서 validator를 통과한 신규 후보 3개를 수동으로 제품 TS 데이터에 추가했다.
+- 마우스 2개를 `src/content/kr/products/mice.ts`에 추가했다:
+  - `Pulsar Xlite V3 Large`
+  - `Ninjutso Sora V2 8K`
+- 키보드 1개를 `src/content/kr/products/keyboards.ts`에 추가했다:
+  - `Keychron V1 Max`
+- 세 제품 모두 `status: "review"` 상태로 추가했다.
+- 최상위 `sources` 필드는 추가하지 않고, 공식 제품 페이지 기준 정보와 확인 필요 사항은 `rawSpecs.note`에 요약했다.
+- `shellReferences`는 자동 확정하지 않았고, `productImages`와 `productLinks`도 추가하지 않았다.
+- 반영 후 `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json`을 다시 실행했으며, 신규 후보 0개 / 기존 중복 후보 3개 / errors 0개로 감지되는 것을 확인했다.
+- `npm run snapshot:export`를 실행해 snapshot을 갱신했다. 결과는 마우스 12개, 키보드 11개이며 review 상태 제품과 미공개 shellReferences 관련 warning은 기존 정책에 맞는 확인 항목으로 출력되었다.
+- `npm run lint`와 `npm run build`를 통과했다.
+- Finder 로직과 UI는 변경하지 않았다. Mouse/Keyboard Finder는 기존처럼 제품 DB를 읽어 `basicFilters` 기반으로 점수화하고 상위 3개를 표시하므로, 새 review 제품도 구조상 후보군에 포함될 수 있다.
+- 이번 작업은 수동 반영 trial이며 `merge-product-patch.ts`, 자동 병합 스크립트, DB/API/Supabase, Control Tower, 가격/이미지/링크 기능은 추가하지 않았다.
