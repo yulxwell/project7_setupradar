@@ -76,6 +76,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **미확정 영역 보류**: `sources` 최상위 필드, `shellReferences`, `productImages`, `productLinks`는 추가하지 않았고, 불확실한 스펙은 `rawSpecs.note`에 확인 필요 메모로 남겼습니다.
 - **검증 완료**: 반영 후 validator는 해당 patch를 기존 중복 후보 3개로 감지했으며, `npm run snapshot:export`, `npm run lint`, `npm run build`를 통과했습니다.
 
+### New Product Finder QA - 2026-05-28
+- **신규 제품 Finder 노출 확인**: `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max`가 Mouse/Keyboard Finder에서 후보로 노출되는지 로컬 UI 기준으로 확인했습니다.
+- **basicFilters 최소 보정**: `Ninjutso Sora V2 8K`는 실제 크기 기준 작은 편에 가까운 대칭형으로 판단해 `handSizeRange`와 `basicFilters.size`를 `small`로 보정했습니다.
+- **확인 조합**: Xlite V3 Large는 `큰 편 / 오른손용 비대칭형 / 가벼운 편 / 무선`, Sora V2 8K는 `작은 편 / 대칭형 / 가벼운 편 / 무선`, V1 Max는 `75% / 무선` 조합에서 결과 카드 노출을 확인했습니다.
+- **안전선 유지**: Finder 추천 로직, UI 구조, 상세 패널, DB/API/Supabase, Control Tower, 제품 이미지/링크/가격 기능은 변경하지 않았습니다.
+
 ### v0.7B - Buying Checklist Copy QA (Current)
 - **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
   - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.

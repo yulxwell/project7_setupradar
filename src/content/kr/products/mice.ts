@@ -608,7 +608,7 @@ export const MOUSE_DATABASE: MouseContent[] = [
     weight: 39,
     sensor: "AIMNINJA",
     recommendedGrips: ["claw", "fingertip"],
-    handSizeRange: "medium",
+    handSizeRange: "small",
     status: "review",
     updatedAt: "2026-05-28",
     priceRange: "mid",
@@ -617,7 +617,7 @@ export const MOUSE_DATABASE: MouseContent[] = [
       shape: "symmetrical",
       weight: "ultralight",
       connection: "wireless",
-      size: "medium",
+      size: "small",
       price: "mid",
     },
     advancedFilters: {
@@ -636,7 +636,7 @@ export const MOUSE_DATABASE: MouseContent[] = [
       rgbLighting: false,
     },
     rawSpecs: {
-      note: "공식 제품 페이지는 Sora V2 8K를 AIMNINJA 센서와 SnappyFire 8K 수신기 포함 구성으로 안내합니다. 세부 크기와 무게는 판매처/버전 표기가 섞일 수 있어 공개 전 재확인이 필요합니다.",
+      note: "공식 제품 페이지는 Sora V2 8K를 AIMNINJA 센서와 SnappyFire 8K 수신기 포함 구성으로 안내합니다. 119 x 60 x 37mm 전후의 작은 편에 가까운 대칭형으로 볼 수 있으며, 세부 크기와 무게는 판매처/버전 표기가 섞일 수 있어 공개 전 재확인이 필요합니다.",
     },
     specTags: ["Ultralight", "Wireless", "8K receiver"],
     aiSummaryKo: "대칭형 초경량 무선 마우스 계열로, 8K 수신기 포함 구성을 확인할 수 있는 Sora V2 후속 계열입니다.",

@@ -640,3 +640,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `npm run lint`와 `npm run build`를 통과했다.
 - Finder 로직과 UI는 변경하지 않았다. Mouse/Keyboard Finder는 기존처럼 제품 DB를 읽어 `basicFilters` 기반으로 점수화하고 상위 3개를 표시하므로, 새 review 제품도 구조상 후보군에 포함될 수 있다.
 - 이번 작업은 수동 반영 trial이며 `merge-product-patch.ts`, 자동 병합 스크립트, DB/API/Supabase, Control Tower, 가격/이미지/링크 기능은 추가하지 않았다.
+
+## New Product Finder QA - 2026-05-28 기록
+
+- 신규 review 제품 3개가 Finder 후보군에서 자연스럽게 노출되는지 로컬 UI 기준으로 확인했다.
+- Mouse Finder에서 `오른손용 비대칭형 / 가벼운 편 / 무선 / 큰 편` 조합으로 `Pulsar Xlite V3 Large`가 결과 카드에 노출되는 것을 확인했다.
+- `Ninjutso Sora V2 8K`는 기존 대칭형 중형 무선 제품들과 동점으로 묶여 top 3 밖으로 밀리는 것을 확인했고, 실제 크기 119 x 60 x 37mm 기준 작은 편에 가까운 대칭형으로 보는 것이 더 자연스러워 `handSizeRange`와 `basicFilters.size`를 `small`로 최소 보정했다.
+- 보정 후 Mouse Finder에서 `대칭형 / 가벼운 편 / 무선 / 작은 편` 조합으로 `Sora V2 8K`가 결과 카드에 노출되는 것을 확인했다.
+- Keyboard Finder에서 `75% / 무선` 조합으로 `Keychron V1 Max`가 결과 카드에 노출되는 것을 확인했다.
+- 결과 카드의 브랜드/제품명/요약/핵심 스펙과 `구매 전 체크` 펼침 패널이 깨지지 않는 것을 확인했고, 사용자 화면에 내부 `review` 상태값은 노출되지 않았다.
+- `shellReferences`, `productImages`, `productLinks`는 새 제품에 추가하거나 화면에 노출하지 않았다.
+- `npm run snapshot:export`를 실행해 snapshot을 갱신했으며, 결과는 마우스 12개 / 키보드 11개를 유지했다. review 상태와 미공개 shellReferences 관련 warning은 기존 정책성 warning으로 확인했다.
+- `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json`은 반영 후 기준으로 기존 중복 후보 3개, errors 0개로 통과했다.
+- Finder 추천 로직, UI 구조, DB/API/Supabase, Control Tower, 가격/이미지/링크 기능은 변경하지 않았다.
