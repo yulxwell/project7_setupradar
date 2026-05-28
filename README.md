@@ -46,6 +46,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Product Patch Merge Policy - 2026-05-28
+- **제품 patch 병합 기준 문서 추가**: Gemini LLM 또는 Control Tower가 생성한 `product_config_patch`가 기존 제품과 중복될 때 적용할 기준을 [docs/product-patch-merge-policy.md](file:///Users/jilee/antigravity/src/project7/docs/product-patch-merge-policy.md)에 정리했습니다.
+- **중복 제품 안전 처리 원칙**: `id`, `slug`, `brand + name`, 모델명 표기 차이를 기준으로 중복을 판단하고, 중복 제품은 새로 추가하지 않고 업데이트 후보로만 분류합니다.
+- **필드별 보수적 병합 정책**: `id`/`slug`/`status`는 기존 값을 유지하고, `basicFilters` 변경은 Finder 결과에 영향을 줄 수 있어 반드시 보고 대상으로 둡니다. `shellReferences`, `productImages`, `productLinks`는 자동 병합하지 않습니다.
+- **구현 보류선 유지**: 이번 작업은 정책 문서화이며 `merge-product-patch.ts`, 실제 제품 데이터 수정, snapshot 수동 수정, Supabase/API/DB, Control Tower 변경은 하지 않았습니다.
+
 ### v0.7B - Buying Checklist Copy QA (Current)
 - **가이드 상세 본문 및 카드 요약 문구 대대적 정밀 QA 완수**:
   - 새로 생성된 구매 전 체크 가이드 3종(마우스/키보드/모니터) 본문을 초보자 눈높이에서 이해하기 쉽고 직관적인 어조로 다듬었으며, AI 초안 느낌의 거친 번역투 및 광고성/과장성 수식어를 차분하고 객관적인 문체로 전수 보정했습니다.

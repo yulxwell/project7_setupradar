@@ -573,3 +573,22 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
   - SetupRadar의 더블클릭, 채터링, 불량화소 진단 도구 경로 링크를 본문 문장 속에 매우 유기적으로 연계시켰습니다.
 - **정적 아키텍처 및 추천 로직 보존**:
   - Finder 로직, 제품/스위치 데이터, Control Tower, Supabase/API/DB 등 기존 코어 시스템은 일절 건드리지 않고 문체 보정만 콤팩트하게 완수했습니다.
+
+## Product Patch Merge Policy - 2026-05-28 기록
+
+- `docs/product-patch-merge-policy.md`를 생성해 Gemini LLM 또는 Control Tower가 만든 `product_config_patch`를 기존 제품 데이터에 반영하기 전의 병합 기준을 문서화했다.
+- 중복 판정 기준은 `id` 동일, `slug` 동일, `brand + name`이 사실상 동일한 경우, 모델명 표기만 다른 경우로 정리했다.
+- Logitech G304 / 로지텍 G304, AULA F75 / AULA 독거미 F75, ATK A9 Ultimate / ATK Dragonfly A9 Ultimate처럼 기존 샘플과 겹칠 가능성이 높은 제품은 새 제품으로 추가하지 않고 업데이트 후보로만 분류한다.
+- 필드별 병합 정책을 정리했다:
+  - `id`, `slug`, `status`는 기존 값을 유지한다.
+  - `basicFilters`는 Finder 결과에 영향을 주므로 기존 값 우선이며, 기존 값이 `any` 또는 `unknown`일 때만 업데이트 후보로 둔다.
+  - `detailSpecs`는 기존 값이 비어 있고 공식/명확한 출처 기반일 때만 추가 후보로 둔다.
+  - `rawSpecs.note`는 삭제하지 않고 추가 확인 메모 형태로만 덧붙인다.
+  - `copy` 문구 대량 교체는 별도 copy QA 작업으로 분리한다.
+  - `shellReferences`, `productImages`, `productLinks`는 자동 병합하지 않는다.
+- 이번 3개 제품 적용 예시를 기록했다:
+  - Logitech G304: 배터리별 무게 변수는 확정 스펙보다 `rawSpecs.note` 보강 후보.
+  - AULA F75: 축/키캡/배터리 옵션 파편화로 `detailSpecs` 확정 병합 금지.
+  - ATK A9 Ultimate: 쉘 비교 자동 병합 금지, 8K 동글 포함 여부는 `buyingCheck` 또는 `rawSpecs.note` 후보.
+- 향후 `merge-product-patch.ts`를 만들 경우 먼저 dry-run validator와 dry-run 보고 형식을 구현하고, 중복 제품 업데이트는 수동 승인 후 적용하는 순서로 진행한다.
+- 이번 작업은 정책 문서화만 수행했으며 `src/content/kr/products/*`, `src/content/types.ts`, `src/types.ts`, snapshot JSON, export script, Finder 로직, UI, DB/API/Supabase, Control Tower는 수정하지 않았다.
