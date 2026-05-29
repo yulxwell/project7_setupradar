@@ -758,3 +758,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
   - 커스텀 도메인 연결 후 새 도메인 기준 Search Console 속성 등록과 `metadataBase`/canonical/sitemap URL 교체 필요
 - Cloudflare Pages 환경변수 TODO를 기록했다. GA4 측정 ID 발급 후 `NEXT_PUBLIC_GA_MEASUREMENT_ID`를 Cloudflare Pages 환경변수로 추가하면 analytics script가 활성화된다.
 - 실제 Google 계정 작업, Search Console 소유권 인증, GA4 속성 생성, 광고/AdSense, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.
+
+## GA4 / Cloudflare Environment Live Verification - 2026-05-29 기록
+
+- `GoogleAnalytics.tsx`가 `NEXT_PUBLIC_GA_MEASUREMENT_ID`를 읽고, 값이 없으면 `null`을 반환하는 조건부 구조임을 재확인했다.
+- 로컬 기본 빌드 산출물에서 `googletagmanager` / `gtag` 스크립트가 포함되지 않는 것을 확인했다. 이는 측정 ID가 없으면 analytics script를 렌더링하지 않는 의도된 동작이다.
+- 실서비스 `https://setupradar.pages.dev/kr`는 HTTP 200으로 정상 응답했다.
+- 현재 실서비스 HTML에서는 `googletagmanager.com/gtag/js?id=` 스크립트와 GA config inline script가 확인되지 않았다.
+- 따라서 Cloudflare Pages Production 환경변수에 `NEXT_PUBLIC_GA_MEASUREMENT_ID`가 아직 적용되지 않았거나, 환경변수 등록 후 재배포가 완료되지 않은 상태로 판단한다.
+- 실제 GA4 측정 ID는 코드, README, 작업 로그에 기록하지 않았다.
+- Search Console 실제 등록, 광고/AdSense, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.
