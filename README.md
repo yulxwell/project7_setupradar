@@ -92,6 +92,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **보류 항목**: `og:image`는 새 이미지 생성 없이 보류했습니다. 커스텀 도메인 연결 시 `metadataBase`, canonical, sitemap URL은 새 도메인 기준으로 교체해야 합니다.
 - **미연동 유지**: Search Console, Analytics, 광고 코드, DB/API/Supabase, Control Tower는 연결하지 않았습니다.
 
+### Search Console & Analytics Prep - 2026-05-29
+- **GA4 환경변수 준비**: `NEXT_PUBLIC_GA_MEASUREMENT_ID`가 있을 때만 Google Analytics 스크립트가 렌더링되도록 최소 컴포넌트를 추가했습니다.
+- **ID 미하드코딩**: 실제 GA4 측정 ID는 코드에 넣지 않았고, `.env.example`에는 빈 placeholder만 기록했습니다.
+- **Cloudflare Pages TODO**: GA4 속성 생성 후 Cloudflare Pages 환경변수에 `NEXT_PUBLIC_GA_MEASUREMENT_ID`를 추가하면 추적 스크립트가 활성화됩니다. 측정 ID가 없으면 아무 analytics script도 렌더링되지 않습니다.
+- **Search Console 준비**: 현재 등록 후보 URL은 `https://setupradar.pages.dev/sitemap.xml`과 `https://setupradar.pages.dev/robots.txt`입니다. pages.dev URL-prefix 속성으로 임시 등록할 수 있지만, 커스텀 도메인 연결 후 새 도메인 기준 속성 등록과 `metadataBase`/canonical/sitemap URL 교체가 필요합니다.
+- **미연동 유지**: 실제 Google 계정 작업, Search Console 소유권 인증, GA4 속성 생성, 광고/AdSense, DB/API/Supabase, Control Tower는 연결하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

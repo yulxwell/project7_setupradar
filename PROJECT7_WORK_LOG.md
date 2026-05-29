@@ -744,3 +744,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 데스크톱 폭 기준으로 메인과 Keyboard Finder에서 가로 스크롤 overflow가 없는 것을 확인했다.
 - `og:image`는 아직 보류 상태이며 실패로 보지 않는다. Search Console, Analytics, 광고 코드, 커스텀 도메인은 아직 연결하지 않았다.
 - 이번 QA에서는 제품 데이터, Finder 로직, SEO 구조, Control Tower, DB/API/Supabase, Cloudflare 설정을 수정하지 않았다.
+
+## Search Console & Analytics Prep - 2026-05-29 기록
+
+- 정식 배포 전 Search Console / Analytics 연결 준비를 진행했다.
+- `src/components/analytics/GoogleAnalytics.tsx`를 추가해 `NEXT_PUBLIC_GA_MEASUREMENT_ID`가 있을 때만 GA4 스크립트가 렌더링되도록 했다.
+- `src/app/layout.tsx`에서 GoogleAnalytics 컴포넌트를 호출하지만, 환경변수가 없으면 `null`을 반환하므로 현재 상태에서는 추적 스크립트가 삽입되지 않는다.
+- `.env.example`을 생성하고 `NEXT_PUBLIC_GA_MEASUREMENT_ID=` 빈 placeholder만 추가했다. `.env.local`은 수정하지 않았고 실제 측정 ID도 넣지 않았다.
+- README에 Search Console 등록 준비 내용을 기록했다:
+  - 현재 sitemap URL: `https://setupradar.pages.dev/sitemap.xml`
+  - 현재 robots URL: `https://setupradar.pages.dev/robots.txt`
+  - 현재는 pages.dev URL-prefix 속성으로 임시 등록 가능
+  - 커스텀 도메인 연결 후 새 도메인 기준 Search Console 속성 등록과 `metadataBase`/canonical/sitemap URL 교체 필요
+- Cloudflare Pages 환경변수 TODO를 기록했다. GA4 측정 ID 발급 후 `NEXT_PUBLIC_GA_MEASUREMENT_ID`를 Cloudflare Pages 환경변수로 추가하면 analytics script가 활성화된다.
+- 실제 Google 계정 작업, Search Console 소유권 인증, GA4 속성 생성, 광고/AdSense, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.
