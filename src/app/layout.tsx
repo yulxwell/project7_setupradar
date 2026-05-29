@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "b4qbzCnriR1-UXwK70wKp_3JHx0xzgGFDW7KDwJlMbM",
+  },
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";

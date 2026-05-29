@@ -777,3 +777,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `google-analytics` inline script와 `gtag('config', ...)` 설정 호출도 확인했고, script src의 측정 ID와 config 호출의 측정 ID가 같은 것을 확인했다.
 - 실제 GA4 측정 ID는 작업 로그와 보고서에 전체 노출하지 않고 `G-**********` 형태로만 마스킹한다.
 - 이번 재확인에서는 코드, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase, Search Console, 광고/AdSense를 수정하거나 연결하지 않았다.
+
+## Search Console HTML Meta Verification - 2026-05-30 기록
+
+- Search Console의 Google Analytics 인증이 script 위치 문제로 실패해 HTML meta tag 인증 방식으로 전환했다.
+- `src/app/layout.tsx`의 App Router metadata에 `verification.google` 값을 추가했다.
+- 기존 title, description, Open Graph, Twitter, robots, canonical 기준 metadata는 유지했다.
+- 기존 GA4 `GoogleAnalytics` 컴포넌트와 측정 ID 환경변수 구조는 수정하지 않았다.
+- Search Console 인증용 meta tag는 인증 완료 후에도 유지한다.
+- 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase, 광고/AdSense, Google Tag Manager는 추가하거나 수정하지 않았다.
