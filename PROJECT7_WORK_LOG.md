@@ -768,3 +768,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 따라서 Cloudflare Pages Production 환경변수에 `NEXT_PUBLIC_GA_MEASUREMENT_ID`가 아직 적용되지 않았거나, 환경변수 등록 후 재배포가 완료되지 않은 상태로 판단한다.
 - 실제 GA4 측정 ID는 코드, README, 작업 로그에 기록하지 않았다.
 - Search Console 실제 등록, 광고/AdSense, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.
+
+## GA4 Live Re-check - 2026-05-30 기록
+
+- Cloudflare Pages Production 환경변수 적용 이후 `https://setupradar.pages.dev/kr` 실서비스를 재확인했다.
+- 대상 URL은 HTTP 200으로 정상 응답했다.
+- live HTML에서 `googletagmanager.com/gtag/js?id=G-...` 스크립트가 삽입된 것을 확인했다.
+- `google-analytics` inline script와 `gtag('config', ...)` 설정 호출도 확인했고, script src의 측정 ID와 config 호출의 측정 ID가 같은 것을 확인했다.
+- 실제 GA4 측정 ID는 작업 로그와 보고서에 전체 노출하지 않고 `G-**********` 형태로만 마스킹한다.
+- 이번 재확인에서는 코드, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase, Search Console, 광고/AdSense를 수정하거나 연결하지 않았다.
