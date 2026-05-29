@@ -720,3 +720,27 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `og:image`는 새 이미지 생성 없이 보류했다. 향후 브랜드 이미지가 준비되면 Open Graph image를 별도 작업으로 추가한다.
 - 현재 공개 URL이 `https://setupradar.pages.dev/kr`이므로 metadataBase와 sitemap은 pages.dev 기준으로 두었다. 커스텀 도메인 연결 시 해당 URL을 교체해야 한다.
 - Search Console, Analytics, 광고 코드, 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase는 수정하거나 연결하지 않았다.
+
+## Cloudflare Live Deployment QA - 2026-05-29 기록
+
+- GitHub push 이후 Cloudflare Pages 실서비스 URL 기준으로 배포 상태를 QA했다.
+- 확인한 공개 URL:
+  - `https://setupradar.pages.dev/kr`
+  - `https://setupradar.pages.dev/sitemap.xml`
+  - `https://setupradar.pages.dev/robots.txt`
+  - `https://setupradar.pages.dev/kr/finder/mouse-fit`
+  - `https://setupradar.pages.dev/kr/finder/keyboard-fit`
+  - `https://setupradar.pages.dev/kr/tests`
+  - `https://setupradar.pages.dev/kr/guides`
+  - `https://setupradar.pages.dev/kr/switches`
+- 모든 대상 URL은 Cloudflare 실서비스에서 HTTP 200으로 응답했다.
+- `/kr` 메인에는 최신 Hero 문구와 SEO title/description/canonical이 반영된 것을 확인했다.
+- `robots.txt`는 검색 허용(`Allow: /`)과 `https://setupradar.pages.dev/sitemap.xml` sitemap URL을 정상 제공한다.
+- `sitemap.xml`은 37개 URL을 포함하며 `/kr` 주요 페이지, 실제 테스트 상세, 실제 가이드 상세, `/kr/switches`를 포함한다. 아직 없는 제품 상세 URL과 `/en`/`/jp`/`/cn` URL은 포함하지 않았다.
+- Mouse Finder 실서비스 화면에서 `후보 더 보기` 버튼을 확인했고, 확장 후 `Zowie U2`와 `Lamzu Maya`가 표시되는 것을 확인했다. `구매 전 체크` 패널과 내부 status 미노출도 정상이다.
+- Keyboard Finder 실서비스 화면에서 `75%` + `무선` 조건 후 `후보 더 보기` 확장 시 `NuPhy Halo75 V2`가 표시되는 것을 확인했다.
+- `65% 이하` 선택에서는 `NuPhy Halo75 V2`가 억지로 포함되지 않았고, `60%` 별도 버튼도 노출되지 않았다.
+- `/kr/tests`, `/kr/guides`, `/kr/switches`는 화면 깨짐 없이 접근되며 페이지별 metadata/canonical도 pages.dev 기준으로 확인했다.
+- 데스크톱 폭 기준으로 메인과 Keyboard Finder에서 가로 스크롤 overflow가 없는 것을 확인했다.
+- `og:image`는 아직 보류 상태이며 실패로 보지 않는다. Search Console, Analytics, 광고 코드, 커스텀 도메인은 아직 연결하지 않았다.
+- 이번 QA에서는 제품 데이터, Finder 로직, SEO 구조, Control Tower, DB/API/Supabase, Cloudflare 설정을 수정하지 않았다.
