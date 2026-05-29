@@ -786,3 +786,11 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 기존 GA4 `GoogleAnalytics` 컴포넌트와 측정 ID 환경변수 구조는 수정하지 않았다.
 - Search Console 인증용 meta tag는 인증 완료 후에도 유지한다.
 - 제품 데이터, Finder 로직, Control Tower, DB/API/Supabase, 광고/AdSense, Google Tag Manager는 추가하거나 수정하지 않았다.
+
+## KR Sitemap Route - 2026-05-30 기록
+
+- Search Console을 `https://setupradar.pages.dev/kr/` URL-prefix 속성으로 등록한 상태에 맞춰 `/kr/sitemap.xml` route를 추가했다.
+- 기존 root sitemap인 `/sitemap.xml`은 유지하고, `/kr/sitemap.xml`은 같은 sitemap 생성 로직을 재사용하도록 했다.
+- sitemap에는 기존과 동일하게 실제 존재하는 `/kr` 주요 페이지, 테스트 상세, 가이드 상세, 스위치 사전 route만 포함한다.
+- 존재하지 않는 제품 상세 URL, `/en`, `/jp`, `/cn` route는 sitemap에 넣지 않았다.
+- 제품 데이터, Finder 로직, GA4 구조, Search Console verification meta, Control Tower, DB/API/Supabase, 광고/AdSense는 수정하지 않았다.
