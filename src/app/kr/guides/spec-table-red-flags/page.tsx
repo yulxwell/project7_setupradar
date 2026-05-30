@@ -8,7 +8,7 @@ export default function SpecTableRedFlagsGuide() {
       category="Check"
       icon={ShieldCheck}
       oneLineMeaning="스펙표에는 좋아 보이는 표현이 많지만, 실제 구매 판단에는 추가 확인이 필요한 문구가 섞여 있습니다."
-      whatToCheckFirst="최고, 초고속, 프리미엄 같은 표현보다 실제 수치와 조건, 사용자 후기를 먼저 확인하세요."
+      whatToCheckFirst="초고속, 프리미엄 같은 표현보다 실제 수치와 조건, 사용자 후기를 먼저 확인하세요."
       pros={[
         "광고성 표현을 걸러내면 필요한 스펙만 빠르게 볼 수 있습니다.",
         "체감에 영향이 작은 숫자에 과하게 끌리지 않을 수 있습니다.",

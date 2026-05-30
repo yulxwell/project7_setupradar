@@ -4,7 +4,7 @@ import { DisclaimerBox } from "@/components/common/Common";
 
 export const metadata: Metadata = {
   title: "마우스 클릭 속도 측정 (CPS) | SetupRadar",
-  description: "당신의 클릭 속도는 상위 몇 %? 초당 클릭 횟수(CPS)를 측정하고 최고 기록을 확인하세요.",
+  description: "초당 클릭 횟수(CPS)를 브라우저에서 참고용으로 측정하고 내 기록을 확인하세요.",
 };
 
 export default function CpsPage() {
@@ -47,7 +47,7 @@ export default function CpsPage() {
 
         <div className="space-y-6">
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/50 p-6 md:p-8 text-sm text-[var(--muted)] leading-relaxed">
-            최고 기록은 현재 사용 중인 기기의 브라우저(LocalStorage)에만 안전하게 저장됩니다. 서버로 전송되거나 공유되지 않습니다.
+            내 기록은 현재 사용 중인 기기의 브라우저(LocalStorage)에만 저장됩니다. 서버로 전송되거나 공유되지 않습니다.
           </div>
           <DisclaimerBox className="bg-[var(--secondary)]/30 border-[var(--border)]" />
         </div>

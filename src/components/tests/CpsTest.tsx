@@ -98,7 +98,7 @@ export function CpsTest() {
         {bestCps > 0 && (
           <div className="flex items-center gap-2 rounded-2xl bg-amber-500/5 px-4 py-2 border border-amber-500/10">
             <Trophy className="h-4 w-4 text-amber-500" />
-            <span className="text-xs font-bold text-amber-600 dark:text-amber-400">최고 기록: {bestCps} CPS</span>
+            <span className="text-xs font-bold text-amber-600 dark:text-amber-400">내 기록: {bestCps} CPS</span>
           </div>
         )}
       </div>

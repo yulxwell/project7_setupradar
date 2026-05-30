@@ -14,8 +14,8 @@ export function Footer() {
               <span className="font-outfit text-lg font-bold tracking-tight text-[var(--primary)]">SetupRadar</span>
             </Link>
             <p className="text-sm leading-relaxed text-[var(--muted)]">
-              하드웨어 성능을 가장 쉽고 빠르게 진단합니다. <br />
-              내 소중한 장비, 제대로 사용하고 있는지 지금 바로 확인해 보세요.
+              설치 없이 장비 상태를 가볍게 확인하고, <br />
+              구매 전 헷갈리는 스펙을 초보자 기준으로 정리합니다.
             </p>
           </div>
           
@@ -43,7 +43,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-[var(--muted)]">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>support@setupradar.com</span>
+                <span>문의 채널 준비 중</span>
               </li>
               <li className="flex items-center gap-4 pt-2">
                 <Link href="#" className="hover:text-[var(--primary)] transition-colors"><Globe className="h-5 w-5" /></Link>
@@ -57,8 +57,8 @@ export function Footer() {
             © 2026 SetupRadar. All rights reserved. 본 서비스에서 제공하는 정보는 참고용입니다.
           </p>
           <div className="flex items-center gap-6 text-[11px] font-bold text-[var(--muted)]">
-            <Link href="#" className="hover:text-[var(--primary)]">개인정보처리방침</Link>
-            <Link href="#" className="hover:text-[var(--primary)]">이용약관</Link>
+            <span>개인정보처리방침 준비 중</span>
+            <span>이용약관 준비 중</span>
           </div>
         </div>
       </div>

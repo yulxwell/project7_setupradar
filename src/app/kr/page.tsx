@@ -44,7 +44,7 @@ export default function Home() {
         
         <div className="container mx-auto px-4 text-center">
           <div className="mx-auto mb-6 inline-flex items-center rounded-full bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)] border border-[var(--border)]">
-            SetupRadar Hardware Diagnostic
+            SetupRadar Hardware Check
           </div>
           <h1 className="mb-6 font-outfit text-4xl font-bold tracking-tight text-[var(--primary)] md:text-6xl lg:text-7xl">
             <HighlightedSentence text={SITE_COPY.kr.landing.heroTitle} highlights={[SITE_COPY.hero.titleHighlight]} />
@@ -66,8 +66,8 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="mb-12 flex items-end justify-between border-b border-[var(--border)] pb-8">
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight text-[var(--primary)] md:text-3xl">즉시 사용 가능한 도구</h2>
-            <p className="text-sm text-[var(--muted)]">장비의 결함이나 성능을 지금 바로 체크해보세요.</p>
+            <h2 className="text-2xl font-bold tracking-tight text-[var(--primary)] md:text-3xl">설치 없이 쓰는 테스트 도구</h2>
+            <p className="text-sm text-[var(--muted)]">장비의 의심 증상과 설정 상태를 참고용으로 확인해보세요.</p>
           </div>
           <Link href="/kr/tests" className="group hidden sm:flex items-center gap-1.5 text-xs font-bold text-[var(--accent)] uppercase tracking-widest transition-colors">
             전체 보기 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -77,27 +77,27 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <TestCard 
             title="불량화소 테스트" 
-            description="새 모니터의 화면 결함을 점검합니다. 색상별 전체화면을 통해 숨겨진 점을 찾아낼 수 있습니다."
+            description="색상별 전체화면으로 눈에 띄는 점이나 화면 이상을 참고용으로 확인합니다."
             href="/kr/tests/dead-pixel"
             icon={Monitor}
             duration="1~3분"
-            purpose="화면 속 작은 점(결함) 유무 확인"
+            purpose="화면 속 작은 점 의심 증상 확인"
           />
           <TestCard 
             title="더블클릭 테스트" 
-            description="마우스가 한 번 클릭으로 두 번 눌리는 증상을 진단하여 수리나 교체 시기를 판별합니다."
+            description="한 번 클릭했는데 두 번 입력되는 증상이 반복되는지 참고용으로 확인합니다."
             href="/kr/tests/double-click"
             icon={MousePointer2}
             duration="30초"
-            purpose="마우스 고장 및 오작동 진단"
+            purpose="중복 클릭 의심 증상 확인"
           />
           <TestCard 
             title="폴링레이트 측정" 
-            description="마우스가 PC와 얼마나 빠르게 통신하는지 측정하여 실제 성능이 정상인지 확인합니다."
+            description="마우스가 PC와 데이터를 주고받는 속도를 브라우저에서 참고용으로 확인합니다."
             href="/kr/tests/polling-rate"
             icon={Zap}
             duration="10초"
-            purpose="전송 속도 및 연결 안정성 확인"
+            purpose="전송 속도와 설정 상태 확인"
           />
         </div>
       </section>
@@ -200,7 +200,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/30 p-8 text-center">
           <LayoutGrid className="h-5 w-5 text-[var(--muted)]/50 mb-3" />
           <p className="text-[11px] text-[var(--muted)] font-medium">
-            최저가 및 실시간 핫딜 정보 연결 예정
+            가격 정보 연동은 후속 검토 중입니다
           </p>
         </div>
       </section>

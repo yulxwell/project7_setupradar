@@ -99,6 +99,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **Search Console 준비**: 현재 등록 후보 URL은 `https://setupradar.pages.dev/sitemap.xml`과 `https://setupradar.pages.dev/robots.txt`입니다. pages.dev URL-prefix 속성으로 임시 등록할 수 있지만, 커스텀 도메인 연결 후 새 도메인 기준 속성 등록과 `metadataBase`/canonical/sitemap URL 교체가 필요합니다.
 - **미연동 유지**: 실제 Google 계정 작업, Search Console 소유권 인증, GA4 속성 생성, 광고/AdSense, DB/API/Supabase, Control Tower는 연결하지 않았습니다.
 
+### Content Quality Pass 1 - 2026-05-30
+- **초보자용 문구 톤 보정**: 메인 Hero, 테스트 도구, 가이드, Finder 안내 문구를 “정답/진단”보다 참고용 확인과 구매 전 비교 중심으로 다듬었습니다.
+- **과장 표현 완화**: 사용자 화면에 노출되는 금지 표현을 검색해 `최고`, `완벽`, `무조건`, `확정`, `정밀 진단` 등으로 읽힐 수 있는 문구를 완화했습니다.
+- **미구현 기능 오해 축소**: 최저가/핫딜/맞춤형 매칭처럼 아직 구현되지 않은 기능처럼 보이는 표현을 후속 검토 톤으로 낮췄습니다.
+- **안전선 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

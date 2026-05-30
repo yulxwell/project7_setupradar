@@ -347,7 +347,7 @@ export default function KeyboardFitPage() {
           </div>
           <h1 className="text-2xl font-bold text-[var(--primary)] md:text-3xl">Keyboard Finder</h1>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-[var(--muted)]">
-            배열 그림 없이 텍스트 기준으로 빠르게 고릅니다. 잘 모르겠음을 선택하면 넓은 후보를 봅니다.
+            구매 전 비교할 배열과 키감 조건을 빠르게 고릅니다. 잘 모르겠음을 선택하면 후보를 넓게 봅니다.
           </p>
         </div>
         <button
@@ -407,7 +407,7 @@ export default function KeyboardFitPage() {
         <aside className="space-y-3 xl:sticky xl:top-20 xl:self-start">
           <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
             <h2 className="text-base font-bold text-[var(--primary)]">추천 결과</h2>
-            <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화합니다.</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
           {scoredKeyboards.length === 0 && (

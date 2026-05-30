@@ -278,7 +278,7 @@ export default function MouseFitPage() {
           </div>
           <h1 className="text-2xl font-bold text-[var(--primary)] md:text-3xl">Mouse Finder</h1>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-[var(--muted)]">
-            필요한 조건만 빠르게 고르세요. 상관없음을 선택하면 후보를 넓게 봅니다.
+            구매 전 비교할 조건만 빠르게 고르세요. 상관없음을 선택하면 후보를 넓게 봅니다.
           </p>
         </div>
         <button

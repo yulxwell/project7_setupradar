@@ -74,7 +74,7 @@ export function MouseWheelEncoderTest() {
           {logs.length === 0 && <p className="py-20 text-center text-xs text-[var(--muted)]">휠 입력 기록이 여기에 표시됩니다.</p>}
         </div>
         <p className="rounded-2xl border border-amber-500/10 bg-amber-500/5 p-4 text-xs leading-relaxed text-[var(--muted)]">
-          한두 번의 튐만으로 고장을 확정하지 마세요. 먼지, 휠 표면 상태, 드라이버, 브라우저 이벤트 처리 영향도 함께 확인하는 편이 좋습니다.
+          한두 번의 튐만으로 고장이라고 단정하지 마세요. 먼지, 휠 표면 상태, 드라이버, 브라우저 이벤트 처리 영향도 함께 확인하는 편이 좋습니다.
         </p>
       </aside>
     </div>

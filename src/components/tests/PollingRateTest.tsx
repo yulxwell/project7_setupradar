@@ -113,7 +113,7 @@ export function PollingRateTest() {
               <AlertTriangle className="h-3.5 w-3.5" /> 브라우저 측정의 한계
             </h4>
             <ul className="space-y-2 text-[11px] leading-relaxed text-[var(--muted)] opacity-80">
-              <li>• 브라우저는 보안 및 성능상의 이유로 1000Hz 이상의 데이터를 완벽하게 처리하지 못할 수 있습니다.</li>
+              <li>• 브라우저는 보안 및 성능상의 이유로 1000Hz 이상의 데이터를 모두 안정적으로 처리하지 못할 수 있습니다.</li>
               <li>• 2K, 4K, 8K 마우스의 경우 전용 소프트웨어의 측정값이 더 정확합니다.</li>
               <li>• 마우스 이동 속도가 너무 느리면 폴링레이트 수치도 낮게 표시됩니다.</li>
             </ul>

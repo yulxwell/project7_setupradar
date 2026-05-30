@@ -45,10 +45,10 @@ export default function TestsPage() {
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--primary)] text-[var(--background)]">
           <Monitor className="h-6 w-6" />
         </div>
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-[var(--primary)] md:text-5xl">하드웨어 진단 도구</h1>
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-[var(--primary)] md:text-5xl">하드웨어 테스트 도구</h1>
         <p className="mx-auto max-w-xl text-[var(--muted)] md:text-lg">
-          모니터, 마우스, 키보드 상태를 브라우저에서 바로 확인하세요. <br className="hidden md:block" />
-          설치 없이 참고용으로 빠르게 점검할 수 있습니다.
+          모니터, 마우스, 키보드의 의심 증상을 브라우저에서 가볍게 확인하세요. <br className="hidden md:block" />
+          결과는 사용 환경에 따라 달라질 수 있는 참고용입니다.
         </p>
       </div>
 
@@ -83,9 +83,9 @@ export default function TestsPage() {
       </div>
 
       <div className="mt-20 rounded-3xl bg-[var(--secondary)]/30 p-10 text-center border border-[var(--border)]">
-        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">추가 테스트 준비 중</h2>
+        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">다음에 검토할 테스트</h2>
         <p className="text-sm text-[var(--muted)]">
-          모니터 잔상, 키보드 입력 지연처럼 초보자가 바로 확인하기 좋은 항목을 검토하고 있습니다.
+          초보자가 브라우저에서 무리 없이 확인할 수 있는 항목만 천천히 검토합니다.
         </p>
       </div>
     </div>
