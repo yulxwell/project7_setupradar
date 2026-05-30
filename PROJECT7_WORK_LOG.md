@@ -840,3 +840,21 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성된 정책 페이지 3개를 낮은 priority로 포함했다.
 - 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았다.
 - 제품 데이터, Finder 추천 로직, GA4/Search Console verification/robots 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.
+
+## Policy Pages Live QA - 2026-05-31 기록
+
+- Cloudflare 실서비스 기준으로 정책/안내 페이지 3개를 확인했다.
+- 확인 URL:
+  - `https://setupradar.pages.dev/kr/privacy`
+  - `https://setupradar.pages.dev/kr/terms`
+  - `https://setupradar.pages.dev/kr/disclosure`
+- 세 페이지 모두 HTTP 200으로 응답했고, 각 페이지의 title/canonical/본문 안내가 배포 HTML에 반영된 것을 확인했다.
+- `/kr/privacy`에는 회원가입/로그인/결제/댓글/문의 폼 없음, GA4 방문 분석 가능성, 쿠키/브라우저 저장 정보, 향후 광고·제휴 가능성 안내가 반영되어 있다.
+- `/kr/terms`에는 테스트 도구와 Finder가 참고용이며, 브라우저/기기/설정 환경에 따라 결과가 달라질 수 있고 제품 스펙/가격/AS 조건은 판매처와 제조사 기준으로 함께 확인해야 한다는 안내가 반영되어 있다.
+- `/kr/disclosure`에는 현재 실제 광고 코드와 제휴 구매 링크가 없고, 향후 광고/제휴 링크가 포함될 수 있으며 추천 기준은 광고/제휴 여부와 분리한다는 원칙이 반영되어 있다.
+- `/kr` Footer에서 `개인정보처리방침`, `이용 안내`, `광고·제휴 고지`가 각각 `/kr/privacy`, `/kr/terms`, `/kr/disclosure`로 연결되는 것을 확인했다.
+- Footer의 빈 `href="#"` 링크는 실서비스 HTML에서 확인되지 않았고, `문의 채널 준비 중` 문구는 유지되어 있다.
+- `https://setupradar.pages.dev/sitemap.xml`과 `https://setupradar.pages.dev/kr/sitemap.xml` 모두 정책 페이지 3개 URL을 포함한다.
+- 정책 페이지와 Footer의 사용자 화면 대상 금지 표현 검색 결과 문제 없음.
+- 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았다.
+- 제품 데이터, Finder 추천 로직, GA4/Search Console verification/sitemap/robots 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.
