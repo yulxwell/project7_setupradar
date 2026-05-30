@@ -42,6 +42,9 @@ const routes = [
   "/kr/guides/review-reading-checklist",
   "/kr/guides/spec-table-red-flags",
   "/kr/switches",
+  "/kr/privacy",
+  "/kr/terms",
+  "/kr/disclosure",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -49,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date("2026-05-29"),
     changeFrequency: route === "/kr" ? "weekly" : "monthly",
-    priority: route === "/kr" ? 1 : route.split("/").length <= 3 ? 0.8 : 0.6,
+    priority: ["/kr/privacy", "/kr/terms", "/kr/disclosure"].includes(route)
+      ? 0.4
+      : route === "/kr"
+        ? 1
+        : route.split("/").length <= 3
+          ? 0.8
+          : 0.6,
   }));
 }

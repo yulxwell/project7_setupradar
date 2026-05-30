@@ -816,3 +816,27 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Switches 페이지의 클릭축/저소음 리니어축 문구에서 강한 단정과 과장으로 읽힐 수 있는 표현을 완화했다.
 - Search Console sitemap 제출 문제는 기존 방침대로 계속 보류했고, sitemap/Search Console/GA4 구조는 수정하지 않았다.
 - 제품 데이터, 제품 basicFilters, Finder 추천 로직, snapshot 수동 수정, DB/API/Supabase, Control Tower, 광고/제휴/리뷰 영상은 변경하지 않았다.
+
+## Monetization Policy & Layout Plan - 2026-05-30 기록
+
+- 향후 수익화 기준을 `docs/monetization-plan.md`에 문서화했다.
+- Project7은 광고 사이트가 아니라 `하드웨어 테스트 도구 + 구매 전 참고 가이드` 사이트라는 원칙을 먼저 정리했다.
+- AdSense 방문형 광고, 링크프라이스/쿠팡파트너스 등 제휴 링크, 가격/옵션 확인 링크의 우선순위와 보류 대상을 구분했다.
+- 메인, 테스트 목록/상세, 가이드 목록/상세, Finder별 광고 후보 위치와 금지 위치를 정리했다.
+- Finder 질문 선택 영역, 테스트 실행 버튼 주변, 결과 카드 사이에는 광고를 두지 않는 기준을 문서화했다.
+- 제휴 링크는 `구매하기`보다 `가격/옵션 확인`, `공식 스펙 확인`, `국내 AS 조건 확인` 같은 확인용 문구를 우선하도록 정리했다.
+- AdSense 신청 전 개인정보처리방침, 이용약관 또는 서비스 안내, 문의 채널, 광고/제휴 고지 문구, 미구현 링크 정리를 준비 항목으로 남겼다.
+- 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼, 가격/최저가 기능, 리뷰 영상/YouTube embed는 추가하지 않았다.
+- 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Policy Pages Prep - 2026-05-30 기록
+
+- AdSense/제휴 준비를 위해 최소 정책/안내 페이지를 추가했다.
+- 신규 페이지:
+  - `/kr/privacy`: 현재 직접 입력받는 개인정보가 없고, GA4 기반 방문 분석과 브라우저 저장 정보가 사용될 수 있음을 안내한다.
+  - `/kr/terms`: 테스트 도구와 Finder가 참고용이며, 제품 스펙/가격/AS 조건은 판매처와 제조사 기준으로 함께 확인해야 함을 안내한다.
+  - `/kr/disclosure`: 현재 광고/제휴 링크는 없지만 향후 포함될 수 있고, 추천 기준은 광고/제휴 여부와 분리한다는 원칙을 안내한다.
+- Footer의 준비 중 정책 문구를 실제 페이지 링크로 바꾸고 `광고·제휴 고지` 링크를 추가했다.
+- `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성된 정책 페이지 3개를 낮은 priority로 포함했다.
+- 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았다.
+- 제품 데이터, Finder 추천 로직, GA4/Search Console verification/robots 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.

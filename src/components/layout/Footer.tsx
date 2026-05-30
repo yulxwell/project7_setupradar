@@ -1,4 +1,4 @@
-import { Monitor, Mail, Globe } from "lucide-react";
+import { Monitor, Mail } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -45,9 +45,6 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 <span>문의 채널 준비 중</span>
               </li>
-              <li className="flex items-center gap-4 pt-2">
-                <Link href="#" className="hover:text-[var(--primary)] transition-colors"><Globe className="h-5 w-5" /></Link>
-              </li>
             </ul>
           </div>
         </div>
@@ -56,9 +53,16 @@ export function Footer() {
           <p className="text-[11px] font-medium text-[var(--muted)]">
             © 2026 SetupRadar. All rights reserved. 본 서비스에서 제공하는 정보는 참고용입니다.
           </p>
-          <div className="flex items-center gap-6 text-[11px] font-bold text-[var(--muted)]">
-            <span>개인정보처리방침 준비 중</span>
-            <span>이용약관 준비 중</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-bold text-[var(--muted)]">
+            <Link href="/kr/privacy" className="transition-colors hover:text-[var(--accent)]">
+              개인정보처리방침
+            </Link>
+            <Link href="/kr/terms" className="transition-colors hover:text-[var(--accent)]">
+              이용 안내
+            </Link>
+            <Link href="/kr/disclosure" className="transition-colors hover:text-[var(--accent)]">
+              광고·제휴 고지
+            </Link>
           </div>
         </div>
       </div>

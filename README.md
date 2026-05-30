@@ -111,6 +111,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **기능 변경 없음**: Finder 추천 로직, 제품 데이터/basicFilters, GA4/Search Console 구조, DB/API/Supabase, Control Tower, 광고/제휴/리뷰 영상은 수정하지 않았습니다.
 - **Search Console sitemap 보류 유지**: raw XML은 정상으로 확인된 기존 상태를 유지하고, 이번 작업에서는 sitemap/Search Console 구조를 건드리지 않았습니다.
 
+### Monetization Policy & Layout Plan - 2026-05-30
+- **수익화 정책 문서 추가**: 향후 AdSense, 방문형 광고, 링크프라이스/쿠팡파트너스 같은 제휴 링크를 붙일 때의 기준을 [docs/monetization-plan.md](file:///Users/jilee/antigravity/src/project7/docs/monetization-plan.md)에 정리했습니다.
+- **광고보다 신뢰 우선**: SetupRadar를 광고 사이트가 아니라 `하드웨어 테스트 도구 + 구매 전 참고 가이드`로 유지하고, Finder 추천 결과는 제휴 수익이 아니라 제품 기준과 구매 전 체크를 우선하도록 명문화했습니다.
+- **위치 후보만 정리**: 메인, 테스트 목록/상세, 가이드 목록/상세, Finder별 광고/제휴 후보 위치와 금지 위치를 문서화했습니다. 실제 광고 코드와 제휴 링크는 추가하지 않았습니다.
+- **신청 전 TODO 정리**: 개인정보처리방침, 이용약관 또는 서비스 안내, 문의 채널, 광고/제휴 고지 문구, 커스텀 도메인 검토를 AdSense 신청 전 준비 항목으로 남겼습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.
@@ -248,6 +254,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **시각형 문구 수정 작업대**: Project99 Control Tower의 `/projects/project7/content`에서 SetupRadar 화면처럼 보이는 mock preview를 보며 문구를 클릭하고 수정안을 작성할 수 있습니다.
 - **수동 반영 원칙 유지**: 작업대 수정안은 localStorage와 export 파일로만 관리되며, 실제 사이트 반영은 Codex/Gemini가 `src/content`의 `editor` 필드에 옮긴 뒤 Git push와 Cloudflare Pages 배포로 진행합니다.
 - **실시간 DB 수정 없음**: Supabase/API/n8n 없이 정적 사이트 구조를 유지합니다. 실제 문구 수정은 yulxwell이 별도 루프에서 진행합니다.
+
+### Policy Pages Prep - 2026-05-30
+- **정책/안내 페이지 추가**: AdSense/제휴 준비를 위해 `/kr/privacy`, `/kr/terms`, `/kr/disclosure` 정적 페이지를 추가했습니다.
+- **Footer 신뢰 링크 정리**: 준비 중 문구로 남아 있던 개인정보처리방침/이용 안내 링크를 실제 페이지로 연결하고, 광고·제휴 고지 링크를 추가했습니다.
+- **수익화 코드 미추가**: 실제 광고 script, AdSense 코드, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았습니다.
+- **기존 구조 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
 
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
