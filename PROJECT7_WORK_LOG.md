@@ -858,3 +858,20 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 정책 페이지와 Footer의 사용자 화면 대상 금지 표현 검색 결과 문제 없음.
 - 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았다.
 - 제품 데이터, Finder 추천 로직, GA4/Search Console verification/sitemap/robots 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.
+
+## AdSense Readiness Check - 2026-05-31 기록
+
+- AdSense 신청 전 준비 상태를 `docs/adsense-readiness-check.md`에 문서화했다.
+- 현재 판단은 `C. 콘텐츠/정책 보강 후 신청 권장`으로 정리했다.
+- 준비 완료에 가까운 항목:
+  - Cloudflare Pages 실서비스 배포
+  - 작동하는 테스트 도구와 Finder
+  - 가이드 목록과 구매 전 체크 가이드
+  - 개인정보처리방침, 이용 안내, 광고·제휴 고지 페이지
+  - Footer 정책 링크
+  - robots/sitemap, GA4, Search Console 소유권 확인
+- 신청 전 약점으로 실제 문의 채널 부재, `pages.dev` 임시 도메인, 일부 준비 중 문구, Search Console sitemap 제출 보류 상태를 기록했다.
+- 신청 성공 가능성은 내부 판단용으로 `pages.dev` 현재 상태 약 40%, 커스텀 도메인과 문의 채널 보강 후 약 60%, 콘텐츠와 정책을 1주 정도 더 다듬은 뒤 약 72%로 추정했다.
+- 신청 전 우선 보완 추천은 실제 문의 채널, 커스텀 도메인 검토, 준비 중 문구 축소, 핵심 가이드 3~5개 보강, Search Console sitemap 재제출로 정리했다.
+- 실제 AdSense 코드, 광고 script, 제휴 링크, 구매 버튼은 추가하지 않았다.
+- 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.

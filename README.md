@@ -117,6 +117,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **위치 후보만 정리**: 메인, 테스트 목록/상세, 가이드 목록/상세, Finder별 광고/제휴 후보 위치와 금지 위치를 문서화했습니다. 실제 광고 코드와 제휴 링크는 추가하지 않았습니다.
 - **신청 전 TODO 정리**: 개인정보처리방침, 이용약관 또는 서비스 안내, 문의 채널, 광고/제휴 고지 문구, 커스텀 도메인 검토를 AdSense 신청 전 준비 항목으로 남겼습니다.
 
+### AdSense Readiness Check - 2026-05-31
+- **신청 전 준비도 점검 문서 추가**: Project7의 AdSense 신청 전 준비 상태를 [docs/adsense-readiness-check.md](file:///Users/jilee/antigravity/src/project7/docs/adsense-readiness-check.md)에 정리했습니다.
+- **신청 판단**: 현재는 바로 신청보다 콘텐츠/정책 보강 후 신청하는 쪽을 권장합니다. 특히 실제 문의 채널, 커스텀 도메인, 일부 준비 중 문구 정리가 우선입니다.
+- **수익화 코드 미추가**: 실제 AdSense 코드, 광고 script, 제휴 링크, 구매 버튼은 추가하지 않았습니다.
+- **기존 구조 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.
