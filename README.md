@@ -105,6 +105,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **미구현 기능 오해 축소**: 최저가/핫딜/맞춤형 매칭처럼 아직 구현되지 않은 기능처럼 보이는 표현을 후속 검토 톤으로 낮췄습니다.
 - **안전선 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
 
+### Live Copy QA 1 - 2026-05-30
+- **실서비스 화면 기준 문구 QA**: `/kr`, `/kr/tests`, `/kr/guides`, Mouse Finder, Keyboard Finder, `/kr/switches`를 실서비스 URL 기준으로 확인했습니다.
+- **최소 문구 보정**: Hero의 `설치 없이` 띄어쓰기, 메인 Finder CTA, 테스트/가이드 하단 안내, 스위치/축 설명 일부를 더 자연스러운 참고용 톤으로 다듬었습니다.
+- **기능 변경 없음**: Finder 추천 로직, 제품 데이터/basicFilters, GA4/Search Console 구조, DB/API/Supabase, Control Tower, 광고/제휴/리뷰 영상은 수정하지 않았습니다.
+- **Search Console sitemap 보류 유지**: raw XML은 정상으로 확인된 기존 상태를 유지하고, 이번 작업에서는 sitemap/Search Console 구조를 건드리지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

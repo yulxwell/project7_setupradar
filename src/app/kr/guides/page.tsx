@@ -61,9 +61,9 @@ export default function GuidesPage() {
       </div>
 
       <div className="mt-20 flex flex-col items-center justify-center p-12 text-center border border-[var(--border)] rounded-3xl bg-[var(--secondary)]/30">
-        <h3 className="text-lg font-bold text-[var(--primary)] mb-2">가이드 항목은 계속 다듬는 중입니다</h3>
+        <h3 className="text-lg font-bold text-[var(--primary)] mb-2">구매 전 체크 기준을 계속 보강합니다</h3>
         <p className="text-sm text-[var(--muted)] max-w-sm">
-          실제 구매 전에 헷갈리기 쉬운 표현과 스펙을 우선순위에 맞춰 보강하고 있습니다.
+          실제 구매 전에 헷갈리기 쉬운 표현과 스펙을 우선순위에 맞춰 정리합니다.
         </p>
       </div>
     </div>

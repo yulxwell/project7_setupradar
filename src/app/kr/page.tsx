@@ -158,8 +158,8 @@ export default function Home() {
         <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 md:p-6">
         <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-lg font-bold tracking-tight text-[var(--primary)] md:text-xl">장비를 새로 고를 때만 Finder를 사용하세요</h2>
-            <p className="mt-1 text-xs text-[var(--muted)]">테스트만 필요하다면 위 도구를 바로 사용하면 됩니다.</p>
+            <h2 className="text-lg font-bold tracking-tight text-[var(--primary)] md:text-xl">새 장비를 고를 때 Finder로 후보를 좁혀보세요</h2>
+            <p className="mt-1 text-xs text-[var(--muted)]">테스트만 필요하다면 위 도구를 바로 쓰고, 구매 전 비교가 필요할 때 열어보세요.</p>
           </div>
           <span className="w-fit rounded-full border border-[var(--border)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">
             Optional
@@ -174,7 +174,7 @@ export default function Home() {
               </div>
               <div className="min-w-0">
                 <h3 className="text-sm font-bold text-[var(--primary)]">마우스 찾기</h3>
-                <p className="mt-0.5 text-xs text-[var(--muted)]">손 크기, 형태, 무게, 연결 방식만 빠르게 고릅니다.</p>
+                <p className="mt-0.5 text-xs text-[var(--muted)]">손 크기, 형태, 무게, 연결 방식으로 후보를 좁힙니다.</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
             </div>
@@ -187,7 +187,7 @@ export default function Home() {
               </div>
               <div className="min-w-0">
                 <h3 className="text-sm font-bold text-[var(--primary)]">키보드 찾기</h3>
-                <p className="mt-0.5 text-xs text-[var(--muted)]">배열, 스위치, 소음, 연결, OS를 간단히 봅니다.</p>
+                <p className="mt-0.5 text-xs text-[var(--muted)]">배열, 키감, 소음, 연결 조건으로 후보를 좁힙니다.</p>
               </div>
               <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
             </div>

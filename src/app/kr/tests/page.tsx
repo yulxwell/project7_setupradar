@@ -83,9 +83,9 @@ export default function TestsPage() {
       </div>
 
       <div className="mt-20 rounded-3xl bg-[var(--secondary)]/30 p-10 text-center border border-[var(--border)]">
-        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">다음에 검토할 테스트</h2>
+        <h2 className="mb-2 text-lg font-bold text-[var(--primary)]">테스트 항목은 신중하게 추가합니다</h2>
         <p className="text-sm text-[var(--muted)]">
-          초보자가 브라우저에서 무리 없이 확인할 수 있는 항목만 천천히 검토합니다.
+          브라우저에서 의미 있게 확인할 수 있는 항목부터 우선순위에 맞춰 보강합니다.
         </p>
       </div>
     </div>

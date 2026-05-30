@@ -805,3 +805,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 푸터의 실제 도메인 이메일과 `#` 정책 링크는 공식 서비스처럼 과하게 보이지 않도록 `준비 중` 문구로 낮췄다.
 - 사용자 화면 대상 금지 표현 검색 결과 `최고`, `완벽`, `무조건`, `끝판왕`, `압도적`, `확정`, `정밀 진단`, `불량 확정`, `정상 확정`, `반드시`, `후회 없음`, `카피쉘`, `짭`, `표절`, `원본 쉘`, `동일 쉘`, `완전히 같다`, `최저가`, `핫딜`, `support@`는 0건으로 정리했다.
 - 제품 데이터, 제품 basicFilters, Finder 추천 로직, snapshot 수동 수정, GA4/Search Console 구조, DB/API/Supabase, Control Tower, 광고/AdSense는 변경하지 않았다.
+
+## Live Copy QA 1 - 2026-05-30 기록
+
+- 실서비스 기준으로 `https://setupradar.pages.dev/kr`, `/kr/tests`, `/kr/guides`, `/kr/finder/mouse-fit`, `/kr/finder/keyboard-fit`, `/kr/switches` 화면의 문구 톤을 확인했다.
+- 실서비스 화면은 HTTP 200으로 접근 가능했고, 주요 페이지에서 내부 `review`/`published` 상태값 노출이나 사용자 화면 금지 표현은 확인되지 않았다.
+- 메인 Hero의 `설치없이`를 `설치 없이`로 정리하고, Finder 진입 섹션을 `새 장비를 고를 때 Finder로 후보를 좁혀보세요` 톤으로 바꿔 CTA가 덜 딱딱하게 보이도록 했다.
+- Tests 페이지 하단은 `다음에 검토할 테스트`보다 신뢰감 있는 `테스트 항목은 신중하게 추가합니다`로 보정했다.
+- Guides 페이지 하단은 `가이드 항목은 계속 다듬는 중입니다`보다 구매 전 체크 기준을 보강한다는 방향으로 정리했다.
+- Switches 페이지의 클릭축/저소음 리니어축 문구에서 강한 단정과 과장으로 읽힐 수 있는 표현을 완화했다.
+- Search Console sitemap 제출 문제는 기존 방침대로 계속 보류했고, sitemap/Search Console/GA4 구조는 수정하지 않았다.
+- 제품 데이터, 제품 basicFilters, Finder 추천 로직, snapshot 수동 수정, DB/API/Supabase, Control Tower, 광고/제휴/리뷰 영상은 변경하지 않았다.
