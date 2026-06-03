@@ -41,9 +41,11 @@ export function Footer() {
           <div>
             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-[var(--primary)] opacity-60">연락처</h4>
             <ul className="space-y-4 text-sm text-[var(--muted)]">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>문의 채널 준비 중</span>
+              <li>
+                <Link href="/kr/contact" className="flex items-center gap-2 transition-colors hover:text-[var(--accent)]">
+                  <Mail className="h-4 w-4" />
+                  <span>문의</span>
+                </Link>
               </li>
             </ul>
           </div>

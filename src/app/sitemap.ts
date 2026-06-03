@@ -42,6 +42,7 @@ const routes = [
   "/kr/guides/review-reading-checklist",
   "/kr/guides/spec-table-red-flags",
   "/kr/switches",
+  "/kr/contact",
   "/kr/privacy",
   "/kr/terms",
   "/kr/disclosure",
@@ -50,9 +51,9 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date("2026-05-29"),
+    lastModified: new Date(route === "/kr/contact" ? "2026-06-03" : "2026-05-29"),
     changeFrequency: route === "/kr" ? "weekly" : "monthly",
-    priority: ["/kr/privacy", "/kr/terms", "/kr/disclosure"].includes(route)
+    priority: ["/kr/contact", "/kr/privacy", "/kr/terms", "/kr/disclosure"].includes(route)
       ? 0.4
       : route === "/kr"
         ? 1

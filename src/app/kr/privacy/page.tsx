@@ -16,6 +16,7 @@ const sections = [
     body: [
       "SetupRadar는 현재 회원가입, 로그인, 결제, 댓글, 문의 폼을 운영하지 않습니다.",
       "이름, 이메일, 전화번호처럼 사용자가 직접 입력하는 개인정보를 공개 사이트에서 별도로 받지 않습니다.",
+      "다만 사용자가 문의 이메일로 직접 내용을 보내는 경우, 답변을 위해 이메일 주소와 문의 내용이 확인될 수 있습니다.",
     ],
   },
   {
@@ -42,8 +43,9 @@ const sections = [
   {
     title: "문의",
     body: [
-      "운영자 문의 채널은 준비 중입니다.",
-      "문의 채널이 준비되면 이 페이지와 Footer에 안내를 추가합니다.",
+      "문의는 /kr/contact 페이지에 안내된 이메일로 보낼 수 있습니다.",
+      "이메일로 받은 내용은 답변과 사이트 운영 개선을 위한 참고 목적으로만 사용합니다.",
+      "제품 구매, AS, 교환 조건은 판매처 또는 제조사 기준을 함께 확인해 주세요.",
     ],
   },
 ];
@@ -69,7 +71,8 @@ export default function PrivacyPage() {
         </h1>
         <p className="max-w-2xl text-[var(--muted)] md:text-lg">
           SetupRadar는 설치 없이 하드웨어 상태와 구매 전 체크 기준을 확인하는 사이트입니다. 현재 공개 사이트에서
-          직접 입력받는 개인정보는 없지만, 방문 분석과 향후 광고·제휴 가능성을 투명하게 안내합니다.
+          입력 폼으로 받는 개인정보는 없지만, 방문 분석과 문의 이메일 처리 기준, 향후 광고·제휴 가능성을 투명하게
+          안내합니다.
         </p>
       </section>
 
@@ -97,7 +100,7 @@ export default function PrivacyPage() {
         </div>
       </section>
 
-      <p className="mt-8 text-xs font-medium text-[var(--muted)]">마지막 업데이트: 2026-05-30</p>
+      <p className="mt-8 text-xs font-medium text-[var(--muted)]">마지막 업데이트: 2026-06-03</p>
     </main>
   );
 }

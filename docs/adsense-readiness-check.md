@@ -1,7 +1,8 @@
 # Project7 AdSense Readiness Check
 
 Date: 2026-05-31  
-Scope: readiness review only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console, DB/API, or Control Tower changes.
+Updated: 2026-06-03 Contact Channel Prep  
+Scope: readiness review and contact-channel documentation only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console verification structure, DB/API, or Control Tower changes.
 
 References:
 
@@ -13,14 +14,14 @@ References:
 
 Current judgement: **C. Apply after content and policy polish.**
 
-SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, and Search Console ownership. The main risk is not technical readiness, but operating trust: the site is still on `pages.dev`, the contact channel is not live, and a few "future/coming later" cues remain visible.
+SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. The main risk is not technical readiness, but operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and a few "future/coming later" cues remain visible.
 
 Rough approval outlook:
 
 | Scenario | Estimate | Notes |
 | --- | ---: | --- |
 | Apply now on `setupradar.pages.dev` | 40% | Possible, but weak trust signals and temporary domain make it fragile. |
-| Buy a domain, update canonical/sitemap, add a real contact channel | 60% | Stronger identity and support signal. |
+| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 60% | Stronger identity and support signal. |
 | Domain + contact + one week of guide/test content polish | 72% | Better balance of useful content, policy readiness, and site trust. |
 
 These percentages are internal planning estimates, not a guarantee of Google review results.
@@ -79,21 +80,29 @@ Ready points:
 - Footer links point to those real pages.
 - The disclosure page states that no actual ad or affiliate links are currently present.
 
+Ready points added on 2026-06-03:
+
+- `/kr/contact` exists.
+- Footer now links to `/kr/contact` with `문의`.
+- The contact email is `yulxwell123@gmail.com`.
+- `/kr/privacy` explains that information sent directly by email may be used for replies and operating improvements.
+
 Risks:
 
-- Contact channel still says "문의 채널 준비 중".
+- The contact email is a temporary Gmail channel before a custom domain is purchased.
 - Privacy and terms pages are intentionally light. They are suitable as minimum operating pages, but not yet mature policy pages.
 
 Recommendation:
 
-- Add a real contact method before applying. A simple contact email or contact page is enough for now.
+- Keep `/kr/contact` live before applying.
+- If a custom domain is purchased, consider changing the contact email to a domain-based address and update the contact page, Footer-adjacent documents, and privacy page together.
 - Keep the disclosure page even before affiliate links are added, because it shows operating intent clearly.
 
 ## 5. Unfinished Or Preparing Signals
 
 Items to review before applying:
 
-- Footer: `문의 채널 준비 중`
+- Contact page: temporary Gmail is acceptable for now, but domain email would look stronger after domain purchase.
 - Header language selector: EN/JP/CN disabled states
 - Main page: future price information text
 - Search Console sitemap submission: raw XML is normal, but Search Console status is still pending/unstable
@@ -105,7 +114,7 @@ Current assessment:
 
 Recommendation:
 
-- Replace "문의 채널 준비 중" with a real contact channel.
+- Keep the contact page and Footer link active.
 - Hide or quiet future features that are not part of the current service.
 
 ## 6. Technical And SEO Readiness
@@ -140,7 +149,6 @@ Recommendation:
 
 High priority risks:
 
-- No real contact channel yet.
 - Temporary `pages.dev` domain.
 - Some visible "future" signals remain.
 
@@ -149,6 +157,7 @@ Medium priority risks:
 - Several guide pages may need more depth before review.
 - Policy pages are minimum viable pages, not mature legal/operating pages.
 - Sitemap submission in Search Console is still not fully settled.
+- Contact email is temporary Gmail rather than a domain email.
 
 Low priority risks:
 
@@ -163,14 +172,14 @@ Decision: **C. 콘텐츠/정책 보강 후 신청 권장**
 Reason:
 
 - The site has useful features and enough structure to be considered a real product.
-- The current weak points are easy to notice during review: no contact channel, temporary domain, and visible future-work text.
+- The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and visible future-work text.
 - Applying now is possible but not the best timing.
 
-If the user wants a faster route, the decision can move toward **B. 도메인 구매 후 신청 권장** once a custom domain and contact channel are ready.
+If the user wants a faster route, the decision can move toward **B. 도메인 구매 후 신청 권장** once a custom domain is ready and the contact channel is reviewed again.
 
 ## 9. Top 5 Recommended Fixes Before Applying
 
-1. Add a real contact channel and update Footer/privacy page wording.
+1. Keep the new `/kr/contact` channel live and replace Gmail with domain email after domain purchase if available.
 2. Decide whether to buy a custom domain before applying.
 3. Reduce visible future-work cues such as disabled locales and price integration text.
 4. Polish 3 to 5 core guide pages with more original examples and buying-check detail.
@@ -196,7 +205,7 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 | Guides | Almost ready | Good volume, but several pages can be deeper. |
 | Finder | Ready | Interactive and useful; no purchase links needed yet. |
 | Policy pages | Minimum ready | Existing pages are enough for early trust, but contact is weak. |
-| Contact | Not ready | Actual channel should be added before applying. |
+| Contact | Ready for now | `/kr/contact` exists and uses temporary Gmail `yulxwell123@gmail.com`; replace with domain email later if available. |
 | Sitemap/robots | Mostly ready | Raw XML normal, Search Console submission still pending. |
 | GA4 | Ready | Environment variable based and live. |
 | Custom domain | Not ready | Strongly recommended before review. |
@@ -204,6 +213,6 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 
 ## 12. Next Action
 
-Recommended next step: **Contact Channel Prep**.
+Recommended next step: **AdSense Pre-submit Cleanup**.
 
-Create a real contact path, then update Footer and privacy page. After that, do a short **AdSense Pre-submit Cleanup** pass to reduce early-stage wording and re-check guide depth.
+Contact Channel Prep is complete for the temporary Gmail stage. Next, reduce early-stage wording, review disabled locale signals, and re-check guide depth before applying.

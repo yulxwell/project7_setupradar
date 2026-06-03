@@ -123,6 +123,14 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **수익화 코드 미추가**: 실제 AdSense 코드, 광고 script, 제휴 링크, 구매 버튼은 추가하지 않았습니다.
 - **기존 구조 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
 
+### Contact Channel Prep - 2026-06-03
+- **문의 페이지 추가**: `/kr/contact` 정적 페이지를 만들고 임시 Gmail 문의 채널 `yulxwell123@gmail.com`을 mailto 링크로 안내했습니다.
+- **Footer 문의 링크 전환**: 기존 `문의 채널 준비 중` 문구를 `/kr/contact`로 연결되는 `문의` 링크로 교체했습니다. Footer에는 이메일을 길게 노출하지 않고 문의 페이지에서만 확인하도록 정리했습니다.
+- **정책 문구 보강**: `/kr/privacy`에는 문의 이메일로 사용자가 직접 보낸 정보가 답변과 운영 개선 목적으로 처리될 수 있음을 반영했고, `/kr/terms`에는 잘못된 정보나 보강 제안을 문의할 수 있다는 안내를 추가했습니다.
+- **sitemap 반영**: root `/sitemap.xml`과 `/kr/sitemap.xml`에 `/kr/contact`를 낮은 priority로 포함했습니다.
+- **운영 기준**: 현재 이메일은 도메인 구매 전 임시 문의 채널이며, 도메인 메일이 생기면 교체할 수 있습니다.
+- **미변경 유지**: 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

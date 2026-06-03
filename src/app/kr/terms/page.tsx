@@ -36,6 +36,7 @@ const sections = [
     title: "콘텐츠 변경",
     body: [
       "테스트 항목, 가이드, 제품 정보는 더 나은 이해를 위해 수정되거나 보강될 수 있습니다.",
+      "잘못된 정보나 보강 제안은 문의 페이지의 이메일로 전달할 수 있으며, 답변이 늦어질 수 있습니다.",
       "새로운 기능이나 광고·제휴 구조가 추가되면 관련 안내 페이지에 기준을 함께 기록합니다.",
     ],
   },
@@ -88,7 +89,7 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <p className="mt-8 text-xs font-medium text-[var(--muted)]">마지막 업데이트: 2026-05-30</p>
+      <p className="mt-8 text-xs font-medium text-[var(--muted)]">마지막 업데이트: 2026-06-03</p>
     </main>
   );
 }

@@ -875,3 +875,18 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 신청 전 우선 보완 추천은 실제 문의 채널, 커스텀 도메인 검토, 준비 중 문구 축소, 핵심 가이드 3~5개 보강, Search Console sitemap 재제출로 정리했다.
 - 실제 AdSense 코드, 광고 script, 제휴 링크, 구매 버튼은 추가하지 않았다.
 - 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 수정하지 않았다.
+
+## Contact Channel Prep - 2026-06-03 기록
+
+- AdSense 신청 전 약점이었던 실제 문의 채널 부재를 보완하기 위해 `/kr/contact` 정적 페이지를 추가했다.
+- 문의 이메일은 도메인 구매 전 임시 Gmail 채널인 `yulxwell123@gmail.com`로 안내했고, 도메인 메일이 생기면 교체할 수 있다는 운영 기준은 문서에만 남겼다.
+- `/kr/contact`에는 불편한 점, 잘못된 정보, 제품/가이드 보강 제안을 이메일로 보낼 수 있다는 안내와 답변 지연 가능성을 적었다.
+- 제품 가격, 재고, AS, 교환 조건은 판매처 또는 제조사 기준으로 확인해야 하며, 테스트 도구 결과는 브라우저, 운영체제, 기기 설정에 따라 달라질 수 있다는 안내를 포함했다.
+- Footer의 `문의 채널 준비 중` 문구를 `/kr/contact`로 연결되는 `문의` 링크로 교체했다. Footer에는 이메일을 직접 길게 노출하지 않고 문의 페이지에서만 보여준다.
+- `/kr/privacy`에는 문의 이메일로 사용자가 직접 보낸 정보가 답변과 사이트 운영 개선 참고 목적으로 처리될 수 있음을 반영했다. 회원가입, 로그인, 결제, 댓글, 문의 폼 없음 안내는 유지했다.
+- `/kr/terms`에는 잘못된 정보나 보강 제안을 문의 이메일로 전달할 수 있고 답변이 늦어질 수 있다는 안내를 추가했다.
+- `/kr/disclosure`는 현재 광고/제휴 코드 없음과 향후 운영 원칙을 이미 안내하고 있어 수정하지 않았다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에 `/kr/contact`를 낮은 priority로 추가했다. 존재하지 않는 URL은 추가하지 않았다.
+- `README.md`와 `docs/adsense-readiness-check.md`에 Contact Channel Prep 완료 및 임시 Gmail 문의 채널 운영 기준을 기록했다.
+- 검수 결과 `npm run lint`와 `npm run build`를 통과했고, 빌드 산출물 기준으로 `/kr/contact`, Footer 문의 링크, `/kr/privacy`, `/kr/terms`, root `/sitemap.xml`, `/kr/sitemap.xml` 반영을 확인했다.
+- 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 제품 데이터, Finder 추천 로직, GA4/Search Console verification 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
