@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mouse, Keyboard, Zap, ShieldCheck, Moon } from "lucide-react";
 import { GuideCard } from "@/components/cards/Cards";
+import { PageHero } from "@/components/sections/PageHero";
 import { GUIDE_CATEGORIES, GUIDES_DATABASE } from "@/content/kr/guides";
 import { getContentDisplay } from "@/content/utils";
 
@@ -23,12 +24,17 @@ const ICON_MAP = {
 export default function GuidesPage() {
   return (
     <div className="mx-auto max-w-6xl py-16 px-4 md:py-24">
-      <div className="mb-16 text-left border-b border-[var(--border)] pb-8">
-        <h1 className="mb-4 text-3xl font-bold text-[var(--primary)] md:text-5xl">하드웨어 구매 가이드</h1>
-        <p className="max-w-lg text-[var(--muted)]">
-          광고 문구보다 먼저 확인하면 좋은 기준과 체크리스트를 초보자 눈높이로 정리했습니다.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Buying Guides"
+        title="하드웨어 구매 가이드"
+        icon={ShieldCheck}
+        description={
+          <>
+            마우스, 키보드, 모니터의 구매 전 기준과 체크리스트를 초보자 눈높이로 정리했습니다. <br className="hidden md:block" />
+            광고 문구보다 실제로 확인할 항목을 먼저 살펴보세요.
+          </>
+        }
+      />
 
       <div className="space-y-12">
         {GUIDE_CATEGORIES.map((category) => {

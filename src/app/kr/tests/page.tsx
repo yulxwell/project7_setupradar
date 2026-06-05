@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Monitor, MousePointer2, Zap, Mouse, Keyboard } from "lucide-react";
 import { TestCard } from "@/components/cards/Cards";
+import { PageHero } from "@/components/sections/PageHero";
 import { TEST_TOOLS } from "@/content/kr/tools";
 
 export const metadata: Metadata = {
@@ -40,17 +41,17 @@ const TEST_CATEGORIES = [
 export default function TestsPage() {
   return (
     <div className="mx-auto max-w-6xl py-16 px-4 md:py-28">
-      <div className="relative mb-16 overflow-hidden rounded-3xl bg-[var(--secondary)]/50 px-8 py-12 text-center md:px-12 md:py-16 border border-[var(--border)]">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--primary)] text-[var(--background)]">
-          <Monitor className="h-6 w-6" />
-        </div>
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-[var(--primary)] md:text-5xl">하드웨어 테스트 도구</h1>
-        <p className="mx-auto max-w-xl text-[var(--muted)] md:text-lg">
-          모니터, 마우스, 키보드의 의심 증상을 브라우저에서 가볍게 확인하세요. <br className="hidden md:block" />
-          결과는 사용 환경에 따라 달라질 수 있는 참고용입니다.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Test Tools"
+        title="하드웨어 테스트 도구"
+        icon={Monitor}
+        description={
+          <>
+            모니터, 마우스, 키보드의 의심 증상을 브라우저에서 가볍게 확인하세요. <br className="hidden md:block" />
+            결과는 사용 환경에 따라 달라질 수 있는 참고용입니다.
+          </>
+        }
+      />
 
       <div className="space-y-12">
         {TEST_CATEGORIES.map((category) => {

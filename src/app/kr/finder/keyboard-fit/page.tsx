@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, Info, Keyboard, RotateCcw, SlidersHorizontal } from "lucide-react";
+import { ChevronLeft, Info, Keyboard, RotateCcw } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
 import { KEYBOARD_DATABASE } from "@/content/kr/products/keyboards";
 import {
   FinderOptionGroup,
@@ -339,29 +340,30 @@ export default function KeyboardFitPage() {
         메인으로 돌아가기
       </Link>
 
-      <div className="mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-end">
-        <div>
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">
-            <SlidersHorizontal className="h-3 w-3" />
-            Compact Finder
-          </div>
-          <h1 className="text-2xl font-bold text-[var(--primary)] md:text-3xl">Keyboard Finder</h1>
-          <p className="mt-1 max-w-2xl text-xs leading-relaxed text-[var(--muted)]">
-            구매 전 비교할 배열과 키감 조건을 빠르게 고릅니다. 잘 모르겠음을 선택하면 후보를 넓게 봅니다.
-          </p>
-        </div>
-        <button
-          onClick={() => {
-            setValues(KEYBOARD_FINDER_DEFAULTS);
-            setShowMoreResults(false);
-            setExpandedKeyboardId(null);
-          }}
-          className="inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-3 py-2 text-xs font-bold text-[var(--primary)] transition-colors hover:bg-[var(--secondary)]/80"
-        >
-          <RotateCcw className="h-3.5 w-3.5" />
-          초기화
-        </button>
-      </div>
+      <PageHero
+        eyebrow="Keyboard Finder"
+        title="키보드 찾기"
+        icon={Keyboard}
+        description={
+          <>
+            배열, 키감, 소음, 연결 방식을 기준으로 구매 전 비교할 후보를 좁혀보세요. <br className="hidden md:block" />
+            잘 모르겠음을 선택하면 후보를 넓게 볼 수 있는 참고용 Finder입니다.
+          </>
+        }
+        action={
+          <button
+            onClick={() => {
+              setValues(KEYBOARD_FINDER_DEFAULTS);
+              setShowMoreResults(false);
+              setExpandedKeyboardId(null);
+            }}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-bold text-[var(--primary)] transition-colors hover:bg-[var(--secondary)]"
+          >
+            <RotateCcw className="h-4 w-4" />
+            초기화
+          </button>
+        }
+      />
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_390px]">
         <div className="grid content-start gap-3 md:grid-cols-2">
