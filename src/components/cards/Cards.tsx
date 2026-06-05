@@ -64,15 +64,13 @@ export function GuideCard({ title, description, href, icon: Icon }: GuideCardPro
   return (
     <Link 
       href={href}
-      className="group flex h-full items-start gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all hover:border-[var(--accent)] hover:bg-[var(--secondary)]"
+      className="group flex h-full flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-lg hover:shadow-[var(--accent)]/5 active:scale-[0.98]"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--secondary)] text-[var(--muted)] group-hover:bg-[var(--accent)] group-hover:text-[var(--background)] transition-all">
-        <Icon className="h-5 w-5" />
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--secondary)] text-[var(--muted)] transition-colors duration-300 group-hover:bg-[var(--accent)] group-hover:text-[var(--background)]">
+        <Icon className="h-6 w-6" />
       </div>
-      <div className="flex-1">
-        <h4 className="mb-1 text-sm font-bold text-[var(--primary)] group-hover:text-[var(--accent)] transition-colors">{title}</h4>
-        <p className="text-xs leading-relaxed text-[var(--muted)] line-clamp-2">{description}</p>
-      </div>
+      <h3 className="mb-2 text-xl font-bold text-[var(--primary)] transition-colors group-hover:text-[var(--accent)]">{title}</h3>
+      <p className="text-sm leading-relaxed text-[var(--muted)] line-clamp-3">{description}</p>
     </Link>
   );
 }

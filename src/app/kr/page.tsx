@@ -247,32 +247,19 @@ export default function Home() {
           description="구매 전 비교가 필요할 때 손 크기, 배열, 소음 같은 조건으로 후보를 가볍게 좁혀보세요."
         />
 
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <Link href="/kr/finder/mouse-fit" className="group rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--accent)]">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--secondary)] text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-[var(--background)]">
-                <MousePointer2 className="h-4 w-4" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-sm font-bold text-[var(--primary)]">마우스 찾기</h3>
-                <p className="mt-0.5 text-xs text-[var(--muted)]">손 크기, 형태, 무게, 연결 방식으로 후보를 좁힙니다.</p>
-              </div>
-              <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
-            </div>
-          </Link>
-
-          <Link href="/kr/finder/keyboard-fit" className="group rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--accent)]">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--secondary)] text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-[var(--background)]">
-                <Keyboard className="h-4 w-4" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-sm font-bold text-[var(--primary)]">키보드 찾기</h3>
-                <p className="mt-0.5 text-xs text-[var(--muted)]">배열, 키감, 소음, 연결 조건으로 후보를 좁힙니다.</p>
-              </div>
-              <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
-            </div>
-          </Link>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <GuideCard
+            title="마우스 찾기"
+            description="손 크기, 형태, 무게, 연결 방식으로 구매 전 비교할 후보를 좁힙니다."
+            href="/kr/finder/mouse-fit"
+            icon={MousePointer2}
+          />
+          <GuideCard
+            title="키보드 찾기"
+            description="배열, 키감, 소음, 연결 조건으로 구매 전 비교할 후보를 좁힙니다."
+            href="/kr/finder/keyboard-fit"
+            icon={Keyboard}
+          />
         </div>
       </section>
 
