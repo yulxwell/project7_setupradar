@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "하드웨어 테스트와 구매 가이드",
-  description: "마우스, 키보드, 모니터 상태를 설치 없이 확인하고 구매 전 헷갈리는 스펙을 초보자 기준으로 정리합니다.",
+  description: "마우스, 키보드, 모니터 상태를 설치 없이 확인하고 구매 전 확인할 스펙을 초보자 기준으로 정리합니다.",
   alternates: {
     canonical: "/kr",
   },

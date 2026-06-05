@@ -15,7 +15,7 @@ export function Footer() {
             </Link>
             <p className="text-sm leading-relaxed text-[var(--muted)]">
               설치 없이 장비 상태를 가볍게 확인하고, <br />
-              구매 전 헷갈리는 스펙을 초보자 기준으로 정리합니다.
+              구매 전 확인할 스펙을 초보자 기준으로 정리합니다.
             </p>
           </div>
           
