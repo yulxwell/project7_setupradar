@@ -131,6 +131,23 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **운영 기준**: 현재 이메일은 도메인 구매 전 임시 문의 채널이며, 도메인 메일이 생기면 교체할 수 있습니다.
 - **미변경 유지**: 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 수정하지 않았습니다.
 
+### AdSense Pre-submit Cleanup - 2026-06-03
+- **Header 다국어 표시 정리**: AdSense 신청 전 미완성 다국어 사이트처럼 보이지 않도록 사용자 화면에서는 KR 언어 버튼만 노출하고 EN/JP/CN 비활성 버튼은 숨겼습니다.
+- **메인 미구현 가격 문구 정리**: `가격 정보 연동은 후속 검토 중입니다` 문구를 `가격과 판매 옵션은 구매 전 판매처 기준으로 확인해 주세요.`로 바꿔 실제 제공 범위 중심으로 정리했습니다.
+- **정책/문의/Footer 점검**: Footer 문의 링크와 정책 페이지 링크가 실제 URL로 연결되고, 문의 이메일은 `/kr/contact`에만 노출되는 상태를 유지했습니다.
+- **readiness 업데이트**: `docs/adsense-readiness-check.md`에 cleanup 결과, 핵심 가이드 보강 후보, 신청 판단과 내부 가능성 추정치 업데이트를 기록했습니다.
+- **sitemap/Search Console 보류 유지**: 새 실제 페이지를 추가하지 않았으므로 sitemap, robots, Search Console verification 구조는 수정하지 않았습니다.
+- **미변경 유지**: 실제 AdSense 코드, 광고 script, 제휴 링크, 구매 버튼, 제품 데이터, Finder 추천 로직, GA4 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았습니다.
+
+### Core Guide Polish 1 - 2026-06-03
+- **핵심 구매 가이드 3개 보강**: `/kr/guides/mouse-buying-checklist`, `/kr/guides/keyboard-buying-checklist`, `/kr/guides/monitor-buying-checklist` 본문을 초보자용 구매 전 확인 기준 중심으로 확장했습니다.
+- **마우스 체크 기준 강화**: 손 크기, 대칭형/오른손용 비대칭형, 무게, 유선/무선/블루투스, 센서/DPI, 클릭 소음, 휠, 사이드 버튼, AS/교환 조건 확인 문구를 보강했습니다.
+- **키보드 체크 기준 강화**: 배열, 스위치 성향, 소음 환경, 연결 방식, 키캡/하우징/흡음재, 핫스왑/VIA/QMK, 한글 각인, OS 호환성 확인 문구를 보강했습니다.
+- **모니터 체크 기준 강화**: 크기, 해상도, 주사율, IPS/VA/OLED, GtG/MPRT, 밝기/HDR, 불량화소/빛샘/IPS Glow, 포트/스탠드/VESA, 구매 후 테스트 순서 문구를 보강했습니다.
+- **가이드 목록 요약 정리**: `src/content/kr/guides.ts`의 3개 체크리스트 카드 요약을 본문 보강 방향에 맞춰 수정했습니다.
+- **readiness 업데이트**: `docs/adsense-readiness-check.md`에 Core Guide Polish 1 결과와 콘텐츠 깊이 리스크 일부 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
+- **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

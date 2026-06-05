@@ -890,3 +890,29 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `README.md`와 `docs/adsense-readiness-check.md`에 Contact Channel Prep 완료 및 임시 Gmail 문의 채널 운영 기준을 기록했다.
 - 검수 결과 `npm run lint`와 `npm run build`를 통과했고, 빌드 산출물 기준으로 `/kr/contact`, Footer 문의 링크, `/kr/privacy`, `/kr/terms`, root `/sitemap.xml`, `/kr/sitemap.xml` 반영을 확인했다.
 - 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 제품 데이터, Finder 추천 로직, GA4/Search Console verification 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## AdSense Pre-submit Cleanup - 2026-06-03 기록
+
+- AdSense 신청 전 미완성 사이트처럼 보일 수 있는 사용자 화면 요소를 최소 정리했다.
+- Header의 EN/JP/CN 비활성 언어 버튼은 심사 전 노출하지 않고 KR만 보이도록 변경했다. 실제 다국어 route나 기능은 추가하지 않았다.
+- 메인 페이지 하단의 `가격 정보 연동은 후속 검토 중입니다` 문구를 `가격과 판매 옵션은 구매 전 판매처 기준으로 확인해 주세요.`로 바꿔 미구현 가격 기능 약속처럼 보이지 않게 정리했다.
+- Footer는 `/kr/contact`, `/kr/privacy`, `/kr/terms`, `/kr/disclosure` 실제 링크가 연결되어 있고 빈 `href="#"`나 존재하지 않는 도메인 메일 노출이 없음을 확인했다.
+- `/kr/privacy`, `/kr/terms`, `/kr/disclosure`, `/kr/contact`는 문의/분석/광고 가능성 안내가 자연스럽게 유지되어 있어 추가 수정하지 않았다.
+- 핵심 가이드 후보 5개(`mouse-buying-checklist`, `keyboard-buying-checklist`, `monitor-buying-checklist`, `mouse-shape-symmetrical-vs-ergonomic`, `keyboard-switch-types`)는 현재 유용한 체크 항목이 있으나 압축된 형태라 다음 작업에서 예시와 구매 전 상황별 설명을 보강하는 후보로 남겼다.
+- `/kr/tests`는 11개 테스트 도구가 실제 route로 연결되고, 결과를 참고용으로 안내하되 CTA와 목적이 유지되어 있어 추가 수정하지 않았다.
+- `docs/adsense-readiness-check.md`에는 cleanup 결과, pages.dev/임시 Gmail/가이드 깊이 리스크, 내부 가능성 추정치(`pages.dev+문의+cleanup` 약 48%, 도메인 구매 후 약 62%, 도메인+핵심 가이드 보강 후 약 74%)를 반영했다.
+- 새 실제 페이지를 추가하지 않았으므로 sitemap, robots, Search Console verification 구조는 수정하지 않았다.
+- 사용자 화면 대상 금지 표현과 미구현/준비 중 문구를 재점검했고, 허용 범위 밖의 노출 문제는 확인되지 않았다.
+- 실제 AdSense 코드, 광고 script, 링크프라이스/쿠팡파트너스 링크, 구매 버튼, 제품 데이터, Finder 추천 로직, GA4 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Core Guide Polish 1 - 2026-06-03 기록
+
+- AdSense 신청 전 콘텐츠 깊이 보강을 위해 핵심 구매 체크리스트 3개만 수정했다.
+- `/kr/guides/mouse-buying-checklist`는 손 크기와 기존 마우스 수치 비교, 대칭형/오른손용 비대칭형 차이, 무게 체감, 유선/2.4GHz/블루투스 차이, DPI와 실제 감도 환경, 클릭 소음, 휠, 사이드 버튼, 코팅, AS/교환 조건을 구매 전 확인 기준으로 보강했다.
+- `/kr/guides/keyboard-buying-checklist`는 풀배열/TKL/75%/65% 이하 배열 선택, 리니어/택타일/클릭/저소음 스위치 구분, 집/사무실/밤 사용 소음 기준, 유선/2.4GHz/블루투스, 키캡/하우징/흡음재 체감 요소, 핫스왑/VIA/QMK 기본 설명, 한글 각인과 OS 호환성 확인을 보강했다.
+- `/kr/guides/monitor-buying-checklist`는 크기/해상도/주사율 선택, IPS/VA/OLED 차이, GtG/MPRT 응답속도 문구 주의, 밝기/HDR/명암비 체감 조건, 불량화소/빛샘/IPS Glow/무결점 정책, 포트/스탠드/VESA/책상 공간, 구매 후 테스트 순서를 보강했다.
+- 3개 가이드에 page metadata description과 canonical을 추가해 기존 route 기준을 유지하면서 검색 설명을 보강했다.
+- `src/content/kr/guides.ts`의 3개 체크리스트 카드 요약을 본문 보강 내용과 맞춰 수정했다.
+- `docs/adsense-readiness-check.md`에는 Core Guide Polish 1 완료, 콘텐츠 깊이 리스크 일부 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `55% / 65% / 75%`를 기록했다.
+- 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
+- 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.

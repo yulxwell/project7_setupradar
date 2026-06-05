@@ -200,7 +200,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/30 p-8 text-center">
           <LayoutGrid className="h-5 w-5 text-[var(--muted)]/50 mb-3" />
           <p className="text-[11px] text-[var(--muted)] font-medium">
-            가격 정보 연동은 후속 검토 중입니다
+            가격과 판매 옵션은 구매 전 판매처 기준으로 확인해 주세요.
           </p>
         </div>
       </section>

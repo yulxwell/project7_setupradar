@@ -21,6 +21,8 @@ const languageLinks = [
   { label: "CN", href: "/kr", enabled: false },
 ];
 
+const visibleLanguageLinks = languageLinks.filter((language) => language.enabled);
+
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,9 +71,9 @@ export function Header() {
           </button>
 
           <div className="hidden items-center rounded-lg border border-[var(--border)] bg-[var(--secondary)]/50 p-1 sm:flex">
-            {languageLinks.map((language) => {
+            {visibleLanguageLinks.map((language) => {
               const isActive = currentLocale === language.href.slice(1);
-              return language.enabled ? (
+              return (
                 <Link
                   key={language.label}
                   href={language.href}
@@ -83,17 +85,6 @@ export function Header() {
                 >
                   {language.label}
                 </Link>
-              ) : (
-                <button
-                  key={language.label}
-                  type="button"
-                  disabled
-                  title={`${language.label} 준비 중`}
-                  aria-label={`${language.label} language coming soon`}
-                  className="flex h-8 min-w-9 cursor-not-allowed items-center justify-center rounded-md px-2 text-xs font-black text-[var(--muted)] opacity-35"
-                >
-                  {language.label}
-                </button>
               );
             })}
           </div>
@@ -125,10 +116,10 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="mt-4 grid grid-cols-4 gap-2">
-              {languageLinks.map((language) => {
+            <div className="mt-4 grid grid-cols-1 gap-2">
+              {visibleLanguageLinks.map((language) => {
                 const isActive = currentLocale === language.href.slice(1);
-                return language.enabled ? (
+                return (
                   <Link
                     key={language.label}
                     href={language.href}
@@ -140,17 +131,6 @@ export function Header() {
                   >
                     {language.label}
                   </Link>
-                ) : (
-                  <button
-                    key={language.label}
-                    type="button"
-                    disabled
-                    title={`${language.label} 준비 중`}
-                    aria-label={`${language.label} language coming soon`}
-                    className="flex h-11 cursor-not-allowed items-center justify-center rounded-xl border border-[var(--border)] text-sm font-black text-[var(--muted)] opacity-35"
-                  >
-                    {language.label}
-                  </button>
                 );
               })}
             </div>

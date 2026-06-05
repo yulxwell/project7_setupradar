@@ -1,8 +1,10 @@
 # Project7 AdSense Readiness Check
 
-Date: 2026-05-31  
-Updated: 2026-06-03 Contact Channel Prep  
-Scope: readiness review and contact-channel documentation only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console verification structure, DB/API, or Control Tower changes.
+Date: 2026-05-31
+Updated: 2026-06-03 Contact Channel Prep
+Updated: 2026-06-03 AdSense Pre-submit Cleanup
+Updated: 2026-06-03 Core Guide Polish 1
+Scope: readiness review and content polish only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console verification/sitemap/robots structure, DB/API, or Control Tower changes.
 
 References:
 
@@ -14,15 +16,15 @@ References:
 
 Current judgement: **C. Apply after content and policy polish.**
 
-SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. The main risk is not technical readiness, but operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and a few "future/coming later" cues remain visible.
+SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. Core Guide Polish 1 expanded three buying-check pages, so the thin-content risk is lower than before. The main remaining risk is operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and some guide families can still mature before review.
 
 Rough approval outlook:
 
 | Scenario | Estimate | Notes |
 | --- | ---: | --- |
-| Apply now on `setupradar.pages.dev` | 40% | Possible, but weak trust signals and temporary domain make it fragile. |
-| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 60% | Stronger identity and support signal. |
-| Domain + contact + one week of guide/test content polish | 72% | Better balance of useful content, policy readiness, and site trust. |
+| Apply now on `setupradar.pages.dev` with contact + cleanup + 3 polished core guides | 55% | Better content depth than before, but temporary domain and Gmail contact still make review less stable. |
+| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 65% | Stronger identity and support signal. |
+| Domain + additional guide polish | 75% | Better balance of useful content, policy readiness, and site trust. |
 
 These percentages are internal planning estimates, not a guarantee of Google review results.
 
@@ -37,13 +39,18 @@ Ready points:
 
 Risks:
 
-- The line about price information being a future item can make the site feel unfinished.
-- Disabled language buttons for EN/JP/CN may signal that the service is still under construction.
+- The site still uses the temporary `pages.dev` domain.
+- Some guide families outside the first three buying-check pages can still be expanded with examples and concrete buying scenarios.
+
+Cleanup result on 2026-06-03:
+
+- Header now shows only KR before AdSense submission. EN/JP/CN disabled buttons are hidden from the user-facing header.
+- The main page no longer says that price information is under later review. It now reminds users to confirm price and sales options with the seller before purchase.
 
 Recommendation:
 
-- Before applying, reduce visible future-work language on the main page.
-- Keep only KR language UI until other locales actually exist, or make the disabled state very quiet.
+- Keep KR-only language UI until other locales actually exist.
+- Keep future product/price features out of the user-facing homepage until they are implemented.
 
 ## 3. Content Sufficiency
 
@@ -53,22 +60,24 @@ Ready points:
 - `/kr/guides` has 21 guide pages across mouse, keyboard, monitor, and buying-check categories.
 - Mouse Finder and Keyboard Finder are interactive and return real product candidates.
 - Recent buying checklist pages give the site more original content depth.
+- Core Guide Polish 1 expanded three key buying-check guides:
+  - Mouse buying checklist: hand size, shell shape, weight, wired/wireless differences, sensor/DPI context, clicks, wheel, side buttons, coating, and warranty checks.
+  - Keyboard buying checklist: layout choice, switch families, noise, wired/2.4GHz/Bluetooth, keycaps/housing, hot-swap/VIA/QMK basics, Korean legends, and OS compatibility.
+  - Monitor buying checklist: size, resolution, refresh rate, IPS/VA/OLED, GtG/MPRT wording, brightness/HDR, pixel policy, ports, stand, VESA, and post-purchase test order.
 
 Risks:
 
-- Some guide pages are still short and may look closer to a checklist than a full article.
+- Some non-core guide pages are still compact and may benefit from more examples later.
 - Product detail pages do not exist yet, so Finder product cards are useful but not deep enough to carry monetization alone.
 - The site should not lean too much on future product/price features before those pages exist.
 
 Recommendation:
 
-- Polish 3 to 5 strongest guide pages before applying:
-  - Mouse buying checklist
-  - Keyboard buying checklist
-  - Monitor buying checklist
-  - Dead pixel policy
-  - Mouse switch and double-click
-- Add more concrete examples and "what to check before buying" sections, without adding product purchase links yet.
+- Core Guide Polish 1 is complete for the first 3 strongest buying-check pages.
+- If time allows before applying, polish 2 more supporting guide pages:
+  - Mouse shape: symmetrical vs ergonomic
+  - Keyboard switch types
+- Current check: the first 3 pages now have more concrete examples and "what to check before buying" details, without product purchase links.
 
 ## 4. Policy Pages
 
@@ -103,19 +112,19 @@ Recommendation:
 Items to review before applying:
 
 - Contact page: temporary Gmail is acceptable for now, but domain email would look stronger after domain purchase.
-- Header language selector: EN/JP/CN disabled states
-- Main page: future price information text
+- Header language selector: KR-only after cleanup.
+- Main page: future price information text replaced with seller-confirmation guidance.
 - Search Console sitemap submission: raw XML is normal, but Search Console status is still pending/unstable
 
 Current assessment:
 
 - None of these block the site from functioning.
-- Together, they make the site look early-stage. That is the main AdSense risk.
+- The remaining early-stage signals are mainly the temporary domain and compact guide depth, not broken links or visible disabled features.
 
 Recommendation:
 
 - Keep the contact page and Footer link active.
-- Hide or quiet future features that are not part of the current service.
+- Keep future features out of user-facing copy until they are part of the current service.
 
 ## 6. Technical And SEO Readiness
 
@@ -150,11 +159,11 @@ Recommendation:
 High priority risks:
 
 - Temporary `pages.dev` domain.
-- Some visible "future" signals remain.
+- Additional guide depth can still improve review confidence, especially outside the first three polished checklist pages.
 
 Medium priority risks:
 
-- Several guide pages may need more depth before review.
+- Some guide pages may need more depth before review.
 - Policy pages are minimum viable pages, not mature legal/operating pages.
 - Sitemap submission in Search Console is still not fully settled.
 - Contact email is temporary Gmail rather than a domain email.
@@ -172,7 +181,8 @@ Decision: **C. 콘텐츠/정책 보강 후 신청 권장**
 Reason:
 
 - The site has useful features and enough structure to be considered a real product.
-- The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and visible future-work text.
+- The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and compact guide depth.
+- Core Guide Polish 1 reduced the content-depth concern, but the temporary domain and temporary Gmail contact email are still visible operating signals.
 - Applying now is possible but not the best timing.
 
 If the user wants a faster route, the decision can move toward **B. 도메인 구매 후 신청 권장** once a custom domain is ready and the contact channel is reviewed again.
@@ -181,8 +191,8 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 
 1. Keep the new `/kr/contact` channel live and replace Gmail with domain email after domain purchase if available.
 2. Decide whether to buy a custom domain before applying.
-3. Reduce visible future-work cues such as disabled locales and price integration text.
-4. Polish 3 to 5 core guide pages with more original examples and buying-check detail.
+3. Keep KR-only language UI and seller-confirmation price wording until non-KR locales or product price features are actually implemented.
+4. Polish 2 more supporting guide pages with original examples and buying-check detail.
 5. Re-submit sitemap in Search Console after the site URL and sitemap route are stable.
 
 ## 10. Things Not To Add Yet
@@ -202,9 +212,9 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 | --- | --- | --- |
 | Live site | Ready | Cloudflare Pages URL works. |
 | Tools | Ready | 11 tools exist and are categorized. |
-| Guides | Almost ready | Good volume, but several pages can be deeper. |
+| Guides | Stronger than before | Three core buying-check pages were expanded; additional supporting guide polish can still help. |
 | Finder | Ready | Interactive and useful; no purchase links needed yet. |
-| Policy pages | Minimum ready | Existing pages are enough for early trust, but contact is weak. |
+| Policy pages | Minimum ready | Existing pages cover privacy, terms, disclosure, and contact, but legal/operating detail can mature later. |
 | Contact | Ready for now | `/kr/contact` exists and uses temporary Gmail `yulxwell123@gmail.com`; replace with domain email later if available. |
 | Sitemap/robots | Mostly ready | Raw XML normal, Search Console submission still pending. |
 | GA4 | Ready | Environment variable based and live. |
@@ -213,6 +223,6 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 
 ## 12. Next Action
 
-Recommended next step: **AdSense Pre-submit Cleanup**.
+Recommended next step: **Core Guide Polish 2 or Custom Domain Decision**.
 
-Contact Channel Prep is complete for the temporary Gmail stage. Next, reduce early-stage wording, review disabled locale signals, and re-check guide depth before applying.
+Core Guide Polish 1 is complete for the first three buying-check pages. Next, either decide on a custom domain or polish two more supporting guide pages before applying.
