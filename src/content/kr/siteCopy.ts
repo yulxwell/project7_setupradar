@@ -1,7 +1,7 @@
 export const SITE_COPY = {
   hero: {
     titleHighlight: "설치 없이",
-    description: "테스트 도구, 스펙 가이드, Finder로 구매 전후에 헷갈리는 부분을 초보자 기준으로 살펴볼 수 있습니다.",
+    description: "테스트 도구, 스펙 가이드, Finder로 구매 전후에 확인해야 할  초보자 기준으로 살펴볼 수 있습니다.",
   },
   kr: {
     landing: {
