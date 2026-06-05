@@ -34,11 +34,37 @@ function HighlightedSentence({ text, highlights }: { text: string; highlights: s
   );
 }
 
+function HomeSectionHeader({
+  title,
+  description,
+  href,
+  actionLabel,
+}: {
+  title: string;
+  description: string;
+  href?: string;
+  actionLabel?: string;
+}) {
+  return (
+    <div className="mb-8 flex flex-col gap-3 border-b border-[var(--border)] pb-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="space-y-1.5">
+        <h2 className="text-xl font-bold tracking-tight text-[var(--primary)] md:text-2xl">{title}</h2>
+        <p className="text-sm leading-relaxed text-[var(--muted)]">{description}</p>
+      </div>
+      {href && actionLabel ? (
+        <Link href={href} className="group flex w-fit items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[var(--accent)] transition-colors">
+          {actionLabel} <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+        </Link>
+      ) : null}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="pb-20">
       {/* Hero Section - Sober & Warm */}
-      <section className="relative overflow-hidden pt-16 pb-12 md:pt-28 md:pb-24 border-b border-[var(--border)]">
+      <section className="relative overflow-hidden border-b border-[var(--border)] pt-14 pb-10 md:pt-20 md:pb-16">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
         
@@ -46,10 +72,10 @@ export default function Home() {
           <div className="mx-auto mb-6 inline-flex items-center rounded-full bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)] border border-[var(--border)]">
             SetupRadar Hardware Check
           </div>
-          <h1 className="mb-6 font-outfit text-4xl font-bold tracking-tight text-[var(--primary)] md:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mb-4 max-w-3xl font-outfit text-2xl font-bold tracking-tight text-[var(--primary)] md:text-4xl lg:text-5xl">
             <HighlightedSentence text={SITE_COPY.kr.landing.heroTitle} highlights={[SITE_COPY.hero.titleHighlight]} />
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-base text-[var(--muted)] md:text-lg leading-relaxed">
+          <p className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
             <HighlightedSentence text={SITE_COPY.hero.description} highlights={["테스트 도구", "스펙 가이드", "Finder"]} />
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -63,16 +89,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-20">
-        <div className="mb-12 flex items-end justify-between border-b border-[var(--border)] pb-8">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight text-[var(--primary)] md:text-3xl">설치 없이 쓰는 테스트 도구</h2>
-            <p className="text-sm text-[var(--muted)]">장비의 의심 증상과 설정 상태를 참고용으로 확인해보세요.</p>
-          </div>
-          <Link href="/kr/tests" className="group hidden sm:flex items-center gap-1.5 text-xs font-bold text-[var(--accent)] uppercase tracking-widest transition-colors">
-            전체 보기 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
+      <section className="container mx-auto px-4 py-14 md:py-16">
+        <HomeSectionHeader
+          title="장비 상태 테스트"
+          description="설치 없이 브라우저에서 의심 증상과 설정 상태를 참고용으로 확인해보세요."
+          href="/kr/tests"
+          actionLabel="전체 보기"
+        />
         
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <TestCard 
@@ -103,11 +126,13 @@ export default function Home() {
       </section>
 
       {/* Beginner Guides */}
-      <section className="container mx-auto px-4 py-16 bg-[var(--secondary)]/30 rounded-[3rem] border border-[var(--border)]">
-        <div className="mb-10">
-          <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">구매 전 확인하는 스펙 정리</h2>
-          <p className="text-sm text-[var(--muted)]">광고 문구보다 실제로 확인해야 할 기준을 초보자 눈높이로 정리했습니다.</p>
-        </div>
+      <section className="container mx-auto px-4 py-14 md:py-16">
+        <HomeSectionHeader
+          title="구매 전 스펙 가이드"
+          description="광고 문구보다 실제로 확인할 기준을 초보자 눈높이로 정리했습니다."
+          href="/kr/guides"
+          actionLabel="전체 보기"
+        />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <GuideCard 
             title="대칭형 vs 오른손용 비대칭형"
@@ -146,25 +171,14 @@ export default function Home() {
             icon={ShieldCheck}
           />
         </div>
-        <div className="mt-8 text-center">
-          <Link href="/kr/guides" className="text-sm font-bold text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
-            모든 가이드 읽어보기 →
-          </Link>
-        </div>
       </section>
 
       {/* Equipment Finders */}
-      <section className="container mx-auto my-10 px-4">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 md:p-6">
-        <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="text-lg font-bold tracking-tight text-[var(--primary)] md:text-xl">새 장비를 고를 때 Finder로 후보를 좁혀보세요</h2>
-            <p className="mt-1 text-xs text-[var(--muted)]">테스트만 필요하다면 위 도구를 바로 쓰고, 구매 전 비교가 필요할 때 열어보세요.</p>
-          </div>
-          <span className="w-fit rounded-full border border-[var(--border)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">
-            Optional
-          </span>
-        </div>
+      <section className="container mx-auto px-4 py-14 md:py-16">
+        <HomeSectionHeader
+          title="장비 후보 Finder"
+          description="구매 전 비교가 필요할 때 손 크기, 배열, 소음 같은 조건으로 후보를 가볍게 좁혀보세요."
+        />
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <Link href="/kr/finder/mouse-fit" className="group rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 transition-all hover:border-[var(--accent)]">
@@ -192,7 +206,6 @@ export default function Home() {
               <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
             </div>
           </Link>
-        </div>
         </div>
       </section>
 
