@@ -944,3 +944,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/adsense-readiness-check.md`에는 Supporting Guide Polish 1 완료, 핵심/보조/테스트 연계 가이드 8개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `63% / 70% / 77%`를 기록했다.
 - 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
 - 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Copy Source Coverage Audit - 2026-06-05 기록
+
+- Control Tower에서 수정한 문구가 `/kr` 실서비스 전체에 반영되지 않았던 원인을 재발 방지하기 위해 문구 출처 지도를 문서화했다.
+- `docs/copy-source-map.md`를 추가해 `/kr` 메인, Header/Footer, Tests, Guides, Finder, Products 문구가 어떤 파일에서 관리되는지 정리했다.
+- `/kr` 메인 Hero 일부는 `src/content/kr/siteCopy.ts`에서 오지만, metadata, 섹션 제목, 메인 카드, 하단 안내 문구는 `src/app/kr/page.tsx`에 직접 있다는 점을 기록했다.
+- Header/Footer는 `src/components/layout/Header.tsx`, `src/components/layout/Footer.tsx`의 별도 컴포넌트 문구이며 Control Tower 현재 범위 밖이라는 점을 남겼다.
+- Guides 목록의 `src/content/kr/guides.ts` 요약과 각 상세 `src/app/kr/guides/*/page.tsx` 본문은 별도라는 운영 주의사항을 명시했다.
+- Finder 문구는 옵션 파일, 제품 데이터, Finder page 하드코딩 문구, 점수 계산 함수 안 문구가 섞여 있으므로 추천 로직을 건드리지 않도록 분리해서 설명했다.
+- README와 `docs/content-editing-guide.md`에 copy source map 참조 문장을 추가했다.
+- 이번 작업은 문서화만 수행했으며 제품 데이터, Finder 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.

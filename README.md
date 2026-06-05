@@ -43,6 +43,7 @@ PC 하드웨어(마우스, 키보드, 모니터) 진단 및 구매 가이드를 
 SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사용합니다.
 - **AI-Human 하이브리드**: `src/content/` 내 데이터는 AI 생성 초안(`ai`)과 운영자 교정본(`editor`)으로 분리 관리됩니다.
 - **편집 가이드**: 상세한 데이터 수정 방법은 [docs/content-editing-guide.md](file:///Users/jilee/antigravity/src/project7/docs/content-editing-guide.md)를 참고하세요.
+- **문구 출처 지도**: 실제 화면 문구가 어느 파일에서 오는지 확인할 때는 [docs/copy-source-map.md](file:///Users/jilee/antigravity/src/project7/docs/copy-source-map.md)를 먼저 참고하세요.
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
@@ -164,6 +165,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **가이드 목록 요약 정리**: `src/content/kr/guides.ts`의 3개 카드 요약을 본문 보강 방향에 맞춰 수정했습니다.
 - **readiness 업데이트**: `docs/adsense-readiness-check.md`에 보조 가이드 3개 추가 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
 - **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
+
+### Copy Source Coverage Audit - 2026-06-05
+- **문구 출처 지도 추가**: Control Tower 수정 후 실서비스 문구가 바뀌지 않는 문제를 줄이기 위해 [docs/copy-source-map.md](file:///Users/jilee/antigravity/src/project7/docs/copy-source-map.md)에 `/kr`, Header/Footer, Tests, Guides, Finder, Products 문구 출처를 정리했습니다.
+- **Control Tower 한계 명시**: `siteCopy.ts`와 `src/content` 계열 문구, page metadata, Header/Footer 하드코딩 문구가 서로 다른 관리 지점이라는 점을 문서화했습니다.
+- **운영 규칙 보강**: 문구가 반영되지 않으면 copy source map을 먼저 확인하고, 변경 후 `npm run lint`, `npm run build`, live URL 확인을 진행하도록 기록했습니다.
+- **미변경 유지**: 이번 작업은 문서화만 수행했으며 제품 데이터, Finder 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
 
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
