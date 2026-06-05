@@ -5,6 +5,7 @@ Updated: 2026-06-03 Contact Channel Prep
 Updated: 2026-06-03 AdSense Pre-submit Cleanup
 Updated: 2026-06-03 Core Guide Polish 1
 Updated: 2026-06-05 Core Guide Polish 2
+Updated: 2026-06-05 Supporting Guide Polish 1
 Scope: readiness review and content polish only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console verification/sitemap/robots structure, DB/API, or Control Tower changes.
 
 References:
@@ -17,15 +18,15 @@ References:
 
 Current judgement: **C. Apply after content and policy polish.**
 
-SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. Core Guide Polish 1 expanded three buying-check pages, and Core Guide Polish 2 expanded two supporting guides, so the thin-content risk is lower than before. The main remaining risk is operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and some guide families can still mature before review.
+SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. Core Guide Polish 1 expanded three buying-check pages, Core Guide Polish 2 expanded two supporting guides, and Supporting Guide Polish 1 expanded three test-connected supporting guides, so the thin-content risk is lower than before. The main remaining risk is operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and some guide families can still mature before review.
 
 Rough approval outlook:
 
 | Scenario | Estimate | Notes |
 | --- | ---: | --- |
-| Apply now on `setupradar.pages.dev` with contact + cleanup + 5 polished core guides | 60% | Better content depth than before, but temporary domain and Gmail contact still make review less stable. |
-| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 68% | Stronger identity and support signal. |
-| Domain + additional guide/product-detail polish | 76% | Better balance of useful content, policy readiness, and site trust. |
+| Apply now on `setupradar.pages.dev` with contact + cleanup + core/supporting guide polish | 63% | Better content depth than before, but temporary domain and Gmail contact still make review less stable. |
+| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 70% | Stronger identity and support signal. |
+| Domain + additional operations stabilization | 77% | Better balance of useful content, policy readiness, and site trust. |
 
 These percentages are internal planning estimates, not a guarantee of Google review results.
 
@@ -68,10 +69,14 @@ Ready points:
 - Core Guide Polish 2 expanded two supporting guides:
   - Mouse shape: symmetrical vs ergonomic: palm/claw/fingertip grip differences, palm support, finger position, click height, waist width, rear volume, lift habits, and comparison checklist.
   - Keyboard switch types: linear/tactile/click/silent differences, optical/magnetic/capacitive/low-profile basics, noise conditions, keycaps, housing, plate, foam, lubrication, desk, and mat effects.
+- Supporting Guide Polish 1 expanded three test-connected supporting guides:
+  - Dead pixel policy: dead pixel, bright pixel, dark pixel, dust/surface-like cases, no-dead-pixel policy differences, receiving check order, test tool link, and inquiry materials.
+  - Mouse switch double-click: symptom meaning, mechanical/optical switch differences, OS/browser/USB/wireless receiver/dust checks, double-click test link, and inquiry records.
+  - GtG vs MPRT: beginner-friendly response-time wording, overdrive, inverse ghosting, refresh rate, frame stability, MPRT brightness/flicker cautions, and refresh-rate ghosting test link.
 
 Risks:
 
-- Some non-core guide pages are still compact and may benefit from more examples later.
+- Some remaining guide pages outside the first eight polished pages are still compact and may benefit from more examples later.
 - Product detail pages do not exist yet, so Finder product cards are useful but not deep enough to carry monetization alone.
 - The site should not lean too much on future product/price features before those pages exist.
 
@@ -79,7 +84,8 @@ Recommendation:
 
 - Core Guide Polish 1 is complete for the first 3 strongest buying-check pages.
 - Core Guide Polish 2 is complete for 2 supporting guide pages.
-- Current check: the first 5 core pages now have more concrete examples and "what to check before buying" details, without product purchase links.
+- Supporting Guide Polish 1 is complete for 3 test-connected supporting guide pages.
+- Current check: the first 8 core/supporting pages now have more concrete examples and "what to check before buying or after receiving" details, without product purchase links.
 
 ## 4. Policy Pages
 
@@ -161,7 +167,7 @@ Recommendation:
 High priority risks:
 
 - Temporary `pages.dev` domain.
-- Additional guide depth can still improve review confidence, especially outside the first five polished pages.
+- Additional guide depth can still improve review confidence, especially outside the first eight polished pages.
 
 Medium priority risks:
 
@@ -184,7 +190,7 @@ Reason:
 
 - The site has useful features and enough structure to be considered a real product.
 - The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and remaining compact guide families.
-- Core Guide Polish 1 and 2 reduced the content-depth concern, but the temporary domain and temporary Gmail contact email are still visible operating signals.
+- Core Guide Polish 1, Core Guide Polish 2, and Supporting Guide Polish 1 reduced the content-depth concern, but the temporary domain and temporary Gmail contact email are still visible operating signals.
 - Applying now is possible but not the best timing.
 
 If the user wants a faster route, the decision can move toward **B. 도메인 구매 후 신청 권장** once a custom domain is ready and the contact channel is reviewed again.
@@ -214,7 +220,7 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 | --- | --- | --- |
 | Live site | Ready | Cloudflare Pages URL works. |
 | Tools | Ready | 11 tools exist and are categorized. |
-| Guides | Stronger than before | Five core/supporting pages were expanded; additional supporting guide polish can still help. |
+| Guides | Stronger than before | Eight core/supporting pages were expanded; additional guide polish can still help. |
 | Finder | Ready | Interactive and useful; no purchase links needed yet. |
 | Policy pages | Minimum ready | Existing pages cover privacy, terms, disclosure, and contact, but legal/operating detail can mature later. |
 | Contact | Ready for now | `/kr/contact` exists and uses temporary Gmail `yulxwell123@gmail.com`; replace with domain email later if available. |
@@ -225,6 +231,6 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 
 ## 12. Next Action
 
-Recommended next step: **Custom Domain Decision or Additional Supporting Guide Polish**.
+Recommended next step: **Custom Domain Decision or Additional Operations Stabilization**.
 
-Core Guide Polish 1 and 2 are complete for five core/supporting pages. Next, either decide on a custom domain or continue polishing compact supporting guides before applying.
+Core Guide Polish 1, Core Guide Polish 2, and Supporting Guide Polish 1 are complete for eight core/supporting pages. Next, either decide on a custom domain or continue stabilizing operations before applying.

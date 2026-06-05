@@ -156,6 +156,15 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **readiness 업데이트**: `docs/adsense-readiness-check.md`에 핵심/보조 가이드 5개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
 - **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
 
+### Supporting Guide Polish 1 - 2026-06-05
+- **테스트 연계 보조 가이드 3개 보강**: `/kr/guides/dead-pixel-policy`, `/kr/guides/mouse-switch-double-click`, `/kr/guides/gtg-vs-mprt` 본문을 구매 전 확인과 구매 후 참고용 테스트 흐름에 맞춰 확장했습니다.
+- **불량화소 정책 기준 강화**: 휘점·암점·데드픽셀처럼 보이는 사례, 먼지/표면 오염 가능성, 무결점 정책 차이, 수령 후 확인 순서, 문의 전 준비 자료를 보강했습니다.
+- **마우스 더블클릭 기준 강화**: 기계식/광축 스위치 차이, 더블클릭 의심 증상, USB/브라우저/OS 설정/무선 리시버/먼지 확인, 문의 전 기록 기준을 보강했습니다.
+- **GtG/MPRT 기준 강화**: 응답속도 표기 차이, 오버드라이브, 역잔상, 주사율과 프레임 유지, MPRT 사용 시 밝기·깜빡임 체감, 잔상 테스트 연결을 보강했습니다.
+- **가이드 목록 요약 정리**: `src/content/kr/guides.ts`의 3개 카드 요약을 본문 보강 방향에 맞춰 수정했습니다.
+- **readiness 업데이트**: `docs/adsense-readiness-check.md`에 보조 가이드 3개 추가 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
+- **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

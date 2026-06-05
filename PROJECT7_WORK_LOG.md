@@ -929,3 +929,18 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/adsense-readiness-check.md`에는 Core Guide Polish 2 완료, 핵심/보조 가이드 5개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `60% / 68% / 76%`를 기록했다.
 - 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
 - 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Supporting Guide Polish 1 - 2026-06-05 기록
+
+- AdSense 신청 전 콘텐츠 깊이 추가 보강을 위해 테스트 도구와 자연스럽게 연결되는 보조 가이드 3개만 수정했다.
+- `/kr/guides/dead-pixel-policy`는 불량화소, 휘점, 암점, 먼지나 표면 오염처럼 보이는 사례를 구분하고, 무결점 정책이 판매처·제조사·제품군·구매 시점에 따라 다를 수 있음을 안내하도록 보강했다.
+- 불량화소 정책 가이드에는 모니터 수령 후 박스/외관/보호필름/패널 표면/밝기 설정/전체화면 단색 확인 순서, 사진·영상·주문 정보 등 문의 전 준비 자료를 추가했다.
+- `/kr/guides/mouse-switch-double-click`은 더블클릭 의심 증상을 스위치 문제로만 보지 않고 OS 더블클릭 속도, 브라우저, USB 포트, 무선 리시버 위치, 먼지, 손가락 습관까지 함께 확인하는 기준으로 보강했다.
+- 마우스 스위치 가이드에는 기계식/광축 스위치 차이, 클릭 압력·소음·수명 표기 주의, 더블클릭 테스트 전 확인 항목과 문의 전 기록 기준을 추가했다.
+- `/kr/guides/gtg-vs-mprt`는 GtG와 MPRT 차이, 오버드라이브, 역잔상, 주사율, 프레임 유지, MPRT 사용 시 밝기 저하와 깜빡임 체감 가능성을 초보자 기준으로 보강했다.
+- GtG/MPRT 가이드에는 `/kr/tests/refresh-rate-ghosting` 관련 테스트 링크를 추가해 구매 후 참고용 확인 흐름과 연결했다.
+- 3개 가이드에 page metadata description을 추가해 기존 route 기준을 유지하면서 검색 설명을 보강했다.
+- `src/content/kr/guides.ts`의 3개 가이드 카드 요약을 본문 보강 내용에 맞춰 수정했다.
+- `docs/adsense-readiness-check.md`에는 Supporting Guide Polish 1 완료, 핵심/보조/테스트 연계 가이드 8개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `63% / 70% / 77%`를 기록했다.
+- 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
+- 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
