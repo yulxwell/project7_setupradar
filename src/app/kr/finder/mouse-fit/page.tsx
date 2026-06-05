@@ -289,6 +289,12 @@ export default function MouseFitPage() {
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_390px]">
         <div className="grid content-start gap-3 md:grid-cols-2">
+          <div className="mb-1 flex flex-col gap-1 border-l-4 border-[var(--accent)] pl-4 md:col-span-2">
+            <h2 className="text-xl font-bold text-[var(--primary)]">마우스 필터</h2>
+            <p className="max-w-2xl text-sm text-[var(--muted)]">
+              손 크기, 형태, 무게, 연결 방식처럼 실제 사용감에 영향을 주는 조건입니다.
+            </p>
+          </div>
           <CompactOptionGroup
             group={MOUSE_FINDER_OPTIONS.handSize}
             value={values.handSize}

@@ -358,6 +358,12 @@ export default function KeyboardFitPage() {
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_390px]">
         <div className="grid content-start gap-3 md:grid-cols-2">
+          <div className="mb-1 flex flex-col gap-1 border-l-4 border-[var(--accent)] pl-4 md:col-span-2">
+            <h2 className="text-xl font-bold text-[var(--primary)]">키보드 필터</h2>
+            <p className="max-w-2xl text-sm text-[var(--muted)]">
+              배열, 키감, 소음, 연결 방식, OS처럼 사용 환경에 맞춰 볼 조건입니다.
+            </p>
+          </div>
           <section className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
