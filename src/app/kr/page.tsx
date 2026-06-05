@@ -60,6 +60,51 @@ function HomeSectionHeader({
   );
 }
 
+function HomeIntroBlock({
+  eyebrow,
+  title,
+  description,
+  actions,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  actions?: Array<{
+    href: string;
+    label: string;
+    variant?: "primary" | "secondary";
+  }>;
+}) {
+  return (
+    <div className="mx-auto mb-10 max-w-3xl text-center">
+      <div className="mx-auto mb-4 inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">
+        {eyebrow}
+      </div>
+      <h2 className="mx-auto mb-3 max-w-2xl font-outfit text-2xl font-bold tracking-tight text-[var(--primary)] md:text-3xl">
+        {title}
+      </h2>
+      <p className="mx-auto max-w-xl text-sm leading-relaxed text-[var(--muted)] md:text-base">{description}</p>
+      {actions && actions.length > 0 ? (
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          {actions.map((action) => (
+            <Link
+              key={action.href}
+              href={action.href}
+              className={
+                action.variant === "secondary"
+                  ? "flex h-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--card)] px-6 text-sm font-bold text-[var(--primary)] transition-all hover:bg-[var(--secondary)] active:scale-95"
+                  : "flex h-11 items-center justify-center rounded-xl bg-[var(--primary)] px-6 text-sm font-bold text-[var(--background)] transition-all hover:opacity-90 active:scale-95"
+              }
+            >
+              {action.label}
+            </Link>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="pb-20">
@@ -127,6 +172,15 @@ export default function Home() {
 
       {/* Beginner Guides */}
       <section className="container mx-auto px-4 py-14 md:py-16">
+        <HomeIntroBlock
+          eyebrow="SetupRadar Spec Guide"
+          title="구매 전에 스펙 기준을 먼저 정리해보세요."
+          description="마우스, 키보드, 모니터를 고를 때 자주 보이는 표현을 초보자 기준으로 풀어보고, 구매 전 확인할 항목을 차분히 살펴봅니다."
+          actions={[
+            { href: "/kr/guides", label: "가이드 보기" },
+            { href: "/kr/guides/beginner-spec-traps", label: "스펙 함정 보기", variant: "secondary" },
+          ]}
+        />
         <HomeSectionHeader
           title="구매 전 스펙 가이드"
           description="광고 문구보다 실제로 확인할 기준을 초보자 눈높이로 정리했습니다."
@@ -175,6 +229,15 @@ export default function Home() {
 
       {/* Equipment Finders */}
       <section className="container mx-auto px-4 py-14 md:py-16">
+        <HomeIntroBlock
+          eyebrow="SetupRadar Finder"
+          title="새 장비 후보를 조건별로 가볍게 좁혀보세요."
+          description="손 크기, 배열, 소음, 연결 방식처럼 처음 고를 때 놓치기 쉬운 조건을 넣고 비교할 후보를 참고용으로 정리합니다."
+          actions={[
+            { href: "/kr/finder/mouse-fit", label: "마우스 찾기" },
+            { href: "/kr/finder/keyboard-fit", label: "키보드 찾기", variant: "secondary" },
+          ]}
+        />
         <HomeSectionHeader
           title="장비 후보 Finder"
           description="구매 전 비교가 필요할 때 손 크기, 배열, 소음 같은 조건으로 후보를 가볍게 좁혀보세요."
