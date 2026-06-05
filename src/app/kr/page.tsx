@@ -115,13 +115,13 @@ export default function Home() {
         
         <div className="container mx-auto px-4 text-center">
           <div className="mx-auto mb-6 inline-flex items-center rounded-full bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)] border border-[var(--border)]">
-            SetupRadar Hardware Check
+            SetupRadar Hardware Guide
           </div>
           <h1 className="mx-auto mb-4 max-w-3xl font-outfit text-2xl font-bold tracking-tight text-[var(--primary)] md:text-4xl lg:text-5xl">
             <HighlightedSentence text={SITE_COPY.kr.landing.heroTitle} highlights={[SITE_COPY.hero.titleHighlight]} />
           </h1>
           <p className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
-            <HighlightedSentence text={SITE_COPY.hero.description} highlights={["테스트 도구", "스펙 가이드", "Finder"]} />
+            <HighlightedSentence text={SITE_COPY.hero.description} highlights={["테스트 도구", "구매 전 확인 기준", "후보 비교"]} />
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/kr/tests" className="flex h-12 items-center justify-center rounded-xl bg-[var(--primary)] px-8 text-sm font-bold text-[var(--background)] transition-all hover:opacity-90 active:scale-95">

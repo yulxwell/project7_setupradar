@@ -1,16 +1,16 @@
-const HOMEPAGE_HERO_DESCRIPTION = "테스트 도구, 스펙 가이드, Finder로 구매 전후에 확인해야 할 부분을 초보자 기준으로 살펴볼 수 있습니다.";
+const HOMEPAGE_HERO_DESCRIPTION = "마우스, 키보드, 모니터를 살펴볼 때 필요한 테스트 도구와 구매 전 확인 기준, 후보 비교 흐름을 초보자 기준으로 정리합니다.";
 
 export const SITE_COPY = {
   hero: {
-    titleHighlight: "설치 없이",
+    titleHighlight: "한곳에서",
     description: HOMEPAGE_HERO_DESCRIPTION,
   },
   kr: {
     landing: {
-      heroTitle: "장비 상태를 설치 없이 가볍게 확인해보세요.",
+      heroTitle: "장비 테스트와 구매 기준을 한곳에서 살펴보세요.",
       heroSubtitle: HOMEPAGE_HERO_DESCRIPTION,
-      startButton: "테스트 시작하기",
-      guideButton: "가이드 보기",
+      startButton: "테스트 도구 보기",
+      guideButton: "구매 가이드 보기",
     },
     finders: {
       mouse: {
