@@ -148,6 +148,14 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **readiness 업데이트**: `docs/adsense-readiness-check.md`에 Core Guide Polish 1 결과와 콘텐츠 깊이 리스크 일부 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
 - **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
 
+### Core Guide Polish 2 - 2026-06-05
+- **보조 핵심 가이드 2개 보강**: `/kr/guides/mouse-shape-symmetrical-vs-ergonomic`, `/kr/guides/keyboard-switch-types` 본문을 초보자용 구매 전 확인 기준 중심으로 확장했습니다.
+- **마우스 쉘 형태 기준 강화**: 대칭형/오른손용 비대칭형 차이, 팜/클로/핑거팁 그립, 손바닥 지지감, 손가락 위치, 클릭부 높이, 등 높이, 허리 폭, 후면 볼륨, 들어 올리는 습관을 비교 기준으로 보강했습니다.
+- **키보드 스위치 기준 강화**: 리니어/택타일/클릭/저소음 차이, 광축/자석축/무접점/로우프로파일 기본 이해, 키캡/하우징/보강판/흡음재/윤활/책상 환경이 타건감과 소음에 주는 영향을 보강했습니다.
+- **가이드 목록 요약 정리**: `src/content/kr/guides.ts`의 2개 카드 요약을 본문 보강 방향에 맞춰 수정했습니다.
+- **readiness 업데이트**: `docs/adsense-readiness-check.md`에 핵심/보조 가이드 5개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev/Gmail 약점 유지, 내부 가능성 추정치 소폭 조정을 기록했습니다.
+- **미변경 유지**: 광고/제휴 코드, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, sitemap, package 설정, 도메인 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

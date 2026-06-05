@@ -4,6 +4,7 @@ Date: 2026-05-31
 Updated: 2026-06-03 Contact Channel Prep
 Updated: 2026-06-03 AdSense Pre-submit Cleanup
 Updated: 2026-06-03 Core Guide Polish 1
+Updated: 2026-06-05 Core Guide Polish 2
 Scope: readiness review and content polish only. No AdSense code, ad script, affiliate link, product data, Finder logic, GA4, Search Console verification/sitemap/robots structure, DB/API, or Control Tower changes.
 
 References:
@@ -16,15 +17,15 @@ References:
 
 Current judgement: **C. Apply after content and policy polish.**
 
-SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. Core Guide Polish 1 expanded three buying-check pages, so the thin-content risk is lower than before. The main remaining risk is operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and some guide families can still mature before review.
+SetupRadar has moved past the empty-site stage. It has working tools, guide pages, Finder flows, policy pages, sitemap/robots, GA4, Search Console ownership, and a live contact page. Core Guide Polish 1 expanded three buying-check pages, and Core Guide Polish 2 expanded two supporting guides, so the thin-content risk is lower than before. The main remaining risk is operating trust: the site is still on `pages.dev`, the contact email is a temporary Gmail channel, and some guide families can still mature before review.
 
 Rough approval outlook:
 
 | Scenario | Estimate | Notes |
 | --- | ---: | --- |
-| Apply now on `setupradar.pages.dev` with contact + cleanup + 3 polished core guides | 55% | Better content depth than before, but temporary domain and Gmail contact still make review less stable. |
-| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 65% | Stronger identity and support signal. |
-| Domain + additional guide polish | 75% | Better balance of useful content, policy readiness, and site trust. |
+| Apply now on `setupradar.pages.dev` with contact + cleanup + 5 polished core guides | 60% | Better content depth than before, but temporary domain and Gmail contact still make review less stable. |
+| Buy a domain, update canonical/sitemap, replace Gmail with domain email if available | 68% | Stronger identity and support signal. |
+| Domain + additional guide/product-detail polish | 76% | Better balance of useful content, policy readiness, and site trust. |
 
 These percentages are internal planning estimates, not a guarantee of Google review results.
 
@@ -40,7 +41,7 @@ Ready points:
 Risks:
 
 - The site still uses the temporary `pages.dev` domain.
-- Some guide families outside the first three buying-check pages can still be expanded with examples and concrete buying scenarios.
+- Some guide families outside the first five polished pages can still be expanded with examples and concrete buying scenarios.
 
 Cleanup result on 2026-06-03:
 
@@ -64,6 +65,9 @@ Ready points:
   - Mouse buying checklist: hand size, shell shape, weight, wired/wireless differences, sensor/DPI context, clicks, wheel, side buttons, coating, and warranty checks.
   - Keyboard buying checklist: layout choice, switch families, noise, wired/2.4GHz/Bluetooth, keycaps/housing, hot-swap/VIA/QMK basics, Korean legends, and OS compatibility.
   - Monitor buying checklist: size, resolution, refresh rate, IPS/VA/OLED, GtG/MPRT wording, brightness/HDR, pixel policy, ports, stand, VESA, and post-purchase test order.
+- Core Guide Polish 2 expanded two supporting guides:
+  - Mouse shape: symmetrical vs ergonomic: palm/claw/fingertip grip differences, palm support, finger position, click height, waist width, rear volume, lift habits, and comparison checklist.
+  - Keyboard switch types: linear/tactile/click/silent differences, optical/magnetic/capacitive/low-profile basics, noise conditions, keycaps, housing, plate, foam, lubrication, desk, and mat effects.
 
 Risks:
 
@@ -74,10 +78,8 @@ Risks:
 Recommendation:
 
 - Core Guide Polish 1 is complete for the first 3 strongest buying-check pages.
-- If time allows before applying, polish 2 more supporting guide pages:
-  - Mouse shape: symmetrical vs ergonomic
-  - Keyboard switch types
-- Current check: the first 3 pages now have more concrete examples and "what to check before buying" details, without product purchase links.
+- Core Guide Polish 2 is complete for 2 supporting guide pages.
+- Current check: the first 5 core pages now have more concrete examples and "what to check before buying" details, without product purchase links.
 
 ## 4. Policy Pages
 
@@ -159,7 +161,7 @@ Recommendation:
 High priority risks:
 
 - Temporary `pages.dev` domain.
-- Additional guide depth can still improve review confidence, especially outside the first three polished checklist pages.
+- Additional guide depth can still improve review confidence, especially outside the first five polished pages.
 
 Medium priority risks:
 
@@ -181,8 +183,8 @@ Decision: **C. 콘텐츠/정책 보강 후 신청 권장**
 Reason:
 
 - The site has useful features and enough structure to be considered a real product.
-- The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and compact guide depth.
-- Core Guide Polish 1 reduced the content-depth concern, but the temporary domain and temporary Gmail contact email are still visible operating signals.
+- The current weak points are easy to notice during review: temporary domain, temporary Gmail contact email, and remaining compact guide families.
+- Core Guide Polish 1 and 2 reduced the content-depth concern, but the temporary domain and temporary Gmail contact email are still visible operating signals.
 - Applying now is possible but not the best timing.
 
 If the user wants a faster route, the decision can move toward **B. 도메인 구매 후 신청 권장** once a custom domain is ready and the contact channel is reviewed again.
@@ -192,7 +194,7 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 1. Keep the new `/kr/contact` channel live and replace Gmail with domain email after domain purchase if available.
 2. Decide whether to buy a custom domain before applying.
 3. Keep KR-only language UI and seller-confirmation price wording until non-KR locales or product price features are actually implemented.
-4. Polish 2 more supporting guide pages with original examples and buying-check detail.
+4. Continue polishing compact supporting guides or decide whether product-detail content should be planned later.
 5. Re-submit sitemap in Search Console after the site URL and sitemap route are stable.
 
 ## 10. Things Not To Add Yet
@@ -212,7 +214,7 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 | --- | --- | --- |
 | Live site | Ready | Cloudflare Pages URL works. |
 | Tools | Ready | 11 tools exist and are categorized. |
-| Guides | Stronger than before | Three core buying-check pages were expanded; additional supporting guide polish can still help. |
+| Guides | Stronger than before | Five core/supporting pages were expanded; additional supporting guide polish can still help. |
 | Finder | Ready | Interactive and useful; no purchase links needed yet. |
 | Policy pages | Minimum ready | Existing pages cover privacy, terms, disclosure, and contact, but legal/operating detail can mature later. |
 | Contact | Ready for now | `/kr/contact` exists and uses temporary Gmail `yulxwell123@gmail.com`; replace with domain email later if available. |
@@ -223,6 +225,6 @@ If the user wants a faster route, the decision can move toward **B. 도메인 �
 
 ## 12. Next Action
 
-Recommended next step: **Core Guide Polish 2 or Custom Domain Decision**.
+Recommended next step: **Custom Domain Decision or Additional Supporting Guide Polish**.
 
-Core Guide Polish 1 is complete for the first three buying-check pages. Next, either decide on a custom domain or polish two more supporting guide pages before applying.
+Core Guide Polish 1 and 2 are complete for five core/supporting pages. Next, either decide on a custom domain or continue polishing compact supporting guides before applying.

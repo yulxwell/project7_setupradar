@@ -916,3 +916,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/adsense-readiness-check.md`에는 Core Guide Polish 1 완료, 콘텐츠 깊이 리스크 일부 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `55% / 65% / 75%`를 기록했다.
 - 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
 - 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Core Guide Polish 2 - 2026-06-05 기록
+
+- AdSense 신청 전 콘텐츠 깊이 추가 보강을 위해 Core Guide Polish 1에서 남겨둔 보조 핵심 가이드 2개만 수정했다.
+- `/kr/guides/mouse-shape-symmetrical-vs-ergonomic`은 대칭형과 오른손용 비대칭형 차이를 우열이 아니라 손바닥 지지감, 손가락 위치, 그립 방식, 마우스를 들어 올리는 습관, 손목/팔 사용 방식에 따라 달라지는 체감 기준으로 보강했다.
+- 마우스 쉘 가이드에는 팜그립/클로그립/핑거팁그립에서 보는 포인트, 좌우 클릭부 높이, 등 높이, 허리 폭, 후면 볼륨, 기존 사용 마우스와 비교할 항목, 직접 잡아볼 수 없을 때 확인할 후기 기준을 추가했다.
+- `/kr/guides/keyboard-switch-types`는 리니어/택타일/클릭/저소음 차이와 함께 광축, 자석축, 무접점, 로우프로파일을 초보자 기준으로 설명하고, 타건감이 축만으로 정해지지 않는다는 점을 보강했다.
+- 키보드 스위치 가이드에는 키캡, 하우징, 보강판, 흡음재, 윤활, 책상/매트 환경이 소음과 체감에 주는 영향, 게임/사무/밤 사용/공용 공간별 구매 전 확인 기준을 추가했다.
+- 두 가이드에 page metadata description과 canonical을 추가해 기존 route 기준을 유지하면서 검색 설명을 보강했다.
+- `src/content/kr/guides.ts`의 두 가이드 카드 요약을 본문 보강 내용에 맞춰 수정했다.
+- `docs/adsense-readiness-check.md`에는 Core Guide Polish 2 완료, 핵심/보조 가이드 5개 보강 완료, 콘텐츠 깊이 리스크 추가 완화, pages.dev 임시 도메인과 Gmail 임시 문의 채널은 남은 약점이라는 점, 내부 가능성 추정치 `60% / 68% / 76%`를 기록했다.
+- 새 URL을 만들지 않았으므로 sitemap은 수정하지 않았다.
+- 광고/제휴 코드, 제품 구매 버튼, 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
