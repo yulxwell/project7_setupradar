@@ -23,7 +23,7 @@ const ICON_MAP = {
 
 export default function GuidesPage() {
   return (
-    <div className="mx-auto max-w-6xl py-16 px-4 md:py-24">
+    <div className="mx-auto max-w-6xl px-4 py-8 md:py-10">
       <PageHero
         eyebrow="Buying Guides"
         title="하드웨어 구매 가이드"

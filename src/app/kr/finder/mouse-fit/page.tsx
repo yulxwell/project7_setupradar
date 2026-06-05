@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
-import { ChevronLeft, Info, RotateCcw, SlidersHorizontal } from "lucide-react";
+import { Info, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { MOUSE_DATABASE } from "@/content/kr/products/mice";
 import {
@@ -262,15 +261,7 @@ export default function MouseFitPage() {
   };
 
   return (
-    <div className="container mx-auto min-h-[70vh] max-w-6xl px-4 py-8">
-      <Link
-        href="/kr"
-        className="mb-5 inline-flex items-center gap-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-[var(--primary)]"
-      >
-        <ChevronLeft className="h-4 w-4" />
-        메인으로 돌아가기
-      </Link>
-
+    <div className="container mx-auto min-h-[70vh] max-w-6xl px-4 py-8 md:py-10">
       <PageHero
         eyebrow="Mouse Finder"
         title="마우스 찾기"

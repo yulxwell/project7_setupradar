@@ -40,7 +40,7 @@ const TEST_CATEGORIES = [
 
 export default function TestsPage() {
   return (
-    <div className="mx-auto max-w-6xl py-16 px-4 md:py-28">
+    <div className="mx-auto max-w-6xl px-4 py-8 md:py-10">
       <PageHero
         eyebrow="Test Tools"
         title="하드웨어 테스트 도구"
