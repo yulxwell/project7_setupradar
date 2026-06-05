@@ -64,11 +64,13 @@ function HomeIntroBlock({
   eyebrow,
   title,
   description,
+  highlights = [],
   actions,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  highlights?: string[];
   actions?: Array<{
     href: string;
     label: string;
@@ -81,7 +83,7 @@ function HomeIntroBlock({
         {eyebrow}
       </div>
       <h2 className="mx-auto mb-3 max-w-2xl font-outfit text-2xl font-bold tracking-tight text-[var(--primary)] md:text-3xl">
-        {title}
+        <HighlightedSentence text={title} highlights={highlights} />
       </h2>
       <p className="mx-auto max-w-xl text-sm leading-relaxed text-[var(--muted)] md:text-base">{description}</p>
       {actions && actions.length > 0 ? (
@@ -175,6 +177,7 @@ export default function Home() {
         <HomeIntroBlock
           eyebrow="SetupRadar Spec Guide"
           title="구매 전에 스펙 기준을 먼저 정리해보세요."
+          highlights={["스펙 기준"]}
           description="마우스, 키보드, 모니터를 고를 때 자주 보이는 표현을 초보자 기준으로 풀어보고, 구매 전 확인할 항목을 차분히 살펴봅니다."
           actions={[
             { href: "/kr/guides", label: "가이드 보기" },
@@ -232,6 +235,7 @@ export default function Home() {
         <HomeIntroBlock
           eyebrow="SetupRadar Finder"
           title="새 장비 후보를 조건별로 가볍게 좁혀보세요."
+          highlights={["조건별로"]}
           description="손 크기, 배열, 소음, 연결 방식처럼 처음 고를 때 놓치기 쉬운 조건을 넣고 비교할 후보를 참고용으로 정리합니다."
           actions={[
             { href: "/kr/finder/mouse-fit", label: "마우스 찾기" },
