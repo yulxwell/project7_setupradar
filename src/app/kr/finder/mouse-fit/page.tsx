@@ -459,7 +459,7 @@ export default function MouseFitPage() {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [expandedMouseId, setExpandedMouseId] = useState<string | null>(null);
   const [showMoreResults, setShowMoreResults] = useState(false);
-  const [selectedBrand, setSelectedBrand] = useState("all");
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
   const scoredMice = useMemo(
     () => MOUSE_DATABASE
@@ -472,9 +472,12 @@ export default function MouseFitPage() {
       .sort((a, b) => a.localeCompare(b)),
     [scoredMice],
   );
-  const filteredMice = selectedBrand === "all"
+  const filteredMice = selectedBrands.length === 0
     ? scoredMice
-    : scoredMice.filter(({ mouse }) => mouse.brand === selectedBrand);
+    : scoredMice.filter(({ mouse }) => {
+      const brand = mouse.brand;
+      return typeof brand === "string" && selectedBrands.includes(brand);
+    });
   const visibleMice = showMoreResults ? filteredMice : filteredMice.slice(0, 3);
   const hasMoreResults = filteredMice.length > 3;
 
@@ -511,7 +514,7 @@ export default function MouseFitPage() {
             onClick={() => {
               setValues(MOUSE_FINDER_DEFAULTS);
               setAdvancedValues(MOUSE_ADVANCED_DEFAULTS);
-              setSelectedBrand("all");
+              setSelectedBrands([]);
               setShowMoreResults(false);
               setExpandedMouseId(null);
             }}
@@ -619,14 +622,23 @@ export default function MouseFitPage() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               {["all", ...brandOptions].map((brand) => {
-                const isActive = selectedBrand === brand;
+                const isAll = brand === "all";
+                const isActive = isAll ? selectedBrands.length === 0 : selectedBrands.includes(brand);
 
                 return (
                   <button
                     key={brand}
                     type="button"
                     onClick={() => {
-                      setSelectedBrand(brand);
+                      if (isAll) {
+                        setSelectedBrands([]);
+                      } else {
+                        setSelectedBrands((current) => (
+                          current.includes(brand)
+                            ? current.filter((item) => item !== brand)
+                            : [...current, brand]
+                        ));
+                      }
                       setShowMoreResults(false);
                       setExpandedMouseId(null);
                     }}

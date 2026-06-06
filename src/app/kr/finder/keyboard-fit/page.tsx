@@ -571,7 +571,7 @@ export default function KeyboardFitPage() {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [expandedKeyboardId, setExpandedKeyboardId] = useState<string | null>(null);
   const [showMoreResults, setShowMoreResults] = useState(false);
-  const [selectedBrand, setSelectedBrand] = useState("all");
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
   const scoredKeyboards = useMemo(
     () => {
@@ -593,9 +593,12 @@ export default function KeyboardFitPage() {
       .sort((a, b) => a.localeCompare(b)),
     [scoredKeyboards],
   );
-  const filteredKeyboards = selectedBrand === "all"
+  const filteredKeyboards = selectedBrands.length === 0
     ? scoredKeyboards
-    : scoredKeyboards.filter(({ keyboard }) => keyboard.brand === selectedBrand);
+    : scoredKeyboards.filter(({ keyboard }) => {
+      const brand = keyboard.brand;
+      return typeof brand === "string" && selectedBrands.includes(brand);
+    });
   const visibleKeyboards = showMoreResults ? filteredKeyboards : filteredKeyboards.slice(0, 3);
   const hasMoreResults = filteredKeyboards.length > 3;
 
@@ -632,7 +635,7 @@ export default function KeyboardFitPage() {
             onClick={() => {
               setValues(KEYBOARD_FINDER_DEFAULTS);
               setAdvancedValues(KEYBOARD_ADVANCED_DEFAULTS);
-              setSelectedBrand("all");
+              setSelectedBrands([]);
               setShowMoreResults(false);
               setExpandedKeyboardId(null);
             }}
@@ -742,14 +745,23 @@ export default function KeyboardFitPage() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               {["all", ...brandOptions].map((brand) => {
-                const isActive = selectedBrand === brand;
+                const isAll = brand === "all";
+                const isActive = isAll ? selectedBrands.length === 0 : selectedBrands.includes(brand);
 
                 return (
                   <button
                     key={brand}
                     type="button"
                     onClick={() => {
-                      setSelectedBrand(brand);
+                      if (isAll) {
+                        setSelectedBrands([]);
+                      } else {
+                        setSelectedBrands((current) => (
+                          current.includes(brand)
+                            ? current.filter((item) => item !== brand)
+                            : [...current, brand]
+                        ));
+                      }
                       setShowMoreResults(false);
                       setExpandedKeyboardId(null);
                     }}
