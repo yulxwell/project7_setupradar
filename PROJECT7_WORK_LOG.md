@@ -1049,3 +1049,15 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare`만 priority 0.6으로 추가했다. 상세 비교 URL은 sitemap에 넣지 않았다.
 - `docs/vs-compare-structure-plan.md`에는 Phase 1 진행 상태를 최소 기록했다.
 - 실제 비교 상세 페이지, CPU/GPU 실제 데이터, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
+
+## Compare Main Live QA - 2026-06-07 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/compare`, `https://setupradar.pages.dev/kr`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
+- `/kr/compare`는 HTTP 200으로 열렸고, Hero, 마우스/키보드/모니터/CPU/GPU 비교 카테고리 카드 5개, 안내 섹션이 정상 표시됐다.
+- 카테고리 카드에는 상세 비교 링크가 없었고, `/kr/compare/mouse/...`, `/kr/compare/cpu/...` 같은 미구현 상세 URL로 이동하는 링크도 확인되지 않았다.
+- `/kr` 메인에는 Compare 진입 카드가 1개 표시됐고, 기존 Hero/Finder/최근 장비 소식 흐름을 방해하지 않는 하단 영역에 배치되어 있었다.
+- 모바일 390px 폭에서 `/kr/compare` 카드 영역은 가로 넘침 없이 표시됐다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml` 모두 `/kr/compare`를 포함했고, 미구현 상세 비교 URL은 포함하지 않았다.
+- 금지 표현, 광고/제휴 링크, Project2 실제 링크, RSS/API/DB/Supabase 연결로 보이는 항목은 확인되지 않았다.
+- 명확한 버그가 없어 앱 코드 수정은 하지 않았고, Live QA 결과만 문서에 기록했다.
+- 실제 비교 상세 페이지, CPU/GPU 실제 데이터, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
