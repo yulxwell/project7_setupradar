@@ -1085,3 +1085,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
 - 제품 데이터, Finder 로직, 광고/제휴 코드, Project2 실제 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
 - 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
+
+## Compare Picker Structure Plan - 2026-06-07 기록
+
+- 고정 비교 상세 페이지 다음 단계로, 사용자가 직접 제품 A와 제품 B를 선택해 비교할 수 있는 Compare Picker 구조를 `docs/compare-picker-structure-plan.md`에 문서화했다.
+- Compare Picker의 목적은 SEO용 고정 비교 페이지와 달리 사이트 체류시간과 상품성을 높이는 도구형 기능으로 정리했다.
+- UX 후보는 좌우 선택형, 필터 + 제품 선택형, 가로 스크롤 카드형으로 비교했고, 1차 구현은 좌우 선택형 + 간단 검색/필터, 모바일은 세로 스택 구조를 추천했다.
+- 초기 route 후보는 `/kr/compare/mouse`로 정리했고, 마우스 비교 허브와 picker 역할을 함께 맡는 방향으로 기록했다.
+- 데이터 사용 원칙은 기존 `MOUSE_DATABASE`를 읽고 제품 데이터는 수정하지 않으며, 부족한 정보는 `확인 필요` 톤으로 표시하고 `review/status`, `productImages`, `productLinks`는 초기 사용자 화면에 노출하지 않는 기준으로 잡았다.
+- 고정 비교 페이지는 SEO용, Picker는 도구용으로 역할을 분리하고, 고정 상세 페이지에서 `다른 마우스도 직접 비교하기` 링크를 추가할 수 있는 후속 연결 방향을 기록했다.
+- `docs/vs-compare-structure-plan.md`에는 Compare Picker를 Phase 2.5 후속 확장 후보로 연결했다.
+- 실제 Compare Picker route, 제품 데이터 수정, 새 제품 추가, API/DB/Supabase, Project2 실제 연동, 광고/제휴 코드, Finder 로직, GA4/Search Console 구조, package 설정, 도메인 설정은 수정하지 않았다.

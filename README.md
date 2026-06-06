@@ -191,6 +191,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **sitemap 반영**: root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성된 마우스 비교 상세 URL만 낮은 priority로 추가했습니다.
 - **미변경 유지**: 제품 데이터, Finder 로직, 광고/AdSense/제휴 링크, Project2 실제 연동, CPU/GPU 데이터, DB/API/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았습니다.
 
+### Compare Picker Structure Plan - 2026-06-07
+- **제품 선택형 비교 도구 설계**: 고정 비교 페이지와 별개로 사용자가 제품 A/B를 직접 선택해 비교하는 Compare Picker 구조를 [docs/compare-picker-structure-plan.md](file:///Users/jilee/antigravity/src/project7/docs/compare-picker-structure-plan.md)에 정리했습니다.
+- **초기 방향**: 첫 대상은 `/kr/compare/mouse` 마우스 비교 허브 + picker이며, 1차 UX는 좌우 선택형과 간단 검색/필터, 모바일 세로 스택 구조를 추천했습니다.
+- **데이터 원칙 정리**: 기존 `MOUSE_DATABASE`를 읽되 제품 데이터는 수정하지 않고, 부족한 정보는 `확인 필요` 톤으로 표시하며 `review/status`, `productImages`, `productLinks`는 초기 화면에 노출하지 않는 기준을 기록했습니다.
+- **미구현 유지**: 실제 Compare Picker route, 제품 데이터 수정, API/DB/Supabase, Project2 실제 연동, 광고/제휴 코드, Finder 로직, GA4/Search Console 구조, package 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.
