@@ -399,7 +399,7 @@ function CompactOptionGroup({
   const selected = group.options.find((option) => option.value === value);
 
   return (
-    <section className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3">
+    <section className="rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3">
       <div className="mb-2 flex flex-col gap-1">
         <h2 className="text-sm font-bold text-[var(--primary)]">{group.label}</h2>
         <p className="text-[11px] leading-snug text-[var(--muted)]">{group.helperText}</p>
@@ -521,7 +521,7 @@ export default function MouseFitPage() {
               손 크기, 형태, 무게, 연결 방식처럼 실제 사용감에 영향을 주는 조건입니다.
             </p>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
+          <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3 md:col-span-2">
             <div>
               <h2 className="text-sm font-bold text-[var(--primary)]">상세 기준</h2>
               <p className="mt-1 text-[11px] leading-snug text-[var(--muted)]">
@@ -530,35 +530,6 @@ export default function MouseFitPage() {
             </div>
             <AdvancedCriteriaToggle isOpen={advancedOpen} onClick={() => setAdvancedOpen((current) => !current)} />
           </div>
-          {advancedOpen && (
-            <div className="grid gap-3 rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3 md:col-span-2 md:grid-cols-2">
-              <CompactOptionGroup
-                group={MOUSE_ADVANCED_OPTIONS.connectionDetail}
-                value={advancedValues.connectionDetail}
-                onChange={(value) => updateAdvancedValue("connectionDetail", value as MouseAdvancedValues["connectionDetail"])}
-              />
-              <CompactOptionGroup
-                group={MOUSE_ADVANCED_OPTIONS.battery}
-                value={advancedValues.battery}
-                onChange={(value) => updateAdvancedValue("battery", value as MouseAdvancedValues["battery"])}
-              />
-              <CompactOptionGroup
-                group={MOUSE_ADVANCED_OPTIONS.sideButtons}
-                value={advancedValues.sideButtons}
-                onChange={(value) => updateAdvancedValue("sideButtons", value as MouseAdvancedValues["sideButtons"])}
-              />
-              <CompactOptionGroup
-                group={MOUSE_ADVANCED_OPTIONS.usage}
-                value={advancedValues.usage}
-                onChange={(value) => updateAdvancedValue("usage", value as MouseAdvancedValues["usage"])}
-              />
-              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)]/70 p-3 md:col-span-2">
-                <p className="text-[11px] leading-relaxed text-[var(--muted)]">
-                  상세 기준은 제품 후보를 더 좁히기 위한 참고 조건입니다. 제품 스펙은 판매처/제조사 기준으로 다시 확인해 주세요. 일부 제품은 상세 정보가 부족해 점수에 반영되지 않을 수 있습니다.
-                </p>
-              </div>
-            </div>
-          )}
           <CompactOptionGroup
             group={MOUSE_FINDER_OPTIONS.handSize}
             value={values.handSize}
@@ -574,12 +545,42 @@ export default function MouseFitPage() {
             value={values.weight}
             onChange={(value) => updateValue("weight", value as MouseFinderValues["weight"])}
           />
-          {!advancedOpen && (
+          {advancedOpen ? (
+            <CompactOptionGroup
+              group={MOUSE_ADVANCED_OPTIONS.connectionDetail}
+              value={advancedValues.connectionDetail}
+              onChange={(value) => updateAdvancedValue("connectionDetail", value as MouseAdvancedValues["connectionDetail"])}
+            />
+          ) : (
             <CompactOptionGroup
               group={MOUSE_FINDER_OPTIONS.connection}
               value={values.connection}
               onChange={(value) => updateValue("connection", value as MouseFinderValues["connection"])}
             />
+          )}
+          {advancedOpen && (
+            <div className="grid gap-3 md:col-span-2 md:grid-cols-2">
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.battery}
+                value={advancedValues.battery}
+                onChange={(value) => updateAdvancedValue("battery", value as MouseAdvancedValues["battery"])}
+              />
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.sideButtons}
+                value={advancedValues.sideButtons}
+                onChange={(value) => updateAdvancedValue("sideButtons", value as MouseAdvancedValues["sideButtons"])}
+              />
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.usage}
+                value={advancedValues.usage}
+                onChange={(value) => updateAdvancedValue("usage", value as MouseAdvancedValues["usage"])}
+              />
+              <div className="rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3">
+                <p className="text-[11px] leading-relaxed text-[var(--muted)]">
+                  상세 기준은 제품 후보를 더 좁히기 위한 참고 조건입니다. 제품 스펙은 판매처/제조사 기준으로 다시 확인해 주세요.
+                </p>
+              </div>
+            </div>
           )}
           <div className="rounded-xl border border-[var(--accent)]/10 bg-[var(--accent)]/5 p-3 md:col-span-2">
             <div className="flex gap-2">
