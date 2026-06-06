@@ -1071,3 +1071,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `/kr/compare` 메인의 마우스 비교 카드에 첫 비교 예시 `Lamzu Maya vs Zowie U2`와 실제 상세 페이지 링크를 추가했다. 다른 카테고리에는 상세 링크를 만들지 않았다.
 - root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성한 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` URL만 priority 0.5로 추가했다.
 - 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, RSS/API/DB/Supabase, 자동 비교기, CPU/GPU 데이터, 제품 데이터 수정, Finder 로직 수정, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
+
+## Mouse Compare Live QA - 2026-06-07 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/compare`, `https://setupradar.pages.dev/kr/compare/mouse/lamzu-maya-vs-zowie-u2`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
+- 상세 비교 페이지는 HTTP 200으로 열렸고, Hero, 제품 요약 카드, 비교 테이블, 초보자 판단 요약, 구매 전 체크리스트, 관련 내부 링크가 정상 노출됐다.
+- 비교 대상은 `Lamzu Maya`와 `Zowie U2`로 표시됐다.
+- `/kr/compare` 메인 마우스 비교 카드에서 상세 페이지로 이동하는 링크를 확인했다.
+- 키보드/모니터/CPU/GPU 비교 카드에는 존재하지 않는 상세 비교 링크가 없었다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에는 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2`가 포함됐고, 미구현 상세 비교 URL은 포함되지 않았다.
+- 모바일 390px 기준은 상세 페이지의 제품 카드와 비교 테이블이 1열로 전환되는 구조임을 확인해 가로 넘침 위험이 낮다고 판단했다.
+- 금지 표현, 광고/제휴 링크, 구매 버튼, Project2 실제 링크는 확인되지 않았다.
+- 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
+- 제품 데이터, Finder 로직, 광고/제휴 코드, Project2 실제 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+- 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
