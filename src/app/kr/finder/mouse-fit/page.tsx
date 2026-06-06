@@ -459,6 +459,7 @@ export default function MouseFitPage() {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [expandedMouseId, setExpandedMouseId] = useState<string | null>(null);
   const [showMoreResults, setShowMoreResults] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState("all");
 
   const scoredMice = useMemo(
     () => MOUSE_DATABASE
@@ -466,8 +467,16 @@ export default function MouseFitPage() {
       .sort((a, b) => b.score - a.score),
     [values, advancedValues],
   );
-  const visibleMice = showMoreResults ? scoredMice : scoredMice.slice(0, 3);
-  const hasMoreResults = scoredMice.length > 3;
+  const brandOptions = useMemo(
+    () => Array.from(new Set(scoredMice.map(({ mouse }) => mouse.brand).filter((brand): brand is string => Boolean(brand))))
+      .sort((a, b) => a.localeCompare(b)),
+    [scoredMice],
+  );
+  const filteredMice = selectedBrand === "all"
+    ? scoredMice
+    : scoredMice.filter(({ mouse }) => mouse.brand === selectedBrand);
+  const visibleMice = showMoreResults ? filteredMice : filteredMice.slice(0, 3);
+  const hasMoreResults = filteredMice.length > 3;
 
   const updateValue = <Key extends keyof MouseFinderValues>(key: Key, value: MouseFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -502,6 +511,7 @@ export default function MouseFitPage() {
             onClick={() => {
               setValues(MOUSE_FINDER_DEFAULTS);
               setAdvancedValues(MOUSE_ADVANCED_DEFAULTS);
+              setSelectedBrand("all");
               setShowMoreResults(false);
               setExpandedMouseId(null);
             }}
@@ -602,7 +612,39 @@ export default function MouseFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">가능한 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
-          {visibleMice.map(({ mouse }) => {
+          <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
+            <div className="mb-2 flex items-center justify-between gap-2">
+              <p className="text-xs font-black text-[var(--primary)]">제조사 필터</p>
+              <span className="text-[10px] font-bold text-[var(--muted)]">{filteredMice.length}개 후보</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {["all", ...brandOptions].map((brand) => {
+                const isActive = selectedBrand === brand;
+
+                return (
+                  <button
+                    key={brand}
+                    type="button"
+                    onClick={() => {
+                      setSelectedBrand(brand);
+                      setShowMoreResults(false);
+                      setExpandedMouseId(null);
+                    }}
+                    className={cn(
+                      "rounded-lg border px-2.5 py-1.5 text-[10.5px] font-black transition-colors",
+                      isActive
+                        ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                        : "border-[var(--border)] bg-[var(--secondary)]/30 text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
+                    )}
+                  >
+                    {brand === "all" ? "전체" : brand}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {visibleMice.map(({ mouse }, index) => {
             const display = getContentDisplay(mouse);
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
             const specRows = getMouseSpecRows(mouse);
@@ -626,12 +668,23 @@ export default function MouseFitPage() {
             const isExpanded = expandedMouseId === mouse.id;
 
             return (
-              <article key={mouse.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
+              <article
+                key={mouse.id}
+                className={cn(
+                  "rounded-xl border bg-[var(--secondary)]/30 p-3",
+                  index < 3 ? "border-[var(--accent)]/35 shadow-sm shadow-[var(--accent)]/10" : "border-[var(--border)]",
+                )}
+              >
                 <div className="mb-1 flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">{mouse.brand || "Unknown"}</p>
                     <h3 className="text-base font-bold text-[var(--primary)]">{mouse.name}</h3>
                   </div>
+                  {index < 3 && (
+                    <span className="shrink-0 rounded-full bg-[var(--accent)]/10 px-2 py-1 text-[9.5px] font-black text-[var(--accent)]">
+                      추천 후보 {index + 1}
+                    </span>
+                  )}
                 </div>
                 <p className="mb-2 line-clamp-2 text-[10.5px] leading-relaxed text-[var(--muted)]">{display.summary}</p>
                 <div className="mb-2 grid grid-cols-2 gap-1">

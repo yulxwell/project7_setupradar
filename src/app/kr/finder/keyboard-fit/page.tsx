@@ -571,6 +571,7 @@ export default function KeyboardFitPage() {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [expandedKeyboardId, setExpandedKeyboardId] = useState<string | null>(null);
   const [showMoreResults, setShowMoreResults] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState("all");
 
   const scoredKeyboards = useMemo(
     () => {
@@ -587,8 +588,16 @@ export default function KeyboardFitPage() {
     },
     [values, advancedValues],
   );
-  const visibleKeyboards = showMoreResults ? scoredKeyboards : scoredKeyboards.slice(0, 3);
-  const hasMoreResults = scoredKeyboards.length > 3;
+  const brandOptions = useMemo(
+    () => Array.from(new Set(scoredKeyboards.map(({ keyboard }) => keyboard.brand).filter((brand): brand is string => Boolean(brand))))
+      .sort((a, b) => a.localeCompare(b)),
+    [scoredKeyboards],
+  );
+  const filteredKeyboards = selectedBrand === "all"
+    ? scoredKeyboards
+    : scoredKeyboards.filter(({ keyboard }) => keyboard.brand === selectedBrand);
+  const visibleKeyboards = showMoreResults ? filteredKeyboards : filteredKeyboards.slice(0, 3);
+  const hasMoreResults = filteredKeyboards.length > 3;
 
   const updateValue = <Key extends keyof KeyboardFinderValues>(key: Key, value: KeyboardFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -623,6 +632,7 @@ export default function KeyboardFitPage() {
             onClick={() => {
               setValues(KEYBOARD_FINDER_DEFAULTS);
               setAdvancedValues(KEYBOARD_ADVANCED_DEFAULTS);
+              setSelectedBrand("all");
               setShowMoreResults(false);
               setExpandedKeyboardId(null);
             }}
@@ -725,16 +735,48 @@ export default function KeyboardFitPage() {
             <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
-          {scoredKeyboards.length === 0 && (
+          <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
+            <div className="mb-2 flex items-center justify-between gap-2">
+              <p className="text-xs font-black text-[var(--primary)]">제조사 필터</p>
+              <span className="text-[10px] font-bold text-[var(--muted)]">{filteredKeyboards.length}개 후보</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {["all", ...brandOptions].map((brand) => {
+                const isActive = selectedBrand === brand;
+
+                return (
+                  <button
+                    key={brand}
+                    type="button"
+                    onClick={() => {
+                      setSelectedBrand(brand);
+                      setShowMoreResults(false);
+                      setExpandedKeyboardId(null);
+                    }}
+                    className={cn(
+                      "rounded-lg border px-2.5 py-1.5 text-[10.5px] font-black transition-colors",
+                      isActive
+                        ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                        : "border-[var(--border)] bg-[var(--secondary)]/30 text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
+                    )}
+                  >
+                    {brand === "all" ? "전체" : brand}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {filteredKeyboards.length === 0 && (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-4">
-              <p className="text-sm font-bold text-[var(--primary)]">선택한 배열과 정확히 맞는 샘플이 아직 없습니다.</p>
+              <p className="text-sm font-bold text-[var(--primary)]">선택한 조건과 제조사에 맞는 샘플이 아직 없습니다.</p>
               <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">
-                75%와 65% 이하는 구분해서 보고 있습니다. 후보를 넓게 보려면 배열을 상관없음으로 바꿔보세요.
+                후보를 넓게 보려면 제조사 필터를 전체로 바꾸거나 배열을 상관없음으로 바꿔보세요.
               </p>
             </div>
           )}
 
-          {visibleKeyboards.map(({ keyboard }) => {
+          {visibleKeyboards.map(({ keyboard }, index) => {
             const display = getContentDisplay(keyboard);
             const specificLayout = getKeyboardSpecificLayout(keyboard) ?? "65%";
             const layoutMeta = KEYBOARD_LAYOUT_META[specificLayout];
@@ -748,12 +790,23 @@ export default function KeyboardFitPage() {
             const isExpanded = expandedKeyboardId === keyboard.id;
 
             return (
-              <article key={keyboard.id} className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
+              <article
+                key={keyboard.id}
+                className={cn(
+                  "rounded-xl border bg-[var(--secondary)]/30 p-3",
+                  index < 3 ? "border-[var(--accent)]/35 shadow-sm shadow-[var(--accent)]/10" : "border-[var(--border)]",
+                )}
+              >
                 <div className="mb-1 flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">{keyboard.brand || "Unknown"}</p>
                     <h3 className="text-base font-bold text-[var(--primary)]">{keyboard.name}</h3>
                   </div>
+                  {index < 3 && (
+                    <span className="shrink-0 rounded-full bg-[var(--accent)]/10 px-2 py-1 text-[9.5px] font-black text-[var(--accent)]">
+                      추천 후보 {index + 1}
+                    </span>
+                  )}
                 </div>
                 <div className="mb-1.5 flex flex-wrap gap-1">
                   <span className="rounded-md bg-[var(--accent)]/10 px-1.5 py-0.5 text-[9.5px] font-bold text-[var(--accent)]">
