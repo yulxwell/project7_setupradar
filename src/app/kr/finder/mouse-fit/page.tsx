@@ -521,26 +521,6 @@ export default function MouseFitPage() {
               손 크기, 형태, 무게, 연결 방식처럼 실제 사용감에 영향을 주는 조건입니다.
             </p>
           </div>
-          <CompactOptionGroup
-            group={MOUSE_FINDER_OPTIONS.handSize}
-            value={values.handSize}
-            onChange={(value) => updateValue("handSize", value as MouseFinderValues["handSize"])}
-          />
-          <CompactOptionGroup
-            group={MOUSE_FINDER_OPTIONS.shape}
-            value={values.shape}
-            onChange={(value) => updateValue("shape", value as MouseFinderValues["shape"])}
-          />
-          <CompactOptionGroup
-            group={MOUSE_FINDER_OPTIONS.weight}
-            value={values.weight}
-            onChange={(value) => updateValue("weight", value as MouseFinderValues["weight"])}
-          />
-          <CompactOptionGroup
-            group={MOUSE_FINDER_OPTIONS.connection}
-            value={values.connection}
-            onChange={(value) => updateValue("connection", value as MouseFinderValues["connection"])}
-          />
           <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
             <div>
               <h2 className="text-sm font-bold text-[var(--primary)]">상세 기준</h2>
@@ -578,6 +558,28 @@ export default function MouseFitPage() {
                 </p>
               </div>
             </div>
+          )}
+          <CompactOptionGroup
+            group={MOUSE_FINDER_OPTIONS.handSize}
+            value={values.handSize}
+            onChange={(value) => updateValue("handSize", value as MouseFinderValues["handSize"])}
+          />
+          <CompactOptionGroup
+            group={MOUSE_FINDER_OPTIONS.shape}
+            value={values.shape}
+            onChange={(value) => updateValue("shape", value as MouseFinderValues["shape"])}
+          />
+          <CompactOptionGroup
+            group={MOUSE_FINDER_OPTIONS.weight}
+            value={values.weight}
+            onChange={(value) => updateValue("weight", value as MouseFinderValues["weight"])}
+          />
+          {!advancedOpen && (
+            <CompactOptionGroup
+              group={MOUSE_FINDER_OPTIONS.connection}
+              value={values.connection}
+              onChange={(value) => updateValue("connection", value as MouseFinderValues["connection"])}
+            />
           )}
           <div className="rounded-xl border border-[var(--accent)]/10 bg-[var(--accent)]/5 p-3 md:col-span-2">
             <div className="flex gap-2">

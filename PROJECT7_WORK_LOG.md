@@ -987,3 +987,10 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - reason label helper는 점수 계산이나 정렬에 영향을 주지 않고, 이미 계산된 후보를 설명하는 화면 표시용 문구만 만든다.
 - 상세 기준 가산점 구조는 유지했고, 제품 정보가 불확실한 항목은 억지로 조건 반영 라벨을 표시하지 않는다.
 - 제품 데이터 신규 추가/수정, Finder 기본 질문 제거, 상세 기준 강제 필터화, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Finder Advanced Criteria Layout Polish - 2026-06-06 기록
+
+- Mouse Finder와 Keyboard Finder의 `상세 기준` 버튼과 펼침 영역을 기본 필터보다 위로 이동했다.
+- 상세 기준이 열렸을 때 기본 `연결 방식` 카드와 상세 `연결 상세` 카드가 동시에 보여 중복 질문처럼 보이는 문제를 줄이기 위해, 상세 기준이 열린 동안 기본 `연결 방식` 카드는 숨기도록 했다.
+- Keyboard Finder의 별도 `배열 선택 기준` 안내 박스는 화면이 복잡해 보여 제거했다. 배열 선택지 자체와 결과 카드의 배열 배지는 유지했다.
+- 점수 계산, 정렬, 상세 기준 가산점, 제품 데이터, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.

@@ -590,8 +590,6 @@ export default function KeyboardFitPage() {
   const visibleKeyboards = showMoreResults ? scoredKeyboards : scoredKeyboards.slice(0, 3);
   const hasMoreResults = scoredKeyboards.length > 3;
 
-  const selectedLayoutMeta = KEYBOARD_LAYOUT_META[values.layout];
-
   const updateValue = <Key extends keyof KeyboardFinderValues>(key: Key, value: KeyboardFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
     setShowMoreResults(false);
@@ -644,43 +642,6 @@ export default function KeyboardFitPage() {
               배열, 키감, 소음, 연결 방식, OS처럼 사용 환경에 맞춰 볼 조건입니다.
             </p>
           </div>
-          <section className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-sm font-bold text-[var(--primary)]">배열 선택 기준</h2>
-                <p className="mt-1 text-[11px] leading-snug text-[var(--muted)]">{selectedLayoutMeta.description}</p>
-              </div>
-              <span className="inline-flex w-fit rounded-full bg-[var(--accent)]/10 px-3 py-1 text-xs font-black text-[var(--accent)]">
-                {selectedLayoutMeta.badge}
-              </span>
-            </div>
-          </section>
-
-          <CompactOptionGroup
-            group={KEYBOARD_FINDER_OPTIONS.layout}
-            value={values.layout}
-            onChange={(value) => updateValue("layout", value as KeyboardFinderValues["layout"])}
-          />
-          <CompactOptionGroup
-            group={KEYBOARD_FINDER_OPTIONS.switchFeel}
-            value={values.switchFeel}
-            onChange={(value) => updateValue("switchFeel", value as KeyboardFinderValues["switchFeel"])}
-          />
-          <CompactOptionGroup
-            group={KEYBOARD_FINDER_OPTIONS.noise}
-            value={values.noise}
-            onChange={(value) => updateValue("noise", value as KeyboardFinderValues["noise"])}
-          />
-          <CompactOptionGroup
-            group={KEYBOARD_FINDER_OPTIONS.connection}
-            value={values.connection}
-            onChange={(value) => updateValue("connection", value as KeyboardFinderValues["connection"])}
-          />
-          <CompactOptionGroup
-            group={KEYBOARD_FINDER_OPTIONS.os}
-            value={values.os}
-            onChange={(value) => updateValue("os", value as KeyboardFinderValues["os"])}
-          />
           <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
             <div>
               <h2 className="text-sm font-bold text-[var(--primary)]">상세 기준</h2>
@@ -726,6 +687,33 @@ export default function KeyboardFitPage() {
               </div>
             </div>
           )}
+          <CompactOptionGroup
+            group={KEYBOARD_FINDER_OPTIONS.layout}
+            value={values.layout}
+            onChange={(value) => updateValue("layout", value as KeyboardFinderValues["layout"])}
+          />
+          <CompactOptionGroup
+            group={KEYBOARD_FINDER_OPTIONS.switchFeel}
+            value={values.switchFeel}
+            onChange={(value) => updateValue("switchFeel", value as KeyboardFinderValues["switchFeel"])}
+          />
+          <CompactOptionGroup
+            group={KEYBOARD_FINDER_OPTIONS.noise}
+            value={values.noise}
+            onChange={(value) => updateValue("noise", value as KeyboardFinderValues["noise"])}
+          />
+          {!advancedOpen && (
+            <CompactOptionGroup
+              group={KEYBOARD_FINDER_OPTIONS.connection}
+              value={values.connection}
+              onChange={(value) => updateValue("connection", value as KeyboardFinderValues["connection"])}
+            />
+          )}
+          <CompactOptionGroup
+            group={KEYBOARD_FINDER_OPTIONS.os}
+            value={values.os}
+            onChange={(value) => updateValue("os", value as KeyboardFinderValues["os"])}
+          />
         </div>
 
         <aside className="space-y-3 xl:sticky xl:top-20 xl:self-start">
