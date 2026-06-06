@@ -966,3 +966,15 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 점수 계산은 제품 탈락 필터가 아니라 약한 가산점 방식으로만 반영했다. 기존 `advancedFilters`, `detailSpecs`, `features`, `specTags`, `rawSpecs.note`에서 확인 가능한 정보만 사용하고, 불확실한 항목은 점수를 주지 않는다.
 - 제품 데이터 신규 추가, 제품 데이터 대량 수정, 기존 `basicFilters` 대규모 변경, 제품 이미지/링크 노출은 하지 않았다.
 - 광고/AdSense/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Finder Advanced Criteria Live QA - 2026-06-06 기록
+
+- Cloudflare 실서비스 `https://setupradar.pages.dev/kr/finder/mouse-fit`와 `https://setupradar.pages.dev/kr/finder/keyboard-fit`에서 Finder Advanced Criteria Mock 1 반영 상태를 확인했다.
+- Mouse Finder는 `상세 기준` 버튼 노출, 펼침/접힘, 연결 상세·배터리/충전·사이드 버튼·용도 선택, 상세 기준 미선택 상태 결과 유지, 상세 기준 선택 후 결과 유지가 정상 동작했다.
+- Keyboard Finder는 `상세 기준` 버튼 노출, 펼침, 연결 상세·핫스왑·특정 기기 사용·용도·각인/배열 참고 선택, 상세 기준 미선택 상태 결과 유지, 상세 기준 선택 후 결과 유지가 정상 동작했다.
+- 상세 기준 안내 문구는 선택 사항과 참고 조건이라는 톤을 유지했고, Mac/iPad/iPad Pro/멀티기기 조건이 확정 추천처럼 보이지 않음을 확인했다.
+- `후보 더 보기`와 `구매 전 체크` 패널을 연 뒤 상세 기준을 변경하면 두 상태가 닫히고, `초기화` 버튼은 상세 기준을 기본값으로 되돌리는 것을 확인했다.
+- 모바일 폭 기준에서도 상세 기준 영역이 가로로 넘치지 않았고, 기본 Finder 사용자가 상세 기준을 지나칠 수 있는 접힘형 흐름을 유지했다.
+- Finder 화면에서 `review`, `status`, `productImages`, `productLinks` 내부값 노출은 확인되지 않았고, 제품 이미지/링크가 새로 노출되지 않았다.
+- 금지 표현 목록 노출은 확인되지 않았다.
+- 이번 Live QA에서는 명확한 버그가 없어 코드 수정은 하지 않았고, 제품 데이터, Finder 기본 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
