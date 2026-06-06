@@ -1002,3 +1002,15 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Keyboard Finder는 배열, 키감, 소음, OS 카드가 그대로 보이고, 상세 기준 열림 상태에서 연결 카드만 연결 상세로 전환된다. 핫스왑, 특정 기기 사용, 용도, 각인/배열 참고는 아래에 추가 상세 조건으로 붙는다.
 - 기본 필터 카드와 상세 필터 카드의 테두리/배경 톤을 같은 accent 계열로 맞춰 상세 기준 열림 전후의 디자인 차이를 줄였다.
 - 점수 계산, 정렬, 상세 기준 가산점, 제품 데이터, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Finder Result Reason Labels Live QA - 2026-06-06 기록
+
+- Cloudflare 실서비스 `https://setupradar.pages.dev/kr/finder/mouse-fit`와 `https://setupradar.pages.dev/kr/finder/keyboard-fit`에서 결과 카드의 `조건 반영` 라벨 노출을 확인했다.
+- Mouse Finder는 기본 조건 선택 시 손 크기, 대칭형, 가벼운 무게 같은 기본 조건 라벨이 최대 3개로 표시되고, 상세 기준 선택 시 2.4GHz 무선, 배터리 방식, 사이드 버튼 같은 상세 기준 라벨이 표시되는 것을 확인했다.
+- Keyboard Finder는 기본 조건 선택 시 배열, 스위치 성향, 무선 사용 라벨이 표시되고, 상세 기준 선택 시 멀티모드, 핫스왑, iPad Pro 조건이 참고 톤으로 표시되는 것을 확인했다.
+- Mouse/Keyboard 모두 `후보 더 보기`와 `구매 전 체크` 패널을 열어도 `조건 반영` 영역과 충돌하지 않았고, 결과가 비지 않았다.
+- 모바일 폭 기준에서도 reason label 줄바꿈과 결과 카드 표시가 깨지지 않았고 가로 넘침은 확인되지 않았다.
+- Finder 화면에서 `review`, `status`, `productImages`, `productLinks` 내부값 노출은 확인되지 않았고, 광고/제휴성 링크도 확인되지 않았다.
+- 금지 표현 목록 노출은 확인되지 않았다.
+- 이번 Live QA에서는 명확한 버그가 없어 코드 수정은 하지 않았고, 제품 데이터, Finder 점수 계산/정렬, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+- 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
