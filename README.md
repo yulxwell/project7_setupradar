@@ -184,6 +184,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **추천 순서 유지**: 점수 계산과 정렬 기준은 바꾸지 않고, 기존 결과를 설명하는 표시용 문구만 추가했습니다.
 - **미변경 유지**: 제품 데이터, 상세 기준 가산점 구조, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
 
+### Mouse Compare Mock 1 - 2026-06-07
+- **첫 VS 상세 페이지 추가**: `/kr/compare/mouse/lamzu-maya-vs-zowie-u2`에 `Lamzu Maya`와 `Zowie U2` 비교 mock 페이지를 추가했습니다.
+- **초보자용 비교 기준 구성**: 쉘, 손 크기 체감, 무게, 연결 방식, 게임/FPS 사용, 일상 사용, 설정, 배터리, AS 확인, 구매 전 주의점을 참고용 비교 테이블로 정리했습니다.
+- **Compare 메인 연결**: `/kr/compare`의 마우스 비교 카드에 첫 비교 예시와 상세 페이지 링크를 연결했습니다. 다른 카테고리 상세 링크는 만들지 않았습니다.
+- **sitemap 반영**: root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성된 마우스 비교 상세 URL만 낮은 priority로 추가했습니다.
+- **미변경 유지**: 제품 데이터, Finder 로직, 광고/AdSense/제휴 링크, Project2 실제 연동, CPU/GPU 데이터, DB/API/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

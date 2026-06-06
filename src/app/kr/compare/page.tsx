@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Cpu, Keyboard, Monitor, MousePointer2, ShieldCheck, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -15,6 +16,9 @@ const compareCategories = [
     description: "손에 맞는 체감 차이를 보기 위해 쉘과 무게, 연결 방식, 클릭감, AS 조건을 함께 확인합니다.",
     points: ["쉘 형태", "무게", "연결 방식", "클릭감", "AS 조건"],
     icon: MousePointer2,
+    example: "Lamzu Maya vs Zowie U2",
+    href: "/kr/compare/mouse/lamzu-maya-vs-zowie-u2",
+    status: "mock 공개",
   },
   {
     title: "키보드 비교",
@@ -68,7 +72,7 @@ export default function ComparePage() {
           <div className="space-y-1.5">
             <h2 className="text-xl font-bold tracking-tight text-[var(--primary)] md:text-2xl">비교 카테고리</h2>
             <p className="text-sm leading-relaxed text-[var(--muted)]">
-              현재는 상세 비교 페이지 없이 카테고리와 기준만 먼저 보여주는 mock 단계입니다.
+              현재는 마우스 비교 상세 1개를 먼저 열고, 나머지 카테고리는 기준과 방향만 보여주는 mock 단계입니다.
             </p>
           </div>
           <span className="w-fit rounded-full border border-[var(--border)] bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">
@@ -79,17 +83,20 @@ export default function ComparePage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
           {compareCategories.map((category) => {
             const Icon = category.icon;
-            return (
-              <article key={category.title} className="flex min-h-[300px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+            const cardContent = (
+              <>
                 <div className="mb-5 flex items-center justify-between gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--secondary)] text-[var(--accent)]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <span className="rounded-full border border-[var(--border)] bg-[var(--secondary)] px-2.5 py-1 text-[10px] font-bold text-[var(--muted)]">
-                    설계 중
+                    {"status" in category ? category.status : "설계 중"}
                   </span>
                 </div>
                 <h3 className="text-base font-bold text-[var(--primary)]">{category.title}</h3>
+                {"example" in category ? (
+                  <p className="mt-2 text-xs font-bold text-[var(--accent)]">{category.example}</p>
+                ) : null}
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--muted)]">{category.description}</p>
                 <div className="mt-5 border-t border-[var(--border)] pt-4">
                   <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">비교할 기준</p>
@@ -100,7 +107,30 @@ export default function ComparePage() {
                       </span>
                     ))}
                   </div>
+                  {"href" in category ? (
+                    <span className="mt-5 inline-flex text-xs font-bold uppercase tracking-widest text-[var(--accent)]">
+                      비교 보기
+                    </span>
+                  ) : null}
                 </div>
+              </>
+            );
+
+            if ("href" in category) {
+              return (
+                <Link
+                  key={category.title}
+                  href={category.href}
+                  className="group flex min-h-[300px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-sm"
+                >
+                  {cardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <article key={category.title} className="flex min-h-[300px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+                {cardContent}
               </article>
             );
           })}

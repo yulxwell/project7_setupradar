@@ -1061,3 +1061,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 금지 표현, 광고/제휴 링크, Project2 실제 링크, RSS/API/DB/Supabase 연결로 보이는 항목은 확인되지 않았다.
 - 명확한 버그가 없어 앱 코드 수정은 하지 않았고, Live QA 결과만 문서에 기록했다.
 - 실제 비교 상세 페이지, CPU/GPU 실제 데이터, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
+
+## Mouse Compare Mock 1 - 2026-06-07 기록
+
+- `/kr/compare` 확장 흐름의 첫 상세 비교 mock으로 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 페이지를 추가했다.
+- 비교 대상은 기존 `src/content/kr/products/mice.ts`에 있는 `Lamzu Maya`와 `Zowie U2`이며, 제품 데이터는 수정하지 않았다.
+- 상세 페이지에는 metadata, Hero, 제품별 요약 카드, 비교 테이블, 초보자 판단 요약, 구매 전 체크리스트, 관련 내부 링크를 구성했다.
+- 비교 테이블은 형태, 손 크기 체감, 무게 체감, 연결 방식, 게임/FPS 사용, 사무/일상 사용, 소프트웨어/설정, 배터리/충전, AS/국내 구매 확인, 구매 전 주의점 기준으로 작성했다.
+- `/kr/compare` 메인의 마우스 비교 카드에 첫 비교 예시 `Lamzu Maya vs Zowie U2`와 실제 상세 페이지 링크를 추가했다. 다른 카테고리에는 상세 링크를 만들지 않았다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 생성한 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` URL만 priority 0.5로 추가했다.
+- 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, RSS/API/DB/Supabase, 자동 비교기, CPU/GPU 데이터, 제품 데이터 수정, Finder 로직 수정, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.

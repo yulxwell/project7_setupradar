@@ -1,15 +1,16 @@
 # Project7 VS Compare Structure Plan
 
-Last updated: 2026-06-07 Compare Main Mock 1
+Last updated: 2026-06-07 Mouse Compare Mock 1
 
-Scope: structure planning and compare main mock only. No compare detail route, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+Scope: structure planning, compare main mock, and first mouse compare detail mock only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
 
 ## 0. 진행 상태
 
 - Phase 0 문서화 완료.
 - Phase 1 `/kr/compare` 메인 mock 완료.
-- 현재 `/kr/compare`는 비교 카테고리 카드와 안내 문구만 제공한다.
-- 실제 비교 상세 페이지, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
+- Phase 2 첫 mouse compare mock으로 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 상세 페이지를 추가했다.
+- 현재 `/kr/compare`는 비교 카테고리 카드와 첫 마우스 비교 상세 링크를 제공한다.
+- 자동 비교기, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
 
 ## 1. VS Compare의 목적
 
@@ -285,6 +286,8 @@ VS Compare는 제품 하나를 정답처럼 밀어주는 페이지가 아니다.
 - 기존 마우스 데이터 일부를 재사용한다.
 - 쉘, 무게, 연결, 클릭감, 배터리, 주의점 중심으로 구성한다.
 - 가격은 판매처 기준 확인 안내만 둔다.
+- 2026-06-07 Mouse Compare Mock 1에서 `Lamzu Maya vs Zowie U2` 첫 상세 비교 route를 추가했다.
+- 이 mock은 page 내부 정적 구조로만 작성했고, 새 제품 데이터나 자동 비교 엔진은 만들지 않았다.
 
 ### Phase 3: Keyboard compare mock 1개
 
