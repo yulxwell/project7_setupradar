@@ -172,6 +172,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **운영 규칙 보강**: 문구가 반영되지 않으면 copy source map을 먼저 확인하고, 변경 후 `npm run lint`, `npm run build`, live URL 확인을 진행하도록 기록했습니다.
 - **미변경 유지**: 이번 작업은 문서화만 수행했으며 제품 데이터, Finder 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
 
+### Finder Advanced Criteria Mock 1 - 2026-06-06
+- **상세 기준 접힘 영역 추가**: Mouse Finder와 Keyboard Finder에 `상세 기준` 버튼을 추가하고, 클릭 시 선택형 상세 기준 영역이 펼쳐지도록 했습니다.
+- **약한 가산점 방식 적용**: 상세 기준은 제품을 탈락시키지 않고 기존 `advancedFilters`, `detailSpecs`, `features`, `specTags`, `rawSpecs.note`에서 확인 가능한 정보에만 낮은 가산점을 줍니다.
+- **기본 Finder 유지**: 기본 질문, 기본 결과 흐름, 후보 더 보기, 구매 전 체크 패널 구조는 유지하고, 기본/상세 기준 변경 시 열린 상태가 닫히도록 정리했습니다.
+- **미변경 유지**: 제품 데이터 추가/대량 수정, basicFilters 대규모 변경, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

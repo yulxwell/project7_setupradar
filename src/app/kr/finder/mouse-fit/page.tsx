@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Info, RotateCcw, SlidersHorizontal } from "lucide-react";
+import { ChevronDown, Info, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { MOUSE_DATABASE } from "@/content/kr/products/mice";
 import {
@@ -19,6 +19,65 @@ type MouseScore = {
   score: number;
   reasons: string[];
   cautions: string[];
+};
+
+type MouseAdvancedValues = {
+  connectionDetail: "any" | "wired" | "wireless_24" | "bluetooth";
+  battery: "any" | "rechargeable" | "aa_aaa";
+  sideButtons: "any" | "needed" | "not_needed";
+  usage: "any" | "fps" | "office" | "portable";
+};
+
+const MOUSE_ADVANCED_DEFAULTS: MouseAdvancedValues = {
+  connectionDetail: "any",
+  battery: "any",
+  sideButtons: "any",
+  usage: "any",
+};
+
+const MOUSE_ADVANCED_OPTIONS = {
+  connectionDetail: {
+    id: "connectionDetail",
+    label: "연결 상세",
+    helperText: "무선 안에서도 수신기와 블루투스는 체감이 다를 수 있습니다.",
+    options: [
+      { value: "any", label: "상관없음", description: "연결 상세 조건을 점수에 반영하지 않습니다." },
+      { value: "wired", label: "유선", description: "충전 관리보다 케이블 사용이 편할 때" },
+      { value: "wireless_24", label: "2.4GHz 무선", description: "수신기나 동글 기반 무선을 선호할 때" },
+      { value: "bluetooth", label: "블루투스", description: "노트북이나 태블릿 연결도 함께 볼 때" },
+    ],
+  } satisfies FinderOptionGroup<MouseAdvancedValues["connectionDetail"]>,
+  battery: {
+    id: "battery",
+    label: "배터리/충전",
+    helperText: "충전식과 건전지 방식 중 관리하기 편한 쪽을 고릅니다.",
+    options: [
+      { value: "any", label: "상관없음", description: "배터리 방식을 점수에 반영하지 않습니다." },
+      { value: "rechargeable", label: "충전식 선호", description: "내장 배터리와 케이블 충전을 선호할 때" },
+      { value: "aa_aaa", label: "AA/AAA도 괜찮음", description: "건전지 교체식도 불편하지 않을 때" },
+    ],
+  } satisfies FinderOptionGroup<MouseAdvancedValues["battery"]>,
+  sideButtons: {
+    id: "sideButtons",
+    label: "사이드 버튼",
+    helperText: "웹서핑, 게임 단축키 사용 여부를 기준으로 봅니다.",
+    options: [
+      { value: "any", label: "상관없음", description: "버튼 수를 점수에 반영하지 않습니다." },
+      { value: "needed", label: "사이드 버튼 필요", description: "뒤로가기나 단축키를 자주 쓸 때" },
+      { value: "not_needed", label: "적어도 괜찮음", description: "기본 버튼 중심으로 단순하게 쓰고 싶을 때" },
+    ],
+  } satisfies FinderOptionGroup<MouseAdvancedValues["sideButtons"]>,
+  usage: {
+    id: "usage",
+    label: "용도",
+    helperText: "주 사용 상황을 고르면 일부 명확한 제품에만 약하게 반영합니다.",
+    options: [
+      { value: "any", label: "상관없음", description: "용도 조건을 점수에 반영하지 않습니다." },
+      { value: "fps", label: "FPS 게임", description: "가벼운 무게와 게이밍 성향을 볼 때" },
+      { value: "office", label: "사무/웹서핑", description: "설정 부담이 적은 사용을 선호할 때" },
+      { value: "portable", label: "휴대용", description: "작고 무선인 후보를 참고할 때" },
+    ],
+  } satisfies FinderOptionGroup<MouseAdvancedValues["usage"]>,
 };
 
 function isWireless(features: string[]) {
@@ -68,7 +127,62 @@ function matchesMouseConnection(selectedConnection: MouseFinderValues["connectio
   return productConnection === "wired" || productConnection === "multi_mode";
 }
 
-function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderValues): MouseScore {
+function getMouseSearchText(mouse: (typeof MOUSE_DATABASE)[number]) {
+  return [
+    mouse.name,
+    mouse.brand,
+    mouse.sensor,
+    mouse.priceRange,
+    ...mouse.features,
+    ...(mouse.specTags ?? []),
+    mouse.detailSpecs?.bluetoothVersion,
+    mouse.detailSpecs?.usbOrPs2,
+    mouse.detailSpecs?.batteryDetail,
+    mouse.detailSpecs?.buttonCountDetail,
+    mouse.rawSpecs?.note,
+    mouse.aiSummaryKo,
+    ...(mouse.aiStrengthsKo ?? []),
+    ...(mouse.aiCautionsKo ?? []),
+    ...(mouse.aiBuyingCheckKo ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function hasMouseBluetooth(mouse: (typeof MOUSE_DATABASE)[number]) {
+  return Boolean(mouse.detailSpecs?.bluetoothVersion) || /bluetooth|블루투스/.test(getMouseSearchText(mouse));
+}
+
+function hasMouseReceiverWireless(mouse: (typeof MOUSE_DATABASE)[number], filters: MouseBasicFilters) {
+  const text = getMouseSearchText(mouse);
+  return filters.connection === "wireless" && /2\.4|2\.4ghz|수신기|동글|receiver|wireless|무선|[248]k/.test(text);
+}
+
+function getMouseAdvancedScore(mouse: (typeof MOUSE_DATABASE)[number], advancedValues: MouseAdvancedValues) {
+  const filters = getMouseBasicFilters(mouse);
+  const text = getMouseSearchText(mouse);
+  const advancedFilters = mouse.advancedFilters;
+  let score = 0;
+
+  if (advancedValues.connectionDetail === "wired" && filters.connection === "wired") score += 1;
+  if (advancedValues.connectionDetail === "wireless_24" && hasMouseReceiverWireless(mouse, filters)) score += 1;
+  if (advancedValues.connectionDetail === "bluetooth" && hasMouseBluetooth(mouse)) score += 1;
+
+  if (advancedValues.battery === "rechargeable" && advancedFilters?.battery === "built_in") score += 1;
+  if (advancedValues.battery === "aa_aaa" && advancedFilters?.battery === "aa_aaa") score += 1;
+
+  if (advancedValues.sideButtons === "needed" && advancedFilters?.buttonCount === "side_buttons") score += 1;
+  if (advancedValues.sideButtons === "not_needed" && advancedFilters?.buttonCount === "basic") score += 1;
+
+  if (advancedValues.usage === "fps" && (advancedFilters?.gamingPerformance === "high" || advancedFilters?.gamingPerformance === "enthusiast")) score += 1;
+  if (advancedValues.usage === "office" && /사무|웹|office|driverless|입문/.test(text)) score += 1;
+  if (advancedValues.usage === "portable" && filters.connection === "wireless" && (filters.size === "small" || mouse.weight <= 60)) score += 1;
+
+  return Math.min(score, 3);
+}
+
+function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderValues, advancedValues: MouseAdvancedValues): MouseScore {
   const reasons: string[] = [];
   const cautions: string[] = [];
   let score = 0;
@@ -116,6 +230,12 @@ function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderV
   if (values.connection === "wired" && matchesMouseConnection(values.connection, filters.connection)) {
     score += 2;
     reasons.push("유선 사용을 선호할 때 후보가 될 수 있습니다.");
+  }
+
+  const advancedScore = getMouseAdvancedScore(mouse, advancedValues);
+  if (advancedScore > 0) {
+    score += advancedScore;
+    reasons.push("상세 기준 일부를 참고 점수로 반영했습니다.");
   }
 
   if (score === 0) {
@@ -236,22 +356,50 @@ function CompactOptionGroup({
   );
 }
 
+function AdvancedCriteriaToggle({
+  isOpen,
+  onClick,
+}: {
+  isOpen: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={isOpen}
+      className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 text-xs font-black text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+    >
+      상세 기준
+      <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
+    </button>
+  );
+}
+
 export default function MouseFitPage() {
   const [values, setValues] = useState<MouseFinderValues>(MOUSE_FINDER_DEFAULTS);
+  const [advancedValues, setAdvancedValues] = useState<MouseAdvancedValues>(MOUSE_ADVANCED_DEFAULTS);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
   const [expandedMouseId, setExpandedMouseId] = useState<string | null>(null);
   const [showMoreResults, setShowMoreResults] = useState(false);
 
   const scoredMice = useMemo(
     () => MOUSE_DATABASE
-      .map((mouse) => scoreMouse(mouse, values))
+      .map((mouse) => scoreMouse(mouse, values, advancedValues))
       .sort((a, b) => b.score - a.score),
-    [values],
+    [values, advancedValues],
   );
   const visibleMice = showMoreResults ? scoredMice : scoredMice.slice(0, 3);
   const hasMoreResults = scoredMice.length > 3;
 
   const updateValue = <Key extends keyof MouseFinderValues>(key: Key, value: MouseFinderValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+    setShowMoreResults(false);
+    setExpandedMouseId(null);
+  };
+
+  const updateAdvancedValue = <Key extends keyof MouseAdvancedValues>(key: Key, value: MouseAdvancedValues[Key]) => {
+    setAdvancedValues((current) => ({ ...current, [key]: value }));
     setShowMoreResults(false);
     setExpandedMouseId(null);
   };
@@ -276,6 +424,7 @@ export default function MouseFitPage() {
           <button
             onClick={() => {
               setValues(MOUSE_FINDER_DEFAULTS);
+              setAdvancedValues(MOUSE_ADVANCED_DEFAULTS);
               setShowMoreResults(false);
               setExpandedMouseId(null);
             }}
@@ -315,6 +464,44 @@ export default function MouseFitPage() {
             value={values.connection}
             onChange={(value) => updateValue("connection", value as MouseFinderValues["connection"])}
           />
+          <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/20 p-3 md:col-span-2">
+            <div>
+              <h2 className="text-sm font-bold text-[var(--primary)]">상세 기준</h2>
+              <p className="mt-1 text-[11px] leading-snug text-[var(--muted)]">
+                선택하지 않아도 됩니다. 후보를 조금 더 좁히기 위한 참고 조건입니다.
+              </p>
+            </div>
+            <AdvancedCriteriaToggle isOpen={advancedOpen} onClick={() => setAdvancedOpen((current) => !current)} />
+          </div>
+          {advancedOpen && (
+            <div className="grid gap-3 rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3 md:col-span-2 md:grid-cols-2">
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.connectionDetail}
+                value={advancedValues.connectionDetail}
+                onChange={(value) => updateAdvancedValue("connectionDetail", value as MouseAdvancedValues["connectionDetail"])}
+              />
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.battery}
+                value={advancedValues.battery}
+                onChange={(value) => updateAdvancedValue("battery", value as MouseAdvancedValues["battery"])}
+              />
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.sideButtons}
+                value={advancedValues.sideButtons}
+                onChange={(value) => updateAdvancedValue("sideButtons", value as MouseAdvancedValues["sideButtons"])}
+              />
+              <CompactOptionGroup
+                group={MOUSE_ADVANCED_OPTIONS.usage}
+                value={advancedValues.usage}
+                onChange={(value) => updateAdvancedValue("usage", value as MouseAdvancedValues["usage"])}
+              />
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--background)]/70 p-3 md:col-span-2">
+                <p className="text-[11px] leading-relaxed text-[var(--muted)]">
+                  상세 기준은 제품 후보를 더 좁히기 위한 참고 조건입니다. 제품 스펙은 판매처/제조사 기준으로 다시 확인해 주세요. 일부 제품은 상세 정보가 부족해 점수에 반영되지 않을 수 있습니다.
+                </p>
+              </div>
+            </div>
+          )}
           <div className="rounded-xl border border-[var(--accent)]/10 bg-[var(--accent)]/5 p-3 md:col-span-2">
             <div className="flex gap-2">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />

@@ -955,3 +955,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Finder 문구는 옵션 파일, 제품 데이터, Finder page 하드코딩 문구, 점수 계산 함수 안 문구가 섞여 있으므로 추천 로직을 건드리지 않도록 분리해서 설명했다.
 - README와 `docs/content-editing-guide.md`에 copy source map 참조 문장을 추가했다.
 - 이번 작업은 문서화만 수행했으며 제품 데이터, Finder 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Finder Advanced Criteria Mock 1 - 2026-06-06 기록
+
+- Project7 Finder의 상품성을 높이기 위해 Mouse Finder와 Keyboard Finder에 접힘형 `상세 기준` 영역을 추가했다.
+- Mouse Finder 상세 기준은 연결 상세, 배터리/충전, 사이드 버튼, 용도 항목으로 구성했다.
+- Keyboard Finder 상세 기준은 연결 상세, 핫스왑, 특정 기기 사용, 용도, 각인/배열 참고 항목으로 구성했다.
+- 상세 기준은 선택하지 않아도 기존 Finder가 그대로 동작하며, 버튼 클릭 시에만 상세 기준 선택지가 펼쳐진다.
+- 상세 기준 변경 시 `후보 더 보기` 상태와 열린 `구매 전 체크` 패널을 닫도록 했다. 초기화 버튼은 기본 기준과 상세 기준을 함께 기본값으로 되돌린다.
+- 점수 계산은 제품 탈락 필터가 아니라 약한 가산점 방식으로만 반영했다. 기존 `advancedFilters`, `detailSpecs`, `features`, `specTags`, `rawSpecs.note`에서 확인 가능한 정보만 사용하고, 불확실한 항목은 점수를 주지 않는다.
+- 제품 데이터 신규 추가, 제품 데이터 대량 수정, 기존 `basicFilters` 대규모 변경, 제품 이미지/링크 노출은 하지 않았다.
+- 광고/AdSense/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
