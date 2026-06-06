@@ -38,10 +38,10 @@ const MOUSE_ADVANCED_DEFAULTS: MouseAdvancedValues = {
 const MOUSE_ADVANCED_OPTIONS = {
   connectionDetail: {
     id: "connectionDetail",
-    label: "연결 상세",
+    label: "연결 방식 + 상세",
     helperText: "무선 안에서도 수신기와 블루투스는 체감이 다를 수 있습니다.",
     options: [
-      { value: "any", label: "상관없음", description: "연결 상세 조건을 점수에 반영하지 않습니다." },
+      { value: "any", label: "상관없음", description: "연결 방식 상세 조건을 점수에 반영하지 않습니다." },
       { value: "wired", label: "유선", description: "충전 관리보다 케이블 사용이 편할 때" },
       { value: "wireless_24", label: "2.4GHz 무선", description: "수신기나 동글 기반 무선을 선호할 때" },
       { value: "bluetooth", label: "블루투스", description: "노트북이나 태블릿 연결도 함께 볼 때" },
@@ -560,6 +560,10 @@ export default function MouseFitPage() {
           )}
           {advancedOpen && (
             <div className="grid gap-3 md:col-span-2 md:grid-cols-2">
+              <div className="flex items-center gap-2 md:col-span-2">
+                <span className="whitespace-nowrap text-[11px] font-black text-[var(--accent)]">- 상세 목록 -</span>
+                <span className="h-px flex-1 bg-[var(--accent)]/20" />
+              </div>
               <CompactOptionGroup
                 group={MOUSE_ADVANCED_OPTIONS.battery}
                 value={advancedValues.battery}

@@ -1014,3 +1014,9 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 금지 표현 목록 노출은 확인되지 않았다.
 - 이번 Live QA에서는 명확한 버그가 없어 코드 수정은 하지 않았고, 제품 데이터, Finder 점수 계산/정렬, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
 - 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
+
+## Finder Advanced Detail Label Polish - 2026-06-06 기록
+
+- Mouse Finder와 Keyboard Finder에서 상세 기준 열림 상태의 연결 카드명을 `연결 상세`에서 `연결 방식 + 상세`로 바꿔 기본 연결 카드가 확장된 느낌을 주도록 했다.
+- 상세 기준으로 추가되는 목록 앞에 `- 상세 목록 -` 안내 라인을 추가했다. 마우스는 배터리/충전, 사이드 버튼, 용도 바로 위에 표시하고, 키보드는 핫스왑, 특정 기기 사용, 용도, 각인/배열 참고 바로 위에 표시한다.
+- 점수 계산, 정렬, 상세 기준 가산점, 제품 데이터, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.

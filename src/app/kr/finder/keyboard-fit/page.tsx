@@ -41,10 +41,10 @@ const KEYBOARD_ADVANCED_DEFAULTS: KeyboardAdvancedValues = {
 const KEYBOARD_ADVANCED_OPTIONS = {
   connectionDetail: {
     id: "connectionDetail",
-    label: "연결 상세",
+    label: "연결 방식 + 상세",
     helperText: "유선, 수신기, 블루투스, 멀티모드를 나눠 참고합니다.",
     options: [
-      { value: "any", label: "상관없음", description: "연결 상세 조건을 점수에 반영하지 않습니다." },
+      { value: "any", label: "상관없음", description: "연결 방식 상세 조건을 점수에 반영하지 않습니다." },
       { value: "wired", label: "유선", description: "책상에 고정해서 안정적으로 쓸 때" },
       { value: "wireless_24", label: "2.4GHz 무선", description: "수신기 기반 무선을 선호할 때" },
       { value: "bluetooth", label: "블루투스", description: "노트북, 태블릿과 함께 쓸 때" },
@@ -686,6 +686,10 @@ export default function KeyboardFitPage() {
           />
           {advancedOpen && (
             <div className="grid gap-3 md:col-span-2 md:grid-cols-2">
+              <div className="flex items-center gap-2 md:col-span-2">
+                <span className="whitespace-nowrap text-[11px] font-black text-[var(--accent)]">- 상세 목록 -</span>
+                <span className="h-px flex-1 bg-[var(--accent)]/20" />
+              </div>
               <CompactOptionGroup
                 group={KEYBOARD_ADVANCED_OPTIONS.hotSwap}
                 value={advancedValues.hotSwap}
