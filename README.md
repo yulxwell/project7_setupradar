@@ -178,6 +178,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **기본 Finder 유지**: 기본 질문, 기본 결과 흐름, 후보 더 보기, 구매 전 체크 패널 구조는 유지하고, 기본/상세 기준 변경 시 열린 상태가 닫히도록 정리했습니다.
 - **미변경 유지**: 제품 데이터 추가/대량 수정, basicFilters 대규모 변경, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
 
+### Finder Result Reason Labels 1 - 2026-06-06
+- **결과 카드 조건 반영 표시 추가**: Mouse Finder와 Keyboard Finder 결과 카드에 `조건 반영` 영역을 추가해 후보가 나온 이유를 짧게 보여주도록 했습니다.
+- **표시 전용 helper 적용**: 기본 조건과 상세 기준 중 실제로 맞는 항목만 최대 3개 라벨로 보여주며, 제품 정보가 불확실한 항목은 억지로 표시하지 않습니다.
+- **추천 순서 유지**: 점수 계산과 정렬 기준은 바꾸지 않고, 기존 결과를 설명하는 표시용 문구만 추가했습니다.
+- **미변경 유지**: 제품 데이터, 상세 기준 가산점 구조, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

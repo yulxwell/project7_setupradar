@@ -978,3 +978,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Finder 화면에서 `review`, `status`, `productImages`, `productLinks` 내부값 노출은 확인되지 않았고, 제품 이미지/링크가 새로 노출되지 않았다.
 - 금지 표현 목록 노출은 확인되지 않았다.
 - 이번 Live QA에서는 명확한 버그가 없어 코드 수정은 하지 않았고, 제품 데이터, Finder 기본 추천 로직, 광고/제휴 코드, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Finder Result Reason Labels 1 - 2026-06-06 기록
+
+- Mouse Finder와 Keyboard Finder 결과 카드에 `조건 반영` 영역을 추가해 후보가 나온 이유를 짧게 보여주도록 했다.
+- Mouse Finder에는 `getMouseReasonLabels` 표시 helper를 추가해 손 크기, 형태, 무게, 연결 방식과 상세 기준의 연결 상세, 배터리/충전, 사이드 버튼, 용도 중 실제로 맞는 항목만 최대 3개 라벨로 표시한다.
+- Keyboard Finder에는 `getKeyboardReasonLabels` 표시 helper를 추가해 배열, 스위치 성향, 소음, 연결 방식과 상세 기준의 연결 상세, 핫스왑, 특정 기기 사용, 용도, 각인/배열 참고 중 실제로 맞는 항목만 최대 3개 라벨로 표시한다.
+- reason label helper는 점수 계산이나 정렬에 영향을 주지 않고, 이미 계산된 후보를 설명하는 화면 표시용 문구만 만든다.
+- 상세 기준 가산점 구조는 유지했고, 제품 정보가 불확실한 항목은 억지로 조건 반영 라벨을 표시하지 않는다.
+- 제품 데이터 신규 추가/수정, Finder 기본 질문 제거, 상세 기준 강제 필터화, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.

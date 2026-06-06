@@ -241,6 +241,112 @@ function getKeyboardAdvancedScore(keyboard: (typeof KEYBOARD_DATABASE)[number], 
   return Math.min(score, 4);
 }
 
+function pushUniqueLabel(labels: string[], label: string) {
+  if (!labels.includes(label)) labels.push(label);
+}
+
+function getKeyboardReasonLabels(
+  keyboard: (typeof KEYBOARD_DATABASE)[number],
+  values: KeyboardFinderValues,
+  advancedValues: KeyboardAdvancedValues,
+) {
+  const filters = getKeyboardBasicFilters(keyboard);
+  const text = getKeyboardSearchText(keyboard);
+  const selectedLayout = values.layout === "any" ? null : values.layout;
+  const labels: string[] = [];
+
+  if (selectedLayout && matchesKeyboardLayout(selectedLayout, keyboard, filters.layout)) {
+    pushUniqueLabel(labels, "선택한 배열 조건이 기본 점수에 반영됐습니다.");
+  }
+
+  if (values.switchFeel !== "unknown" && matchesKeyboardFeel(values.switchFeel, filters.feel)) {
+    pushUniqueLabel(
+      labels,
+      values.switchFeel === "silent" ? "소음이 걱정되는 환경을 참고했습니다." : "선택한 스위치 성향이 반영됐습니다.",
+    );
+  }
+
+  if (values.noise === "quiet" && (filters.noise === "quiet_preferred" || filters.feel === "quiet")) {
+    pushUniqueLabel(labels, "조용한 사용 환경 조건과 맞을 수 있습니다.");
+  }
+
+  if (values.connection !== "any" && matchesKeyboardConnection(values.connection, filters.connection)) {
+    pushUniqueLabel(labels, values.connection === "wireless" ? "무선 사용 조건이 기본 점수에 반영됐습니다." : "유선 사용 조건이 기본 점수에 반영됐습니다.");
+  }
+
+  if (advancedValues.connectionDetail === "wired" && (filters.connection === "wired" || filters.connection === "multi_mode")) {
+    pushUniqueLabel(labels, "유선 상세 기준은 확인 가능한 정보로 참고했습니다.");
+  }
+  if (advancedValues.connectionDetail === "wireless_24" && hasKeyboardReceiverWireless(keyboard)) {
+    pushUniqueLabel(labels, "2.4GHz 무선 조건은 스펙/문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.connectionDetail === "bluetooth" && hasKeyboardBluetooth(keyboard)) {
+    pushUniqueLabel(labels, "블루투스 조건은 확인 가능한 정보만 참고했습니다.");
+  }
+  if (advancedValues.connectionDetail === "multi_mode" && filters.connection === "multi_mode") {
+    pushUniqueLabel(labels, "멀티모드 연결 조건이 일부 반영됐습니다.");
+  }
+
+  if (advancedValues.hotSwap === "preferred" && keyboard.isHotSwap) {
+    pushUniqueLabel(labels, "핫스왑 여부는 확인 가능한 제품만 참고했습니다.");
+  }
+  if (advancedValues.hotSwap === "fixed_ok" && !keyboard.isHotSwap) {
+    pushUniqueLabel(labels, "고정축도 괜찮음 조건을 참고했습니다.");
+  }
+
+  if (advancedValues.device === "windows" && /windows|윈도우|pc|qmk|via/.test(text)) {
+    pushUniqueLabel(labels, "Windows 사용 조건은 문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.device === "mac" && /mac|qmk|via/.test(text)) {
+    pushUniqueLabel(labels, "Mac 사용 조건은 배열·문구 정보를 기준으로 참고했습니다.");
+  }
+  if (advancedValues.device === "tablet" && hasKeyboardBluetooth(keyboard)) {
+    pushUniqueLabel(labels, "태블릿/iPad 조건은 블루투스 정보를 기준으로 참고했습니다.");
+  }
+  if (
+    advancedValues.device === "ipad_pro"
+    && hasKeyboardBluetooth(keyboard)
+    && (keyboard.layout === "75%" || keyboard.layout === "65%" || keyboard.layout === "compact")
+  ) {
+    pushUniqueLabel(labels, "iPad Pro 조건은 블루투스·배열 정보를 기준으로 참고했습니다.");
+  }
+  if (advancedValues.device === "multi_device" && keyboard.advancedFilters?.multiDevice === "multi_pairing") {
+    pushUniqueLabel(labels, "여러 기기 전환 조건이 일부 반영됐습니다.");
+  }
+
+  if (advancedValues.usage === "gaming" && keyboard.advancedFilters?.gamingFeature && keyboard.advancedFilters.gamingFeature !== "no_preference") {
+    pushUniqueLabel(labels, "게임 용도 조건은 일부 스펙/문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.usage === "office" && (filters.noise === "quiet_preferred" || keyboard.layout === "full")) {
+    pushUniqueLabel(labels, "사무/문서 용도 조건과 맞을 수 있습니다.");
+  }
+  if (advancedValues.usage === "coding" && (keyboard.isHotSwap || /qmk|via|75%|tkl/.test(text))) {
+    pushUniqueLabel(labels, "코딩 용도는 배열과 커스터마이징 여지를 참고했습니다.");
+  }
+  if (advancedValues.usage === "portable" && filters.connection !== "wired" && (keyboard.layout === "75%" || keyboard.layout === "65%" || keyboard.layout === "compact")) {
+    pushUniqueLabel(labels, "휴대용 조건은 작은 배열과 무선 여부를 함께 참고했습니다.");
+  }
+  if (advancedValues.usage === "quiet" && (filters.noise === "quiet_preferred" || filters.feel === "quiet")) {
+    pushUniqueLabel(labels, "조용한 공간 조건은 소음 성향 기준으로 참고했습니다.");
+  }
+
+  if (advancedValues.legends === "korean" && /한글/.test(text)) {
+    pushUniqueLabel(labels, "한글 각인 조건은 확인 가능한 정보만 참고했습니다.");
+  }
+  if (advancedValues.legends === "english_ok" && /english|영문|osa|pbt|double-shot/.test(text)) {
+    pushUniqueLabel(labels, "영문 각인 허용 조건을 일부 참고했습니다.");
+  }
+  if (advancedValues.legends === "mac_layout" && /mac|qmk|via/.test(text)) {
+    pushUniqueLabel(labels, "Mac 배열 조건은 키 매핑 정보를 함께 확인해 주세요.");
+  }
+
+  if (labels.length === 0) {
+    labels.push("조건을 넓게 본 참고용 후보입니다.");
+  }
+
+  return labels.slice(0, 3);
+}
+
 function scoreKeyboard(keyboard: (typeof KEYBOARD_DATABASE)[number], values: KeyboardFinderValues, advancedValues: KeyboardAdvancedValues): KeyboardScore {
   const reasons: string[] = [];
   const cautions: string[] = [];
@@ -644,6 +750,7 @@ export default function KeyboardFitPage() {
             const communityNote = display.communityNote || "키보드 체감은 스위치, 보강판, 흡음재에 따라 다르게 느껴질 수 있습니다.";
             const specRows = getKeyboardSpecRows(keyboard);
             const additionalSpecRows = getKeyboardAdditionalSpecRows(keyboard);
+            const reasonLabels = getKeyboardReasonLabels(keyboard, values, advancedValues);
             const strengths = display.strengths.slice(0, 3);
             const cautions = display.cautions.slice(0, 3);
             const buyingCheck = display.buyingCheck.slice(0, 3);
@@ -675,6 +782,16 @@ export default function KeyboardFitPage() {
                       <p className="mt-0.5 text-[10.5px] font-bold text-[var(--primary)]">{spec.value}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mb-2 rounded-lg border border-[var(--border)]/60 bg-[var(--background)]/70 px-2.5 py-2">
+                  <p className="mb-1 text-[9.5px] font-black text-[var(--primary)]">조건 반영</p>
+                  <div className="flex flex-wrap gap-1">
+                    {reasonLabels.map((label) => (
+                      <span key={label} className="rounded-md bg-[var(--accent)]/10 px-2 py-1 text-[9.5px] font-bold leading-snug text-[var(--accent)]">
+                        {label}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <div className="grid gap-2 text-[10.5px] leading-relaxed">
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>

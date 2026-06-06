@@ -182,6 +182,83 @@ function getMouseAdvancedScore(mouse: (typeof MOUSE_DATABASE)[number], advancedV
   return Math.min(score, 3);
 }
 
+function pushUniqueLabel(labels: string[], label: string) {
+  if (!labels.includes(label)) labels.push(label);
+}
+
+function getMouseReasonLabels(
+  mouse: (typeof MOUSE_DATABASE)[number],
+  values: MouseFinderValues,
+  advancedValues: MouseAdvancedValues,
+) {
+  const filters = getMouseBasicFilters(mouse);
+  const text = getMouseSearchText(mouse);
+  const advancedFilters = mouse.advancedFilters;
+  const labels: string[] = [];
+
+  if (values.handSize !== "unknown" && (filters.size === values.handSize || filters.size === "unknown")) {
+    pushUniqueLabel(labels, "손 크기 조건이 기본 점수에 반영됐습니다.");
+  }
+
+  if (values.shape !== "any" && matchesMouseShape(values.shape, filters.shape)) {
+    pushUniqueLabel(
+      labels,
+      values.shape === "ergonomic" ? "손바닥 지지감이 맞을 수 있는 형태입니다." : "대칭형 선호 조건이 반영됐습니다.",
+    );
+  }
+
+  if (values.weight !== "any" && matchesMouseWeight(values.weight, filters.weight)) {
+    pushUniqueLabel(labels, values.weight === "light" ? "가벼운 무게 조건과 맞을 수 있습니다." : "너무 가볍지 않은 무게감을 참고했습니다.");
+  }
+
+  if (values.connection !== "any" && matchesMouseConnection(values.connection, filters.connection)) {
+    pushUniqueLabel(labels, values.connection === "wireless" ? "무선 연결 선호가 기본 점수에 반영됐습니다." : "유선 사용 조건이 기본 점수에 반영됐습니다.");
+  }
+
+  if (advancedValues.connectionDetail === "wired" && filters.connection === "wired") {
+    pushUniqueLabel(labels, "유선 상세 기준이 확인 가능한 정보로 참고됐습니다.");
+  }
+  if (advancedValues.connectionDetail === "wireless_24" && hasMouseReceiverWireless(mouse, filters)) {
+    pushUniqueLabel(labels, "2.4GHz 무선 조건은 스펙/문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.connectionDetail === "bluetooth" && hasMouseBluetooth(mouse)) {
+    pushUniqueLabel(labels, "블루투스 조건은 확인 가능한 정보만 참고했습니다.");
+  }
+
+  if (advancedValues.battery === "rechargeable" && advancedFilters?.battery === "built_in") {
+    pushUniqueLabel(labels, "배터리 방식은 확인 가능한 경우에만 참고했습니다.");
+  }
+  if (advancedValues.battery === "aa_aaa" && advancedFilters?.battery === "aa_aaa") {
+    pushUniqueLabel(labels, "배터리 방식은 확인 가능한 경우에만 참고했습니다.");
+  }
+
+  if (advancedValues.sideButtons === "needed" && advancedFilters?.buttonCount === "side_buttons") {
+    pushUniqueLabel(labels, "사이드 버튼 조건이 일부 반영됐습니다.");
+  }
+  if (advancedValues.sideButtons === "not_needed" && advancedFilters?.buttonCount === "basic") {
+    pushUniqueLabel(labels, "기본 버튼 중심 조건을 참고했습니다.");
+  }
+
+  if (
+    advancedValues.usage === "fps"
+    && (advancedFilters?.gamingPerformance === "high" || advancedFilters?.gamingPerformance === "enthusiast")
+  ) {
+    pushUniqueLabel(labels, "FPS 용도 조건은 일부 스펙/문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.usage === "office" && /사무|웹|office|driverless|입문/.test(text)) {
+    pushUniqueLabel(labels, "사무/웹 사용 조건은 문구 기준으로 참고했습니다.");
+  }
+  if (advancedValues.usage === "portable" && filters.connection === "wireless" && (filters.size === "small" || mouse.weight <= 60)) {
+    pushUniqueLabel(labels, "휴대용 조건은 크기와 무선 여부를 함께 참고했습니다.");
+  }
+
+  if (labels.length === 0) {
+    labels.push("조건을 넓게 본 참고용 후보입니다.");
+  }
+
+  return labels.slice(0, 3);
+}
+
 function scoreMouse(mouse: (typeof MOUSE_DATABASE)[number], values: MouseFinderValues, advancedValues: MouseAdvancedValues): MouseScore {
   const reasons: string[] = [];
   const cautions: string[] = [];
@@ -523,6 +600,7 @@ export default function MouseFitPage() {
             const communityNote = display.communityNote || "커뮤니티 체감은 손 크기와 기존 사용 마우스에 따라 갈릴 수 있습니다.";
             const specRows = getMouseSpecRows(mouse);
             const additionalSpecRows = getMouseAdditionalSpecRows(mouse);
+            const reasonLabels = getMouseReasonLabels(mouse, values, advancedValues);
             const strengths = display.strengths.slice(0, 3);
             const cautions = display.cautions.slice(0, 3);
             const buyingCheck = display.buyingCheck.slice(0, 3);
@@ -556,6 +634,16 @@ export default function MouseFitPage() {
                       <p className="mt-0.5 text-[10.5px] font-bold text-[var(--primary)]">{spec.value}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mb-2 rounded-lg border border-[var(--border)]/60 bg-[var(--background)]/70 px-2.5 py-2">
+                  <p className="mb-1 text-[9.5px] font-black text-[var(--primary)]">조건 반영</p>
+                  <div className="flex flex-wrap gap-1">
+                    {reasonLabels.map((label) => (
+                      <span key={label} className="rounded-md bg-[var(--accent)]/10 px-2 py-1 text-[9.5px] font-bold leading-snug text-[var(--accent)]">
+                        {label}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <div className="grid gap-2 text-[10.5px] leading-relaxed">
                   <p><span className="font-bold text-[var(--primary)]">체감 한줄평: </span><span className="text-[var(--muted)]">{communityNote}</span></p>
