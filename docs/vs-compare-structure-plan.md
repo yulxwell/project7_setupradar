@@ -1,8 +1,15 @@
 # Project7 VS Compare Structure Plan
 
-Last updated: 2026-06-07
+Last updated: 2026-06-07 Compare Main Mock 1
 
-Scope: structure planning only. No compare route, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+Scope: structure planning and compare main mock only. No compare detail route, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+
+## 0. 진행 상태
+
+- Phase 0 문서화 완료.
+- Phase 1 `/kr/compare` 메인 mock 완료.
+- 현재 `/kr/compare`는 비교 카테고리 카드와 안내 문구만 제공한다.
+- 실제 비교 상세 페이지, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
 
 ## 1. VS Compare의 목적
 
@@ -270,6 +277,8 @@ VS Compare는 제품 하나를 정답처럼 밀어주는 페이지가 아니다.
 - 비교 카테고리 카드만 표시한다.
 - 실제 비교 상세는 만들지 않는다.
 - sitemap에는 실제 route가 생긴 뒤에만 반영한다.
+- 2026-06-07 Compare Main Mock 1에서 `/kr/compare` 메인 route와 sitemap 반영을 완료했다.
+- 상세 비교 URL은 아직 만들지 않았고 sitemap에도 넣지 않았다.
 
 ### Phase 2: Mouse compare mock 1개
 

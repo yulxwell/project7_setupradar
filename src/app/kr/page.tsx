@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_COPY } from "@/content/kr/siteCopy";
 import { EQUIPMENT_UPDATE_PREVIEWS } from "@/content/kr/updates";
-import { Monitor, MousePointer2, Zap, Mouse, Keyboard, ArrowRight, ShieldCheck, LayoutGrid } from "lucide-react";
+import { Monitor, MousePointer2, Zap, Mouse, Keyboard, ArrowRight, ShieldCheck, LayoutGrid, GitCompare } from "lucide-react";
 import { TestCard, GuideCard } from "@/components/cards/Cards";
 import Link from "next/link";
 
@@ -294,6 +294,29 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-8">
+        <Link
+          href="/kr/compare"
+          className="group flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-sm md:flex-row md:items-center md:justify-between"
+        >
+          <div className="flex items-start gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--secondary)] text-[var(--accent)]">
+              <GitCompare className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">SetupRadar Compare</p>
+              <h2 className="mt-1 text-lg font-bold text-[var(--primary)]">장비 비교 기준 살펴보기</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)]">
+                마우스, 키보드, 모니터, CPU, GPU를 구매 전 비교할 때 숫자만 보지 않고 사용 목적과 호환성 차이를 함께 확인합니다.
+              </p>
+            </div>
+          </div>
+          <span className="flex w-fit items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[var(--accent)]">
+            비교 보기 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          </span>
+        </Link>
       </section>
 
       <section className="container mx-auto px-4 py-8">

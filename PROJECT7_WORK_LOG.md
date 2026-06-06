@@ -1039,3 +1039,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - CPU 비교는 단순 벤치마크 수치가 아니라 출시년도, 세대, 소켓, 메인보드 플랫폼, DDR4/DDR5, 전력/발열, 쿨러, X3D, 내장그래픽, 업그레이드 경로, GPU 급 검토 기준 중심으로 설계했다.
 - `docs/monetization-plan.md`에는 Project7 비교 콘텐츠와 Project2 제품/핫딜/뉴스 콘텐츠의 역할 분리 후보를 짧게 보강했다.
 - 실제 비교 route 구현, CPU/GPU 데이터 추가, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
+
+## Compare Main Mock 1 - 2026-06-07 기록
+
+- `/kr/compare` 정적 mock 페이지를 추가해 장비 비교 카테고리 진입점을 만들었다.
+- 페이지에는 `장비 비교` Hero, 마우스/키보드/모니터/CPU/GPU 비교 카테고리 카드 5개, 참고용 안내 섹션을 배치했다.
+- 각 카드는 비교할 기준만 보여주며 상세 페이지 링크는 넣지 않았다. 존재하지 않는 비교 상세 URL도 만들지 않았다.
+- `/kr` 메인 최근 장비 소식 아래쪽에 `/kr/compare`로 이동하는 작은 진입 카드를 추가했다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare`만 priority 0.6으로 추가했다. 상세 비교 URL은 sitemap에 넣지 않았다.
+- `docs/vs-compare-structure-plan.md`에는 Phase 1 진행 상태를 최소 기록했다.
+- 실제 비교 상세 페이지, CPU/GPU 실제 데이터, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.

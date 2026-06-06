@@ -340,6 +340,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **CPU 비교 안전선 명시**: CPU 비교는 단순 벤치마크 수치보다 소켓, 플랫폼, DDR4/DDR5, 전력/발열, X3D, 업그레이드 경로, 병목 해석을 중심으로 설계했습니다.
 - **구현 보류**: 실제 route, CPU/GPU 데이터, 제품 데이터 수정, Finder 로직, 광고/제휴, Project2 실제 연동, API/DB는 추가하지 않았습니다.
 
+### Compare Main Mock 1 - 2026-06-07
+- **비교 메인 route 추가**: `/kr/compare` 정적 mock 페이지를 추가해 장비 비교 카테고리 진입점을 만들었습니다.
+- **카테고리 카드 구성**: 마우스, 키보드, 모니터, CPU, GPU 비교 카드 5개와 참고용 안내 문구를 배치했습니다.
+- **메인 진입 링크 추가**: `/kr` 메인 하단부에 `/kr/compare`로 이동하는 작은 진입 카드를 추가했습니다.
+- **상세 비교 보류**: 실제 비교 상세 페이지, CPU/GPU 데이터, 제품 데이터, Finder 로직, 광고/제휴, Project2 실제 연동은 추가하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.
