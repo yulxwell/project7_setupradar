@@ -1020,3 +1020,12 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Mouse Finder와 Keyboard Finder에서 상세 기준 열림 상태의 연결 카드명을 `연결 상세`에서 `연결 방식 + 상세`로 바꿔 기본 연결 카드가 확장된 느낌을 주도록 했다.
 - 상세 기준으로 추가되는 목록 앞에 `- 상세 목록 -` 안내 라인을 추가했다. 마우스는 배터리/충전, 사이드 버튼, 용도 바로 위에 표시하고, 키보드는 핫스왑, 특정 기기 사용, 용도, 각인/배열 참고 바로 위에 표시한다.
 - 점수 계산, 정렬, 상세 기준 가산점, 제품 데이터, 광고/제휴 코드, 뉴스란, Project2 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## News Preview Section Mock 1 - 2026-06-07 기록
+
+- `/kr` 메인 Finder 섹션 아래에 `최근 장비 소식` 미리보기 섹션을 추가했다.
+- `src/content/kr/updates.ts`를 새로 만들어 정적 mock 카드 4개를 관리하도록 했다. 카드 주제는 초경량 무선 마우스 흐름, 75%/풀알루미늄 키보드 선택지, 모니터 응답속도 표기, AS/교환 조건 확인이다.
+- 각 카드는 외부 뉴스나 제휴 링크 없이 `/kr/guides/mouse-buying-checklist`, `/kr/guides/keyboard-buying-checklist`, `/kr/guides/gtg-vs-mprt`, `/kr/guides/dead-pixel-policy` 내부 가이드로만 연결했다.
+- 사용자 화면에는 Project2 연동 예정 문구를 노출하지 않고, 구매 전 확인할 흐름과 관련 가이드를 보는 섹션처럼 유지했다.
+- `docs/monetization-plan.md`에는 향후 Project2가 핫딜/뉴스/제품 소개 본문을 맡고 Project7은 도구/기준/Finder와 preview 노출을 맡는 방향을 최소 기록했다.
+- 실제 Project2 연동, RSS/API/DB/Supabase, 자동 크롤링, 광고/AdSense/제휴 링크, 제품 데이터 수정, Finder 로직 수정, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.

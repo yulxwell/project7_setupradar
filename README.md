@@ -328,6 +328,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **수익화 코드 미추가**: 실제 광고 script, AdSense 코드, 링크프라이스/쿠팡파트너스 링크, 구매 버튼은 추가하지 않았습니다.
 - **기존 구조 유지**: 제품 데이터, Finder 추천 로직, GA4/Search Console 구조, DB/API/Supabase, Control Tower는 변경하지 않았습니다.
 
+### News Preview Section Mock 1 - 2026-06-07
+- **최근 장비 소식 섹션 추가**: `/kr` 메인에 정적 mock 데이터 기반의 최근 장비 소식 미리보기 섹션을 추가했습니다.
+- **내부 가이드 연결**: 카드 4개는 구매 전 확인 흐름을 안내하고, 관련 내부 가이드로만 연결합니다.
+- **Project2 연동 준비 기록**: 향후 Project2가 핫딜/뉴스/제품 소개 본문을 맡고 Project7은 preview를 노출하는 방향만 문서화했습니다.
+- **실제 연동 없음**: Project2, RSS/API/DB/Supabase, 광고/제휴 링크, 제품 데이터, Finder 로직, GA4/Search Console 구조는 수정하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.
