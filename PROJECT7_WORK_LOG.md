@@ -1029,3 +1029,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 사용자 화면에는 Project2 연동 예정 문구를 노출하지 않고, 구매 전 확인할 흐름과 관련 가이드를 보는 섹션처럼 유지했다.
 - `docs/monetization-plan.md`에는 향후 Project2가 핫딜/뉴스/제품 소개 본문을 맡고 Project7은 도구/기준/Finder와 preview 노출을 맡는 방향을 최소 기록했다.
 - 실제 Project2 연동, RSS/API/DB/Supabase, 자동 크롤링, 광고/AdSense/제휴 링크, 제품 데이터 수정, Finder 로직 수정, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.
+
+## VS Compare Structure Plan - 2026-06-07 기록
+
+- Project7을 테스트 도구, 구매가이드, Finder에서 장비 선택 비교 플랫폼으로 확장하기 위한 구조 계획 문서 `docs/vs-compare-structure-plan.md`를 추가했다.
+- 비교 카테고리는 `mouse-vs-mouse`, `keyboard-vs-keyboard`, `monitor-vs-monitor`, `cpu-vs-cpu`, `gpu-vs-gpu`, `ram-vs-ram`, `setup-vs-setup` 후보로 정리했고, 초기 우선순위는 마우스, 키보드, 모니터, CPU, GPU 순으로 잡았다.
+- `/kr/compare`, `/kr/compare/mouse`, `/kr/compare/cpu/i9-14900ks-vs-ryzen-7-9800x3d` 같은 URL 구조 후보와 공통 비교 데이터 필드, 상태값 `draft/review/published`, sitemap 반영 기준을 문서화했다.
+- 마우스 비교는 쉘 형태, 손 크기, 무게, 센서/폴링레이트, 클릭감, 코팅, 배터리, AS/국내 구매 접근성 중심으로 설계하고, 쉘 유사성 표현은 참고 톤으로 제한했다.
+- CPU 비교는 단순 벤치마크 수치가 아니라 출시년도, 세대, 소켓, 메인보드 플랫폼, DDR4/DDR5, 전력/발열, 쿨러, X3D, 내장그래픽, 업그레이드 경로, GPU 급 검토 기준 중심으로 설계했다.
+- `docs/monetization-plan.md`에는 Project7 비교 콘텐츠와 Project2 제품/핫딜/뉴스 콘텐츠의 역할 분리 후보를 짧게 보강했다.
+- 실제 비교 route 구현, CPU/GPU 데이터 추가, 제품 데이터 수정, Finder 로직 수정, 광고/AdSense/제휴 링크, Project2 실제 연동, RSS/API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조 수정, Control Tower 수정, package 설정 변경은 하지 않았다.

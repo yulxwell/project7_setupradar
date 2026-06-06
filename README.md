@@ -334,6 +334,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **Project2 연동 준비 기록**: 향후 Project2가 핫딜/뉴스/제품 소개 본문을 맡고 Project7은 preview를 노출하는 방향만 문서화했습니다.
 - **실제 연동 없음**: Project2, RSS/API/DB/Supabase, 광고/제휴 링크, 제품 데이터, Finder 로직, GA4/Search Console 구조는 수정하지 않았습니다.
 
+### VS Compare Structure Plan - 2026-06-07
+- **비교 콘텐츠 구조 문서화**: 장비 간 VS 비교를 장기 성장축으로 검토하기 위해 [docs/vs-compare-structure-plan.md](file:///Users/jilee/antigravity/src/project7/docs/vs-compare-structure-plan.md)를 추가했습니다.
+- **URL/데이터/톤 설계**: `/kr/compare` 계열 URL 후보, 공통 비교 데이터 구조, 마우스/키보드/모니터/CPU/GPU/RAM 비교 기준, 초보자용 안전 표현 원칙을 정리했습니다.
+- **CPU 비교 안전선 명시**: CPU 비교는 단순 벤치마크 수치보다 소켓, 플랫폼, DDR4/DDR5, 전력/발열, X3D, 업그레이드 경로, 병목 해석을 중심으로 설계했습니다.
+- **구현 보류**: 실제 route, CPU/GPU 데이터, 제품 데이터 수정, Finder 로직, 광고/제휴, Project2 실제 연동, API/DB는 추가하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.
