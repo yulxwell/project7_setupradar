@@ -557,9 +557,14 @@ function AdvancedCriteriaToggle({
       type="button"
       onClick={onClick}
       aria-expanded={isOpen}
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 text-xs font-black text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      className={cn(
+        "inline-flex h-10 items-center justify-center gap-2 rounded-xl border px-4 text-xs font-black transition-colors",
+        isOpen
+          ? "border-[var(--accent)] bg-[var(--accent)] text-white hover:bg-[var(--accent)]"
+          : "border-[var(--border)] bg-[var(--card)] text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
+      )}
     >
-      상세 기준
+      {isOpen ? "상세" : "일반"}
       <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
     </button>
   );
