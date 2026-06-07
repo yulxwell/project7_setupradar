@@ -387,6 +387,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **첫 Batch 방향 정리**: Mouse Batch 1은 초경량 무선/오른손용 비대칭/보급형 또는 사무용, Keyboard Batch 1은 75% 무선/래피드 트리거/사무 또는 저소음 후보를 우선하도록 정리했습니다.
 - **구현 보류**: 실제 제품 데이터 추가, `product_config_patch` 생성, Finder/Compare 로직, 광고/제휴/API/DB/Project2 실제 연동은 하지 않았습니다.
 
+### Mouse Product Candidate Scoring 1 - 2026-06-07
+- **마우스 후보 점수화**: Mouse Product Patch Batch 1 전 후보군을 [docs/mouse-product-candidate-scoring-1.md](file:///Users/jilee/antigravity/src/project7/docs/mouse-product-candidate-scoring-1.md)에 점수표로 정리했습니다.
+- **기존 DB 중복 분리**: `Viper V3 Pro`, `G Pro X Superlight 2`, `Pulsar X2V2`, `Xlite V3 Large`, `Zowie EC2-CW`, `Zowie U2`, `G304`, `G102`는 신규 후보가 아니라 보강 후보로 분류했습니다.
+- **Batch 1 추천 후보**: `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 계열 중 특정 세대 1개`를 초경량/비대칭/사무·휴대용 균형의 1차 후보로 정리했습니다.
+- **구현 보류**: 실제 제품 데이터 추가, `product_config_patch` 생성, snapshot export, Finder/Compare 로직, 광고/제휴/API/DB는 하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

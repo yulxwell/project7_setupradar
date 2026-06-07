@@ -1205,3 +1205,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/product-content-expansion-plan.md`에는 weekly plan 문서 참조와 제품 추가 전 확인 기준을 짧게 연결했다.
 - `README.md`에 Weekly Product Candidate Plan 1 기록을 추가했다.
 - 실제 제품 데이터 추가, 제품 데이터 수정, `product_config_patch` 생성, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 하지 않았다.
+
+## Mouse Product Candidate Scoring 1 - 2026-06-07 기록
+
+- Mouse Product Patch Batch 1 전 후보 점수화 문서 `docs/mouse-product-candidate-scoring-1.md`를 생성했다.
+- 기존 `src/content/kr/products/mice.ts`를 읽어 현재 DB의 마우스 14개와 후보군 중 중복 제품을 확인했다.
+- 후보군 중 `Razer Viper V3 Pro`, `Logitech G Pro X Superlight 2`, `Pulsar X2V2`, `Pulsar Xlite V3 Large`, `Zowie EC2-CW`, `Zowie U2`, `Logitech G304`, `Logitech G102`는 이미 DB에 있어 신규 후보가 아니라 보강 후보로 분류했다.
+- 신규 또는 계열 후보로 `Pulsar X2H`, `Lamzu Maya X`, `Lamzu Thorn`, `ATK X1`, `ATK F1`, `VXE R1 Pro`, `Scyrox V8`, `Logitech MX Master 계열`, `Logitech MX Anywhere 계열`, `Pulsar Xlite V3 계열`을 평가했다.
+- 점수표는 Finder 기여도, Compare 기여도, 구매 접근성, 공식 스펙 확인 가능성, 초보자 설명 가능성, 기존 DB와 차별성, 제품군 균형성, 데이터 입력 난이도, 콘텐츠/제휴 연결 가능성, 운영 리스크 10개 항목으로 작성했다.
+- Batch 1 추천 3개는 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 계열 중 특정 세대 1개`로 정리했다.
+- 추천 이유는 초경량 무선 대칭형, 오른손용 비대칭형, 사무/휴대용 무선 축을 각각 보강해 Finder와 Compare Picker의 선택 폭을 넓힐 수 있기 때문이다.
+- 보류 후보로 `VXE R1 Pro`, `Scyrox V8`, `ATK F1`, `Pulsar X2H`, `ATK X1`, `Logitech MX Master 계열`, `Pulsar Xlite V3 계열`을 남겼다.
+- `docs/weekly-product-candidate-plan.md`에는 Mouse Batch 1 점수화 문서 링크와 1차 추천 후보를 연결했다.
+- `README.md`에 Mouse Product Candidate Scoring 1 기록을 추가했다.
+- 실제 제품 데이터 수정, 새 제품 추가, `product_config_patch` 생성, snapshot export, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, package 설정, 도메인 설정은 하지 않았다.

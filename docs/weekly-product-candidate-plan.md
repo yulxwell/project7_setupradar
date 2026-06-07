@@ -212,6 +212,9 @@ Project7 제품 DB는 매주 감으로 늘리는 것이 아니라 Finder와 Comp
   - 초경량 무선 1개
   - 오른손용 비대칭 1개
   - 보급형 또는 사무용 1개
+- 후보 점수화 기록: `docs/mouse-product-candidate-scoring-1.md`
+- 1차 추천 후보: `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 계열 중 특정 세대 1개`
+- 위 후보는 실제 제품 데이터에 아직 추가하지 않았으며, 다음 작업에서 공식 스펙 확인 후 `product_config_patch` 후보로 다룬다.
 
 ### Keyboard Product Patch Batch 1
 
