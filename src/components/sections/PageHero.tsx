@@ -11,7 +11,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description, icon: Icon, action }: PageHeroProps) {
   return (
-    <section className="relative mb-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/50 px-5 py-7 text-left md:px-8 md:py-8">
+    <section className="relative mb-10 overflow-hidden rounded-2xl bg-[var(--secondary)]/50 px-5 py-7 text-left md:px-8 md:py-8">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:20px_20px] opacity-20" />
       <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div>
