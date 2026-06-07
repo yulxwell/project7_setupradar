@@ -393,6 +393,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **Batch 1 추천 후보**: `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 계열 중 특정 세대 1개`를 초경량/비대칭/사무·휴대용 균형의 1차 후보로 정리했습니다.
 - **구현 보류**: 실제 제품 데이터 추가, `product_config_patch` 생성, snapshot export, Finder/Compare 로직, 광고/제휴/API/DB는 하지 않았습니다.
 
+### Mouse Product Patch Batch 1 - 2026-06-07
+- **patch JSON 생성**: `tmp/product-patch-mouse-batch-1.json`에 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 3S` 후보를 `review` 상태 patch로 작성했습니다.
+- **Logitech 모델명 확정**: `MX Anywhere 계열`은 공식 Logitech Support 문서 기준으로 `Logitech MX Anywhere 3S`를 사용했습니다.
+- **validator 통과**: `npm run product-patch:validate -- ./tmp/product-patch-mouse-batch-1.json` 결과 errors 0, warnings 0으로 통과했습니다. 신규 후보는 `Lamzu Thorn`, `Logitech MX Anywhere 3S` 2개이고, `Lamzu Maya X`는 기존 `Lamzu Maya`와 이름 유사 중복 후보로 잡혀 수동 검토가 필요합니다.
+- **구현 보류**: 제품 TS 데이터 직접 반영, snapshot export, Finder/Compare 로직 변경, 제품 이미지/구매 링크/shellReferences 추가는 하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

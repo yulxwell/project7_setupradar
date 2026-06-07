@@ -189,3 +189,60 @@ patch 생성 시 기준:
 - `productImages`, `productLinks`는 추가하지 않는다.
 - validator 실행 후 통과한 제품만 `review` 상태로 수동 반영한다.
 
+## 8. Mouse Product Patch Batch 1 생성 결과
+
+생성일: 2026-06-07
+
+생성 파일:
+
+- `tmp/product-patch-mouse-batch-1.json`
+
+patch에 넣은 제품:
+
+1. Lamzu Maya X
+2. Lamzu Thorn
+3. Logitech MX Anywhere 3S
+
+Logitech 후보는 `MX Anywhere 계열`에서 `Logitech MX Anywhere 3S`로 모델명을 좁혔다. 공식 Logitech Support 문서 기준으로 MX Anywhere 3S는 Logitech USB receiver 2.4GHz와 Bluetooth Low Energy 연결, 100.5 x 65 x 34.4mm, 배터리 포함 95g, 400~8000 DPI, Darkfield high precision sensor, 6 buttons, 충전식 Li-Po battery로 안내된다. 비즈니스 데이터시트는 MX Anywhere 3S for Business를 99g, Logi Bolt/Bluetooth 구성으로 안내하므로 소비자용/비즈니스용 패키지는 수동 반영 전 다시 구분해야 한다.
+
+Lamzu Maya X는 LAMZU 공식 제품 페이지에서 모델 페이지와 색상/패키지 variant를 확인했고, 공개 스펙 참고 자료 기준으로 47g급, PAW3950, 8K, 124mm대 대칭형 무선 후보로 정리했다. 다만 현재 validator는 기존 `Lamzu Maya`와 `brand + name 유사`로 분류한다. 실제로는 `Maya`와 `Maya X`가 별도 모델 후보이지만, 현재 validator 규칙에서는 수동 검토가 필요하다.
+
+Lamzu Thorn은 LAMZU 공식 제품 페이지에서 `LAMZU THORN (4K Compatible)` 모델 페이지를 확인했고, 공식 협업 모델 페이지와 공개 스펙 참고 자료 기준으로 52g급, PAW3395, 오른손용 비대칭형, 4K 관련 구성 확인 필요 후보로 정리했다. 일반판과 협업판은 구성품/수신기 포함 여부가 다를 수 있어 수동 반영 전 패키지 구분이 필요하다.
+
+validator 실행:
+
+```bash
+npm run product-patch:validate -- ./tmp/product-patch-mouse-batch-1.json
+```
+
+결과:
+
+- 신규 추가 후보: 2개
+- 기존 중복 후보: 1개
+- warnings: 0
+- errors: 0
+- Validation passed
+
+신규 추가 후보:
+
+- Lamzu Thorn
+- Logitech MX Anywhere 3S
+
+기존 중복 후보:
+
+- Lamzu Maya X -> 기존 `Lamzu Maya`와 `brand + name 유사`로 감지
+
+Lamzu Maya X 처리 메모:
+
+- 모델명과 slug는 `lamzu-maya-x`로 구분했다.
+- 현재 validator의 포함 관계 중복 규칙 때문에 기존 `Lamzu Maya`와 묶인다.
+- 다음 수동 반영 작업에서는 `Maya X`를 별도 신규 제품으로 볼지, validator 중복 판정 예외를 수동 승인할지 먼저 결정해야 한다.
+- 자동 병합이나 기존 `Lamzu Maya` 덮어쓰기는 하지 않는다.
+
+이번 작업에서 하지 않은 것:
+
+- `src/content/kr/products/mice.ts` 직접 수정 없음
+- 실제 제품 DB 추가 없음
+- snapshot export 미실행
+- Finder/Compare 로직 수정 없음
+- 제품 이미지/구매 링크/shellReferences 추가 없음

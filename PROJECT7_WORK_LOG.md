@@ -1219,3 +1219,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/weekly-product-candidate-plan.md`에는 Mouse Batch 1 점수화 문서 링크와 1차 추천 후보를 연결했다.
 - `README.md`에 Mouse Product Candidate Scoring 1 기록을 추가했다.
 - 실제 제품 데이터 수정, 새 제품 추가, `product_config_patch` 생성, snapshot export, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, package 설정, 도메인 설정은 하지 않았다.
+
+## Mouse Product Patch Batch 1 - 2026-06-07 기록
+
+- Mouse Product Candidate Scoring 1에서 선정한 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 계열` 후보를 기준으로 `tmp/product-patch-mouse-batch-1.json`을 생성했다.
+- Logitech 후보는 `Logitech MX Anywhere 3S`로 모델명을 좁혔다.
+- Logitech 공식 Support 문서와 비즈니스 데이터시트 기준으로 MX Anywhere 3S는 USB receiver/Bluetooth Low Energy 연결, 100.5 x 65 x 34.4mm, 소비자용 문서 기준 배터리 포함 95g, 400~8000 DPI, Darkfield high precision sensor, 6 buttons, 충전식 Li-Po battery로 정리했다. 비즈니스용 데이터시트는 99g/Logi Bolt 구성을 안내하므로 수동 반영 전 소비자용/비즈니스용 구분이 필요하다.
+- LAMZU 공식 제품 페이지에서 `Maya X`와 `Thorn (4K Compatible)` 모델 페이지를 확인했다. Lamzu 상세 수치는 공식 페이지 텍스트 노출이 제한적이라 공개 스펙 참고 자료 기준 수치를 `rawSpecs.note`에 확인 필요 톤으로 남겼다.
+- `Lamzu Maya X`는 `lamzu-maya-x` id/slug로 작성했지만 validator가 기존 `Lamzu Maya`와 `brand + name 유사` 중복 후보로 분류했다. 제품명 계열상 별도 모델 후보로 볼 수 있으나 다음 수동 반영 작업에서 중복 판정 예외 여부를 먼저 결정해야 한다.
+- `Lamzu Thorn`과 `Logitech MX Anywhere 3S`는 신규 추가 후보로 분류됐다.
+- validator 실행 결과는 신규 추가 후보 2개, 기존 중복 후보 1개, 자동 보강 후보 필드 6개, 수동 검토 필요 필드 8개, 반영 보류 필드 0개, warnings 0개, errors 0개였다.
+- `docs/mouse-product-candidate-scoring-1.md`에 patch 생성 결과와 validator 결과를 기록했다.
+- `README.md`에 Mouse Product Patch Batch 1 기록을 추가했다.
+- `src/content/kr/products/mice.ts` 직접 수정, 실제 제품 DB 추가, snapshot export, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, package 설정, 도메인 설정, 제품 이미지/구매 링크, shellReferences 추가는 하지 않았다.
