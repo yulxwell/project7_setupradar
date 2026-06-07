@@ -10,7 +10,7 @@
   --foreground: #111827; /* Gray 900 */
   --card: #ffffff;
   --card-foreground: #111827;
-  --border: #e5e7eb; /* Gray 200 */
+  --border: #94a3b8; /* Slate 400 */
   --muted: #6b7280; /* Gray 500 */
   --primary: #111827; /* Charcoal */
   --accent: #b45309; /* Muted Amber */
@@ -22,7 +22,7 @@
   --foreground: #f4f4f5; /* Zinc 100 */
   --card: #18181b; /* Zinc 900 */
   --card-foreground: #f4f4f5;
-  --border: #27272a; /* Zinc 800 */
+  --border: #71717a; /* Zinc 500 */
   --muted: #a1a1aa; /* Zinc 400 */
   --primary: #f4f4f5; /* Zinc 100 */
   --accent: #f59e0b; /* Amber 500 */
