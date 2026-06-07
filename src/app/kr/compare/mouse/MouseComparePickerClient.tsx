@@ -204,12 +204,12 @@ function ProductSummaryCard({ product, label }: { product: MousePickerProduct; l
   const checks = getBuyingChecks(product);
 
   return (
-    <article className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+    <article className="rounded-2xl border border-neutral-300 bg-[var(--card)] p-5 dark:border-zinc-600">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--secondary)] text-[var(--accent)]">
           <MousePointer2 className="h-5 w-5" />
         </div>
-        <span className="rounded-full border border-[var(--border)] bg-[var(--secondary)] px-2.5 py-1 text-[10px] font-bold text-[var(--accent)]">
+        <span className="rounded-full border border-neutral-300 bg-[var(--secondary)] px-2.5 py-1 text-[10px] font-bold text-[var(--accent)] dark:border-zinc-600">
           {label}
         </span>
       </div>
@@ -222,7 +222,7 @@ function ProductSummaryCard({ product, label }: { product: MousePickerProduct; l
         <span className="rounded-lg bg-[var(--secondary)] px-3 py-2">무게: {getWeight(product)}</span>
         <span className="rounded-lg bg-[var(--secondary)] px-3 py-2">연결: {getConnection(product)}</span>
       </div>
-      <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
+      <div className="mt-4 rounded-xl border border-neutral-300 bg-[var(--secondary)]/30 p-3 dark:border-zinc-600">
         <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">구매 전 확인</p>
         <ul className="space-y-1.5 text-xs leading-relaxed text-[var(--muted)]">
           {checks.length > 0 ? checks.map((item) => <li key={item}>- {item}</li>) : <li>- 판매처/제조사 기준으로 구성품과 AS 조건을 확인해 주세요.</li>}
@@ -234,10 +234,10 @@ function ProductSummaryCard({ product, label }: { product: MousePickerProduct; l
 
 function ComparisonRow({ label, a, b }: { label: string; a: string; b: string }) {
   return (
-    <div className="grid grid-cols-1 border-b border-[var(--border)] last:border-b-0 md:grid-cols-[180px_1fr_1fr]">
+    <div className="grid grid-cols-1 border-b border-neutral-300 last:border-b-0 dark:border-zinc-600 md:grid-cols-[180px_1fr_1fr]">
       <div className="bg-[var(--secondary)]/25 p-4 text-sm font-bold text-[var(--primary)]">{label}</div>
-      <div className="border-t border-[var(--border)] p-4 text-sm leading-relaxed text-[var(--muted)] md:border-t-0 md:border-l">{a}</div>
-      <div className="border-t border-[var(--border)] p-4 text-sm leading-relaxed text-[var(--muted)] md:border-t-0 md:border-l">{b}</div>
+      <div className="border-t border-neutral-300 p-4 text-sm leading-relaxed text-[var(--muted)] dark:border-zinc-600 md:border-t-0 md:border-l">{a}</div>
+      <div className="border-t border-neutral-300 p-4 text-sm leading-relaxed text-[var(--muted)] dark:border-zinc-600 md:border-t-0 md:border-l">{b}</div>
     </div>
   );
 }
@@ -287,12 +287,12 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
     setSelectedBrandsB(nextBrands);
 
     if (nextProducts.length > 0 && !nextProducts.some((product) => product.id === productBId)) {
-        setProductBId(nextProducts[1]?.id ?? nextProducts[0].id);
+      setProductBId(nextProducts[1]?.id ?? nextProducts[0].id);
     }
   };
 
   const renderBrandFilter = (side: "a" | "b", selectedBrands: string[], optionCount: number) => (
-    <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/25 p-3">
+    <div className="mt-4 rounded-xl border border-neutral-300 bg-[var(--secondary)]/25 p-3 dark:border-zinc-600">
       <div className="mb-2 flex items-center justify-between gap-2">
         <p className="text-[11px] font-black text-[var(--primary)]">제조사 필터</p>
         <span className="text-[10px] font-bold text-[var(--muted)]">{optionCount}개 후보</span>
@@ -311,7 +311,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
                 "rounded-lg border px-2.5 py-1.5 text-[10.5px] font-black transition-colors",
                 isActive
                   ? "border-[var(--accent)] bg-[var(--accent)] text-white"
-                  : "border-[var(--border)] bg-[var(--card)] text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
+                  : "border-neutral-300 bg-[var(--card)] text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)] dark:border-zinc-600",
               ].join(" ")}
             >
               {isAll ? "전체" : brand}
@@ -325,7 +325,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
   if (!productA || !productB) {
     return (
       <div className="container mx-auto px-4 py-14">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 text-sm text-[var(--muted)]">
+        <div className="rounded-2xl border border-neutral-300 bg-[var(--card)] p-6 text-sm text-[var(--muted)] dark:border-zinc-600">
           비교할 마우스 데이터가 아직 준비되지 않았습니다.
         </div>
       </div>
@@ -352,21 +352,21 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
   return (
     <div>
       <section className="container mx-auto px-4 py-12 md:py-14">
-        <div className="mb-7 border-b border-[var(--border)] pb-5">
+        <div className="mb-7 border-b border-neutral-300 pb-5 dark:border-zinc-600">
           <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">제품 선택</h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
             제품 A와 제품 B의 제조사를 따로 좁힌 뒤 비교할 수 있습니다. 필터는 선택 목록만 줄이고 비교 점수나 정렬은 만들지 않습니다.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+          <div className="rounded-2xl border border-neutral-300 bg-[var(--card)] p-5 dark:border-zinc-600">
             <label htmlFor="mouse-product-a" className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 A</label>
             {renderBrandFilter("a", selectedBrandsA, selectableProductsA.length)}
             <select
               id="mouse-product-a"
               value={productAId}
               onChange={(event) => setProductAId(event.target.value)}
-              className="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)]"
+              className="mt-3 w-full rounded-xl border border-neutral-300 bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)] dark:border-zinc-600"
             >
               {selectableProductsA.map((product) => (
                 <option key={product.id} value={product.id}>
@@ -375,14 +375,14 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
               ))}
             </select>
           </div>
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+          <div className="rounded-2xl border border-neutral-300 bg-[var(--card)] p-5 dark:border-zinc-600">
             <label htmlFor="mouse-product-b" className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 B</label>
             {renderBrandFilter("b", selectedBrandsB, selectableProductsB.length)}
             <select
               id="mouse-product-b"
               value={productBId}
               onChange={(event) => setProductBId(event.target.value)}
-              className="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)]"
+              className="mt-3 w-full rounded-xl border border-neutral-300 bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)] dark:border-zinc-600"
             >
               {selectableProductsB.map((product) => (
                 <option key={product.id} value={product.id}>
@@ -392,7 +392,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
             </select>
           </div>
         </div>
-        <p className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3 text-xs leading-relaxed text-[var(--muted)]">
+        <p className="mt-4 rounded-xl border border-neutral-300 bg-[var(--secondary)]/30 p-3 text-xs leading-relaxed text-[var(--muted)] dark:border-zinc-600">
           {isSameProduct
             ? "같은 제품이 양쪽에 선택되어 있습니다. 다른 제품을 고르면 차이를 더 쉽게 볼 수 있습니다."
             : "선택한 두 제품만 비교합니다. 추천 점수나 자동 정렬은 적용하지 않습니다."}
@@ -400,7 +400,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
       </section>
 
       <section className="container mx-auto px-4 py-10">
-        <div className="mb-7 border-b border-[var(--border)] pb-5">
+        <div className="mb-7 border-b border-neutral-300 pb-5 dark:border-zinc-600">
           <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">선택 제품 요약</h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
             내부 상태값, 제품 이미지, 제품 링크는 표시하지 않고 구매 전 확인에 필요한 기본 정보만 보여줍니다.
@@ -413,17 +413,17 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
       </section>
 
       <section className="container mx-auto px-4 py-10">
-        <div className="mb-7 border-b border-[var(--border)] pb-5">
+        <div className="mb-7 border-b border-neutral-300 pb-5 dark:border-zinc-600">
           <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">기본 비교표</h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
             수치 하나보다 손 크기, 쉘 체감, 무게, 연결 방식, 구성품 확인 여부를 함께 봅니다.
           </p>
         </div>
-        <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">
-          <div className="grid grid-cols-1 border-b border-[var(--border)] bg-[var(--secondary)]/40 text-sm font-bold text-[var(--primary)] md:grid-cols-[180px_1fr_1fr]">
+        <div className="overflow-hidden rounded-2xl border border-neutral-300 bg-[var(--card)] dark:border-zinc-600">
+          <div className="grid grid-cols-1 border-b border-neutral-300 bg-[var(--secondary)]/40 text-sm font-bold text-[var(--primary)] dark:border-zinc-600 md:grid-cols-[180px_1fr_1fr]">
             <div className="p-4">항목</div>
-            <div className="border-t border-[var(--border)] p-4 md:border-t-0 md:border-l">{getProductLabel(productA)}</div>
-            <div className="border-t border-[var(--border)] p-4 md:border-t-0 md:border-l">{getProductLabel(productB)}</div>
+            <div className="border-t border-neutral-300 p-4 dark:border-zinc-600 md:border-t-0 md:border-l">{getProductLabel(productA)}</div>
+            <div className="border-t border-neutral-300 p-4 dark:border-zinc-600 md:border-t-0 md:border-l">{getProductLabel(productB)}</div>
           </div>
           {comparisonRows.map((row) => (
             <ComparisonRow key={row.label} label={row.label} a={row.a} b={row.b} />
@@ -432,14 +432,14 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
       </section>
 
       <section className="container mx-auto px-4 py-10">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/30 p-6 md:p-8">
+        <div className="rounded-2xl border border-neutral-300 bg-[var(--secondary)]/30 p-6 dark:border-zinc-600 md:p-8">
           <div className="mb-5 flex items-center gap-2 text-[var(--accent)]">
             <GitCompare className="h-5 w-5" />
             <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">두 제품을 이렇게 보면 좋습니다</h2>
           </div>
           <div className="grid gap-3 md:grid-cols-3">
             {summaries.map((summary) => (
-              <p key={summary} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 text-sm leading-relaxed text-[var(--muted)]">
+              <p key={summary} className="rounded-xl border border-neutral-300 bg-[var(--card)] p-4 text-sm leading-relaxed text-[var(--muted)] dark:border-zinc-600">
                 {summary}
               </p>
             ))}
@@ -448,7 +448,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
       </section>
 
       <section className="container mx-auto px-4 py-10">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+        <div className="rounded-2xl border border-neutral-300 bg-[var(--card)] p-6 dark:border-zinc-600">
           <h2 className="text-lg font-bold text-[var(--primary)]">관련 링크</h2>
           <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {[
@@ -461,7 +461,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
               <Link
                 key={link.href}
                 href={link.href}
-                className="group flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 px-4 py-3 text-sm font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                className="group flex items-center justify-between gap-3 rounded-xl border border-neutral-300 bg-[var(--secondary)]/30 px-4 py-3 text-sm font-bold text-[var(--primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] dark:border-zinc-600"
               >
                 {link.label}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -472,7 +472,7 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
       </section>
 
       <section className="container mx-auto px-4 pt-4">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--secondary)]/25 p-5 text-sm leading-relaxed text-[var(--muted)]">
+        <div className="rounded-2xl border border-neutral-300 bg-[var(--secondary)]/25 p-5 text-sm leading-relaxed text-[var(--muted)] dark:border-zinc-600">
           <div className="mb-2 flex items-center gap-2 font-bold text-[var(--primary)]">
             <ShieldCheck className="h-4 w-4 text-[var(--accent)]" />
             참고 안내
