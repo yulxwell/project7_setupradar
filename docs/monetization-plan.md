@@ -308,3 +308,15 @@ SetupRadar는 광고 사이트가 아니라 하드웨어 테스트 도구와 구
 - Project7 비교 페이지 하단에는 검수된 Project2 관련 글 preview만 노출하는 구조를 장기 후보로 둔다.
 - 실제 링크프라이스/쿠팡파트너스 링크는 Project2 쪽에서 먼저 관리하고, Project7 비교 결론이나 추천 순서에는 영향을 주지 않는 방향이 안전하다.
 - CPU/GPU 비교는 벤치마크 수치 복제보다 공식 스펙, 플랫폼 호환성, 전력/발열, 업그레이드 경로, 측정 환경 차이 안내를 우선한다.
+
+## 14. Product & Content Expansion Plan 연결
+
+2026-06-07 기준 제품 DB, 고정 비교 콘텐츠, Project2 preview 연동의 다음 운영 방향은 `docs/product-content-expansion-plan.md`에 별도로 정리했다.
+
+수익화 관점의 연결 원칙:
+
+- Project7은 제품 후보를 고르는 기준, Finder, Compare, 테스트 도구를 우선한다.
+- Project2는 뉴스 본문, 제품 소개, 핫딜, 구매처/배송대행/구매대행 소개, 제휴 링크 후보를 맡는 방향을 검토한다.
+- Project7에 Project2 preview를 붙이더라도 검수된 글만 수동 연결하는 단계부터 시작한다.
+- 제휴 링크는 Finder/Compare 추천 점수, 비교 결론, 카드 정렬과 분리한다.
+- AdSense 심사 전에는 상업성보다 자체 도구, 가이드, 비교 기준의 독립 가치를 우선한다.

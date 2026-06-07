@@ -1,8 +1,8 @@
 # Project7 VS Compare Structure Plan
 
-Last updated: 2026-06-07 Keyboard Compare Picker Mock 1
+Last updated: 2026-06-07 Product & Content Expansion Plan
 
-Scope: structure planning, compare main mock, first mouse compare detail mock, first Mouse Compare Picker mock, and first Keyboard Compare Picker mock only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+Scope: structure planning, compare main mock, first mouse compare detail mock, first Mouse Compare Picker mock, first Keyboard Compare Picker mock, and fixed compare candidate planning only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
 
 ## 0. 진행 상태
 
@@ -11,6 +11,7 @@ Scope: structure planning, compare main mock, first mouse compare detail mock, f
 - Phase 2 첫 mouse compare mock으로 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 상세 페이지를 추가했다.
 - 현재 `/kr/compare`는 비교 카테고리 카드, 마우스 직접 비교 Picker, 키보드 직접 비교 Picker, 첫 마우스 비교 상세 링크를 제공한다.
 - Compare Picker는 후속 도구형 확장 후보로 별도 문서 `docs/compare-picker-structure-plan.md`에 설계했고, Phase 1로 `/kr/compare/mouse` mock을, Phase 4 첫 구현으로 `/kr/compare/keyboard` mock을 추가했다.
+- 제품 DB/콘텐츠 확장 계획은 `docs/product-content-expansion-plan.md`에 별도로 정리했다. 고정 비교 상세는 실제 제품 데이터가 충분한 조합부터 추가한다.
 - 자동 비교기, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
 
 ## 1. VS Compare의 목적
@@ -140,6 +141,15 @@ interface CompareContent {
 
 - `Razer Viper V4 Pro vs 중국계 초경량 대칭형 마우스`
 - `Logitech G Pro X Superlight 계열 vs ATK/Lamzu/Pulsar 계열`
+- `Logitech G304 vs Logitech G102`
+- `Razer Viper V3 Pro vs Lamzu Maya`
+- `Pulsar X2V2 vs Lamzu Atlantis`
+
+키보드 고정 비교 후보:
+
+- `AULA F75 vs NuPhy Halo75 V2`
+- `Wooting 60HE vs DrunkDeer A75`
+- `Keychron Q1 vs Keychron V1 Max`
 
 표현 안전 규칙:
 

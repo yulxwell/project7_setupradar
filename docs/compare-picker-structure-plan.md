@@ -1,8 +1,8 @@
 # Project7 Compare Picker Structure Plan
 
-Last updated: 2026-06-07 Keyboard Compare Picker Mock 1
+Last updated: 2026-06-07 Product & Content Expansion Plan
 
-Scope: structure planning, first Mouse Compare Picker mock, and first Keyboard Compare Picker mock only. No product data update, new products, API/DB/Supabase, Project2 integration, ad/affiliate code, Finder logic change, GA4/Search Console structure change, package change, or domain change.
+Scope: structure planning, first Mouse Compare Picker mock, first Keyboard Compare Picker mock, and product DB expansion linkage only. No product data update, new products, API/DB/Supabase, Project2 integration, ad/affiliate code, Finder logic change, GA4/Search Console structure change, package change, or domain change.
 
 ## 0. 진행 상태
 
@@ -11,6 +11,7 @@ Scope: structure planning, first Mouse Compare Picker mock, and first Keyboard C
 - 현재 `/kr/compare/mouse`는 기존 `MOUSE_DATABASE`에서 sanitized 제품 목록을 읽고, 사용자가 A/B 제품을 선택해 기본 비교표를 볼 수 있다.
 - Phase 4 첫 Keyboard Compare Picker mock으로 `/kr/compare/keyboard` route를 완료했다.
 - 현재 `/kr/compare/keyboard`는 기존 `KEYBOARD_DATABASE`에서 sanitized 제품 목록을 읽고, 사용자가 A/B 제품을 선택해 기본 비교표를 볼 수 있다.
+- 제품 DB/콘텐츠 확장 계획은 `docs/product-content-expansion-plan.md`에 별도로 정리했다. 현재 Picker의 다음 체감 개선은 제품 수와 `basicFilters`/`detailSpecs` 품질 확장에 좌우된다.
 - 형태/무게/연결/크기 필터, URL 공유, CPU/GPU picker는 아직 구현하지 않았다.
 
 ## 1. Compare Picker 목적
@@ -227,6 +228,7 @@ URL 공유 후보:
 
 - 처음부터 큰 비교기를 만들지 않는다.
 - 마우스 제품 10~20개 규모에서 UX를 먼저 검증한다.
+- Mouse/Keyboard Picker가 열린 뒤에는 마우스 30개, 키보드 25개 단기 DB 목표를 기준으로 후보군 다양성을 늘린다.
 - 부족한 데이터는 `확인 필요`로 표시한다.
 - 비교 결과는 정답이 아니라 구매 전 차이 이해용으로 안내한다.
 - 제휴 링크는 비교 결과 정렬과 표시 우선순위에 영향을 주지 않는다.

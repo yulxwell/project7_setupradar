@@ -374,6 +374,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **비교 메인 연결**: `/kr/compare` 키보드 카드에서 `/kr/compare/keyboard`로 이동할 수 있게 했고, sitemap에는 실제 생성한 route만 추가했습니다.
 - **제한 유지**: 제품 데이터, Finder 로직, 광고/제휴 링크, Project2 실제 연동, API/DB, GA4/Search Console 구조는 수정하지 않았습니다.
 
+### Product & Content Expansion Plan - 2026-06-07
+- **제품/콘텐츠 확장 계획 문서화**: Finder/Compare의 다음 성장 단계로 제품 DB, 고정 비교 콘텐츠, 뉴스/Project2 preview 연동 방향을 [docs/product-content-expansion-plan.md](file:///Users/jilee/antigravity/src/project7/docs/product-content-expansion-plan.md)에 정리했습니다.
+- **DB 목표 설정**: 단기 마우스 30개/키보드 25개, 중기 마우스 50개/키보드 40개와 모니터 schema 설계 목표를 문서화했습니다.
+- **주간 제품 추가 루틴 정리**: 후보 조사, `product_config_patch`, validator, review 상태 수동 반영, snapshot, lint/build, Finder/Compare QA 흐름을 운영 루틴으로 정리했습니다.
+- **Project2 역할 분리**: Project7은 Finder/Compare/기준/테스트 도구, Project2는 뉴스 본문/핫딜/제품 소개/제휴 링크 후보를 맡는 방향을 기록했습니다.
+- **구현 보류**: 실제 제품 데이터 추가, 비교 페이지 추가, Finder/Compare 로직, 광고/제휴/API/DB/Project2 실제 연동은 하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

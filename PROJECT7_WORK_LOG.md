@@ -1173,3 +1173,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - root `/sitemap.xml`과 `/kr/sitemap.xml` 모두 `/kr/compare/keyboard`를 포함했고, `/kr/compare/keyboard/...` 형태의 미구현 상세 URL은 포함하지 않았다.
 - 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
 - 제품 데이터, Finder 로직, 광고/제휴 코드, Project2 실제 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Product & Content Expansion Plan - 2026-06-07 기록
+
+- Project7의 다음 성장 단계로 제품 DB, 고정 비교 콘텐츠, 최근 장비 소식/Project2 preview 연동 방향을 `docs/product-content-expansion-plan.md`에 문서화했다.
+- 현재 제품 DB 규모는 마우스 14개, 키보드 12개로 확인했고, 단기 목표를 마우스 30개/키보드 25개, 중기 목표를 마우스 50개/키보드 40개와 모니터 schema 설계로 정리했다.
+- 마우스 확장 우선순위는 초경량 무선 대칭형, 오른손용 비대칭형 FPS, 보급형 무선, 사무/휴대용, 국내 구매 접근성 좋은 제품, 중국계/가성비 초경량 마우스로 정리했다.
+- 키보드 확장 우선순위는 75% 무선, TKL 게이밍, 풀배열 사무용, 저소음, 래피드 트리거/자석축, Mac/iPad 겸용, 보급형 기계식 키보드로 정리했다.
+- 주간 제품 추가 루틴은 후보 조사, `product_config_patch`, validator, 중복/금지 표현/enum 확인, review 상태 수동 반영, snapshot export, lint/build, Finder/Compare QA, push 순서로 기록했다.
+- 고정 비교 후보로 `Logitech G304 vs Logitech G102`, `Razer Viper V3 Pro vs Lamzu Maya`, `AULA F75 vs NuPhy Halo75 V2`, `Wooting 60HE vs DrunkDeer A75`, `Keychron Q1 vs Keychron V1 Max` 등을 정리했다.
+- 모니터는 단기 제품 DB보다 가이드/테스트 도구 중심을 유지하고, 중기 schema 설계 후보로 크기, 해상도, 주사율, 패널, 응답속도, HDR, 포트, 스탠드, 무결점 정책을 기록했다.
+- CPU/GPU는 바로 제품 DB에 넣지 않고 공식 스펙 출처와 별도 schema를 먼저 설계하는 방향으로 정리했다.
+- Project2는 뉴스 본문, 핫딜, 제품 소개, 구매처/배송대행/구매대행 소개, 제휴 링크 후보를 맡고 Project7은 Finder/Compare/기준/테스트 도구/preview를 맡는 역할 분리를 기록했다.
+- `README.md`, `docs/compare-picker-structure-plan.md`, `docs/vs-compare-structure-plan.md`, `docs/monetization-plan.md`에 확장 계획 참조와 후속 연결 메모를 최소 반영했다.
+- 실제 제품 데이터 추가, 제품 데이터 수정, 비교 상세 페이지 추가, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 하지 않았다.
