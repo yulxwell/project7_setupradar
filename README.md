@@ -381,6 +381,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **Project2 역할 분리**: Project7은 Finder/Compare/기준/테스트 도구, Project2는 뉴스 본문/핫딜/제품 소개/제휴 링크 후보를 맡는 방향을 기록했습니다.
 - **구현 보류**: 실제 제품 데이터 추가, 비교 페이지 추가, Finder/Compare 로직, 광고/제휴/API/DB/Project2 실제 연동은 하지 않았습니다.
 
+### Weekly Product Candidate Plan 1 - 2026-06-07
+- **주간 후보 선정 기준 문서화**: 매주 제품 후보를 감이 아니라 Finder/Compare 기여도, 공식 스펙 확인 가능성, 초보자 설명 가능성 기준으로 고르도록 [docs/weekly-product-candidate-plan.md](file:///Users/jilee/antigravity/src/project7/docs/weekly-product-candidate-plan.md)에 정리했습니다.
+- **후보 수와 평가표 설정**: 주간 조사 후보 8~12개, patch 후보 3~5개, 실제 반영 후보 3개 전후를 기준으로 두고 10개 평가 항목과 총점 기준을 기록했습니다.
+- **첫 Batch 방향 정리**: Mouse Batch 1은 초경량 무선/오른손용 비대칭/보급형 또는 사무용, Keyboard Batch 1은 75% 무선/래피드 트리거/사무 또는 저소음 후보를 우선하도록 정리했습니다.
+- **구현 보류**: 실제 제품 데이터 추가, `product_config_patch` 생성, Finder/Compare 로직, 광고/제휴/API/DB/Project2 실제 연동은 하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

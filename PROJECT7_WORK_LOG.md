@@ -1187,3 +1187,21 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Project2는 뉴스 본문, 핫딜, 제품 소개, 구매처/배송대행/구매대행 소개, 제휴 링크 후보를 맡고 Project7은 Finder/Compare/기준/테스트 도구/preview를 맡는 역할 분리를 기록했다.
 - `README.md`, `docs/compare-picker-structure-plan.md`, `docs/vs-compare-structure-plan.md`, `docs/monetization-plan.md`에 확장 계획 참조와 후속 연결 메모를 최소 반영했다.
 - 실제 제품 데이터 추가, 제품 데이터 수정, 비교 상세 페이지 추가, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 하지 않았다.
+
+## Weekly Product Candidate Plan 1 - 2026-06-07 기록
+
+- 제품 DB 확장 전 주간 제품 후보 선정 기준을 `docs/weekly-product-candidate-plan.md`에 문서화했다.
+- 주간 조사 후보는 8~12개, validator용 patch 후보는 3~5개, 실제 반영 후보는 3개 전후로 제한하는 기준을 세웠다.
+- 초기 4주는 마우스 3개, 키보드 3개, 마우스 3개, 키보드 3개 순서로 번갈아 확장하는 운영 예시를 기록했다.
+- 마우스 후보 우선순위는 초경량 무선 대칭형, 오른손용 비대칭형 FPS, 국내 구매 접근성 좋은 인기 제품, 중국계/가성비 초경량, Finder/Compare 비교 가치가 있는 제품으로 정리했다.
+- 키보드 후보 우선순위는 75% 무선, TKL 게이밍, 래피드 트리거/자석축, 저소음, Mac/iPad 겸용, Finder/Compare 비교 가치가 있는 제품으로 정리했다.
+- 제외 또는 보류 기준으로 공식 스펙 확인 어려움, 판매처별 구성 차이 과다, 기존 DB 중복, 금지 표현 유발 가능성, 쉘 유사성 프레임 의존, 단기 구매 접근성 낮음을 기록했다.
+- 후보 평가 점수표는 Finder 기여도, Compare 기여도, 구매 접근성, 공식 스펙 확인 가능성, 초보자 설명 가능성, 기존 DB와 차별성, 제품군 균형성, 데이터 입력 난이도, 향후 콘텐츠 연결 가능성, 운영 리스크 10개 항목으로 구성했다.
+- 총점 38점 이상은 우선 후보, 32~37점은 보류 후보, 31점 이하는 이번 주 제외 기준으로 정리했다.
+- `product_config_patch` 후보 기준은 brand/name/category 명확성, `basicFilters` 입력 가능성, Finder/Compare 최소 필드 확보, `rawSpecs.note` 출처/불확실성 정리, 금지 표현 없음, 기존 제품 중복 아님으로 정리했다.
+- 마우스/키보드 후보 예시군은 실제 추가 목록이 아니라 조사 후보군으로만 기록했고, 이미 DB에 있는 계열은 신규 추가가 아니라 보강 후보로 보도록 안내했다.
+- 조사 출처 기준은 제조사 공식 페이지, 공식 스펙 문서, 국내 판매처 상품 정보, 신뢰 가능한 리뷰/측정 자료를 우선으로 두고 커뮤니티/유튜브/Reddit은 체감 참고로만 쓰도록 기록했다.
+- 첫 Batch 추천 방향은 Mouse Product Patch Batch 1에서 초경량 무선 1개, 오른손용 비대칭 1개, 보급형 또는 사무용 1개, Keyboard Product Patch Batch 1에서 75% 무선 1개, 래피드 트리거/자석축 1개, 사무/저소음 1개로 정리했다.
+- `docs/product-content-expansion-plan.md`에는 weekly plan 문서 참조와 제품 추가 전 확인 기준을 짧게 연결했다.
+- `README.md`에 Weekly Product Candidate Plan 1 기록을 추가했다.
+- 실제 제품 데이터 추가, 제품 데이터 수정, `product_config_patch` 생성, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, 자동 크롤링, GA4/Search Console 구조, Control Tower, package 설정, 도메인 설정은 하지 않았다.
