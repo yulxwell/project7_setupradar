@@ -1126,3 +1126,19 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 금지 표현 목록 노출은 확인되지 않았다.
 - 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
 - 제품 데이터, Finder 로직, 광고/제휴 코드, Project2 실제 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
+
+## Post-Codex Change Sync QA - 2026-06-07 기록
+
+- 최근 별도 Codex 작업 커밋 10개를 기준으로 변경 내용을 동기화 점검했다. 확인한 범위는 `e5e172b`부터 `f3072ee`까지의 Mouse Compare Picker 추가, Finder/Compare 연결 보강, 제조사 필터 분리, 전역/필터 테두리 스타일 조정, PageHero 테두리 제거, Live QA 문서 기록이다.
+- 최근 변경 파일은 `src/app/kr/compare/mouse/MouseComparePickerClient.tsx`, `src/app/kr/compare/mouse/page.tsx`, `src/app/kr/compare/mouse/lamzu-maya-vs-zowie-u2/page.tsx`, `src/app/kr/compare/page.tsx`, `src/app/kr/finder/mouse-fit/page.tsx`, `src/app/kr/finder/keyboard-fit/page.tsx`, `src/app/globals.css`, `src/components/sections/PageHero.tsx`, `src/app/sitemap.ts`, `README.md`, `PROJECT7_WORK_LOG.md`, `docs/compare-picker-structure-plan.md`, `docs/vs-compare-structure-plan.md`로 확인했다.
+- 기능 영향은 `/kr/compare/mouse` 마우스 직접 비교 picker 추가와 `/kr/compare`/고정 비교 상세 페이지/마우스 Finder 연결 보강이 중심이다. 이후 커밋들은 대부분 UI 배치와 스타일 보정이다.
+- 디자인/UX 영향은 Finder 필터 하단 장비 비교 링크 배치, Finder 추천 결과/제조사 필터 박스의 주황 accent 톤 적용, 전역 테두리 대비 강화, 4개 PageHero 외곽 테두리 제거, 마우스 비교 picker의 A/B 제조사 필터 분리로 정리된다.
+- Finder 영향은 표시 UI와 연결 링크 중심이며, 점수 계산/정렬/추천 기준은 최근 커밋 범위에서 변경되지 않았다.
+- Compare 영향은 마우스 picker route와 고정 비교 상세 연결, 제품 A/B 선택 및 제조사 필터 UI 추가이며, CPU/GPU/키보드 picker나 자동 비교 로직은 추가되지 않았다.
+- 제품 데이터 파일은 최근 동기화 범위에서 수정되지 않았고, `review/status`, `productImages`, `productLinks` 노출 구조도 추가되지 않았다.
+- `src/app/sitemap.ts`에는 실제 생성된 `/kr/compare/mouse` route 반영이 포함되어 있으며, 최근 스타일/UX 커밋에서는 sitemap, GA4, Search Console 구조를 추가로 수정하지 않았다.
+- `git status -sb` 기준 `main...origin/main`으로 원격과 동기화되어 있었고, 작업 트리에는 기존 미추적 `tmp/` 폴더만 남아 있었다.
+- live URL `https://setupradar.pages.dev/kr`, `/kr/finder/mouse-fit`, `/kr/finder/keyboard-fit`, `/kr/compare`, `/kr/compare/mouse`는 HTTP 200으로 확인했다.
+- 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
+- 명확한 버그가 없어 앱 코드는 수정하지 않았고, 이번 작업에서는 Sync QA 결과만 문서에 기록했다.
+- 제품 데이터, Finder 추천 로직, Compare 로직, 광고/AdSense/제휴 링크, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, package 설정, 도메인 설정은 수정하지 않았다.
