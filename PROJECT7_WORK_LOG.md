@@ -1155,3 +1155,21 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare/keyboard`만 priority 0.5로 추가했다.
 - `docs/compare-picker-structure-plan.md`와 `docs/vs-compare-structure-plan.md`에는 Keyboard Compare Picker Mock 1 진행 상태를 반영했다.
 - 제품 데이터 수정, 새 제품 추가, Finder 로직 수정, 추천/정렬 기능 추가, 제품 이미지/링크 노출, 광고/제휴/구매 버튼, Project2 실제 연동, API/DB/Supabase, CPU/GPU 데이터, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
+
+## Keyboard Compare Picker Live QA - 2026-06-07 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/compare/keyboard`, `https://setupradar.pages.dev/kr/compare`, `https://setupradar.pages.dev/kr/compare/mouse`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
+- `/kr/compare/keyboard`는 HTTP 200으로 열렸고, Hero, 제품 A/B 선택 UI, A/B별 제조사 필터, 선택 제품 요약 카드, 기본 비교표, 차이 요약, 관련 내부 링크가 HTML에 정상 노출됐다.
+- 기본 선택값은 `AULA F75`와 `NuPhy Halo75 V2`로 표시됐다.
+- 제품 A/B 선택 select는 각각 `keyboard-product-a`, `keyboard-product-b`로 렌더링됐고, client state 변경 시 요약 카드와 비교표가 갱신되는 구조를 코드로 확인했다.
+- 제조사 필터는 제품 A/B 각각 독립 state를 사용하며, `전체` 선택 시 선택 브랜드를 비우고, 개별 브랜드는 다중 선택과 재클릭 해제를 지원하는 구조를 확인했다.
+- 비교 항목은 배열, 스위치 성향, 소음, 연결 방식, 상세 연결, 핫스왑, OS/기기 호환, 키캡/하우징, 휴대성, 게임/사무/코딩 사용, 구매 전 체크 기준으로 표시됐다.
+- 정보가 부족한 항목은 `확인 필요`, 판매처/제조사 기준 확인 톤으로 표시됐다.
+- live HTML에서 `review`, `status`, `productImages`, `productLinks` 문자열은 0건으로 확인했다.
+- `광고/제휴` 문자열은 기존 Footer의 정책 링크 문구로만 잡혔고, 새 광고/제휴 링크, 구매 버튼, Project2 실제 링크는 확인되지 않았다.
+- `/kr/compare` 키보드 비교 카드는 `/kr/compare/keyboard`로, 마우스 비교 카드는 `/kr/compare/mouse`로 연결됐다. 모니터/CPU/GPU 카드에는 미구현 상세 링크가 없었다.
+- `/kr/compare/mouse`는 HTTP 200으로 열렸고, 마우스 직접 비교 제목과 제품 A/B 선택 UI가 렌더링되는 것을 확인했다.
+- 모바일 390px 실제 클릭형 브라우저 확인은 이 세션의 브라우저 자동화 도구 부재로 수행하지 못했다. 다만 live HTML과 코드 기준으로 선택 영역, 요약 카드, 비교표는 기본 1열 grid에서 데스크탑 이상 2열/3열로 전환되는 구조라 가로 넘침 위험은 낮다고 판단했다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml` 모두 `/kr/compare/keyboard`를 포함했고, `/kr/compare/keyboard/...` 형태의 미구현 상세 URL은 포함하지 않았다.
+- 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
+- 제품 데이터, Finder 로직, 광고/제휴 코드, Project2 실제 연동, GA4/Search Console 구조, DB/API/Supabase, Control Tower, package 설정은 수정하지 않았다.
