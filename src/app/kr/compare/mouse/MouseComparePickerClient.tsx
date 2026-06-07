@@ -247,21 +247,27 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
   const defaultB = products.find((product) => product.id === "zowie-u2")?.id ?? products[1]?.id ?? defaultA;
   const [productAId, setProductAId] = useState(defaultA);
   const [productBId, setProductBId] = useState(defaultB);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedBrandsA, setSelectedBrandsA] = useState<string[]>([]);
+  const [selectedBrandsB, setSelectedBrandsB] = useState<string[]>([]);
 
   const brandOptions = useMemo(
     () => Array.from(new Set(products.map((product) => product.brand).filter(Boolean))).sort((a, b) => a.localeCompare(b)),
     [products],
   );
-  const selectableProducts = useMemo(
-    () => (selectedBrands.length === 0 ? products : products.filter((product) => selectedBrands.includes(product.brand))),
-    [products, selectedBrands],
+  const selectableProductsA = useMemo(
+    () => (selectedBrandsA.length === 0 ? products : products.filter((product) => selectedBrandsA.includes(product.brand))),
+    [products, selectedBrandsA],
+  );
+  const selectableProductsB = useMemo(
+    () => (selectedBrandsB.length === 0 ? products : products.filter((product) => selectedBrandsB.includes(product.brand))),
+    [products, selectedBrandsB],
   );
 
   const productA = useMemo(() => products.find((product) => product.id === productAId) ?? products[0], [productAId, products]);
   const productB = useMemo(() => products.find((product) => product.id === productBId) ?? products[1] ?? products[0], [productBId, products]);
 
-  const updateBrandFilter = (brand: string) => {
+  const updateBrandFilter = (side: "a" | "b", brand: string) => {
+    const selectedBrands = side === "a" ? selectedBrandsA : selectedBrandsB;
     const nextBrands = brand === "all"
       ? []
       : selectedBrands.includes(brand)
@@ -269,17 +275,52 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
         : [...selectedBrands, brand];
     const nextProducts = nextBrands.length === 0 ? products : products.filter((product) => nextBrands.includes(product.brand));
 
-    setSelectedBrands(nextBrands);
+    if (side === "a") {
+      setSelectedBrandsA(nextBrands);
 
-    if (nextProducts.length > 0) {
-      if (!nextProducts.some((product) => product.id === productAId)) {
+      if (nextProducts.length > 0 && !nextProducts.some((product) => product.id === productAId)) {
         setProductAId(nextProducts[0].id);
       }
-      if (!nextProducts.some((product) => product.id === productBId)) {
+      return;
+    }
+
+    setSelectedBrandsB(nextBrands);
+
+    if (nextProducts.length > 0 && !nextProducts.some((product) => product.id === productBId)) {
         setProductBId(nextProducts[1]?.id ?? nextProducts[0].id);
-      }
     }
   };
+
+  const renderBrandFilter = (side: "a" | "b", selectedBrands: string[], optionCount: number) => (
+    <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/25 p-3">
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <p className="text-[11px] font-black text-[var(--primary)]">제조사 필터</p>
+        <span className="text-[10px] font-bold text-[var(--muted)]">{optionCount}개 후보</span>
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {["all", ...brandOptions].map((brand) => {
+          const isAll = brand === "all";
+          const isActive = isAll ? selectedBrands.length === 0 : selectedBrands.includes(brand);
+
+          return (
+            <button
+              key={brand}
+              type="button"
+              onClick={() => updateBrandFilter(side, brand)}
+              className={[
+                "rounded-lg border px-2.5 py-1.5 text-[10.5px] font-black transition-colors",
+                isActive
+                  ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                  : "border-[var(--border)] bg-[var(--card)] text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
+              ].join(" ")}
+            >
+              {isAll ? "전체" : brand}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 
   if (!productA || !productB) {
     return (
@@ -314,71 +355,42 @@ export function MouseComparePickerClient({ products }: MouseComparePickerClientP
         <div className="mb-7 border-b border-[var(--border)] pb-5">
           <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">제품 선택</h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-            제조사를 먼저 좁힌 뒤 제품 A/B를 선택할 수 있습니다. 필터는 선택 목록만 줄이고 비교 점수나 정렬은 만들지 않습니다.
+            제품 A와 제품 B의 제조사를 따로 좁힌 뒤 비교할 수 있습니다. 필터는 선택 목록만 줄이고 비교 점수나 정렬은 만들지 않습니다.
           </p>
         </div>
-        <div className="mb-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4">
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <p className="text-xs font-black text-[var(--primary)]">제조사 필터</p>
-              <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">
-                제품 선택 목록을 보기 쉽게 좁히는 용도입니다. 여러 제조사를 함께 선택할 수 있습니다.
-              </p>
-            </div>
-            <span className="text-[10px] font-bold text-[var(--muted)]">{selectableProducts.length}개 후보</span>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {["all", ...brandOptions].map((brand) => {
-              const isAll = brand === "all";
-              const isActive = isAll ? selectedBrands.length === 0 : selectedBrands.includes(brand);
-
-              return (
-                <button
-                  key={brand}
-                  type="button"
-                  onClick={() => updateBrandFilter(brand)}
-                  className={[
-                    "rounded-lg border px-2.5 py-1.5 text-[10.5px] font-black transition-colors",
-                    isActive
-                      ? "border-[var(--accent)] bg-[var(--accent)] text-white"
-                      : "border-[var(--border)] bg-[var(--secondary)]/30 text-[var(--primary)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
-                  ].join(" ")}
-                >
-                  {isAll ? "전체" : brand}
-                </button>
-              );
-            })}
-          </div>
-        </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <label className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 A</span>
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+            <label htmlFor="mouse-product-a" className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 A</label>
+            {renderBrandFilter("a", selectedBrandsA, selectableProductsA.length)}
             <select
+              id="mouse-product-a"
               value={productAId}
               onChange={(event) => setProductAId(event.target.value)}
               className="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)]"
             >
-              {selectableProducts.map((product) => (
+              {selectableProductsA.map((product) => (
                 <option key={product.id} value={product.id}>
                   {getProductLabel(product)}
                 </option>
               ))}
             </select>
-          </label>
-          <label className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 B</span>
+          </div>
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
+            <label htmlFor="mouse-product-b" className="text-xs font-bold uppercase tracking-wider text-[var(--accent)]">제품 B</label>
+            {renderBrandFilter("b", selectedBrandsB, selectableProductsB.length)}
             <select
+              id="mouse-product-b"
               value={productBId}
               onChange={(event) => setProductBId(event.target.value)}
               className="mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--secondary)] px-3 py-3 text-sm font-bold text-[var(--primary)] outline-none transition-colors focus:border-[var(--accent)]"
             >
-              {selectableProducts.map((product) => (
+              {selectableProductsB.map((product) => (
                 <option key={product.id} value={product.id}>
                   {getProductLabel(product)}
                 </option>
               ))}
             </select>
-          </label>
+          </div>
         </div>
         <p className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3 text-xs leading-relaxed text-[var(--muted)]">
           {isSameProduct
