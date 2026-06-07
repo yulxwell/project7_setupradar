@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronDown, Info, Keyboard, RotateCcw } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ChevronDown, Info, Keyboard, RotateCcw } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { KEYBOARD_DATABASE } from "@/content/kr/products/keyboards";
 import {
@@ -735,6 +736,19 @@ export default function KeyboardFitPage() {
               </div>
             </div>
           )}
+          <Link
+            href="/kr/compare"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-[var(--accent)]/25 bg-[var(--accent)]/[0.06] p-3 transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent)]/[0.1] md:col-span-2"
+          >
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-wider text-[var(--accent)]">Compare</p>
+              <h2 className="mt-1 text-sm font-bold text-[var(--primary)]">장비 비교</h2>
+              <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">
+                필터로 후보를 좁힌 뒤, 키보드 비교에서 배열과 스위치 차이를 함께 살펴보세요.
+              </p>
+            </div>
+            <ArrowRight className="h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <aside className="space-y-3 xl:sticky xl:top-20 xl:self-start">
