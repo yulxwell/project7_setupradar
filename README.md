@@ -367,6 +367,13 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **메인 진입 링크 추가**: `/kr` 메인 하단부에 `/kr/compare`로 이동하는 작은 진입 카드를 추가했습니다.
 - **상세 비교 보류**: 실제 비교 상세 페이지, CPU/GPU 데이터, 제품 데이터, Finder 로직, 광고/제휴, Project2 실제 연동은 추가하지 않았습니다.
 
+### Keyboard Compare Picker Mock 1 - 2026-06-07
+- **키보드 직접 비교 route 추가**: `/kr/compare/keyboard` 정적 picker mock 페이지를 추가했습니다.
+- **제품 A/B 선택 비교**: 기존 `KEYBOARD_DATABASE`를 read-only로 사용해 배열, 스위치 성향, 소음, 연결 방식, 핫스왑, OS/기기 호환, 키캡/하우징, 구매 전 체크를 비교하도록 구성했습니다.
+- **A/B 제조사 필터 분리**: 제품 A와 제품 B의 제조사 필터를 따로 적용할 수 있게 했고, 필터는 선택 목록만 줄이며 추천 점수나 정렬은 만들지 않았습니다.
+- **비교 메인 연결**: `/kr/compare` 키보드 카드에서 `/kr/compare/keyboard`로 이동할 수 있게 했고, sitemap에는 실제 생성한 route만 추가했습니다.
+- **제한 유지**: 제품 데이터, Finder 로직, 광고/제휴 링크, Project2 실제 연동, API/DB, GA4/Search Console 구조는 수정하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

@@ -1,16 +1,16 @@
 # Project7 VS Compare Structure Plan
 
-Last updated: 2026-06-07 Mouse Compare Picker Mock 1
+Last updated: 2026-06-07 Keyboard Compare Picker Mock 1
 
-Scope: structure planning, compare main mock, first mouse compare detail mock, and first Mouse Compare Picker mock only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+Scope: structure planning, compare main mock, first mouse compare detail mock, first Mouse Compare Picker mock, and first Keyboard Compare Picker mock only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
 
 ## 0. 진행 상태
 
 - Phase 0 문서화 완료.
 - Phase 1 `/kr/compare` 메인 mock 완료.
 - Phase 2 첫 mouse compare mock으로 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 상세 페이지를 추가했다.
-- 현재 `/kr/compare`는 비교 카테고리 카드와 첫 마우스 비교 상세 링크를 제공한다.
-- Compare Picker는 후속 도구형 확장 후보로 별도 문서 `docs/compare-picker-structure-plan.md`에 설계했고, Phase 1로 `/kr/compare/mouse` mock을 추가했다.
+- 현재 `/kr/compare`는 비교 카테고리 카드, 마우스 직접 비교 Picker, 키보드 직접 비교 Picker, 첫 마우스 비교 상세 링크를 제공한다.
+- Compare Picker는 후속 도구형 확장 후보로 별도 문서 `docs/compare-picker-structure-plan.md`에 설계했고, Phase 1로 `/kr/compare/mouse` mock을, Phase 4 첫 구현으로 `/kr/compare/keyboard` mock을 추가했다.
 - 자동 비교기, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
 
 ## 1. VS Compare의 목적
@@ -51,11 +51,11 @@ VS Compare는 벤치마크 수치를 복제하는 페이지가 아니다. 핵심
 
 ## 3. URL 구조 후보
 
-이번 작업에서는 실제 route를 생성하지 않는다. 아래는 장기 URL 설계 후보만 기록한다.
+초기 문서화 단계에서는 route 후보만 기록했으며, 이후 mock 진행에 따라 실제 생성된 route는 아래에 따로 표시한다.
 
 - `/kr/compare`
 - `/kr/compare/mouse`
-- `/kr/compare/keyboard`
+- `/kr/compare/keyboard` - 실제 route 생성됨, 키보드 직접 비교 Picker mock
 - `/kr/compare/monitor`
 - `/kr/compare/cpu`
 - `/kr/compare/gpu`

@@ -26,6 +26,8 @@ const compareCategories = [
     description: "배열과 스위치만 보지 않고 소음, 연결 방식, 핫스왑, OS 호환성까지 같이 살펴봅니다.",
     points: ["배열", "스위치", "소음", "핫스왑", "OS 호환성"],
     icon: Keyboard,
+    href: "/kr/compare/keyboard",
+    badge: "picker mock",
   },
   {
     title: "모니터 비교",
@@ -73,7 +75,7 @@ export default function ComparePage() {
           <div className="space-y-1.5">
             <h2 className="text-xl font-bold tracking-tight text-[var(--primary)] md:text-2xl">비교 카테고리</h2>
             <p className="text-sm leading-relaxed text-[var(--muted)]">
-              현재는 마우스 비교 상세 1개를 먼저 열고, 나머지 카테고리는 기준과 방향만 보여주는 mock 단계입니다.
+              현재는 마우스와 키보드 직접 비교 Picker를 열고, 나머지 카테고리는 기준과 방향만 보여주는 mock 단계입니다.
             </p>
           </div>
           <span className="w-fit rounded-full border border-[var(--border)] bg-[var(--secondary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--accent)]">
@@ -118,9 +120,9 @@ export default function ComparePage() {
                       </Link>
                     </div>
                   ) : "href" in category ? (
-                    <span className="mt-5 inline-flex text-xs font-bold uppercase tracking-widest text-[var(--accent)]">
-                      비교 보기
-                    </span>
+                    <Link href={category.href} className="mt-5 inline-flex w-fit text-xs font-bold uppercase tracking-widest text-[var(--accent)] hover:text-[var(--primary)]">
+                      직접 비교하기
+                    </Link>
                   ) : null}
                 </div>
               </>

@@ -1142,3 +1142,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 검수 결과 `npm run lint`와 `npm run build`를 통과했다.
 - 명확한 버그가 없어 앱 코드는 수정하지 않았고, 이번 작업에서는 Sync QA 결과만 문서에 기록했다.
 - 제품 데이터, Finder 추천 로직, Compare 로직, 광고/AdSense/제휴 링크, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Keyboard Compare Picker Mock 1 - 2026-06-07 기록
+
+- `/kr/compare` 확장 흐름의 두 번째 선택형 비교 도구로 `/kr/compare/keyboard` 정적 picker mock 페이지를 추가했다.
+- `KEYBOARD_DATABASE`를 read-only로 사용해 화면 표시용 키보드 목록을 만들고, client component에는 `brand/name/summary/basicFilters/advancedFilters/detailSpecs/rawSpecs` 중 비교 표시에 필요한 필드만 넘겼다.
+- 기본 선택값은 `AULA F75`와 `NuPhy Halo75 V2`로 두었고, 사용자가 제품 A/B select를 바꾸면 선택 제품 요약 카드와 기본 비교표가 바뀌도록 했다.
+- 제품 A와 제품 B의 제조사 필터를 분리했다. `전체`는 나머지 선택을 해제하고, 개별 브랜드는 다중 선택/재클릭 해제를 지원한다.
+- 비교 항목은 배열, 스위치 성향, 소음, 연결 방식, 상세 연결, 핫스왑, OS/기기 호환, 키캡/하우징, 휴대성, 게임/사무/코딩 사용, 구매 전 체크로 구성했다.
+- 부족하거나 판매처별 옵션 차이가 큰 정보는 `확인 필요`, `판매처/제조사 기준 확인` 톤으로 표시했다.
+- `/kr/compare` 메인의 키보드 비교 카드는 `/kr/compare/keyboard` 직접 비교 페이지로 연결했다. 다른 카테고리에는 존재하지 않는 상세 링크를 만들지 않았다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare/keyboard`만 priority 0.5로 추가했다.
+- `docs/compare-picker-structure-plan.md`와 `docs/vs-compare-structure-plan.md`에는 Keyboard Compare Picker Mock 1 진행 상태를 반영했다.
+- 제품 데이터 수정, 새 제품 추가, Finder 로직 수정, 추천/정렬 기능 추가, 제품 이미지/링크 노출, 광고/제휴/구매 버튼, Project2 실제 연동, API/DB/Supabase, CPU/GPU 데이터, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
