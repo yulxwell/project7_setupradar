@@ -399,6 +399,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **validator 통과**: `npm run product-patch:validate -- ./tmp/product-patch-mouse-batch-1.json` 결과 errors 0, warnings 0으로 통과했습니다. 신규 후보는 `Lamzu Thorn`, `Logitech MX Anywhere 3S` 2개이고, `Lamzu Maya X`는 기존 `Lamzu Maya`와 이름 유사 중복 후보로 잡혀 수동 검토가 필요합니다.
 - **구현 보류**: 제품 TS 데이터 직접 반영, snapshot export, Finder/Compare 로직 변경, 제품 이미지/구매 링크/shellReferences 추가는 하지 않았습니다.
 
+### Mouse Product Patch Batch 1 Manual Apply - 2026-06-07
+- **제품 TS 반영**: `tmp/product-patch-mouse-batch-1.json`의 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 3S`를 `src/content/kr/products/mice.ts`에 `review` 상태로 수동 추가했습니다.
+- **Maya X 수동 승인**: validator는 `Lamzu Maya X`를 기존 `Lamzu Maya`와 `brand + name 유사`로 분류하지만, 별도 모델 후보로 보고 id/slug를 분리해 반영했습니다.
+- **snapshot/validator 확인**: `npm run snapshot:export` 통과 후 마우스 제품 수가 17개로 확인됐고, patch validator 재실행 결과 신규 후보 0개, 기존 중복 후보 3개, warnings 0, errors 0으로 통과했습니다.
+- **제한 유지**: Finder/Compare 로직, 광고/제휴 링크, 제품 이미지/구매 링크, shellReferences, API/DB/Supabase, Control Tower, package 설정은 수정하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.

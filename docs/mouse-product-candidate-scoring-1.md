@@ -246,3 +246,47 @@ Lamzu Maya X 처리 메모:
 - snapshot export 미실행
 - Finder/Compare 로직 수정 없음
 - 제품 이미지/구매 링크/shellReferences 추가 없음
+
+## 9. Mouse Product Patch Batch 1 Manual Apply 결과
+
+반영일: 2026-06-07
+
+실제 반영 파일:
+
+- `src/content/kr/products/mice.ts`
+
+실제 반영 제품:
+
+1. Lamzu Maya X
+2. Lamzu Thorn
+3. Logitech MX Anywhere 3S
+
+반영 방식:
+
+- 세 제품 모두 `status: "review"`로 추가했다.
+- `productImages`, `productLinks`, `shellReferences`, 최상위 `sources` 필드는 추가하지 않았다.
+- Finder/Compare 로직은 수정하지 않고, 기존 제품 데이터 구조에 새 제품 항목만 추가했다.
+- 공식 스펙/패키지 차이와 추가 확인 사항은 각 제품의 `rawSpecs.note`에 남겼다.
+
+Lamzu Maya X 수동 승인:
+
+- validator는 `Lamzu Maya X`를 기존 `Lamzu Maya`와 `brand + name 유사`로 분류한다.
+- 이번 수동 반영에서는 `Maya`와 `Maya X`를 별도 모델 후보로 보고 `id: "lamzu-maya-x"`, `slug: "lamzu-maya-x"`로 분리했다.
+- `rawSpecs.note`에는 기존 Maya와 이름이 유사하지만 별도 모델 후보로 수동 검토 후 `review` 상태 반영했다는 메모를 남겼다.
+- 기존 `Lamzu Maya` 항목은 덮어쓰지 않았다.
+
+제품별 `rawSpecs.note` 요약:
+
+- Lamzu Maya X: 공식 모델 페이지와 색상/패키지 variant 확인, 124.4 x 64.9 x 39.6mm, 47g, PAW3950, 8K 관련 공개 스펙 참고, 수신기/색상/번들/지역별 패키지 확인 필요.
+- Lamzu Thorn: Thorn 4K Compatible 모델 페이지 확인, 52g급, PAW3395, 4K 관련 패키지 정보 참고, 일반판/협업판의 번들/수신기/색상/판매 가능 여부 확인 필요.
+- Logitech MX Anywhere 3S: Logitech Support 기준 소비자용 연결/크기/무게/DPI/배터리 정보를 정리했고, Business datasheet와 무게/수신기 구성이 다를 수 있어 소비자용/비즈니스용 구분 필요.
+
+검수 결과:
+
+- `npm run snapshot:export`: 통과
+- snapshot summary: 마우스 제품 17개, 키보드 제품 12개, product images 0, product links 0
+- snapshot warnings: 50개. 기존 `review` 상태와 공개 전 shell reference 관련 경고이며 validation은 통과했다.
+- `npm run product-patch:validate -- ./tmp/product-patch-mouse-batch-1.json`: 통과
+- validator 재실행 결과: 신규 추가 후보 0개, 기존 중복 후보 3개, warnings 0, errors 0
+- `Lamzu Maya X`는 반영 후에도 기존 `Lamzu Maya`와 `brand + name 유사`로 잡힌다. 이 판정은 자동 병합이 아니라 수동 승인 기록으로 관리한다.
+- 금지 표현 점검: 새 제품 데이터와 patch JSON에서 금지 표현 없음.

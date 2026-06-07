@@ -1232,3 +1232,24 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/mouse-product-candidate-scoring-1.md`에 patch 생성 결과와 validator 결과를 기록했다.
 - `README.md`에 Mouse Product Patch Batch 1 기록을 추가했다.
 - `src/content/kr/products/mice.ts` 직접 수정, 실제 제품 DB 추가, snapshot export, Finder/Compare 로직 수정, 광고/제휴 링크, Project2 실제 연동, API/DB/Supabase, package 설정, 도메인 설정, 제품 이미지/구매 링크, shellReferences 추가는 하지 않았다.
+
+## Mouse Product Patch Batch 1 Manual Apply - 2026-06-07 기록
+
+- 검증 완료된 `tmp/product-patch-mouse-batch-1.json`의 마우스 후보 3개를 `src/content/kr/products/mice.ts`에 수동 반영했다.
+- 실제 반영 제품은 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 3S`다.
+- 세 제품 모두 `status: "review"`로 추가했고, 기존 제품을 덮어쓰지 않았다.
+- `Lamzu Maya X`는 validator에서 기존 `Lamzu Maya`와 `brand + name 유사`로 잡히지만, 별도 모델 후보로 수동 승인해 `id: "lamzu-maya-x"`, `slug: "lamzu-maya-x"`로 분리 반영했다.
+- `Lamzu Maya X`의 `rawSpecs.note`에는 기존 Maya와 이름이 유사하지만 별도 모델 후보로 수동 검토 후 `review` 상태로 반영했다는 메모를 남겼다.
+- `Lamzu Thorn`은 오른손용 비대칭형 경량 무선 후보로 반영했고, 일반판/협업판의 번들, 수신기 포함 여부, 색상, 판매 가능 여부 확인 필요 사항을 `rawSpecs.note`에 남겼다.
+- `Logitech MX Anywhere 3S`는 사무/휴대용 마우스 축으로 반영했고, Logitech Support와 Business datasheet의 무게/수신기 표기 차이와 소비자용/비즈니스용 패키지 구분 필요 사항을 `rawSpecs.note`에 남겼다.
+- 제품 데이터 수는 `src/content/kr/products/mice.ts` 기준 14개에서 17개로 늘었다.
+- `npm run snapshot:export`를 실행했고, snapshot validation은 warnings 50개와 함께 통과했다. 경고는 기존 `review` 상태와 공개 전 shell reference 관련 안내이며, 새 제품도 `review` 상태라 QA snapshot 경고에 포함됐다.
+- snapshot summary 기준 마우스 제품 17개, 키보드 제품 12개, product images 0, product links 0으로 확인했다.
+- `npm run product-patch:validate -- ./tmp/product-patch-mouse-batch-1.json` 재실행 결과 신규 추가 후보 0개, 기존 중복 후보 3개, warnings 0, errors 0으로 통과했다.
+- 재실행 후 중복 후보는 `Lamzu Maya X -> 기존 Lamzu Maya`, `Lamzu Thorn -> 기존 Lamzu Thorn`, `Logitech MX Anywhere 3S -> 기존 Logitech MX Anywhere 3S`로 잡혔다.
+- `Lamzu Maya X`가 계속 기존 `Lamzu Maya`와 이름 유사로 잡히는 것은 수동 승인 반영 사유로 문서화했고, validator 로직은 수정하지 않았다.
+- 금지 표현 검색 결과 새 제품 데이터와 patch JSON에서는 금지 표현이 잡히지 않았다.
+- `npm run lint`와 `npm run build`를 통과했다.
+- `docs/mouse-product-candidate-scoring-1.md`에는 실제 반영 결과, Maya X 수동 승인, 제품별 `rawSpecs.note` 요약, snapshot/validator 결과를 추가했다.
+- `README.md`에 Mouse Product Patch Batch 1 Manual Apply 기록을 추가했다.
+- Finder 로직, Compare 로직, validator 로직, 광고/AdSense/제휴 링크, 제품 이미지/구매 링크, shellReferences, Project2 실제 연동, API/DB/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
