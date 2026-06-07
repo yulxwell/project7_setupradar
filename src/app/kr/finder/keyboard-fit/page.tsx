@@ -512,7 +512,7 @@ function CompactOptionGroup({
   const selected = group.options.find((option) => option.value === value);
 
   return (
-    <section className="rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3">
+    <section className="rounded-xl border border-[var(--accent)]/35 bg-[var(--accent)]/[0.04] p-3 shadow-sm shadow-[var(--accent)]/5">
       <div className="mb-2 flex flex-col gap-1">
         <h2 className="text-sm font-bold text-[var(--primary)]">{group.label}</h2>
         <p className="text-[11px] leading-snug text-[var(--muted)]">{group.helperText}</p>
@@ -661,7 +661,7 @@ export default function KeyboardFitPage() {
               배열, 키감, 소음, 연결 방식, OS처럼 사용 환경에 맞춰 볼 조건입니다.
             </p>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3 md:col-span-2">
+          <div className="flex items-center justify-between gap-3 rounded-xl border border-[var(--accent)]/35 bg-[var(--accent)]/[0.04] p-3 shadow-sm shadow-[var(--accent)]/5 md:col-span-2">
             <div>
               <h2 className="text-sm font-bold text-[var(--primary)]">상세 기준</h2>
               <p className="mt-1 text-[11px] leading-snug text-[var(--muted)]">
@@ -729,7 +729,7 @@ export default function KeyboardFitPage() {
                 value={advancedValues.legends}
                 onChange={(value) => updateAdvancedValue("legends", value as KeyboardAdvancedValues["legends"])}
               />
-              <div className="rounded-xl border border-[var(--accent)]/15 bg-[var(--accent)]/[0.03] p-3 md:col-span-2">
+              <div className="rounded-xl border border-[var(--accent)]/35 bg-[var(--accent)]/[0.04] p-3 shadow-sm shadow-[var(--accent)]/5 md:col-span-2">
                 <p className="text-[11px] leading-relaxed text-[var(--muted)]">
                   상세 기준은 제품 후보를 더 좁히기 위한 참고 조건입니다. 태블릿/iPad 사용 시 배열·블루투스·거치 환경을 함께 확인해 주세요.
                 </p>
@@ -752,12 +752,12 @@ export default function KeyboardFitPage() {
         </div>
 
         <aside className="space-y-3 xl:sticky xl:top-20 xl:self-start">
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--secondary)]/30 p-3">
+          <div className="rounded-xl border border-[var(--accent)]/35 bg-[var(--accent)]/[0.04] p-3 shadow-sm shadow-[var(--accent)]/5">
             <h2 className="text-base font-bold text-[var(--primary)]">추천 결과</h2>
-            <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">현재 데이터에 있는 조건만 점수화한 참고용 결과입니다.</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-[var(--accent)] opacity-85">현재 데이터에 있는 조건만 점수화한 참고용 결과입니다.</p>
           </div>
 
-          <div className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3">
+          <div className="rounded-xl border border-[var(--accent)]/35 bg-[var(--accent)]/[0.04] p-3 shadow-sm shadow-[var(--accent)]/5">
             <div className="mb-2 flex items-center justify-between gap-2">
               <p className="text-xs font-black text-[var(--primary)]">제조사 필터</p>
               <span className="text-[10px] font-bold text-[var(--muted)]">{filteredKeyboards.length}개 후보</span>
