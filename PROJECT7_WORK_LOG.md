@@ -1114,13 +1114,13 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 
 - Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/compare/mouse`, `https://setupradar.pages.dev/kr/compare`, `https://setupradar.pages.dev/kr/compare/mouse/lamzu-maya-vs-zowie-u2`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
 - `/kr/compare/mouse`는 HTTP 200으로 열렸고, 제품 A/B 선택 UI, 기본값 `Lamzu Maya` / `Zowie U2`, 제품 요약 카드, 기본 비교표, 차이 요약, 관련 내부 링크가 노출되는 것을 확인했다.
-- 라이브 HTML과 client component 구조 기준으로 A/B select가 `useState`와 `onChange`에 연결되어 선택 변경 시 요약 카드와 비교표가 바뀌는 구조임을 확인했다.
+- 라이브 화면에서 제품 A를 `Logitech G304`, 제품 B를 `Razer Viper V3 Pro`로 변경했을 때 선택값, 요약 카드, 비교표가 함께 갱신되는 것을 확인했다.
 - 비교 항목은 형태, 손 크기 기준, 무게 기준, 연결 방식, 상세 연결, 게임/FPS 사용, 사무/일상 사용, 클릭/휠/사이드 버튼, 배터리/충전, 쉘 체감 참고, 구매 전 체크 기준으로 표시됐다.
 - 정보가 부족하거나 판매처별 차이가 큰 항목은 `확인 필요`, 판매처/제조사 기준 확인 톤으로 처리됐다.
 - `/kr/compare` 마우스 카드의 `직접 비교하기` 링크는 `/kr/compare/mouse`로, `첫 고정 비교 보기` 링크는 고정 상세 페이지로 연결됐다.
 - 고정 비교 상세 페이지의 `다른 마우스도 직접 비교하기` 링크가 `/kr/compare/mouse`로 연결됐다.
 - root `/sitemap.xml`과 `/kr/sitemap.xml`에 `/kr/compare/mouse`가 포함됐고, `/kr/compare/mouse/custom`, `/kr/compare/keyboard`, `/kr/compare/cpu` 등 미구현 picker/detail URL은 포함되지 않았다.
-- 모바일 390px 기준은 소스 구조상 제품 선택 UI, 요약 카드, 비교표가 1열로 전환되도록 구성되어 가로 넘침 위험이 낮음을 확인했다.
+- 모바일 390px viewport에서 제품 선택 UI, 요약 카드, 비교표가 표시됐고 가로 넘침이 없음을 확인했다.
 - 내부 `status`, `productImages`, `productLinks`는 client component로 전달하지 않으며 사용자 화면에 노출되지 않는 구조를 확인했다.
 - 광고/제휴/구매 버튼/Project2 실제 링크, API/DB/Supabase 연결은 확인되지 않았다.
 - 금지 표현 목록 노출은 확인되지 않았다.
