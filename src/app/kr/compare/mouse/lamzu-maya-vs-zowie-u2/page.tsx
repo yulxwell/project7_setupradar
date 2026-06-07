@@ -106,6 +106,7 @@ const buyingChecklist = [
 ] as const;
 
 const relatedLinks = [
+  { href: "/kr/compare/mouse", label: "다른 마우스도 직접 비교하기" },
   { href: "/kr/finder/mouse-fit", label: "마우스 Finder" },
   { href: "/kr/guides/mouse-buying-checklist", label: "마우스 구매 전 체크리스트" },
   { href: "/kr/guides/mouse-shape-symmetrical-vs-ergonomic", label: "대칭형 vs 오른손용 비대칭형" },
@@ -146,7 +147,7 @@ export default function LamzuMayaVsZowieU2Page() {
         <div className="mb-7 border-b border-[var(--border)] pb-5">
           <h2 className="text-xl font-bold text-[var(--primary)] md:text-2xl">요약 비교</h2>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-            두 제품 모두 기존 Project7 마우스 데이터에 있는 review 제품이며, 새 스펙을 추가하지 않고 확인 가능한 정보만 사용했습니다.
+            두 제품 모두 기존 Project7 마우스 데이터에 있는 제품이며, 새 스펙을 추가하지 않고 확인 가능한 정보만 사용했습니다.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">

@@ -197,6 +197,14 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **데이터 원칙 정리**: 기존 `MOUSE_DATABASE`를 읽되 제품 데이터는 수정하지 않고, 부족한 정보는 `확인 필요` 톤으로 표시하며 `review/status`, `productImages`, `productLinks`는 초기 화면에 노출하지 않는 기준을 기록했습니다.
 - **미구현 유지**: 실제 Compare Picker route, 제품 데이터 수정, API/DB/Supabase, Project2 실제 연동, 광고/제휴 코드, Finder 로직, GA4/Search Console 구조, package 설정은 수정하지 않았습니다.
 
+### Mouse Compare Picker Mock 1 - 2026-06-07
+- **마우스 직접 비교 페이지 추가**: `/kr/compare/mouse`에 사용자가 마우스 A/B를 직접 선택해 기본 비교표를 볼 수 있는 1차 picker mock을 추가했습니다.
+- **기존 데이터 read-only 사용**: `MOUSE_DATABASE`에서 화면 표시용 필드만 추려 넘기고, 제품 데이터 파일은 수정하지 않았습니다. 기본 선택값은 `Lamzu Maya`와 `Zowie U2`입니다.
+- **비교 화면 구성**: 제품 A/B select, 선택 제품 요약 카드, 형태/손 크기/무게/연결/게임·일상 사용/배터리/쉘 체감/구매 전 체크 비교표, 차이 요약, 관련 내부 링크를 구성했습니다.
+- **Compare 연결 보강**: `/kr/compare` 마우스 카드에서 직접 비교 페이지로 이동하게 하고, 기존 고정 비교 상세 하단에는 `다른 마우스도 직접 비교하기` 링크를 추가했습니다.
+- **sitemap 반영**: root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare/mouse`만 낮은 priority로 추가했습니다.
+- **미변경 유지**: 제품 데이터, Finder 로직, 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, API/DB/Supabase, CPU/GPU 데이터, 키보드 picker, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았습니다.
+
 ### Real New Product Patch Trial - 2026-05-28
 - **실제 신규 후보 trial**: 기존 제품 목록과 snapshot에서 중복 여부를 확인한 뒤 `Pulsar Xlite V3 Large`, `Ninjutso Sora V2 8K`, `Keychron V1 Max` 3개로 `product_config_patch` trial을 만들었습니다.
 - **validator 결과**: `npm run product-patch:validate -- ./tmp/product-patch-real-new-trial.json` 실행 결과 신규 추가 후보 3개, 기존 중복 후보 0개, errors 0개로 분류되었습니다.

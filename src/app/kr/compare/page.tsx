@@ -17,8 +17,9 @@ const compareCategories = [
     points: ["쉘 형태", "무게", "연결 방식", "클릭감", "AS 조건"],
     icon: MousePointer2,
     example: "Lamzu Maya vs Zowie U2",
-    href: "/kr/compare/mouse/lamzu-maya-vs-zowie-u2",
-    status: "mock 공개",
+    href: "/kr/compare/mouse",
+    fixedHref: "/kr/compare/mouse/lamzu-maya-vs-zowie-u2",
+    badge: "picker mock",
   },
   {
     title: "키보드 비교",
@@ -90,12 +91,12 @@ export default function ComparePage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <span className="rounded-full border border-[var(--border)] bg-[var(--secondary)] px-2.5 py-1 text-[10px] font-bold text-[var(--muted)]">
-                    {"status" in category ? category.status : "설계 중"}
+                    {"badge" in category ? category.badge : "설계 중"}
                   </span>
                 </div>
                 <h3 className="text-base font-bold text-[var(--primary)]">{category.title}</h3>
                 {"example" in category ? (
-                  <p className="mt-2 text-xs font-bold text-[var(--accent)]">{category.example}</p>
+                  <p className="mt-2 text-xs font-bold text-[var(--accent)]">직접 비교 + {category.example}</p>
                 ) : null}
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--muted)]">{category.description}</p>
                 <div className="mt-5 border-t border-[var(--border)] pt-4">
@@ -107,7 +108,16 @@ export default function ComparePage() {
                       </span>
                     ))}
                   </div>
-                  {"href" in category ? (
+                  {"fixedHref" in category ? (
+                    <div className="mt-5 flex flex-col gap-2 text-xs font-bold uppercase tracking-widest text-[var(--accent)]">
+                      <Link href={category.href} className="w-fit hover:text-[var(--primary)]">
+                        직접 비교하기
+                      </Link>
+                      <Link href={category.fixedHref} className="w-fit normal-case tracking-normal text-[var(--muted)] hover:text-[var(--accent)]">
+                        첫 고정 비교 보기
+                      </Link>
+                    </div>
+                  ) : "href" in category ? (
                     <span className="mt-5 inline-flex text-xs font-bold uppercase tracking-widest text-[var(--accent)]">
                       비교 보기
                     </span>
@@ -116,15 +126,11 @@ export default function ComparePage() {
               </>
             );
 
-            if ("href" in category) {
+            if ("fixedHref" in category) {
               return (
-                <Link
-                  key={category.title}
-                  href={category.href}
-                  className="group flex min-h-[300px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-sm"
-                >
+                <article key={category.title} className="flex min-h-[300px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
                   {cardContent}
-                </Link>
+                </article>
               );
             }
 

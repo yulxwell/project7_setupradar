@@ -1096,3 +1096,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 고정 비교 페이지는 SEO용, Picker는 도구용으로 역할을 분리하고, 고정 상세 페이지에서 `다른 마우스도 직접 비교하기` 링크를 추가할 수 있는 후속 연결 방향을 기록했다.
 - `docs/vs-compare-structure-plan.md`에는 Compare Picker를 Phase 2.5 후속 확장 후보로 연결했다.
 - 실제 Compare Picker route, 제품 데이터 수정, 새 제품 추가, API/DB/Supabase, Project2 실제 연동, 광고/제휴 코드, Finder 로직, GA4/Search Console 구조, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Mouse Compare Picker Mock 1 - 2026-06-07 기록
+
+- Compare Picker Phase 1로 `/kr/compare/mouse` 정적 picker mock 페이지를 추가했다.
+- `MOUSE_DATABASE`를 read-only로 사용해 화면 표시용 마우스 목록을 만들고, client component에는 `brand/name/summary/basicFilters/advancedFilters/detailSpecs/rawSpecs` 중 필요한 필드만 넘겼다.
+- 기본 선택값은 `Lamzu Maya`와 `Zowie U2`로 두었고, 사용자가 제품 A/B select를 바꾸면 선택 제품 요약 카드와 기본 비교표가 바뀌도록 했다.
+- 비교 항목은 형태, 손 크기 기준, 무게 기준, 연결 방식, 상세 연결, 게임/FPS 사용, 사무/일상 사용, 클릭/휠/사이드 버튼, 배터리/충전, 쉘 체감 참고, 구매 전 체크로 구성했다.
+- 부족하거나 판매처별 차이가 큰 정보는 `확인 필요`, `판매처/제조사 기준 확인` 톤으로 표시했다.
+- `/kr/compare` 메인 마우스 카드는 `/kr/compare/mouse` 직접 비교 페이지로 연결하고, 기존 `Lamzu Maya vs Zowie U2` 고정 비교 링크도 카드 안에 유지했다.
+- `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 관련 링크에는 `다른 마우스도 직접 비교하기` 링크를 추가했다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에 실제 새 route인 `/kr/compare/mouse`만 priority 0.5로 추가했다.
+- `docs/compare-picker-structure-plan.md`와 `docs/vs-compare-structure-plan.md`에는 Phase 1 진행 상태를 반영했다.
+- 제품 데이터 수정, 새 제품 추가, Finder 로직 수정, 추천/정렬 기능 추가, 제품 이미지/링크 노출, 광고/제휴/구매 버튼, Project2 실제 연동, API/DB/Supabase, CPU/GPU 데이터, 키보드 picker, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.

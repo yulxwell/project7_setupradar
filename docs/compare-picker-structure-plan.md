@@ -1,8 +1,15 @@
 # Project7 Compare Picker Structure Plan
 
-Last updated: 2026-06-07
+Last updated: 2026-06-07 Mouse Compare Picker Mock 1
 
-Scope: structure planning only. No Compare Picker implementation, product data update, new products, API/DB/Supabase, Project2 integration, ad/affiliate code, Finder logic change, GA4/Search Console structure change, package change, or domain change.
+Scope: structure planning and first Mouse Compare Picker mock only. No product data update, new products, API/DB/Supabase, Project2 integration, ad/affiliate code, Finder logic change, GA4/Search Console structure change, package change, or domain change.
+
+## 0. 진행 상태
+
+- Phase 0 Compare Picker 구조 문서화를 완료했다.
+- Phase 1 `/kr/compare/mouse` 정적 picker mock을 완료했다.
+- 현재 `/kr/compare/mouse`는 기존 `MOUSE_DATABASE`에서 sanitized 제품 목록을 읽고, 사용자가 A/B 제품을 선택해 기본 비교표를 볼 수 있다.
+- 형태/무게/연결/크기 필터, URL 공유, keyboard picker, CPU/GPU picker는 아직 구현하지 않았다.
 
 ## 1. Compare Picker 목적
 
@@ -174,6 +181,9 @@ URL 공유 후보:
 - A/B select 또는 버튼 선택을 제공한다.
 - 비교 결과는 브랜드, 이름, 형태, 크기, 무게, 연결 방식 같은 기본 필드만 표시한다.
 - 제품 이미지, 제품 링크, 가격/제휴 링크는 노출하지 않는다.
+- 2026-06-07 Mouse Compare Picker Mock 1에서 `/kr/compare/mouse` route를 추가했다.
+- 기본 선택값은 `Lamzu Maya`와 `Zowie U2`이며, 사용자가 select box로 제품 A/B를 바꾸면 요약 카드와 비교표가 즉시 바뀐다.
+- 내부 `review/status`, `productImages`, `productLinks`는 client component로 넘기지 않고 화면에 노출하지 않는다.
 
 ### Phase 2: 필터 추가
 

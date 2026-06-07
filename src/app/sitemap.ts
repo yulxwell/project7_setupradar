@@ -7,6 +7,7 @@ const baseUrl = "https://setupradar.pages.dev";
 const routes = [
   "/kr",
   "/kr/compare",
+  "/kr/compare/mouse",
   "/kr/compare/mouse/lamzu-maya-vs-zowie-u2",
   "/kr/finder/mouse-fit",
   "/kr/finder/keyboard-fit",
@@ -55,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(route.startsWith("/kr/compare") ? "2026-06-07" : route === "/kr/contact" ? "2026-06-03" : "2026-05-29"),
     changeFrequency: route === "/kr" ? "weekly" : "monthly",
-    priority: route === "/kr/compare/mouse/lamzu-maya-vs-zowie-u2"
+    priority: route === "/kr/compare/mouse" || route === "/kr/compare/mouse/lamzu-maya-vs-zowie-u2"
       ? 0.5
       : route === "/kr/compare"
       ? 0.6

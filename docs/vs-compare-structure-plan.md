@@ -1,8 +1,8 @@
 # Project7 VS Compare Structure Plan
 
-Last updated: 2026-06-07 Compare Picker Structure Plan
+Last updated: 2026-06-07 Mouse Compare Picker Mock 1
 
-Scope: structure planning, compare main mock, first mouse compare detail mock, and Compare Picker structure planning only. No Compare Picker implementation, automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
+Scope: structure planning, compare main mock, first mouse compare detail mock, and first Mouse Compare Picker mock only. No automatic compare engine, CPU/GPU data, product data update, Finder logic change, ad/affiliate code, Project2 integration, RSS/API/DB/Supabase, crawler, GA4/Search Console structure, Control Tower, package, or domain changes.
 
 ## 0. 진행 상태
 
@@ -10,7 +10,7 @@ Scope: structure planning, compare main mock, first mouse compare detail mock, a
 - Phase 1 `/kr/compare` 메인 mock 완료.
 - Phase 2 첫 mouse compare mock으로 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2` 상세 페이지를 추가했다.
 - 현재 `/kr/compare`는 비교 카테고리 카드와 첫 마우스 비교 상세 링크를 제공한다.
-- Compare Picker는 후속 도구형 확장 후보로 별도 문서 `docs/compare-picker-structure-plan.md`에 설계했다.
+- Compare Picker는 후속 도구형 확장 후보로 별도 문서 `docs/compare-picker-structure-plan.md`에 설계했고, Phase 1로 `/kr/compare/mouse` mock을 추가했다.
 - 자동 비교기, CPU/GPU 데이터, 제품 데이터 기반 비교 로직은 아직 만들지 않았다.
 
 ## 1. VS Compare의 목적
@@ -295,7 +295,8 @@ VS Compare는 제품 하나를 정답처럼 밀어주는 페이지가 아니다.
 - 고정 비교 페이지는 SEO용으로 유지하고, Compare Picker는 사용자가 제품 A/B를 직접 선택하는 도구형 기능으로 설계한다.
 - 첫 후보 route는 `/kr/compare/mouse`이며, `MOUSE_DATABASE`를 읽어 A/B 선택, 간단 필터, 비교 결과 테이블을 보여주는 방향을 검토한다.
 - 자세한 UX 후보, 데이터 사용 원칙, 모바일 원칙, 구현 단계는 `docs/compare-picker-structure-plan.md`에 기록했다.
-- 2026-06-07 Compare Picker Structure Plan 작업에서는 문서화만 진행했고 실제 picker route나 제품 데이터 연결은 만들지 않았다.
+- 2026-06-07 Compare Picker Structure Plan 작업에서는 문서화만 진행했고, 이후 Mouse Compare Picker Mock 1에서 `/kr/compare/mouse` route와 기본 A/B 비교표를 추가했다.
+- Picker는 추천 점수나 자동 정렬 없이 사용자가 고른 두 제품만 비교한다.
 
 ### Phase 3: Keyboard compare mock 1개
 
