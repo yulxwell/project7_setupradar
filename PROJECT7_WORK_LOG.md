@@ -1253,3 +1253,22 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/mouse-product-candidate-scoring-1.md`에는 실제 반영 결과, Maya X 수동 승인, 제품별 `rawSpecs.note` 요약, snapshot/validator 결과를 추가했다.
 - `README.md`에 Mouse Product Patch Batch 1 Manual Apply 기록을 추가했다.
 - Finder 로직, Compare 로직, validator 로직, 광고/AdSense/제휴 링크, 제품 이미지/구매 링크, shellReferences, Project2 실제 연동, API/DB/Supabase, Control Tower, package 설정, 도메인 설정은 수정하지 않았다.
+
+## Mouse Product Batch 1 Live QA - 2026-06-12 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/finder/mouse-fit`, `https://setupradar.pages.dev/kr/compare/mouse`, `https://setupradar.pages.dev/kr/compare`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
+- `/kr/finder/mouse-fit`, `/kr/compare/mouse`, `/kr/compare`, root sitemap, KR sitemap 모두 HTTP 200으로 응답했다.
+- `/kr/compare/mouse` live HTML에서 제품 A/B select에 `Lamzu Maya X`, `Lamzu Thorn`, `Logitech MX Anywhere 3S`가 포함된 것을 확인했다.
+- `/kr/compare/mouse`의 제조사 필터에는 `Lamzu`, `Logitech`이 포함됐고, 후보 수는 17개로 표시됐다.
+- Compare Picker client props는 `id`, `brand`, `name`, 요약/주의/구매 전 체크, basic/advanced/detail 일부 필드만 넘기며 `status`, `productImages`, `productLinks`, `shellReferences`는 넘기지 않는 구조를 확인했다.
+- 제품 A/B select 변경 시 `productAId`, `productBId` state로 선택 제품을 다시 찾고, 요약 카드와 비교표를 선택 제품 기준으로 다시 계산하는 구조를 코드로 확인했다.
+- Finder 조건 점수 계산을 현재 데이터 기준으로 재현해 확인했다. `Lamzu Maya X`는 큰 손/대칭형/가벼운 무선/FPS 상세 기준 조합에서 1위 후보로 계산됐고, `Lamzu Thorn`은 중간 손/오른손용 비대칭형/가벼운 무선/FPS 상세 기준 조합에서 1위 후보로 계산됐다.
+- `Logitech MX Anywhere 3S`는 작은 손/오른손용 비대칭형/보통 무게/무선/블루투스/사무 조건에서 1위 후보로 계산됐다.
+- `Logitech MX Anywhere 3S`는 `advancedFilters.gamingPerformance: "standard"`이고 사용자 문구도 사무/휴대용 축으로 작성돼 있어 제품 설명이 FPS 특화 후보처럼 보이지 않는 것을 확인했다. 다만 Finder가 soft matching 구조라 사용자가 손 크기/형태/무게/연결 조건을 강하게 맞추면 FPS 상세 기준을 선택해도 기본 조건 점수로 후보에 남을 수 있다.
+- Finder 결과 카드에는 `조건 반영`과 `구매 전 체크` 버튼이 렌더링되고, 조건 라벨은 참고용 톤을 유지했다.
+- live HTML 기준 새 제품 관련 금지 표현은 확인되지 않았다.
+- live 화면에서 `productImages`, `productLinks`, `shellReferences` 문자열은 확인되지 않았다.
+- 사용자 화면에는 `review/status` 필드가 직접 노출되지 않는다. 단, `Lamzu Maya X`의 `rawSpecs.note` 안에 수동 반영 운영 메모로 `review 상태` 문구가 있어 Next hydration payload에는 `review` 문자열이 1건 포함된다. visible UI 문제는 아니지만 후속 data copy cleanup 후보로 남긴다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`에는 기존 실제 route인 `/kr/compare/mouse`와 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2`만 포함됐고, 제품 상세 URL이나 `/kr/compare/mouse/custom`, CPU/GPU 상세 URL은 추가되지 않았다.
+- 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
+- 제품 데이터, Finder 점수 계산, Compare Picker 로직, validator 로직, 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
