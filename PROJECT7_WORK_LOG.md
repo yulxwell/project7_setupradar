@@ -1302,3 +1302,26 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - root `/sitemap.xml`과 `/kr/sitemap.xml`에는 기존 실제 route인 `/kr/compare/mouse`와 `/kr/compare/mouse/lamzu-maya-vs-zowie-u2`만 포함됐고, 제품 상세 URL이나 `/kr/compare/mouse/custom`, CPU/GPU 상세 URL은 추가되지 않았다.
 - 명확한 버그가 없어 앱 코드는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
 - 제품 데이터, Finder 점수 계산, Compare Picker 로직, validator 로직, 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
+
+## Mouse Collection Patch Batch 1 Live QA - 2026-06-13 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/finder/mouse-fit`, `https://setupradar.pages.dev/kr/compare/mouse`, `https://setupradar.pages.dev/kr/compare`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했다.
+- `/kr/finder/mouse-fit`, `/kr/compare/mouse`, `/kr/compare`, root sitemap, KR sitemap 모두 HTTP 200으로 응답했다.
+- `/kr/compare/mouse` live 제품 A/B select에 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro`가 포함된 것을 확인했다.
+- 브라우저에서 제품 A를 `Logitech MX Master 3S`, 제품 B를 `Razer Basilisk V3 Pro`로 직접 선택했고, 선택값과 요약/비교 화면이 갱신되는 것을 확인했다.
+- `/kr/compare/mouse` 제조사 필터에서 `Logitech` 선택 시 `Logitech MX Anywhere 3S`, `Logitech MX Master 3S`, `Logitech Lift`가 함께 남고 Razer 제품은 제외되는 것을 확인했다.
+- `/kr/compare/mouse` 제조사 필터에서 `Razer` 선택 시 `Razer DeathAdder V3 Pro`, `Razer Viper V3 Pro`, `Razer Basilisk V3 Pro`가 남고 Logitech 제품은 제외되는 것을 확인했다.
+- `Logitech MX Master 3S`는 작업 흐름, 멀티기기, 휠 중심의 후보로 표시됐고 게임/FPS 특화 후보처럼 보이지 않았다.
+- `Logitech Lift`는 버티컬, 조용한 클릭, 사무용 무선 후보로 표시됐고 의학적 효과를 단정하는 문구는 확인되지 않았다.
+- `Razer Basilisk V3 Pro`는 오른손용 다버튼 구조와 휠 기능을 함께 보는 고기능 무선 후보로 표시됐고 초경량 FPS 전용 후보처럼 과장되지 않았다.
+- `/kr/finder/mouse-fit` live 화면에서 `Logitech` 제조사 필터와 `후보 더 보기`를 사용해 `Logitech MX Anywhere 3S`, `Logitech MX Master 3S`, `Logitech Lift`가 후보 목록에 포함되는 것을 확인했다.
+- `/kr/finder/mouse-fit` live 화면에서 `Razer` 제조사 필터를 사용해 `Razer Basilisk V3 Pro`가 후보 목록에 포함되는 것을 확인했다.
+- `Razer Basilisk V3 Pro`의 `구매 전 체크` 패널을 열어 강점, 주의점, 구매 전 체크, 추가 스펙이 정상 표시되는 것을 확인했다.
+- Finder 조건 반영 라벨은 `조건을 넓게 본 참고용 후보입니다.` 등 참고용 톤을 유지했다.
+- 모바일 390px 기준으로 `/kr/compare/mouse`와 `/kr/finder/mouse-fit`의 문서 폭을 확인했고, 가로 넘침은 확인되지 않았다.
+- 사용자 화면 기준 `review`, `status`, `productImages`, `productLinks`, `shellReferences`는 노출되지 않았다.
+- live HTML payload에는 기존 `Lamzu Maya X` 운영 메모의 `review 상태` 문구가 1건 남아 있으나, 이번 신규 제품 3개와 무관하고 visible UI에는 직접 노출되지 않았다. 후속 data copy cleanup 후보로 유지한다.
+- root `/sitemap.xml`과 `/kr/sitemap.xml`은 정상 응답했고, 이번 작업은 새 route 추가가 아니므로 제품 상세 URL이나 미구현 picker/detail URL은 추가되지 않았다.
+- 새 제품 관련 화면에서 금지 표현은 확인되지 않았다.
+- 명확한 버그가 없어 앱 코드와 제품 데이터는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
+- Finder 점수 계산, Compare Picker 로직, validator 로직, 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
