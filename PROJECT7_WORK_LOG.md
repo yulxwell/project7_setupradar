@@ -1325,3 +1325,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 새 제품 관련 화면에서 금지 표현은 확인되지 않았다.
 - 명확한 버그가 없어 앱 코드와 제품 데이터는 수정하지 않았고, Live QA 결과만 문서에 기록했다.
 - Finder 점수 계산, Compare Picker 로직, validator 로직, 광고/AdSense/제휴 링크, 구매 버튼, Project2 실제 연동, API/DB/Supabase, GA4/Search Console 구조, Control Tower, package 설정은 수정하지 않았다.
+
+## Mouse Collection Patch Batch 1 Data Copy Cleanup - 2026-06-13 기록
+
+- Live QA에서 확인된 `Lamzu Maya X`의 `rawSpecs.note` 운영용 문구를 사용자에게 보여져도 어색하지 않은 스펙 확인 문구로 정리했다.
+- 기존 문구의 `수동 검토 후 review 상태로 반영했다` 표현을 제거하고, `기존 Lamzu Maya와 이름이 유사하므로 모델명, 크기, 구성 차이를 구매 전 구분해서 확인하는 것이 좋다`는 안내로 바꿨다.
+- 추가 검색 중 사용자 문구에 가까운 `게이밍 중심 DB` 표현도 `게이밍 중심 후보군`으로 정리했다.
+- 실제 `status: "review"` 필드는 그대로 유지했고, 제품 수는 마우스 20개로 변동 없다.
+- `rg "review 상태|수동 승인|수동 검토|운영자|DB" src/content/kr/products/mice.ts` 결과 운영자용 표현은 남지 않았다.
+- `rg "review|status" src/content/kr/products/mice.ts` 결과는 제품 상태 필드명과 값만 남는 것을 확인했다.
+- `npm run snapshot:export`는 sandbox IPC 제한으로 최초 1회 실패했으나, 같은 명령을 권한 상승으로 재실행해 통과했다. snapshot validation은 기존 review/shellReferences 관련 warnings 53개와 함께 passed로 종료됐다.
+- snapshot summary 기준 마우스 제품 20개, 키보드 제품 12개, product images 0, product links 0으로 확인했다.
+- snapshot export 후 모든 snapshot의 `generatedAt`만 바뀐 변경은 커밋 노이즈를 줄이기 위해 되돌리고, 실제 문구 변경이 있는 `snapshots/kr/products/mice.json`만 갱신 상태로 남겼다.
+- `npm run lint`와 `npm run build`를 통과했다.
+- Finder UI/로직, Compare UI/로직, validator 로직, 필터, 제품 추가, productImages/productLinks, shellReferences, Supabase/API/DB, 광고/AdSense/제휴, Control Tower, package 설정은 수정하지 않았다.

@@ -780,7 +780,7 @@ export const MOUSE_DATABASE: MouseContent[] = [
       rgbLighting: false,
     },
     rawSpecs: {
-      note: "LAMZU 공식 제품 페이지에서 Maya X 모델 페이지와 색상/패키지 variant를 확인했다. 공개 스펙 참고 자료는 124.4 x 64.9 x 39.6mm, 47g, PAW3950, 최대 8000Hz, 30000 DPI, 750 IPS, 50G로 안내하는 경우가 많다. 기존 Lamzu Maya와 이름이 유사하지만 별도 모델 후보로 수동 검토 후 review 상태로 반영했다. 수신기, 색상, 번들, 지역별 패키지 세부 사항은 판매처/제조사 기준으로 다시 확인해야 한다.",
+      note: "LAMZU 공식 제품 페이지에서 Maya X 모델 페이지와 색상/패키지 variant를 확인했다. 공개 스펙 참고 자료는 124.4 x 64.9 x 39.6mm, 47g, PAW3950, 최대 8000Hz, 30000 DPI, 750 IPS, 50G로 안내하는 경우가 많다. 기존 Lamzu Maya와 이름이 유사하므로 모델명, 크기, 구성 차이를 구매 전 구분해서 확인하는 것이 좋다. 수신기, 색상, 번들, 지역별 패키지 세부 사항은 판매처/제조사 기준으로 다시 확인해야 한다.",
     },
     specTags: ["47g", "PAW3950", "8K", "Symmetrical"],
     aiSummaryKo: "Maya X는 기존 Maya보다 큰 쪽으로 비교할 수 있는 Lamzu의 초경량 대칭형 무선 마우스 후보입니다.",
@@ -889,7 +889,7 @@ export const MOUSE_DATABASE: MouseContent[] = [
     },
     specTags: ["95g", "Bluetooth LE", "USB receiver", "Office portable"],
     aiSummaryKo: "MX Anywhere 3S는 게이밍보다 사무, 문서 작업, 휴대 사용을 기준으로 볼 수 있는 작은 무선 마우스 후보입니다.",
-    aiStrengthsKo: ["Bluetooth와 USB receiver 기반 멀티기기 사용을 확인하기 좋습니다.", "작은 크기와 휴대성을 중시하는 사용자에게 비교 후보가 될 수 있습니다.", "게이밍 중심 DB에 사무/휴대용 축을 보강합니다."],
+    aiStrengthsKo: ["Bluetooth와 USB receiver 기반 멀티기기 사용을 확인하기 좋습니다.", "작은 크기와 휴대성을 중시하는 사용자에게 비교 후보가 될 수 있습니다.", "게이밍 중심 후보군에 사무/휴대용 기준을 보강합니다."],
     aiCautionsKo: ["FPS 게임용 초경량 마우스와는 목적이 다릅니다.", "소비자용과 비즈니스용의 수신기, 무게, 패키지 표기를 구분해야 합니다.", "작은 크기와 휠 체감은 손 크기와 작업 방식에 따라 달라질 수 있습니다."],
     aiBuyingCheckKo: ["USB receiver 또는 Logi Bolt 구성인지 확인하세요.", "Bluetooth로 연결할 기기와 OS 호환성을 확인하세요.", "휴대용으로 쓸지, 장시간 작업용으로 쓸지 먼저 정리하세요."],
   },
