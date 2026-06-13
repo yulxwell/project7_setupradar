@@ -1,0 +1,930 @@
+{
+  "projectId": "project7",
+  "locale": "kr",
+  "type": "mouse_db_collection",
+  "batchId": "mouse-db-collection-batch-1",
+  "status": "collection",
+  "createdAt": "2026-06-13",
+  "products": [
+    {
+      "idCandidate": "razer-deathadder-v3-pro",
+      "slugCandidate": "razer-deathadder-v3-pro",
+      "brand": "Razer",
+      "name": "DeathAdder V3 Pro",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": true,
+      "productFamily": "DeathAdder",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "right_ergonomic",
+        "weightClass": "light",
+        "connection": "wireless",
+        "priceBand": "premium"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless", "USB-C wired while charging"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "desk_gaming",
+        "wheelScroll": "standard_notched",
+        "wristComfort": "right_ergonomic",
+        "domesticAvailability": "high"
+      },
+      "detailSpecs": {
+        "sensorName": "Razer Focus Pro 30K Optical Sensor",
+        "maxDpi": 30000,
+        "ips": 750,
+        "acceleration": "70G",
+        "pollingRateHz": "1000Hz 기본, HyperPolling 동글 구성은 판매처 기준 확인 필요",
+        "scanRateFps": "",
+        "switchName": "Razer Optical Mouse Switches Gen-3",
+        "switchType": "optical",
+        "wheelType": "standard_notched",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "matte",
+        "lengthMm": 128,
+        "widthMm": 68,
+        "heightMm": 44,
+        "weightG": 63,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "up to 90 hours",
+        "chargePort": "USB-C",
+        "receiverType": "Razer HyperSpeed Wireless dongle",
+        "wirelessModes": ["2.4GHz"],
+        "multiDevice": "",
+        "softwareName": "Razer Synapse",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": false,
+        "portable": false,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": false,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": false
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Razer DeathAdder V3 Pro 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 파일은 저장하지 않으며, 실제 노출 전 공식 이미지 사용 가능 여부 검토 필요",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.razer.com/gaming-mice/razer-deathadder-v3-pro",
+        "officialSpecPage": "https://www.razer.com/gaming-mice/razer-deathadder-v3-pro",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "기존 DB에 이미 있는 제품이다. 중복 신규 추가가 아니라 기존 데이터 보강 후보로만 검토한다. HyperPolling 동글과 고폴링 구성은 판매처 패키지 기준으로 다시 확인한다.",
+        "uncertainFields": ["pollingRateHz", "onboardMemory", "receiver bundle"],
+        "sellerVariantNote": "동글 포함 여부와 색상 구성은 판매처별 확인 필요",
+        "regionalVariantNote": "지역별 패키지 구성 확인 필요",
+        "receiverBundleNote": "기본 동글과 별도 HyperPolling 동글 구성 차이 확인 필요"
+      },
+      "shouldAddToDB": "no",
+      "reason": "기존 DB 중복 제품이므로 신규 추가 대상이 아니라 보강 후보로 분류한다."
+    },
+    {
+      "idCandidate": "razer-basilisk-v3-pro",
+      "slugCandidate": "razer-basilisk-v3-pro",
+      "brand": "Razer",
+      "name": "Basilisk V3 Pro",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "Basilisk",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "right_ergonomic",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "premium"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless", "Bluetooth", "USB-C wired"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "multi_button",
+        "portability": "desk_gaming",
+        "wheelScroll": "smart_wheel",
+        "wristComfort": "right_ergonomic_thumb_rest",
+        "domesticAvailability": "high"
+      },
+      "detailSpecs": {
+        "sensorName": "Razer Focus Pro 30K Optical Sensor",
+        "maxDpi": 30000,
+        "ips": 750,
+        "acceleration": "70G",
+        "pollingRateHz": "1000Hz 기본, 별도 동글 구성은 확인 필요",
+        "scanRateFps": "",
+        "switchName": "Razer Optical Mouse Switches Gen-3",
+        "switchType": "optical",
+        "wheelType": "Razer HyperScroll Tilt Wheel",
+        "tiltWheel": "yes",
+        "freeSpinWheel": "yes",
+        "coating": "matte",
+        "lengthMm": 130,
+        "widthMm": 75.4,
+        "heightMm": 42.5,
+        "weightG": 112,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "확인 필요",
+        "chargePort": "USB-C",
+        "receiverType": "Razer HyperSpeed Wireless dongle",
+        "wirelessModes": ["2.4GHz", "Bluetooth"],
+        "multiDevice": "Bluetooth 기기 전환 가능 여부 확인 필요",
+        "softwareName": "Razer Synapse",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": true,
+        "horizontalScroll": true,
+        "multiDeviceWorkflow": false
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Razer Basilisk V3 Pro 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 URL은 수집하지 않고 hidden 상태로 둔다.",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.razer.com/gaming-mice/razer-basilisk-v3-pro",
+        "officialSpecPage": "https://www.razer.com/gaming-mice/razer-basilisk-v3-pro",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "게이밍과 생산성 기능이 섞인 오른손용 다버튼 마우스 후보다. 무선충전, RGB, 세부 동글 구성은 구조화하지 않고 추후 raw note에서 확인한다.",
+        "uncertainFields": ["batteryLife", "multiDevice", "onboardMemory", "receiver bundle"],
+        "sellerVariantNote": "색상과 충전 독 또는 동글 번들 구성은 판매처 기준 확인 필요",
+        "regionalVariantNote": "지역별 판매 구성 확인 필요",
+        "receiverBundleNote": "기본 리시버와 고폴링 액세서리 구성 차이 확인 필요"
+      },
+      "shouldAddToDB": "yes",
+      "reason": "오른손용 다버튼, 스마트 휠, 멀티모드 축을 보강해 Finder와 Compare에서 기존 FPS 초경량 후보와 다른 역할을 만든다."
+    },
+    {
+      "idCandidate": "logitech-mx-master-3s",
+      "slugCandidate": "logitech-mx-master-3s",
+      "brand": "Logitech",
+      "name": "MX Master 3S",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "MX Master",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "right_ergonomic",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "premium"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["Bluetooth", "Logi Bolt receiver"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "quiet",
+        "sideButtonProfile": "multi_button",
+        "portability": "desk_productivity",
+        "wheelScroll": "magnetic_free_spin",
+        "wristComfort": "right_ergonomic_thumb_rest",
+        "domesticAvailability": "high"
+      },
+      "detailSpecs": {
+        "sensorName": "Darkfield high precision",
+        "maxDpi": 8000,
+        "ips": null,
+        "acceleration": "",
+        "pollingRateHz": "확인 필요",
+        "scanRateFps": "",
+        "switchName": "Quiet Clicks",
+        "switchType": "quiet_mechanical",
+        "wheelType": "MagSpeed electromagnetic scroll wheel",
+        "tiltWheel": "",
+        "freeSpinWheel": "yes",
+        "coating": "확인 필요",
+        "lengthMm": 124.9,
+        "widthMm": 84.3,
+        "heightMm": 51,
+        "weightG": 141,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "up to 70 days",
+        "chargePort": "USB-C",
+        "receiverType": "Logi Bolt receiver, Bluetooth edition은 구성 확인 필요",
+        "wirelessModes": ["Bluetooth", "Logi Bolt"],
+        "multiDevice": "up to 3 devices",
+        "softwareName": "Logi Options+",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": false,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": false,
+        "silentClick": true,
+        "smartWheel": true,
+        "horizontalScroll": true,
+        "multiDeviceWorkflow": true
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Logitech MX Master 3S 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 URL은 저장하지 않고 추후 공식 사용 가능 여부 검토",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.logitech.com/en-us/shop/p/mx-master-3s.910-006556",
+        "officialSpecPage": "https://www.logitech.com/en-us/shop/p/mx-master-3s.910-006556",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "사무와 생산성 중심 후보다. 게임/FPS 축으로 분류하지 않는다. Bluetooth Edition과 Standard Edition 구성, 수신기 포함 여부는 판매처와 제품군 기준으로 확인한다.",
+        "uncertainFields": ["pollingRateHz", "coating", "onboardMemory", "receiver bundle"],
+        "sellerVariantNote": "Bluetooth Edition과 Standard Edition 표기가 있어 구성품 확인 필요",
+        "regionalVariantNote": "지역별 색상과 수신기 구성 차이 확인 필요",
+        "receiverBundleNote": "Logi Bolt 수신기 포함 여부는 패키지 기준 확인 필요"
+      },
+      "shouldAddToDB": "yes",
+      "reason": "사무용, 조용한 클릭, 스마트 휠, 멀티기기 흐름을 보강해 게이밍 마우스 중심 DB의 폭을 넓힌다."
+    },
+    {
+      "idCandidate": "logitech-lift",
+      "slugCandidate": "logitech-lift",
+      "brand": "Logitech",
+      "name": "Lift",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "Ergo",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["small", "medium"],
+        "shape": "vertical",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["Bluetooth", "Logi Bolt receiver"],
+        "batteryType": "AA battery",
+        "clickNoise": "quiet",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "desk_productivity",
+        "wheelScroll": "smart_wheel",
+        "wristComfort": "vertical_ergonomic",
+        "domesticAvailability": "high"
+      },
+      "detailSpecs": {
+        "sensorName": "Logitech Advanced Optical Tracking",
+        "maxDpi": 4000,
+        "ips": null,
+        "acceleration": "",
+        "pollingRateHz": "확인 필요",
+        "scanRateFps": "",
+        "switchName": "Quiet Clicks",
+        "switchType": "quiet_mechanical",
+        "wheelType": "SmartWheel",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "soft textured grip",
+        "lengthMm": 108,
+        "widthMm": 70,
+        "heightMm": 71,
+        "weightG": 125,
+        "batteryType": "AA battery",
+        "batteryLife": "up to 24 months",
+        "chargePort": "",
+        "receiverType": "Logi Bolt receiver",
+        "wirelessModes": ["Bluetooth", "Logi Bolt"],
+        "multiDevice": "Easy-Switch 지원 여부 확인 필요",
+        "softwareName": "Logi Options+",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": false,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": true,
+        "silentClick": true,
+        "smartWheel": true,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": true
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Logitech Lift 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지는 hidden 메타로만 관리하고 파일 저장 없음",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.logitech.com/en-us/shop/p/lift-vertical-ergonomic-mouse.910-006466",
+        "officialSpecPage": "https://www.logitech.com/en-us/shop/p/lift-vertical-ergonomic-mouse.910-006466",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "세로형 인체공학 마우스 후보다. 왼손용 옵션과 색상, 수신기 포함 여부는 판매처 기준으로 확인한다. 손목 부담 완화는 개인 체감 차이가 있으므로 productTags와 안내 문구로만 다룬다.",
+        "uncertainFields": ["pollingRateHz", "multiDevice", "onboardMemory"],
+        "sellerVariantNote": "왼손용 옵션과 색상 구성 확인 필요",
+        "regionalVariantNote": "지역별 Logi Bolt 구성 차이 확인 필요",
+        "receiverBundleNote": "Logi Bolt 수신기 포함 여부 확인 필요"
+      },
+      "shouldAddToDB": "yes",
+      "reason": "세로형, 조용한 클릭, 사무용 필터와 손목 부담 참고 태그를 보강한다."
+    },
+    {
+      "idCandidate": "logitech-mx-vertical",
+      "slugCandidate": "logitech-mx-vertical",
+      "brand": "Logitech",
+      "name": "MX Vertical",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "MX Ergo",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "vertical",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "premium"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["Bluetooth", "USB receiver", "USB-C wired"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "desk_productivity",
+        "wheelScroll": "standard_notched",
+        "wristComfort": "vertical_ergonomic",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "Logitech Advanced Optical Tracking",
+        "maxDpi": 4000,
+        "ips": null,
+        "acceleration": "",
+        "pollingRateHz": "확인 필요",
+        "scanRateFps": "",
+        "switchName": "",
+        "switchType": "mechanical",
+        "wheelType": "standard_notched",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "textured rubber grip",
+        "lengthMm": 120,
+        "widthMm": 79,
+        "heightMm": 78.5,
+        "weightG": 135,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "up to 4 months",
+        "chargePort": "USB-C",
+        "receiverType": "USB receiver",
+        "wirelessModes": ["Bluetooth", "USB receiver"],
+        "multiDevice": "up to 3 devices",
+        "softwareName": "Logi Options+",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": false,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": true,
+        "silentClick": false,
+        "smartWheel": false,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": true
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Logitech MX Vertical 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 URL은 수집하지 않고 hidden 상태 유지",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.logitech.com/en-us/shop/p/mx-vertical-ergonomic-mouse.910-005447",
+        "officialSpecPage": "https://www.logitech.com/en-us/shop/p/mx-vertical-ergonomic-mouse.910-005447",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "중대형 손용 세로형 사무 마우스 후보다. 인체공학 효과는 사용자 자세와 사용 환경에 따라 달라질 수 있어 productTags와 raw note 중심으로만 다룬다.",
+        "uncertainFields": ["pollingRateHz", "switchName", "onboardMemory"],
+        "sellerVariantNote": "수신기와 케이블 구성은 판매처 기준 확인 필요",
+        "regionalVariantNote": "일부 지역 재고와 구성 차이 확인 필요",
+        "receiverBundleNote": "USB receiver 종류와 포함 여부 확인 필요"
+      },
+      "shouldAddToDB": "hold",
+      "reason": "세로형 비교 후보로 가치가 있으나 Lift와 역할이 겹쳐 Batch 우선순위는 검토가 필요하다."
+    },
+    {
+      "idCandidate": "logitech-m720-triathlon",
+      "slugCandidate": "logitech-m720-triathlon",
+      "brand": "Logitech",
+      "name": "M720 Triathlon",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "M Series",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "right_ergonomic",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["Bluetooth", "USB receiver"],
+        "batteryType": "AA battery",
+        "clickNoise": "normal",
+        "sideButtonProfile": "multi_button",
+        "portability": "desk_productivity",
+        "wheelScroll": "hyper_fast_scroll",
+        "wristComfort": "right_ergonomic",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "Logitech Advanced Optical Tracking",
+        "maxDpi": 1000,
+        "ips": null,
+        "acceleration": "",
+        "pollingRateHz": "확인 필요",
+        "scanRateFps": "",
+        "switchName": "",
+        "switchType": "mechanical",
+        "wheelType": "dual-mode hyper-fast scroll wheel",
+        "tiltWheel": "yes",
+        "freeSpinWheel": "yes",
+        "coating": "확인 필요",
+        "lengthMm": 115,
+        "widthMm": 74,
+        "heightMm": 45,
+        "weightG": 135,
+        "batteryType": "AA battery",
+        "batteryLife": "up to 24 months",
+        "chargePort": "",
+        "receiverType": "Unifying receiver",
+        "wirelessModes": ["Bluetooth", "Unifying receiver"],
+        "multiDevice": "up to 3 devices",
+        "softwareName": "Logi Options+",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": false,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": true,
+        "horizontalScroll": true,
+        "multiDeviceWorkflow": true
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Logitech M720 Triathlon 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 URL은 수집하지 않음",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.logitech.com/en-us/shop/p/m720-triathlon.910-004790",
+        "officialSpecPage": "https://www.logitech.com/en-us/shop/p/m720-triathlon.910-004790",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "멀티기기 사무용 중급 후보다. Unifying receiver와 Bluetooth 구성은 세대와 판매처 기준 확인 필요. 게임용 후보처럼 표시하지 않는다.",
+        "uncertainFields": ["pollingRateHz", "switchName", "coating", "onboardMemory"],
+        "sellerVariantNote": "리시버 포함 여부와 재고 상태 확인 필요",
+        "regionalVariantNote": "지역별 수신기 구성 확인 필요",
+        "receiverBundleNote": "Unifying receiver 포함 여부 확인 필요"
+      },
+      "shouldAddToDB": "yes",
+      "reason": "멀티기기, 배터리형, 중급 사무용 후보를 보강해 MX 계열과 비교할 수 있다."
+    },
+    {
+      "idCandidate": "razer-orochi-v2",
+      "slugCandidate": "razer-orochi-v2",
+      "brand": "Razer",
+      "name": "Orochi V2",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "Orochi",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["small", "medium"],
+        "shape": "symmetrical",
+        "weightClass": "light",
+        "connection": "multi_mode",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless", "Bluetooth"],
+        "batteryType": "AA or AAA battery",
+        "clickNoise": "normal",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "portable_gaming",
+        "wheelScroll": "standard_notched",
+        "wristComfort": "compact_symmetrical",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "Razer 5G Advanced 18K DPI Optical Sensor",
+        "maxDpi": 18000,
+        "ips": 450,
+        "acceleration": "40G",
+        "pollingRateHz": "1000Hz",
+        "scanRateFps": "",
+        "switchName": "Razer Mechanical Mouse Switches Gen-2",
+        "switchType": "mechanical",
+        "wheelType": "standard_notched",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "matte",
+        "lengthMm": 108,
+        "widthMm": 60,
+        "heightMm": 38,
+        "weightG": null,
+        "batteryType": "AA or AAA battery",
+        "batteryLife": "up to 950 hours Bluetooth, up to 425 hours HyperSpeed",
+        "chargePort": "",
+        "receiverType": "Razer HyperSpeed Wireless dongle",
+        "wirelessModes": ["2.4GHz", "Bluetooth"],
+        "multiDevice": "",
+        "softwareName": "Razer Synapse",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": false,
+        "portable": true,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": false,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": false
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Razer Orochi V2 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "이미지 URL은 hidden 수집 대상이나 이번 파일에는 비워둠",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.razer.com/gaming-mice/razer-orochi-v2",
+        "officialSpecPage": "https://www.razer.com/gaming-mice/razer-orochi-v2",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "high",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "소형 휴대용 무선 게이밍 후보다. 무게는 배터리 종류에 따라 달라질 수 있어 확정 숫자 대신 null로 둔다. AA와 AAA 세부 구성은 raw note에서만 다룬다.",
+        "uncertainFields": ["weightG", "onboardMemory", "battery configuration"],
+        "sellerVariantNote": "배터리 포함 여부와 색상 구성 확인 필요",
+        "regionalVariantNote": "지역별 재고와 패키지 확인 필요",
+        "receiverBundleNote": "2.4GHz 동글 포함 여부 확인 필요"
+      },
+      "shouldAddToDB": "yes",
+      "reason": "소형 휴대용 무선 게이밍 후보로 기존 초경량 대형 후보와 다른 선택지를 만든다."
+    },
+    {
+      "idCandidate": "keychron-m6",
+      "slugCandidate": "keychron-m6",
+      "brand": "Keychron",
+      "name": "M6",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "Keychron M",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["medium", "large"],
+        "shape": "right_ergonomic",
+        "weightClass": "medium",
+        "connection": "multi_mode",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless", "Bluetooth", "USB-C wired"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "multi_button",
+        "portability": "desk_productivity",
+        "wheelScroll": "dual_wheel_productivity",
+        "wristComfort": "right_ergonomic_thumb_rest",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "PixArt PAW3395",
+        "maxDpi": 26000,
+        "ips": 650,
+        "acceleration": "50G",
+        "pollingRateHz": "1000Hz 또는 모델 구성별 확인 필요",
+        "scanRateFps": "",
+        "switchName": "확인 필요",
+        "switchType": "mechanical",
+        "wheelType": "dual scroll wheel",
+        "tiltWheel": "확인 필요",
+        "freeSpinWheel": "확인 필요",
+        "coating": "확인 필요",
+        "lengthMm": null,
+        "widthMm": null,
+        "heightMm": null,
+        "weightG": 78,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "확인 필요",
+        "chargePort": "USB-C",
+        "receiverType": "2.4GHz receiver",
+        "wirelessModes": ["2.4GHz", "Bluetooth"],
+        "multiDevice": "확인 필요",
+        "softwareName": "Keychron Engine",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": true,
+        "portable": false,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": true,
+        "horizontalScroll": true,
+        "multiDeviceWorkflow": true
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Keychron M6 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "공식 제품 페이지는 확인했지만 이미지 URL은 저장하지 않음",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "https://www.keychron.com/products/keychron-m6-wireless-mouse",
+        "officialSpecPage": "https://www.keychron.com/products/keychron-m6-wireless-mouse",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "high",
+        "coreSpecs": "medium",
+        "detailSpecs": "medium",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "게이밍 센서와 생산성용 휠 구성이 섞인 후보다. 4K 모델, 리시버 구성, 폴링레이트, 크기 세부 수치는 모델 옵션 기준으로 추가 확인이 필요하다.",
+        "uncertainFields": ["pollingRateHz", "switchName", "tiltWheel", "freeSpinWheel", "dimensions", "batteryLife", "multiDevice", "onboardMemory"],
+        "sellerVariantNote": "4K 또는 일반 구성, 수신기 포함 여부 확인 필요",
+        "regionalVariantNote": "국내 판매처 구성 확인 필요",
+        "receiverBundleNote": "2.4GHz 또는 4K receiver 구성 확인 필요"
+      },
+      "shouldAddToDB": "hold",
+      "reason": "생산성 마우스와 게이밍 마우스 사이의 비교 가치는 있으나 세부 옵션 확인 후 반영하는 편이 안전하다."
+    },
+    {
+      "idCandidate": "vxe-r1-pro",
+      "slugCandidate": "vxe-r1-pro",
+      "brand": "VXE",
+      "name": "R1 Pro",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "R1",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["small", "medium"],
+        "shape": "symmetrical",
+        "weightClass": "ultralight",
+        "connection": "wireless",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "lightweight_gaming",
+        "wheelScroll": "standard_notched",
+        "wristComfort": "compact_symmetrical",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "PixArt PAW3395",
+        "maxDpi": 26000,
+        "ips": 650,
+        "acceleration": "50G",
+        "pollingRateHz": "1000Hz 기본 또는 4K 구성 확인 필요",
+        "scanRateFps": "",
+        "switchName": "확인 필요",
+        "switchType": "mechanical",
+        "wheelType": "standard_notched",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "확인 필요",
+        "lengthMm": null,
+        "widthMm": null,
+        "heightMm": null,
+        "weightG": null,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "확인 필요",
+        "chargePort": "USB-C",
+        "receiverType": "2.4GHz receiver, 4K dongle 구성 확인 필요",
+        "wirelessModes": ["2.4GHz"],
+        "multiDevice": "",
+        "softwareName": "확인 필요",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": false,
+        "portable": true,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": false,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": false
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "VXE R1 Pro 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "공식 이미지 URL을 확정하지 못해 비워둔다.",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "",
+        "officialSpecPage": "",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "medium",
+        "coreSpecs": "low",
+        "detailSpecs": "low",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "공식 제품 페이지를 확정하지 못해 세부 수치는 추가 조사 필요로 둔다. 판매처와 리뷰에서 언급되는 센서, 무게, 4K 동글 구성은 구조화 전 공식 또는 신뢰 가능한 판매처 기준 확인이 필요하다.",
+        "uncertainFields": ["officialProductPage", "officialSpecPage", "pollingRateHz", "switchName", "dimensions", "weightG", "batteryLife", "softwareName", "onboardMemory"],
+        "sellerVariantNote": "Pro, Pro Max 등 세부 모델과 동글 구성 구분 필요",
+        "regionalVariantNote": "국내 유통명과 해외 모델명 구분 필요",
+        "receiverBundleNote": "4K 동글 포함 또는 별매 여부 확인 필요"
+      },
+      "shouldAddToDB": "hold",
+      "reason": "가성비 초경량 후보로 가치가 있으나 공식 출처와 세부 모델 구분 확인 후 patch 후보로 전환한다."
+    },
+    {
+      "idCandidate": "scyrox-v8",
+      "slugCandidate": "scyrox-v8",
+      "brand": "Scyrox",
+      "name": "V8",
+      "category": "mouse",
+      "status": "collection",
+      "duplicateExisting": false,
+      "productFamily": "V Series",
+      "basicFiltersCandidate": {
+        "handSizeFit": ["small", "medium"],
+        "shape": "symmetrical",
+        "weightClass": "ultralight",
+        "connection": "wireless",
+        "priceBand": "mid"
+      },
+      "advancedFiltersCandidate": {
+        "connectionDetail": ["2.4GHz wireless"],
+        "batteryType": "built_in_rechargeable",
+        "clickNoise": "normal",
+        "sideButtonProfile": "two_side_buttons",
+        "portability": "lightweight_gaming",
+        "wheelScroll": "standard_notched",
+        "wristComfort": "compact_symmetrical",
+        "domesticAvailability": "medium"
+      },
+      "detailSpecs": {
+        "sensorName": "PixArt PAW3950",
+        "maxDpi": 30000,
+        "ips": 750,
+        "acceleration": "50G",
+        "pollingRateHz": "8000Hz 구성 확인 필요",
+        "scanRateFps": "",
+        "switchName": "확인 필요",
+        "switchType": "확인 필요",
+        "wheelType": "standard_notched",
+        "tiltWheel": "",
+        "freeSpinWheel": "",
+        "coating": "확인 필요",
+        "lengthMm": null,
+        "widthMm": null,
+        "heightMm": null,
+        "weightG": null,
+        "batteryType": "built_in_rechargeable",
+        "batteryLife": "확인 필요",
+        "chargePort": "USB-C",
+        "receiverType": "2.4GHz high polling receiver 구성 확인 필요",
+        "wirelessModes": ["2.4GHz"],
+        "multiDevice": "",
+        "softwareName": "확인 필요",
+        "onboardMemory": "확인 필요"
+      },
+      "productTags": {
+        "gaming": true,
+        "productivity": false,
+        "portable": true,
+        "verticalErgonomic": false,
+        "silentClick": false,
+        "smartWheel": false,
+        "horizontalScroll": false,
+        "multiDeviceWorkflow": false
+      },
+      "imageMeta": {
+        "thumbnailUrlCandidate": "",
+        "imageAlt": "Scyrox V8 제품 이미지 후보",
+        "sourceType": "official_or_seller_or_none",
+        "sourceNote": "공식 이미지 URL을 확정하지 못해 비워둔다.",
+        "hidden": true
+      },
+      "sources": {
+        "officialProductPage": "",
+        "officialSpecPage": "",
+        "supportPage": "",
+        "sellerPageCandidate": "",
+        "reviewReferenceCandidate": ""
+      },
+      "confidence": {
+        "officialName": "medium",
+        "coreSpecs": "low",
+        "detailSpecs": "low",
+        "image": "low"
+      },
+      "rawSpecs": {
+        "note": "초경량 고폴링 무선 후보로 보이지만 공식 URL과 세부 스펙 출처를 확정하지 못했다. 센서, 무게, 8K 수신기 구성은 product_config_patch 변환 전에 공식 또는 신뢰 가능한 판매처 기준으로 다시 확인한다.",
+        "uncertainFields": ["officialProductPage", "officialSpecPage", "pollingRateHz", "switchName", "switchType", "dimensions", "weightG", "batteryLife", "softwareName", "onboardMemory"],
+        "sellerVariantNote": "초도 구성과 일반 판매 구성 차이 확인 필요",
+        "regionalVariantNote": "국내 유통명과 해외 판매명 확인 필요",
+        "receiverBundleNote": "고폴링 수신기 포함 여부 확인 필요"
+      },
+      "shouldAddToDB": "hold",
+      "reason": "중국계 초경량 후보군 보강 가치가 있으나 공식 출처 확정 전에는 수집 상태로 보류한다."
+    }
+  ]
+}

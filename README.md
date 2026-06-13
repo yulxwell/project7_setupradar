@@ -47,6 +47,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Mouse DB Collection Batch 1 - 2026-06-13
+- **수집용 JSON 생성**: 마우스 제품 DB 확장 전 검토를 위해 `tmp/mouse-db-collection-batch-1.json`에 정확히 10개 제품 후보를 collection 상태로 정리했습니다.
+- **수집 정책 문서 추가**: `docs/mouse-db-collection-policy.md`에 Finder 일반 필터, 상세 필터, 제품 상세 스펙, hidden field 구분과 이미지 수집/불확실성 기록 원칙을 문서화했습니다.
+- **제품 DB 반영 보류**: 이번 작업은 수집 파일 생성까지만 수행했으며 `src/content/kr/products/mice.ts`, Finder/Compare UI와 로직, `product_config_patch`, snapshot export는 수정하지 않았습니다.
+- **검수 전제 유지**: 공식 URL을 확정하지 못한 제품은 빈 URL과 낮은 confidence로 남겼고, 이미지 URL은 확실한 노출 정책 전까지 비워두었습니다.
+
 ### Product Patch Merge Policy - 2026-05-28
 - **제품 patch 병합 기준 문서 추가**: Gemini LLM 또는 Control Tower가 생성한 `product_config_patch`가 기존 제품과 중복될 때 적용할 기준을 [docs/product-patch-merge-policy.md](file:///Users/jilee/antigravity/src/project7/docs/product-patch-merge-policy.md)에 정리했습니다.
 - **중복 제품 안전 처리 원칙**: `id`, `slug`, `brand + name`, 모델명 표기 차이를 기준으로 중복을 판단하고, 중복 제품은 새로 추가하지 않고 업데이트 후보로만 분류합니다.

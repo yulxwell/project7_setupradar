@@ -219,6 +219,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - Project7 공개 사이트의 `src/content` 실제 문구는 수정하지 않았다.
 - Supabase, SQL, n8n, DB write, Control Tower 외부 연동은 추가하지 않았다.
 
+## Mouse DB Collection Batch 1 재작업 기록 - 2026-06-13
+
+- `tmp/mouse-db-collection-batch-1.json`을 실제 파일로 생성했다.
+- 수집 대상은 `Razer DeathAdder V3 Pro`, `Razer Basilisk V3 Pro`, `Logitech MX Master 3S`, `Logitech Lift`, `Logitech MX Vertical`, `Logitech M720 Triathlon`, `Razer Orochi V2`, `Keychron M6`, `VXE R1 Pro`, `Scyrox V8` 총 10개다.
+- 기존 DB 중복 확인 결과 `Razer DeathAdder V3 Pro`는 `duplicateExisting: true`로 표시했고, 나머지 9개는 신규 수집 후보로 표시했다.
+- 공식 URL을 확정하지 못한 `VXE R1 Pro`, `Scyrox V8`은 공식 URL을 빈 문자열로 두고 confidence를 낮게 기록했다.
+- 이미지 파일은 저장하지 않았고, 이미지 URL 후보도 이번 수집 파일에서는 비워두었다. 모든 `imageMeta.hidden`은 `true`다.
+- `docs/mouse-db-collection-policy.md`를 생성해 DB는 넓게 수집하고 UI는 일부만 노출하는 원칙, Finder 일반/상세 필터와 상세 스펙/hidden field 구분, 이미지 수집 정책, 불확실성 기록 원칙을 문서화했다.
+- 이번 작업은 수집 파일 생성까지만 수행했으며 `src/content/kr/products/mice.ts`, Finder/Compare UI/로직, `product_config_patch`, snapshot export, Supabase/API/광고/제휴는 수정하지 않았다.
+
 ## Project7 Control Tower Copy Workbench UX 단순화 기록
 
 - Project99 Control Tower의 `/projects/project7/content` 화면을 개발자용 JSON 관리 도구 느낌에서 yulxwell용 문구 수정 작업대 느낌으로 한 번 더 정리했다.
