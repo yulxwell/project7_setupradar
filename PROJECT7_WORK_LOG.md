@@ -1339,3 +1339,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - snapshot export 후 모든 snapshot의 `generatedAt`만 바뀐 변경은 커밋 노이즈를 줄이기 위해 되돌리고, 실제 문구 변경이 있는 `snapshots/kr/products/mice.json`만 갱신 상태로 남겼다.
 - `npm run lint`와 `npm run build`를 통과했다.
 - Finder UI/로직, Compare UI/로직, validator 로직, 필터, 제품 추가, productImages/productLinks, shellReferences, Supabase/API/DB, 광고/AdSense/제휴, Control Tower, package 설정은 수정하지 않았다.
+
+## Mouse Raw Note Cleanup Live QA - 2026-06-13 기록
+
+- Cloudflare 실서비스에서 `https://setupradar.pages.dev/kr/compare/mouse`와 `https://setupradar.pages.dev/kr/finder/mouse-fit`을 확인했고, 두 URL 모두 HTTP 200으로 응답했다.
+- live `/kr/compare/mouse` HTML payload에 `Lamzu Maya X`, `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro`가 포함되는 것을 확인했다.
+- live `/kr/compare/mouse` payload의 `Lamzu Maya X` raw note는 `기존 Lamzu Maya와 이름이 유사하므로 모델명, 크기, 구성 차이를 구매 전 구분해서 확인하는 것이 좋다` 문구로 반영됐다.
+- live `/kr/compare/mouse`와 `/kr/finder/mouse-fit` HTML에서 `review 상태`, `수동 승인`, `수동 검토`, `운영자`, `게이밍 중심 DB` 문자열은 확인되지 않았다.
+- live HTML 기준 `review`, `status`, `productImages`, `productLinks`, `shellReferences` 문자열도 확인되지 않아 visible UI와 payload에 내부 상태/이미지/링크/쉘 레퍼런스가 직접 노출되지 않는 것을 재확인했다.
+- `/kr/finder/mouse-fit` 기본 HTML은 초기 추천 중심으로 렌더링되어 새 제품명이 바로 포함되지는 않지만, 운영자용 표현과 내부 필드 문자열은 확인되지 않았다.
+- 명확한 버그가 없어 코드와 제품 데이터는 수정하지 않았고, QA 결과만 문서에 기록했다.
+- Finder/Compare 로직, 필터, 제품 데이터, Supabase/API/DB, 광고/AdSense/제휴, Control Tower, package 설정은 수정하지 않았다.
