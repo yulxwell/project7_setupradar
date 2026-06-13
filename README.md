@@ -47,6 +47,11 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Mouse Product Patch Candidate 1 - 2026-06-13
+- **수집 결과 커밋 완료**: `Mouse DB Collection Batch 1` 결과 4개 파일을 `docs: add mouse db collection batch` 커밋으로 먼저 push했습니다.
+- **patch 후보 JSON 생성**: 수집 JSON의 `shouldAddToDB: "yes"` 후보 중 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro` 3개를 `tmp/product-patch-mouse-collection-batch-1.json`에 `product_config_patch` 형식으로 정리했습니다.
+- **신규 반영 전 단계 유지**: 제품 TS 데이터, Finder/Compare UI와 로직, snapshot export, 이미지 파일, productImages/productLinks, shellReferences, 광고/제휴/API/DB는 수정하지 않았습니다.
+
 ### Mouse DB Collection Batch 1 - 2026-06-13
 - **수집용 JSON 생성**: 마우스 제품 DB 확장 전 검토를 위해 `tmp/mouse-db-collection-batch-1.json`에 정확히 10개 제품 후보를 collection 상태로 정리했습니다.
 - **수집 정책 문서 추가**: `docs/mouse-db-collection-policy.md`에 Finder 일반 필터, 상세 필터, 제품 상세 스펙, hidden field 구분과 이미지 수집/불확실성 기록 원칙을 문서화했습니다.

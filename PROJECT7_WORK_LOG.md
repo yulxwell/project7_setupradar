@@ -229,6 +229,15 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/mouse-db-collection-policy.md`를 생성해 DB는 넓게 수집하고 UI는 일부만 노출하는 원칙, Finder 일반/상세 필터와 상세 스펙/hidden field 구분, 이미지 수집 정책, 불확실성 기록 원칙을 문서화했다.
 - 이번 작업은 수집 파일 생성까지만 수행했으며 `src/content/kr/products/mice.ts`, Finder/Compare UI/로직, `product_config_patch`, snapshot export, Supabase/API/광고/제휴는 수정하지 않았다.
 
+## Mouse Product Patch Candidate 1 기록 - 2026-06-13
+
+- `Mouse DB Collection Batch 1` 결과 파일 4개를 `docs: add mouse db collection batch` 커밋으로 먼저 push했다.
+- `tmp/product-patch-mouse-collection-batch-1.json`을 생성했다.
+- patch 대상은 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro` 3개다.
+- `Razer DeathAdder V3 Pro`는 기존 DB 중복이라 제외했고, `Logitech MX Vertical`은 `Lift`와 역할이 겹쳐 다음 batch 후보로 보류했다.
+- `productImages`, `productLinks`, `shellReferences`, 최상위 `sources`는 추가하지 않았다.
+- 제품 TS 데이터, Finder/Compare UI와 로직, validator, snapshot export, Supabase/API/광고/제휴는 수정하지 않았다.
+
 ## Project7 Control Tower Copy Workbench UX 단순화 기록
 
 - Project99 Control Tower의 `/projects/project7/content` 화면을 개발자용 JSON 관리 도구 느낌에서 yulxwell용 문구 수정 작업대 느낌으로 한 번 더 정리했다.

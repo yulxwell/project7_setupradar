@@ -1,0 +1,191 @@
+{
+  "projectId": "project7_setupradar",
+  "type": "product_config_patch",
+  "locale": "kr",
+  "updatedAt": "2026-06-13T00:00:00.000Z",
+  "products": [
+    {
+      "id": "logitech-mx-master-3s",
+      "slug": "logitech-mx-master-3s",
+      "category": "mouse",
+      "status": "review",
+      "brand": "Logitech",
+      "name": "MX Master 3S",
+      "basicFilters": {
+        "shape": "right_ergonomic",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "large",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "standard",
+        "buttonCount": "multi_button",
+        "coating": "no_preference",
+        "switchTendency": "silent",
+        "battery": "built_in"
+      },
+      "detailSpecs": {
+        "sensorModel": "Darkfield high precision",
+        "maxDpi": 8000,
+        "usbOrPs2": "Bluetooth, Logi Bolt receiver",
+        "batteryDetail": "built-in rechargeable battery, up to 70 days",
+        "dimensionsMm": {
+          "length": 124.9,
+          "width": 84.3,
+          "height": 51
+        },
+        "buttonCountDetail": "side buttons, thumb wheel, main scroll wheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": true,
+        "rgbLighting": false
+      },
+      "rawSpecs": {
+        "note": "Collection source: Logitech official MX Master 3S product page. Productivity/workflow mouse candidate, not a gaming/FPS candidate. Official page lists 8000 DPI tracking, Quiet Clicks, MagSpeed wheel, USB-C charging, Bluetooth and Logi Bolt support, 124.9 x 84.3 x 51 mm, and 141 g. Bluetooth Edition, receiver bundle, color and regional package can vary by seller, so receiver inclusion should be checked before manual apply."
+      },
+      "copy": {
+        "summaryKo": "작업용 흐름과 멀티기기 전환을 중시할 때 참고할 수 있는 오른손용 무선 마우스입니다.",
+        "strengthsKo": [
+          "조용한 클릭과 빠른 스크롤 휠을 함께 확인할 수 있습니다.",
+          "Bluetooth와 Logi Bolt 기반 멀티기기 사용 흐름을 검토하기 좋습니다.",
+          "가벼운 FPS 마우스보다 작업용 기능을 중시하는 후보입니다."
+        ],
+        "cautionsKo": [
+          "무게가 가벼운 마우스는 아니므로 휴대성과 손목 부담 체감은 확인이 필요합니다.",
+          "수신기 포함 여부와 Bluetooth Edition 표기는 판매처 기준으로 확인해야 합니다.",
+          "게임용 고주사율 마우스처럼 비교하지 않는 편이 좋습니다."
+        ],
+        "buyingCheckKo": [
+          "Logi Bolt 수신기 포함 여부를 확인하세요.",
+          "손 크기와 높은 등, 넓은 폭이 맞는지 확인하세요.",
+          "작업용 휠과 사이드 버튼을 실제로 쓸지 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "logitech-lift",
+      "slug": "logitech-lift",
+      "category": "mouse",
+      "status": "review",
+      "brand": "Logitech",
+      "name": "Lift",
+      "basicFilters": {
+        "shape": "vertical",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "medium",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "standard",
+        "buttonCount": "side_buttons",
+        "coating": "rubber",
+        "switchTendency": "silent",
+        "battery": "aa_aaa"
+      },
+      "detailSpecs": {
+        "sensorModel": "Logitech Advanced Optical Tracking",
+        "maxDpi": 4000,
+        "usbOrPs2": "Bluetooth, Logi Bolt receiver",
+        "batteryDetail": "1 AA battery, up to 24 months",
+        "dimensionsMm": {
+          "length": 108,
+          "width": 70,
+          "height": 71
+        },
+        "buttonCountDetail": "side buttons, SmartWheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": false,
+        "rgbLighting": false
+      },
+      "rawSpecs": {
+        "note": "Collection source: Logitech official Lift product page. Vertical ergonomic productivity mouse candidate. Official page lists 4000 DPI tracking, Quiet Clicks, SmartWheel, Bluetooth and Logi Bolt support, 108 x 70 x 71 mm, 125 g, and AA battery operation. Ergonomic comfort should be described as user-environment dependent, not as a medical effect. Left-handed option, color, and receiver bundle should be checked by seller and region."
+      },
+      "copy": {
+        "summaryKo": "세로형 형태와 조용한 클릭을 참고하고 싶은 사무용 무선 마우스 후보입니다.",
+        "strengthsKo": [
+          "세로형 형태를 찾는 사용자에게 비교 기준을 만들 수 있습니다.",
+          "조용한 클릭과 SmartWheel 구성을 함께 확인할 수 있습니다.",
+          "Bluetooth와 Logi Bolt 사용 환경을 비교하기 좋습니다."
+        ],
+        "cautionsKo": [
+          "세로형 체감은 손 크기와 자세, 책상 환경에 따라 달라질 수 있습니다.",
+          "FPS용 가벼운 게이밍 마우스처럼 비교하지 않는 편이 좋습니다.",
+          "왼손용 옵션과 수신기 포함 여부는 판매처 기준으로 확인해야 합니다."
+        ],
+        "buyingCheckKo": [
+          "오른손용 또는 왼손용 옵션을 확인하세요.",
+          "세로형 마우스를 처음 쓰는 경우 적응 시간이 필요할 수 있습니다.",
+          "Logi Bolt 수신기 포함 여부를 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "razer-basilisk-v3-pro",
+      "slug": "razer-basilisk-v3-pro",
+      "category": "mouse",
+      "status": "review",
+      "brand": "Razer",
+      "name": "Basilisk V3 Pro",
+      "basicFilters": {
+        "shape": "right_ergonomic",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "large",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "high",
+        "buttonCount": "multi_button",
+        "coating": "matte",
+        "switchTendency": "optical",
+        "battery": "built_in"
+      },
+      "detailSpecs": {
+        "sensorModel": "Razer Focus Pro 30K Optical Sensor",
+        "maxDpi": 30000,
+        "ips": 750,
+        "accelerationG": 70,
+        "pollingRateHz": 1000,
+        "usbOrPs2": "2.4GHz wireless, Bluetooth, USB-C wired",
+        "batteryDetail": "built-in rechargeable battery, runtime and charging dock bundle require seller check",
+        "dimensionsMm": {
+          "length": 130,
+          "width": 75.4,
+          "height": 42.5
+        },
+        "buttonCountDetail": "multi-button right ergonomic mouse with HyperScroll Tilt Wheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": true,
+        "rgbLighting": true
+      },
+      "rawSpecs": {
+        "note": "Collection source: Razer official Basilisk V3 Pro product page. High-function right ergonomic gaming mouse candidate, not an ultralight FPS-only candidate. Official page lists Focus Pro 30K sensor, 30000 DPI, 750 IPS, 70G acceleration, HyperScroll Tilt Wheel, optical switches, 130 x 75.4 x 42.5 mm, and 112 g. Charging dock, high-polling accessory, color and bundle can vary by seller."
+      },
+      "copy": {
+        "summaryKo": "오른손용 다버튼 구조와 휠 기능을 함께 확인할 수 있는 고기능 무선 마우스 후보입니다.",
+        "strengthsKo": [
+          "다버튼과 틸트 휠을 함께 쓰는 환경을 비교하기 좋습니다.",
+          "Bluetooth, 2.4GHz, 유선 사용 흐름을 함께 확인할 수 있습니다.",
+          "초경량 마우스와 다른 고기능 게이밍 축을 보강합니다."
+        ],
+        "cautionsKo": [
+          "초경량 FPS 마우스처럼 무게 중심으로만 비교하면 맞지 않을 수 있습니다.",
+          "충전 독과 고폴링 액세서리 구성은 판매처 기준 확인이 필요합니다.",
+          "다버튼 기능을 실제로 쓸지 먼저 확인하는 편이 좋습니다."
+        ],
+        "buyingCheckKo": [
+          "충전 독 또는 별도 액세서리 포함 여부를 확인하세요.",
+          "손 크기와 오른손용 엄지 받침 형태가 맞는지 확인하세요.",
+          "휠 기능과 사이드 버튼을 실제 사용 환경에서 쓸지 확인하세요."
+        ]
+      }
+    }
+  ]
+}
