@@ -224,6 +224,10 @@ Project7 제품 DB는 매주 감으로 늘리는 것이 아니라 Finder와 Comp
   - 75% 무선 1개
   - 래피드 트리거/자석축 1개
   - 사무/저소음 1개
+- 후보 점수화 기록: `docs/keyboard-product-candidate-scoring-1.md`
+- 1차 추천 후보: `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`
+- 5개 수집 후보로 확장할 경우 `Keychron K3 Max`, `HHKB Professional HYBRID Type-S`를 함께 조사한다.
+- 위 후보는 실제 제품 데이터에 아직 추가하지 않았으며, 다음 작업에서 공식 스펙 확인 후 수집 JSON 또는 `product_config_patch` 후보로 다룬다.
 
 ## 13. 리스크
 

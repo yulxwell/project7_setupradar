@@ -1365,3 +1365,18 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/mouse-db-collection-policy.md`와 `docs/product-content-expansion-plan.md`에 새 공통 정책 문서 참조를 추가했다.
 - `README.md`에 Product Spec Storage & Display Policy 1 기록을 추가했다.
 - 제품 데이터, Finder UI/로직, Compare UI/로직, validator, 타입 파일, Supabase/API/DB, 광고/AdSense/제휴, 이미지 파일, `product_config_patch`, snapshot export는 수정하지 않았다.
+
+## Keyboard Product Candidate Scoring 1 - 2026-06-13 기록
+
+- Keyboard DB Collection Batch 1 또는 Keyboard Product Patch Batch 1 전 후보 점수화 문서 `docs/keyboard-product-candidate-scoring-1.md`를 생성했다.
+- 현재 `src/content/kr/products/keyboards.ts` 기준 키보드 제품 수는 12개로 확인했다.
+- 후보군 중 `AULA F75`, `NuPhy Halo75 V2`, `Keychron V1 Max`, `Wooting 60HE`, `DrunkDeer A75`, `Razer Huntsman V3 Pro TKL`, `Realforce R3`, `Rainy75`는 이미 DB에 있어 신규 추가 후보가 아니라 보강/비교 후보로 분류했다.
+- 신규 또는 계열 후보로 `Keychron K2 Max`, `Keychron K3 Max`, `Keychron Q1 Max`, `Wooting 80HE`, `DrunkDeer G75`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Logitech MX Mechanical`, `NuPhy Air75 V2`, `Lofree Flow`, `HHKB Professional HYBRID Type-S`, `Leopold FC750R`, `MonsGeek M1W`, `Akko 5075B Plus`, `Bridge75` 15개를 평가했다.
+- 점수표는 Finder 기여도, Compare 기여도, 구매 접근성, 공식 스펙 확인 가능성, 초보자 설명 가능성, 기존 DB와 차별성, 제품군 균형성, 데이터 입력 난이도, 콘텐츠/제휴 연결 가능성, 운영 리스크 10개 항목으로 작성했다.
+- Batch 1 추천 3개는 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`로 정리했다.
+- 5개 수집 후보로 확장할 경우 `Keychron K3 Max`, `HHKB Professional HYBRID Type-S`를 함께 조사하는 방향으로 기록했다.
+- 추천 이유는 로우프로파일/휴대/Mac 겸용, TKL 게이밍/래피드 트리거, 풀배열/사무/저소음 축을 각각 보강해 Finder와 Compare Picker의 선택 폭을 넓힐 수 있기 때문이다.
+- `docs/weekly-product-candidate-plan.md`에는 Keyboard Product Patch Batch 1의 점수화 문서 링크와 1차 추천 후보를 연결했다.
+- `docs/product-content-expansion-plan.md`에는 키보드 후보 점수화 진행 기록을 추가했다.
+- `README.md`에 Keyboard Product Candidate Scoring 1 기록을 추가했다.
+- 실제 키보드 제품 데이터 수정, 새 제품 추가, `product_config_patch` 생성, snapshot export, Finder/Compare UI와 로직 수정, validator 수정, Supabase/API/DB, 광고/AdSense/제휴, 이미지 파일 저장은 하지 않았다.

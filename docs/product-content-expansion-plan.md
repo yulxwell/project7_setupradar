@@ -276,6 +276,7 @@ CPU/GPU는 바로 제품 DB에 넣지 않는다. 먼저 별도 schema와 출처 
 
 - `docs/weekly-product-candidate-plan.md`에 주간 후보 수, 마우스/키보드 우선순위, 제외 기준, 평가 점수표, 첫 Batch 추천 방향을 별도 문서로 정리했다.
 - 실제 제품 추가 전에는 이 문서를 기준으로 후보군을 고르고, `product_config_patch` 생성 전 중복 여부와 공식 스펙 출처를 확인한다.
+- `docs/keyboard-product-candidate-scoring-1.md`에 키보드 후보 15개 점수표와 Batch 1 추천 후보를 정리했다. 실제 제품 데이터와 patch는 아직 만들지 않았다.
 
 ## 12. 리스크
 
