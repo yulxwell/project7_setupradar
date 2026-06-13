@@ -47,6 +47,11 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Mouse Product Patch Candidate 1 Manual Apply - 2026-06-13
+- **마우스 제품 3개 수동 반영**: 검증 완료된 `tmp/product-patch-mouse-collection-batch-1.json` 기준 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro`를 `src/content/kr/products/mice.ts`에 `review` 상태로 추가했습니다.
+- **제품군 보강**: 작업용/멀티기기, 버티컬/자세 참고, 다버튼/휠 기능 게이밍 축을 각각 보강했습니다.
+- **안전선 유지**: Finder/Compare UI와 로직, validator, 필터 UI, Supabase/API/DB, 광고/제휴, productImages/productLinks, shellReferences는 수정하지 않았습니다.
+
 ### Mouse Product Patch Candidate 1 - 2026-06-13
 - **수집 결과 커밋 완료**: `Mouse DB Collection Batch 1` 결과 4개 파일을 `docs: add mouse db collection batch` 커밋으로 먼저 push했습니다.
 - **patch 후보 JSON 생성**: 수집 JSON의 `shouldAddToDB: "yes"` 후보 중 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro` 3개를 `tmp/product-patch-mouse-collection-batch-1.json`에 `product_config_patch` 형식으로 정리했습니다.

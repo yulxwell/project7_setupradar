@@ -238,6 +238,17 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `productImages`, `productLinks`, `shellReferences`, 최상위 `sources`는 추가하지 않았다.
 - 제품 TS 데이터, Finder/Compare UI와 로직, validator, snapshot export, Supabase/API/광고/제휴는 수정하지 않았다.
 
+## Mouse Product Patch Candidate 1 Manual Apply 기록 - 2026-06-13
+
+- 검증 완료된 `tmp/product-patch-mouse-collection-batch-1.json`의 제품 3개를 `src/content/kr/products/mice.ts`에 수동 반영했다.
+- 실제 반영 제품은 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro`다.
+- 세 제품 모두 `status: "review"`로 추가했고, 기존 제품을 덮어쓰지 않았다.
+- `Logitech MX Master 3S`는 작업용 흐름, 멀티기기, MagSpeed wheel, 조용한 클릭, 141g 무게를 rawSpecs와 copy에 참고 톤으로 정리했다.
+- `Logitech Lift`는 버티컬 형태, 조용한 클릭, SmartWheel, AA 배터리 구성을 반영했고, 손목 관련 표현은 자세와 사용 환경에 따라 달라질 수 있는 참고 톤으로 유지했다.
+- `Razer Basilisk V3 Pro`는 오른손용 다버튼, HyperScroll Tilt Wheel, Focus Pro 30K, 멀티모드 무선 후보로 반영했고, 초경량 FPS 전용 후보처럼 쓰지 않았다.
+- `productImages`, `productLinks`, `shellReferences`, 최상위 `sources`, published 상태는 추가하지 않았다.
+- Finder 로직, Compare 로직, validator 로직, 필터 UI, Supabase/API/DB, 광고/AdSense/제휴, 이미지 파일 저장은 수정하지 않았다.
+
 ## Project7 Control Tower Copy Workbench UX 단순화 기록
 
 - Project99 Control Tower의 `/projects/project7/content` 화면을 개발자용 JSON 관리 도구 느낌에서 yulxwell용 문구 수정 작업대 느낌으로 한 번 더 정리했다.

@@ -3,7 +3,7 @@
     "projectId": "project7_setupradar",
     "locale": "kr",
     "schemaVersion": "0.1.0",
-    "generatedAt": "2026-06-07T13:52:47.129Z",
+    "generatedAt": "2026-06-13T11:13:44.480Z",
     "source": "static_ts",
     "status": "review"
   },
@@ -1441,6 +1441,278 @@
           "USB receiver 또는 Logi Bolt 구성인지 확인하세요.",
           "Bluetooth로 연결할 기기와 OS 호환성을 확인하세요.",
           "휴대용으로 쓸지, 장시간 작업용으로 쓸지 먼저 정리하세요."
+        ]
+      }
+    },
+    {
+      "id": "logitech-mx-master-3s",
+      "slug": "logitech-mx-master-3s",
+      "category": "mouse",
+      "brand": "Logitech",
+      "name": "MX Master 3S",
+      "dimensions": {
+        "length": 124.9,
+        "width": 84.3,
+        "height": 51
+      },
+      "shapeType": "ergonomic",
+      "weight": 141,
+      "sensor": "Darkfield high precision",
+      "recommendedGrips": [
+        "palm",
+        "claw"
+      ],
+      "handSizeRange": "large",
+      "status": "review",
+      "updatedAt": "2026-06-13",
+      "priceRange": "premium",
+      "features": [
+        "작업용",
+        "멀티기기",
+        "조용한 클릭",
+        "MagSpeed wheel"
+      ],
+      "basicFilters": {
+        "shape": "right_ergonomic",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "large",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "standard",
+        "buttonCount": "multi_button",
+        "coating": "no_preference",
+        "switchTendency": "silent",
+        "battery": "built_in"
+      },
+      "detailSpecs": {
+        "sensorModel": "Darkfield high precision",
+        "maxDpi": 8000,
+        "usbOrPs2": "Bluetooth / Logi Bolt receiver",
+        "batteryDetail": "USB-C rechargeable battery, up to 70 days",
+        "dimensionsMm": {
+          "length": 124.9,
+          "width": 84.3,
+          "height": 51
+        },
+        "buttonCountDetail": "side buttons, thumb wheel, main scroll wheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": true,
+        "rgbLighting": false
+      },
+      "rawSpecs": {
+        "note": "Logitech 공식 MX Master 3S 제품 페이지 기준 8000 DPI 트래킹, Quiet Clicks, MagSpeed wheel, USB-C 충전, Bluetooth와 Logi Bolt 지원, 124.9 x 84.3 x 51mm, 141g으로 안내된다. Bluetooth Edition, 수신기 포함 여부, 색상, 지역별 패키지는 판매처 기준 확인이 필요하다. 게임/FPS 후보가 아니라 작업 흐름과 멀티기기 사용 기준으로 검토한다."
+      },
+      "specTags": [
+        "141g",
+        "Darkfield",
+        "MagSpeed",
+        "Multi-device"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "shellReferences": [],
+      "copy": {
+        "aiSummaryKo": "작업용 흐름과 멀티기기 전환을 중시할 때 참고할 수 있는 오른손용 무선 마우스입니다.",
+        "aiStrengthsKo": [
+          "조용한 클릭과 빠른 스크롤 휠을 함께 확인할 수 있습니다.",
+          "Bluetooth와 Logi Bolt 기반 멀티기기 사용 흐름을 검토하기 좋습니다.",
+          "가벼운 FPS 마우스보다 작업용 기능을 중시하는 후보입니다."
+        ],
+        "aiCautionsKo": [
+          "무게가 가벼운 마우스는 아니므로 휴대성과 손목 부담 체감은 확인이 필요합니다.",
+          "수신기 포함 여부와 Bluetooth Edition 표기는 판매처 기준으로 확인해야 합니다.",
+          "게임용 고주사율 마우스처럼 비교하지 않는 편이 좋습니다."
+        ],
+        "aiBuyingCheckKo": [
+          "Logi Bolt 수신기 포함 여부를 확인하세요.",
+          "손 크기와 높은 등, 넓은 폭이 맞는지 확인하세요.",
+          "작업용 휠과 사이드 버튼을 실제로 쓸지 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "logitech-lift",
+      "slug": "logitech-lift",
+      "category": "mouse",
+      "brand": "Logitech",
+      "name": "Lift",
+      "dimensions": {
+        "length": 108,
+        "width": 70,
+        "height": 71
+      },
+      "shapeType": "ergonomic",
+      "weight": 125,
+      "sensor": "Logitech Advanced Optical Tracking",
+      "recommendedGrips": [
+        "palm"
+      ],
+      "handSizeRange": "medium",
+      "status": "review",
+      "updatedAt": "2026-06-13",
+      "priceRange": "mid",
+      "features": [
+        "버티컬",
+        "조용한 클릭",
+        "SmartWheel",
+        "AA 배터리"
+      ],
+      "basicFilters": {
+        "shape": "vertical",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "medium",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "standard",
+        "buttonCount": "side_buttons",
+        "coating": "rubber",
+        "switchTendency": "silent",
+        "battery": "aa_aaa"
+      },
+      "detailSpecs": {
+        "sensorModel": "Logitech Advanced Optical Tracking",
+        "maxDpi": 4000,
+        "usbOrPs2": "Bluetooth / Logi Bolt receiver",
+        "batteryDetail": "1 AA battery, up to 24 months",
+        "dimensionsMm": {
+          "length": 108,
+          "width": 70,
+          "height": 71
+        },
+        "buttonCountDetail": "side buttons, SmartWheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": false,
+        "rgbLighting": false
+      },
+      "rawSpecs": {
+        "note": "Logitech 공식 Lift 제품 페이지 기준 4000 DPI 트래킹, Quiet Clicks, SmartWheel, Bluetooth와 Logi Bolt 지원, 108 x 70 x 71mm, 125g, AA 배터리 구성을 안내한다. 세로형 형태는 손목 각도나 잡는 자세가 신경 쓰이는 경우 참고할 수 있지만, 체감은 손 크기와 자세, 책상 환경에 따라 달라질 수 있다. 왼손용 옵션, 색상, 수신기 포함 여부는 판매처와 지역 기준 확인이 필요하다."
+      },
+      "specTags": [
+        "125g",
+        "Vertical",
+        "Quiet clicks",
+        "AA battery"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "shellReferences": [],
+      "copy": {
+        "aiSummaryKo": "세로형 형태와 조용한 클릭을 참고하고 싶은 사무용 무선 마우스 후보입니다.",
+        "aiStrengthsKo": [
+          "세로형 형태를 찾는 사용자에게 비교 기준을 만들 수 있습니다.",
+          "조용한 클릭과 SmartWheel 구성을 함께 확인할 수 있습니다.",
+          "Bluetooth와 Logi Bolt 사용 환경을 비교하기 좋습니다."
+        ],
+        "aiCautionsKo": [
+          "세로형 체감은 손 크기와 자세, 책상 환경에 따라 달라질 수 있습니다.",
+          "FPS용 가벼운 게이밍 마우스처럼 비교하지 않는 편이 좋습니다.",
+          "왼손용 옵션과 수신기 포함 여부는 판매처 기준으로 확인해야 합니다."
+        ],
+        "aiBuyingCheckKo": [
+          "오른손용 또는 왼손용 옵션을 확인하세요.",
+          "세로형 마우스를 처음 쓰는 경우 적응 시간이 필요할 수 있습니다.",
+          "Logi Bolt 수신기 포함 여부를 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "razer-basilisk-v3-pro",
+      "slug": "razer-basilisk-v3-pro",
+      "category": "mouse",
+      "brand": "Razer",
+      "name": "Basilisk V3 Pro",
+      "dimensions": {
+        "length": 130,
+        "width": 75.4,
+        "height": 42.5
+      },
+      "shapeType": "ergonomic",
+      "weight": 112,
+      "sensor": "Razer Focus Pro 30K",
+      "recommendedGrips": [
+        "palm",
+        "claw"
+      ],
+      "handSizeRange": "large",
+      "status": "review",
+      "updatedAt": "2026-06-13",
+      "priceRange": "premium",
+      "features": [
+        "오른손용 비대칭형",
+        "다버튼",
+        "HyperScroll Tilt Wheel",
+        "멀티모드"
+      ],
+      "basicFilters": {
+        "shape": "right_ergonomic",
+        "weight": "medium",
+        "connection": "multi_mode",
+        "size": "large",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingPerformance": "high",
+        "buttonCount": "multi_button",
+        "coating": "matte",
+        "switchTendency": "optical",
+        "battery": "built_in"
+      },
+      "detailSpecs": {
+        "sensorModel": "Razer Focus Pro 30K Optical Sensor",
+        "maxDpi": 30000,
+        "ips": 750,
+        "accelerationG": 70,
+        "pollingRateHz": 1000,
+        "usbOrPs2": "2.4GHz wireless / Bluetooth / USB-C wired",
+        "batteryDetail": "built-in rechargeable battery, runtime and charging dock bundle require seller check",
+        "dimensionsMm": {
+          "length": 130,
+          "width": 75.4,
+          "height": 42.5
+        },
+        "buttonCountDetail": "multi-button right ergonomic mouse with HyperScroll Tilt Wheel",
+        "dpiChangeSupport": true,
+        "adjustableWeight": false,
+        "replaceableParts": false,
+        "infiniteWheel": true,
+        "rgbLighting": true
+      },
+      "rawSpecs": {
+        "note": "Razer 공식 Basilisk V3 Pro 제품 페이지 기준 Focus Pro 30K sensor, 30000 DPI, 750 IPS, 70G acceleration, HyperScroll Tilt Wheel, optical switches, 130 x 75.4 x 42.5mm, 112g으로 안내된다. 초경량 FPS 전용 후보가 아니라 다버튼, 휠 기능, 고기능 무선 사용 기준으로 검토한다. 충전 독, 고폴링 액세서리, 색상, 번들 구성은 판매처 기준 확인이 필요하다."
+      },
+      "specTags": [
+        "112g",
+        "Focus Pro 30K",
+        "HyperScroll",
+        "Bluetooth"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "shellReferences": [],
+      "copy": {
+        "aiSummaryKo": "오른손용 다버튼 구조와 휠 기능을 함께 확인할 수 있는 고기능 무선 마우스 후보입니다.",
+        "aiStrengthsKo": [
+          "다버튼과 틸트 휠을 함께 쓰는 환경을 비교하기 좋습니다.",
+          "Bluetooth, 2.4GHz, 유선 사용 흐름을 함께 확인할 수 있습니다.",
+          "초경량 마우스와 다른 고기능 게이밍 축을 보강합니다."
+        ],
+        "aiCautionsKo": [
+          "초경량 FPS 마우스처럼 무게 중심으로만 비교하면 맞지 않을 수 있습니다.",
+          "충전 독과 고폴링 액세서리 구성은 판매처 기준 확인이 필요합니다.",
+          "다버튼 기능을 실제로 쓸지 먼저 확인하는 편이 좋습니다."
+        ],
+        "aiBuyingCheckKo": [
+          "충전 독 또는 별도 액세서리 포함 여부를 확인하세요.",
+          "손 크기와 오른손용 엄지 받침 형태가 맞는지 확인하세요.",
+          "휠 기능과 사이드 버튼을 실제 사용 환경에서 쓸지 확인하세요."
         ]
       }
     }
