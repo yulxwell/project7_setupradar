@@ -1350,3 +1350,18 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `/kr/finder/mouse-fit` 기본 HTML은 초기 추천 중심으로 렌더링되어 새 제품명이 바로 포함되지는 않지만, 운영자용 표현과 내부 필드 문자열은 확인되지 않았다.
 - 명확한 버그가 없어 코드와 제품 데이터는 수정하지 않았고, QA 결과만 문서에 기록했다.
 - Finder/Compare 로직, 필터, 제품 데이터, Supabase/API/DB, 광고/AdSense/제휴, Control Tower, package 설정은 수정하지 않았다.
+
+## Product Spec Storage & Display Policy 1 - 2026-06-13 기록
+
+- 제품 DB를 마우스/키보드/모니터 200~300개 규모로 확장하기 전 공통 저장/노출 정책 문서 `docs/product-spec-storage-display-policy.md`를 생성했다.
+- 핵심 정책은 DB에는 제품 정보를 넓게 수집하고, Finder/Compare/향후 Detail page에는 화면 역할에 맞는 일부 정보만 단계적으로 노출하는 방향으로 정리했다.
+- 데이터 계층은 `basicFilters`, `advancedFilters`, `detailSpecs`, `productTags`, `rawSpecs`로 구분했다.
+- 마우스 정책에는 Finder 일반 필터, 상세 필터, Finder에서 제외할 스펙, Compare/상세용 저장 후보, `rawSpecs.note`로 둘 정보를 정리했다.
+- 키보드 정책에는 배열/연결/소음/스위치 성향 중심의 일반 필터, 핫스왑/자석축/Mac/iPad/한글 각인 등 상세 필터, 판매처별 옵션 차이 기록 기준을 정리했다.
+- 모니터 정책은 제품 DB 진입 전 초안으로 크기/해상도/주사율/패널/HDR/포트/VESA/무결점 정책 등을 나눠 정리했다.
+- 이미지 정책은 파일 저장을 기본 금지하고, URL/alt/sourceNote/hidden만 수집하며 대표 WebP 썸네일은 후속 검토로 남겼다.
+- Supabase 정책은 향후 구조화 제품 정보와 짧은 `rawSpecs.note`만 저장하고, 원문 HTML/리뷰 전문/이미지 원본/대량 로그는 저장하지 않는 방향으로 문서화했다.
+- LLM 수집 정책은 공식 출처 우선, 불확실하면 `null` 또는 `확인 필요`, placeholder URL 금지, 실제 파일 생성 없는 완료 보고 금지, 10개 batch 단위 수집으로 정리했다.
+- `docs/mouse-db-collection-policy.md`와 `docs/product-content-expansion-plan.md`에 새 공통 정책 문서 참조를 추가했다.
+- `README.md`에 Product Spec Storage & Display Policy 1 기록을 추가했다.
+- 제품 데이터, Finder UI/로직, Compare UI/로직, validator, 타입 파일, Supabase/API/DB, 광고/AdSense/제휴, 이미지 파일, `product_config_patch`, snapshot export는 수정하지 않았다.

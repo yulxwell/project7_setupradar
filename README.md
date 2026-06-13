@@ -47,6 +47,11 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Product Spec Storage & Display Policy 1 - 2026-06-13
+- **제품 스펙 저장/노출 정책 문서화**: 제품 DB를 넓게 수집하되 Finder/Compare/향후 상세 페이지에는 역할별로 필요한 정보만 노출하는 기준을 [docs/product-spec-storage-display-policy.md](file:///Users/jilee/antigravity/src/project7/docs/product-spec-storage-display-policy.md)에 정리했습니다.
+- **데이터 계층 분리**: `basicFilters`, `advancedFilters`, `detailSpecs`, `productTags`, `rawSpecs`의 역할과 마우스/키보드/모니터별 노출 범위를 문서화했습니다.
+- **안전선 유지**: 제품 데이터, Finder/Compare UI와 로직, validator, 타입 파일, Supabase/API/DB, 광고/제휴, `product_config_patch`, snapshot export는 수정하지 않았습니다.
+
 ### Mouse Product Patch Candidate 1 Manual Apply - 2026-06-13
 - **마우스 제품 3개 수동 반영**: 검증 완료된 `tmp/product-patch-mouse-collection-batch-1.json` 기준 `Logitech MX Master 3S`, `Logitech Lift`, `Razer Basilisk V3 Pro`를 `src/content/kr/products/mice.ts`에 `review` 상태로 추가했습니다.
 - **제품군 보강**: 작업용/멀티기기, 버티컬/자세 참고, 다버튼/휠 기능 게이밍 축을 각각 보강했습니다.

@@ -2,6 +2,8 @@
 
 작성일: 2026-06-13
 
+> 공통 제품 스펙 저장/노출 기준은 [Product Spec Storage & Display Policy](./product-spec-storage-display-policy.md)를 우선 기준으로 삼는다. 이 문서는 마우스 수집 batch에서 그 기준을 적용하는 보조 운영 문서다.
+
 ## 1. 목적
 
 마우스 제품 DB 확장은 곧바로 화면에 모든 정보를 노출하는 방식이 아니라, 먼저 넓게 수집하고 검수한 뒤 Finder와 Compare에 필요한 일부만 단계적으로 노출하는 방식으로 운영한다.
