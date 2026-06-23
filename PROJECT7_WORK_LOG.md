@@ -1380,3 +1380,14 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - `docs/product-content-expansion-plan.md`에는 키보드 후보 점수화 진행 기록을 추가했다.
 - `README.md`에 Keyboard Product Candidate Scoring 1 기록을 추가했다.
 - 실제 키보드 제품 데이터 수정, 새 제품 추가, `product_config_patch` 생성, snapshot export, Finder/Compare UI와 로직 수정, validator 수정, Supabase/API/DB, 광고/AdSense/제휴, 이미지 파일 저장은 하지 않았다.
+
+## Keyboard DB Collection Batch 1 - 2026-06-23 기록
+
+- Keyboard Product Candidate Scoring 1에서 선정/보류된 후보를 기준으로 수집용 JSON `tmp/keyboard-db-collection-batch-1.json`을 생성했다.
+- 수집 대상은 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`, `HHKB Professional HYBRID Type-S`, `Keychron K2 Max`, `Logitech MX Mechanical`, `Lofree Flow`, `Leopold FC750R`, `MonsGeek M1W` 정확히 10개다.
+- 기존 `src/content/kr/products/keyboards.ts`와 후보 점수화 문서 기준으로 이번 10개는 정확히 같은 모델이 기존 DB에 없는 신규 수집 후보로 분류했고, `duplicateExisting`은 0개로 기록했다.
+- `shouldAddToDB`는 `yes` 4개, `hold` 6개, `no` 0개로 정리했다. 1차 patch 후보는 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max` 순서로 남겼다.
+- 공식 제품 페이지 URL은 6개 제품에 기록했고, 공식 URL을 확정하지 못한 제품은 빈 문자열과 낮은 confidence, `rawSpecs.uncertainFields`로 남겼다.
+- 이미지 URL 후보는 0개로 두었고 모든 `imageMeta.hidden`은 `true`로 유지했다. 이미지 파일은 저장하지 않았다.
+- `docs/keyboard-db-collection-policy.md`를 생성해 키보드 수집 데이터의 Finder 일반 기준, 상세 기준, Compare/상세 스펙, `rawSpecs.note`, 중복 판정, `shouldAddToDB`, 이미지 hidden 정책을 문서화했다.
+- 실제 키보드 제품 TS 데이터, Finder/Compare UI와 로직, validator, snapshot, Supabase/API/DB, 광고/AdSense/제휴, `product_config_patch`는 수정하거나 생성하지 않았다.

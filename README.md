@@ -431,6 +431,12 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **snapshot/validator 확인**: `npm run snapshot:export` 통과 후 마우스 제품 수가 17개로 확인됐고, patch validator 재실행 결과 신규 후보 0개, 기존 중복 후보 3개, warnings 0, errors 0으로 통과했습니다.
 - **제한 유지**: Finder/Compare 로직, 광고/제휴 링크, 제품 이미지/구매 링크, shellReferences, API/DB/Supabase, Control Tower, package 설정은 수정하지 않았습니다.
 
+### Keyboard DB Collection Batch 1 - 2026-06-23
+- **수집 파일 생성**: 키보드 후보 10개를 `tmp/keyboard-db-collection-batch-1.json`에 수집했습니다. 실제 키보드 제품 TS 데이터에는 반영하지 않았습니다.
+- **수집 정책 문서화**: `docs/keyboard-db-collection-policy.md`를 추가해 Finder 일반 기준, 상세 기준, Compare/상세 스펙, `rawSpecs.note`, 이미지 hidden 수집 기준을 정리했습니다.
+- **후속 후보**: 다음 `product_config_patch` 후보는 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max` 순서로 검토합니다.
+- **제한 유지**: 제품 데이터, Finder/Compare UI와 로직, snapshot export, 광고/제휴, Supabase/API/DB, 이미지 파일 저장, `product_config_patch` 생성은 하지 않았습니다.
+
 ### v0.3A - Control Tower Workbench Integration
 - **JSON 작업대 도입**: Markdown 기반 검토를 넘어, Control Tower WebUI에서 읽을 수 있는 구조화된 JSON 작업대(`docs/content-copy-workbench.kr.json`)를 추가했습니다.
 - **Project99 연동 설계**: Control Tower에서 SetupRadar의 문구를 섹션별로 필터링하고 수정안을 작성한 뒤 JSON으로 추출(Export)하는 흐름을 구축했습니다.
