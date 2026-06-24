@@ -47,6 +47,11 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Keyboard Product Patch Candidate 1 - 2026-06-24
+- **키보드 patch 후보 4개 생성**: `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`를 `tmp/product-patch-keyboard-collection-batch-1.json`에 기존 `product_config_patch` 형식으로 정리했습니다.
+- **세대와 옵션 차이 분리**: Air75 V2, Apex Pro TKL, MX Keys S, K3 Max의 유사 제품군과 판매 옵션 차이는 `rawSpecs.note`와 `uncertainFields`에 남겼습니다.
+- **안전선 유지**: 실제 키보드 제품 데이터, Finder/Compare UI와 로직, validator, snapshot, 이미지/링크, Supabase/API/DB, 광고/제휴는 수정하지 않았습니다.
+
 ### Keyboard Product Candidate Scoring 1 - 2026-06-13
 - **키보드 후보 15개 점수화**: Keyboard DB Collection Batch 1 또는 Keyboard Product Patch Batch 1 전 단계로 [docs/keyboard-product-candidate-scoring-1.md](file:///Users/jilee/antigravity/src/project7/docs/keyboard-product-candidate-scoring-1.md)에 후보 점수표를 작성했습니다.
 - **중복/보강 후보 분리**: 기존 DB에 있는 `AULA F75`, `NuPhy Halo75 V2`, `Keychron V1 Max`, `Wooting 60HE`, `DrunkDeer A75`, `Razer Huntsman V3 Pro TKL`, `Realforce R3`, `Rainy75`는 신규 추가가 아니라 보강/비교 후보로 분류했습니다.

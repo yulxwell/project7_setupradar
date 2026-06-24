@@ -116,3 +116,16 @@ Keyboard DB Collection Batch 1 이후에는 `shouldAddToDB: "yes"` 후보 중 3~
 4. Keychron K3 Max
 
 HHKB Professional HYBRID Type-S, Keychron K2 Max, Logitech MX Mechanical, Lofree Flow, Leopold FC750R, MonsGeek M1W는 추가 공식 스펙과 지역 옵션 확인 후 후속 batch 후보로 둔다.
+
+## 8. Product Patch Candidate 1 기록
+
+2026-06-24 기준 `tmp/keyboard-db-collection-batch-1.json`의 `shouldAddToDB: "yes"` 후보 4개를 `tmp/product-patch-keyboard-collection-batch-1.json`으로 변환했다.
+
+- 포함: NuPhy Air75 V2, SteelSeries Apex Pro TKL, Logitech MX Keys S, Keychron K3 Max
+- 제외: HHKB Professional HYBRID Type-S와 나머지 `hold` 후보
+- HHKB는 무접점 방식, 특수 배열, 지역별 각인과 모델 차이를 별도 검토하기 위해 `hold`를 유지한다.
+- 기존 키보드 타입과 validator가 허용하는 `basicFilters` canonical 값만 사용했다.
+- collection 전용 상세 필드는 무리하게 옮기지 않고, 구매 전 확인이 필요한 세대·배열·스위치·키캡·수신기 차이는 `rawSpecs.note`와 `uncertainFields`에 남겼다.
+- 이미지, 제품 링크, 최상위 `sources`, 제품 TS 반영, snapshot export는 포함하지 않았다.
+- validator 결과는 신규 후보 3개, 기존 중복 후보 1개, warnings 0개, errors 0개다.
+- 기존 중복 후보 1개는 `Logitech MX Keys S`가 기존 `Logitech MX Keys`와 `brand + name 유사`로 분류된 결과다. id, slug, 정확한 제품명은 겹치지 않아 별도 모델 후보로 수동 검토한다.

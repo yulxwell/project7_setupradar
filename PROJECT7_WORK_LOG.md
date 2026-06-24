@@ -1391,3 +1391,16 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 이미지 URL 후보는 0개로 두었고 모든 `imageMeta.hidden`은 `true`로 유지했다. 이미지 파일은 저장하지 않았다.
 - `docs/keyboard-db-collection-policy.md`를 생성해 키보드 수집 데이터의 Finder 일반 기준, 상세 기준, Compare/상세 스펙, `rawSpecs.note`, 중복 판정, `shouldAddToDB`, 이미지 hidden 정책을 문서화했다.
 - 실제 키보드 제품 TS 데이터, Finder/Compare UI와 로직, validator, snapshot, Supabase/API/DB, 광고/AdSense/제휴, `product_config_patch`는 수정하거나 생성하지 않았다.
+
+## Keyboard Product Patch Candidate 1 - 2026-06-24 기록
+
+- `tmp/keyboard-db-collection-batch-1.json`의 `shouldAddToDB: "yes"` 후보 4개를 기존 `product_config_patch` 형식의 `tmp/product-patch-keyboard-collection-batch-1.json`으로 변환했다.
+- 포함 제품은 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`다.
+- HHKB Professional HYBRID Type-S는 무접점 방식, 특수 배열, 지역 모델과 각인 차이를 별도 검토하기 위해 `hold`를 유지했다.
+- 키보드 `basicFilters`와 `advancedFilters`는 기존 canonical 값만 사용했고, collection 전용 필드는 patch에 새 스키마로 추가하지 않았다.
+- Air75 V2는 Halo75 V2 및 다른 Air75 세대와 분리했고, Apex Pro TKL은 유선 모델 후보로 두면서 Wireless·Gen 3·구형 세대 혼합을 피했다.
+- MX Keys S는 기존 MX Keys와 별도 모델 후보로 구분하고 기계식·게이밍 기능을 부여하지 않았다.
+- K3 Max는 K3·K3 Pro와 분리했으며 핫스왑, ANSI·ISO 배열, 스위치와 키캡 옵션 차이는 `rawSpecs.note`와 `uncertainFields`에 남겼다.
+- validator 실행 결과 신규 추가 후보 3개, 기존 중복 후보 1개, 자동 보강 후보 필드 1개, 수동 검토 필요 필드 5개, 반영 보류 필드 0개, warnings 0개, errors 0개로 통과했다.
+- 기존 중복 후보는 `Logitech MX Keys S`가 기존 `Logitech MX Keys`와 `brand + name 유사`로 분류된 1건이다. id, slug, 정확한 제품명 중복은 없어 별도 모델 후보로 수동 검토한다.
+- 이미지, 제품 링크, 최상위 `sources`, 제품 TS 반영, snapshot export, Finder/Compare UI와 로직, validator, Supabase/API/DB, 광고/AdSense/제휴는 수정하거나 추가하지 않았다.
