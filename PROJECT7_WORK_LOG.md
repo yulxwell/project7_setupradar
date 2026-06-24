@@ -1421,3 +1421,21 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - 신규 사용자 문구에서 `review 상태`, `수동 승인`, `수동 검토`, `운영자`, `DB 반영`, `내부 검토` 표현이 없음을 확인했다.
 - `npm run lint`와 `npm run build`를 통과했고, build는 53개 정적 페이지를 정상 생성했다.
 - productImages, productLinks, shellReferences, Finder/Compare UI와 로직, validator, 타입, Supabase/API/DB, 광고/AdSense/제휴는 수정하거나 추가하지 않았다.
+
+## Keyboard Collection Patch Batch 1 Live QA - 2026-06-24 기록
+
+- Cloudflare 실서비스에서 `/kr/finder/keyboard-fit`, `/kr/compare/keyboard`, `/kr/compare`, root `/sitemap.xml`, `/kr/sitemap.xml`을 확인했고 모두 HTTP 200으로 응답했다.
+- Compare 제품 A/B 선택 목록과 Finder 제조사 필터 후보 수가 16개로 표시돼 `8213663 data: apply keyboard collection patch batch`의 신규 키보드 4개 배포 반영을 확인했다.
+- Compare Picker에서 `NuPhy Air75 V2 vs Keychron K3 Max`, `SteelSeries Apex Pro TKL vs Wooting 60HE`, `Logitech MX Keys S vs Logitech MX Keys` 조합을 직접 선택했고 요약 카드와 비교표가 정상 갱신됐다.
+- Finder 제조사 필터에서 NuPhy는 `Halo75 V2`, `Air75 V2`, SteelSeries는 `Apex Pro TKL`, Logitech은 `MX Keys`, `G Pro X TKL`, `MX Keys S`, Keychron은 `Q1`, `V1 Max`, `K3 Max`를 표시했다.
+- Air75 V2는 75% 로우프로파일, 멀티모드, QMK/VIA 후보로 표시됐고 Halo75 V2와 별도 제품명으로 구분됐다.
+- Apex Pro TKL은 TKL, 유선, 자석축, 래피드 트리거 후보로 표시됐으며 구매 전 정확한 세대와 유선 모델명을 확인하라는 안내가 함께 노출됐다.
+- MX Keys S는 기존 MX Keys와 별도 항목으로 표시됐고 풀배열, 무선, 저소음, 생산성 후보로 안내됐다. 기계식, 자석축, 래피드 트리거 또는 핫스왑 지원 제품처럼 표시되지 않았다.
+- K3 Max는 Compare Picker에서 핫스왑을 `확인 필요` 및 `고정축 또는 확인이 필요한 후보`로 완화해 표시했다.
+- K3 Max는 Finder 결과 카드와 구매 전 체크 패널에서는 `isHotSwap: false`가 `핫스왑 미지원`으로 단정 표시됐다. 실제 제품은 구매 옵션에 따라 핫스왑 여부가 달라질 수 있어 데이터 모델 또는 표시 정책의 후속 보정이 필요한 이슈로 기록했다.
+- 요청에 따라 K3 Max 데이터, Finder UI, Compare UI와 추천 로직은 이번 QA에서 수정하지 않았다. 후속 작업에서는 boolean 대신 `unknown` 또는 `option_dependent`를 표현할 수 있는 최소 스키마 보정이나 note 기반 표시를 검토한다.
+- live HTML과 visible UI에서 `review 상태`, status 내부값, `수동 승인`, `DB 반영`, `운영자`, `productImages`, `productLinks`, `shellReferences`는 확인되지 않았다.
+- 신규 제품 관련 live HTML에서 `최고`, `완벽`, `무조건`, `끝판왕`, `압도적`, `확정`, `반드시`, `후회 없음` 표현은 확인되지 않았다.
+- root sitemap과 KR sitemap에는 기존 `/kr/compare/keyboard` route가 포함됐고, 신규 제품 상세 route나 미구현 URL은 추가되지 않았다.
+- `npm run lint`와 `npm run build`를 통과했고, build는 53개 정적 페이지를 정상 생성했다.
+- 제품 데이터, Finder/Compare 코드, snapshot, Supabase/API/DB, 광고/AdSense/제휴는 수정하지 않았으며 Live QA 결과만 문서에 기록했다.
