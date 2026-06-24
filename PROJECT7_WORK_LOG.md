@@ -1404,3 +1404,20 @@ SetupRadar project7 작업 채팅용 운영 로그입니다. 이 문서는 v0.1.
 - validator 실행 결과 신규 추가 후보 3개, 기존 중복 후보 1개, 자동 보강 후보 필드 1개, 수동 검토 필요 필드 5개, 반영 보류 필드 0개, warnings 0개, errors 0개로 통과했다.
 - 기존 중복 후보는 `Logitech MX Keys S`가 기존 `Logitech MX Keys`와 `brand + name 유사`로 분류된 1건이다. id, slug, 정확한 제품명 중복은 없어 별도 모델 후보로 수동 검토한다.
 - 이미지, 제품 링크, 최상위 `sources`, 제품 TS 반영, snapshot export, Finder/Compare UI와 로직, validator, Supabase/API/DB, 광고/AdSense/제휴는 수정하거나 추가하지 않았다.
+
+## Keyboard Collection Patch Batch 1 Manual Apply - 2026-06-24 기록
+
+- 검증 완료된 `tmp/product-patch-keyboard-collection-batch-1.json`의 `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`를 `src/content/kr/products/keyboards.ts`에 수동 반영했다.
+- 네 제품 모두 `status: "review"`로 추가했고 키보드 제품 수는 12개에서 16개로 늘었다.
+- id, slug, 정확한 `brand + name` 중복 검사 결과 새 항목 간 또는 기존 항목과의 정확 중복은 없었다.
+- `Logitech MX Keys S`는 `id: "logitech-mx-keys-s"`와 `slug: "logitech-mx-keys-s"`로 기존 `Logitech MX Keys`와 분리했다. 사용자용 note에는 내부 중복 판정 과정 대신 모델명, 패키지, Logi Bolt 수신기와 국내 각인 확인 안내만 남겼다.
+- `SteelSeries Apex Pro TKL`은 유선 TKL 후보로 반영하고 구형, Wireless, Gen 3의 세대·연결 차이는 구매 전 확인 문구로 남겼다.
+- `Keychron K3 Max`는 K3, K3 Pro와 구분했다. 현재 boolean 타입이 옵션별 핫스왑 상태를 표현하지 못해 `isHotSwap`은 보수적으로 `false`로 두고, RGB Hot-Swappable Version 등 옵션 차이를 `rawSpecs.note`와 `uncertainFields`에 기록했다.
+- `NuPhy Air75 V2`는 기존 Halo75 V2 및 Air75 다른 세대와 구분하고, 75% 로우프로파일·멀티모드·QMK/VIA 후보로 반영했다.
+- `npm run snapshot:export`는 기존 경고 59개와 함께 통과했다. snapshot summary는 마우스 20개, 키보드 16개, product images 0개, product links 0개다.
+- snapshot export로 `generatedAt`만 바뀐 7개 파일은 커밋 노이즈를 줄이기 위해 되돌리고, 실제 제품 변경이 있는 `snapshots/kr/products/keyboards.json`만 갱신 상태로 남겼다.
+- 반영 후 validator 재실행 결과 신규 후보 0개, 기존 중복 후보 4개, 자동 보강 후보 필드 1개, 수동 검토 필요 필드 28개, 반영 보류 필드 0개, warnings 0개, errors 0개로 통과했다.
+- validator는 `MX Keys S`를 배열에서 먼저 만나는 기존 `MX Keys`와 `brand + name 유사`로 표시한다. 별도 id/slug/정확 제품명 검사에서는 `MX Keys S` 신규 항목이 명확히 분리된 것을 확인했고 validator 로직은 수정하지 않았다.
+- 신규 사용자 문구에서 `review 상태`, `수동 승인`, `수동 검토`, `운영자`, `DB 반영`, `내부 검토` 표현이 없음을 확인했다.
+- `npm run lint`와 `npm run build`를 통과했고, build는 53개 정적 페이지를 정상 생성했다.
+- productImages, productLinks, shellReferences, Finder/Compare UI와 로직, validator, 타입, Supabase/API/DB, 광고/AdSense/제휴는 수정하거나 추가하지 않았다.

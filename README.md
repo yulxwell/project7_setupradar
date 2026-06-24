@@ -47,6 +47,11 @@ SetupRadar는 운영 효율성을 위해 하이브리드 콘텐츠 구조를 사
 - **WebUI 작업대**: Project99 Control Tower를 통한 시각적 편집을 위해 [docs/content-copy-workbench.kr.json](file:///Users/jilee/antigravity/src/project7/docs/content-copy-workbench.kr.json)을 제공합니다.
 
 ## ✅ 주요 업데이트 내역
+### Keyboard Collection Patch Batch 1 Manual Apply - 2026-06-24
+- **키보드 4개 수동 반영**: `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`를 `src/content/kr/products/keyboards.ts`에 `review` 상태로 추가했습니다.
+- **제품 수 갱신**: 키보드 제품 수는 12개에서 16개로 늘었고, snapshot에도 같은 수가 반영됐습니다.
+- **안전선 유지**: Finder/Compare UI와 로직, validator, 타입, 제품 이미지/링크, Supabase/API/DB, 광고/제휴는 수정하지 않았습니다.
+
 ### Keyboard Product Patch Candidate 1 - 2026-06-24
 - **키보드 patch 후보 4개 생성**: `NuPhy Air75 V2`, `SteelSeries Apex Pro TKL`, `Logitech MX Keys S`, `Keychron K3 Max`를 `tmp/product-patch-keyboard-collection-batch-1.json`에 기존 `product_config_patch` 형식으로 정리했습니다.
 - **세대와 옵션 차이 분리**: Air75 V2, Apex Pro TKL, MX Keys S, K3 Max의 유사 제품군과 판매 옵션 차이는 `rawSpecs.note`와 `uncertainFields`에 남겼습니다.

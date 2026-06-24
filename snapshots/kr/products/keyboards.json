@@ -3,7 +3,7 @@
     "projectId": "project7_setupradar",
     "locale": "kr",
     "schemaVersion": "0.1.0",
-    "generatedAt": "2026-06-13T11:13:44.480Z",
+    "generatedAt": "2026-06-24T12:41:33.716Z",
     "source": "static_ts",
     "status": "review"
   },
@@ -816,6 +816,324 @@
           "구매 옵션의 스위치 종류와 소음 성향을 확인하세요.",
           "국내 정식 발매 여부와 한글 각인 유무를 확인하세요.",
           "호환 가능한 키캡 프로파일을 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "nuphy-air75-v2",
+      "slug": "nuphy-air75-v2",
+      "category": "keyboard",
+      "brand": "NuPhy",
+      "name": "Air75 V2",
+      "layout": "75%",
+      "switchType": [
+        "unknown"
+      ],
+      "isHotSwap": true,
+      "material": "aluminum",
+      "status": "review",
+      "updatedAt": "2026-06-24",
+      "priceRange": "mid",
+      "features": [
+        "75% 로우프로파일",
+        "무선 3모드",
+        "QMK/VIA"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "multi_mode",
+        "feel": "unknown",
+        "noise": "no_preference",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "multi_pairing",
+        "keycap": "pbt_preferred",
+        "housing": "lightweight_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "light"
+      },
+      "detailSpecs": {
+        "macroSupport": true,
+        "bluetoothVersion": "5.1",
+        "battery": "4000mAh",
+        "accessories": [],
+        "dimensionsMm": {
+          "width": 316.4,
+          "depth": 132.5,
+          "height": 13.5
+        }
+      },
+      "rawSpecs": {
+        "note": "공식 제품 페이지 기준 Air75 V2는 75% 로우프로파일 키보드로 2.4GHz, Bluetooth 5.1, USB-C 유선 연결과 QMK/VIA, 핫스왑 구성을 안내합니다. Air75 다른 세대와 구분해야 하며 스위치, 키캡, 국내 한글 각인과 판매처 구성은 구매 전 확인이 필요합니다.",
+        "uncertainFields": [
+          "switchOptionsBySeller",
+          "koreanLegends",
+          "domesticAvailability"
+        ]
+      },
+      "specTags": [
+        "75%",
+        "Low-profile",
+        "Multi-mode",
+        "QMK/VIA"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "75% 로우프로파일 배열과 멀티모드 연결을 함께 살펴볼 수 있는 휴대형 키보드 후보입니다.",
+        "aiStrengthsKo": [
+          "낮은 높이와 75% 배열을 함께 비교할 수 있습니다.",
+          "2.4GHz, 블루투스, 유선 연결을 상황에 따라 확인할 수 있습니다.",
+          "QMK/VIA와 핫스왑 구성을 살펴볼 수 있습니다."
+        ],
+        "aiCautionsKo": [
+          "Air75 다른 세대와 모델명을 구분해야 합니다.",
+          "스위치와 키캡 옵션은 판매처와 구매 시기에 따라 달라질 수 있습니다.",
+          "국내 한글 각인과 유통 구성은 구매 전 확인이 필요합니다."
+        ],
+        "aiBuyingCheckKo": [
+          "Air75 V2 모델인지 확인하세요.",
+          "선택한 스위치와 키캡 구성을 확인하세요.",
+          "국내 각인과 보증 조건을 판매처 기준으로 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "steelseries-apex-pro-tkl",
+      "slug": "steelseries-apex-pro-tkl",
+      "category": "keyboard",
+      "brand": "SteelSeries",
+      "name": "Apex Pro TKL",
+      "layout": "tkl",
+      "switchType": [
+        "magnetic"
+      ],
+      "isHotSwap": false,
+      "material": "aluminum",
+      "status": "review",
+      "updatedAt": "2026-06-24",
+      "priceRange": "premium",
+      "features": [
+        "텐키리스",
+        "자석축",
+        "래피드 트리거"
+      ],
+      "basicFilters": {
+        "layout": "tkl",
+        "connection": "wired",
+        "feel": "smooth_linear",
+        "noise": "no_preference",
+        "price": "premium"
+      },
+      "advancedFilters": {
+        "gamingFeature": "rapid_trigger",
+        "multiDevice": "no_preference",
+        "keycap": "no_preference",
+        "housing": "aluminum_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "공식 제품군 페이지는 Apex Pro TKL의 OmniPoint 계열 자석축, Rapid Trigger, 조절식 작동 지점을 안내합니다. 유선 Apex Pro TKL 기준 후보이며 구형 모델, Wireless, Gen 3 등 세대와 연결 방식, 키캡 및 손목받침 구성은 공식 모델명과 판매처 기준으로 다시 확인해야 합니다.",
+        "uncertainFields": [
+          "exactGeneration",
+          "pollingRateHz",
+          "dimensions",
+          "weight",
+          "keycapMaterial",
+          "koreanLegends"
+        ]
+      },
+      "specTags": [
+        "TKL",
+        "Magnetic",
+        "Rapid trigger",
+        "Wired"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "텐키리스 배열에서 자석축과 래피드 트리거 기능을 비교할 때 참고할 수 있는 유선 게이밍 키보드 후보입니다.",
+        "aiStrengthsKo": [
+          "TKL 배열과 조절식 작동 지점 기능을 함께 확인할 수 있습니다.",
+          "래피드 트리거 계열 제품 간 설정 차이를 비교하기 좋습니다.",
+          "SteelSeries GG 기반 설정 흐름을 살펴볼 수 있습니다."
+        ],
+        "aiCautionsKo": [
+          "Apex Pro TKL은 세대와 유선·무선 모델을 구분해야 합니다.",
+          "세대별 스위치 명칭과 기능 범위가 달라질 수 있습니다.",
+          "키캡과 손목받침 구성은 판매처 기준 확인이 필요합니다."
+        ],
+        "aiBuyingCheckKo": [
+          "정확한 세대와 유선 모델명을 확인하세요.",
+          "필요한 작동 지점과 래피드 트리거 설정 범위를 확인하세요.",
+          "국내 배열과 구성품을 판매처 기준으로 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "logitech-mx-keys-s",
+      "slug": "logitech-mx-keys-s",
+      "category": "keyboard",
+      "brand": "Logitech",
+      "name": "MX Keys S",
+      "layout": "full",
+      "switchType": [
+        "unknown"
+      ],
+      "isHotSwap": false,
+      "material": "plastic",
+      "status": "review",
+      "updatedAt": "2026-06-24",
+      "priceRange": "mid",
+      "features": [
+        "풀배열",
+        "저상 팬터그래프",
+        "멀티기기"
+      ],
+      "basicFilters": {
+        "layout": "full",
+        "connection": "wireless",
+        "feel": "quiet",
+        "noise": "quiet_preferred",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "no_preference",
+        "multiDevice": "multi_pairing",
+        "keycap": "no_preference",
+        "housing": "lightweight_preferred",
+        "backlight": "no_preference",
+        "weightFeel": "solid_heavy"
+      },
+      "detailSpecs": {
+        "bluetoothVersion": null,
+        "battery": "USB-C 충전식, 사용 시간은 조명과 환경에 따라 확인 필요",
+        "accessories": [],
+        "dimensionsMm": {}
+      },
+      "rawSpecs": {
+        "note": "공식 제품 페이지 기준 MX Keys S는 풀배열 무선 일루미네이티드 키보드로 조용한 저상 키와 Logi Options+의 Smart Actions를 안내합니다. 모델명과 일반판·Mac용·비즈니스용 패키지를 구분하고, Logi Bolt 수신기 포함 여부와 국내 한글 각인은 판매처 기준으로 확인하는 것이 좋습니다.",
+        "uncertainFields": [
+          "receiverBundle",
+          "batteryRuntime",
+          "dimensions",
+          "weight",
+          "koreanLegends"
+        ]
+      },
+      "specTags": [
+        "Full",
+        "Wireless",
+        "Scissor",
+        "Productivity"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "조용한 저상 키와 멀티기기 작업 흐름을 살펴볼 수 있는 풀배열 생산성 키보드 후보입니다.",
+        "aiStrengthsKo": [
+          "풀배열과 조용한 입력 성향을 함께 확인할 수 있습니다.",
+          "여러 기기 전환과 Logi Options+ 작업 흐름을 비교하기 좋습니다.",
+          "기계식 키보드와 다른 저상 팬터그래프 계열 후보를 보강합니다."
+        ],
+        "aiCautionsKo": [
+          "기계식 스위치나 핫스왑 제품이 아닙니다.",
+          "제품명과 패키지 구성을 구매 전 확인해야 합니다.",
+          "수신기 포함 여부와 지역별 각인은 판매처 기준 확인이 필요합니다."
+        ],
+        "aiBuyingCheckKo": [
+          "MX Keys S 모델인지 확인하세요.",
+          "Logi Bolt 수신기 포함 여부와 연결할 기기를 확인하세요.",
+          "국내 배열과 한글 각인 구성을 확인하세요."
+        ]
+      }
+    },
+    {
+      "id": "keychron-k3-max",
+      "slug": "keychron-k3-max",
+      "category": "keyboard",
+      "brand": "Keychron",
+      "name": "K3 Max",
+      "layout": "75%",
+      "switchType": [
+        "unknown"
+      ],
+      "isHotSwap": false,
+      "material": "aluminum",
+      "status": "review",
+      "updatedAt": "2026-06-24",
+      "priceRange": "mid",
+      "features": [
+        "75% 로우프로파일",
+        "무선 3모드",
+        "QMK/Launcher"
+      ],
+      "basicFilters": {
+        "layout": "compact",
+        "connection": "multi_mode",
+        "feel": "unknown",
+        "noise": "no_preference",
+        "price": "mid"
+      },
+      "advancedFilters": {
+        "gamingFeature": "high_polling",
+        "multiDevice": "multi_pairing",
+        "keycap": "pbt_preferred",
+        "housing": "lightweight_preferred",
+        "backlight": "rgb_preferred",
+        "weightFeel": "light"
+      },
+      "detailSpecs": {
+        "macroSupport": true,
+        "bluetoothVersion": "5.1",
+        "battery": "1550mAh",
+        "accessories": [],
+        "dimensionsMm": {
+          "width": 306,
+          "depth": 116
+        }
+      },
+      "rawSpecs": {
+        "note": "공식 제품 페이지 기준 K3 Max는 75% 로우프로파일 키보드로 2.4GHz, Bluetooth 5.1, Type-C 유선 연결과 QMK·Keychron Launcher를 안내합니다. K3 및 K3 Pro와 구분해야 하며 핫스왑은 RGB Hot-Swappable Version 등 구매 옵션에 따라 달라질 수 있습니다. ANSI·ISO 배열, 스위치, 키캡과 국내 한글 각인은 판매처 기준 확인이 필요합니다.",
+        "uncertainFields": [
+          "hotSwapByVersion",
+          "switchOptionsBySeller",
+          "layoutVariant",
+          "koreanLegends",
+          "domesticAvailability"
+        ]
+      },
+      "specTags": [
+        "75%",
+        "Low-profile",
+        "Multi-mode",
+        "QMK"
+      ],
+      "productImages": [],
+      "productLinks": [],
+      "copy": {
+        "aiSummaryKo": "75% 로우프로파일 배열과 멀티모드 연결을 함께 비교할 수 있는 Keychron K Max 계열 키보드 후보입니다.",
+        "aiStrengthsKo": [
+          "낮은 높이와 75% 배열을 함께 살펴볼 수 있습니다.",
+          "2.4GHz, 블루투스, 유선 연결을 지원하는 구성을 비교하기 좋습니다.",
+          "QMK와 Keychron Launcher 설정 흐름을 확인할 수 있습니다."
+        ],
+        "aiCautionsKo": [
+          "K3, K3 Pro, K3 Max를 구분해야 합니다.",
+          "핫스왑 여부는 백라이트와 구매 옵션에 따라 달라질 수 있습니다.",
+          "배열, 스위치와 키캡 구성은 판매처별 확인이 필요합니다."
+        ],
+        "aiBuyingCheckKo": [
+          "K3 Max 모델과 배열 옵션을 확인하세요.",
+          "핫스왑 버전인지 확인하세요.",
+          "국내 각인과 스위치·키캡 구성을 판매처 기준으로 확인하세요."
         ]
       }
     }

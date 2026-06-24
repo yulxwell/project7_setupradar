@@ -129,3 +129,19 @@ HHKB Professional HYBRID Type-S, Keychron K2 Max, Logitech MX Mechanical, Lofree
 - 이미지, 제품 링크, 최상위 `sources`, 제품 TS 반영, snapshot export는 포함하지 않았다.
 - validator 결과는 신규 후보 3개, 기존 중복 후보 1개, warnings 0개, errors 0개다.
 - 기존 중복 후보 1개는 `Logitech MX Keys S`가 기존 `Logitech MX Keys`와 `brand + name 유사`로 분류된 결과다. id, slug, 정확한 제품명은 겹치지 않아 별도 모델 후보로 수동 검토한다.
+
+## 9. Product Patch Candidate 1 Manual Apply 결과
+
+2026-06-24 기준 patch 후보 4개를 키보드 제품 TS 데이터에 수동 반영했다.
+
+- 반영 제품: NuPhy Air75 V2, SteelSeries Apex Pro TKL, Logitech MX Keys S, Keychron K3 Max
+- 상태: 4개 모두 `review`
+- 제품 수: 12개에서 16개
+- 정확한 id/slug/제품명 중복: 0개
+- HHKB Professional HYBRID Type-S: 무접점·특수 배열·지역 모델 차이 검토를 위해 `hold` 유지
+- snapshot: 키보드 16개, product images 0개, product links 0개
+- validator 재실행: 신규 0개, 중복 4개, warnings 0개, errors 0개
+
+`MX Keys S`는 별도 id와 slug로 반영됐지만 validator의 이름 포함 비교가 기존 `MX Keys`를 먼저 찾는다. 이는 validator 출력의 제품군 유사 판정이며 실제 데이터의 정확 중복은 아니다.
+
+K3 Max의 핫스왑은 구매 옵션에 따라 달라질 수 있으나 현재 제품 타입은 boolean만 허용한다. 공개 필드에서는 보수적으로 두고 옵션 차이는 `rawSpecs.note`와 `uncertainFields`에 유지한다.
